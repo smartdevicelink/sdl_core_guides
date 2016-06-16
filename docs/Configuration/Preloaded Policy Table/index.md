@@ -52,8 +52,6 @@ A list of urls that can be used to receive valid apps for querying on iOS device
 
 A list of urls that host an image which can be displayed by the application on the driver's device during lockout. This url is sent in a request after each application is registered. The application proxy downloads the image and sends a notification to the application with the image to be displayed during lockout.
 
-### Notification Per Minute
-
 ## Functional Groupings
 
 The functional groupings are the different named groups of rpc permissions that an application can have. There can be any number of functional groups. The functional groups are used in the next section to define behavior for different applications.
