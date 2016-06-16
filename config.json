@@ -6,6 +6,14 @@
             "name": "Overview"
         },
         {
+            "name": "Configuration",
+            "navigation": [
+                {
+                    "name": "Preloaded Policy Table"
+                }
+            ]
+        },
+        {
             "name": "Transport Manager Programming"
         }
     ]
