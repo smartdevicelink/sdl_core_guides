@@ -19,6 +19,9 @@
                 },
                 {
                     "name": "Components View"
+                },
+                {
+                    "name": "Component Interaction View"
                 }
             ]
         },
