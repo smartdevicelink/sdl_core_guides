@@ -1,9 +1,17 @@
 {
-    "Authors": ["Luxoft", "Justin Dickow"],
+    "Authors": ["Luxoft", "Justin Dickow", "Elisey Zamakhov"],
     "languages": ["en"],
     "navigation": [
         {
             "name": "Overview"
+        },
+        {
+            "name": "Software Architecture Document",
+            "navigation": [
+                {
+                    "name": "Introduction"
+                }
+            ]
         },
         {
             "name": "Configuration",
