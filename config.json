@@ -28,6 +28,12 @@
                 },
                 {
                     "name": "Data View"
+                },
+                {
+                    "name": "Process State View"
+                },
+                {
+                    "name": "Process View"
                 }
             ]
         },
