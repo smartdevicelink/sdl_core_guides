@@ -22,6 +22,12 @@
                 },
                 {
                     "name": "Component Interaction View"
+                },
+                {
+                    "name": "User Interface"
+                },
+                {
+                    "name": "Data View"
                 }
             ]
         },
