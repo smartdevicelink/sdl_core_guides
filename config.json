@@ -43,6 +43,9 @@
                 },
                 {
                     "name": "Operational View"
+                },
+                {
+                    "name": "View-to-View Relations"
                 }
             ]
         },
