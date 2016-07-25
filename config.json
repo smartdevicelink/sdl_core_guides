@@ -9,6 +9,9 @@
             "name": "Software Architecture Document",
             "navigation": [
                 {
+                    "name": "Table of Contents"
+                },
+                {
                     "name": "Introduction"
                 },
                 {
