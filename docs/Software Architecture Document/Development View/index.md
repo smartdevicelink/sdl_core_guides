@@ -40,7 +40,7 @@ Development view organizes SmartDeviceLink components into logical and abstract 
     - Performs device discovery
     - Sends / receives messages 
   - *Constraints:*
-    - N/A 
+    - [Transport Manager Programming guide](../../Transport Manager Programming/index.md)
  
 #### Protocol Layer
   - *Responsibility:*
@@ -57,7 +57,7 @@ Development view organizes SmartDeviceLink components into logical and abstract 
     - Notify upper level about new transport and protocol layer events
     - Provides Transport Layer manipulation by upper layers 
   - *Constraints:*
-    - Depends on protocol specification version.
+    - [SmartDeviceLink Protocol specification](https://github.com/smartdevicelink/protocol_spec/blob/master/README.md)
  
 #### Application Layer
   - *Responsibility:*
@@ -74,7 +74,8 @@ Development view organizes SmartDeviceLink components into logical and abstract 
    - *Behavior:*
      - Main business logic functionality. 
   - *Constraints:*
-    - N/A 
+    - [FORD Mobile API Spec](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/MOBILE_API.xml)
+    - [FORD HMI API Spec](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/HMI_API.xml)
 
 ### 4.7.3. Development Environment and Standards
 -   Development and testing environment for Ubuntu 14.04 LTS x32/x64
