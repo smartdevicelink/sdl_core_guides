@@ -1,4 +1,4 @@
-## <a name="4.4. Data View"></a>4.4. Data View
+## 4.4. Data View
 
 The Data View shows relations between separated data types and actors that perform information processing in the system. It depicts contents of saved information and also visualizes information sources, processors and destination.
 

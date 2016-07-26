@@ -1,6 +1,6 @@
-## <a name="4.  Views"></a>4.  Views
+## 4.  Views
 
-## <a name="4.1. Components View"></a>4.1. Components View
+## 4.1. Components View
 
 The view is represented by module and subsystem diagrams that show the system's export and import relationships. The Components View diagram and its elements description please see below.
 

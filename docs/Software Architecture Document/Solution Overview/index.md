@@ -1,4 +1,4 @@
-### <a name="3.  Solution Overview"></a>3.  Solution Overview
+### 3.  Solution Overview
 
 The picture below shows SmartDeviceLink technology overview.
 

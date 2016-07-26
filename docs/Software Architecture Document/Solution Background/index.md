@@ -1,6 +1,6 @@
-## <a name="6.  Solution Background"></a>6.  Solution Background
+## 6.  Solution Background
 
-### <a name="6.1. Architecture Design Approach"></a>6.1. Architecture Design Approach
+### 6.1. Architecture Design Approach
 
 During the architecture designing the following aspects and rules were primary considered:
 
@@ -39,19 +39,19 @@ During the architecture designing the following aspects and rules were primary c
         1.  In case of exclusive object handling could `std::auto_ptr` is preferable
         2.  For shared object handling `utils::SharedPtr` is preferable
 
-### <a name="6.2. Requirements Coverage"></a>6.2. Requirements Coverage
+### 6.2. Requirements Coverage
 
 There are indirect requirements which may impact on Architectural decisions, such as limitation of usage of RAM, ROM, requirements to support specific SDL Core to HMI transport layers. All the requirements of this kind were taken into account while creating Architecture Design. 
 -   [*SmartDeviceLink Protocol specification*](https://github.com/smartdevicelink/protocol_spec/blob/master/README.md)
 
-### <a name="6.3. Prototyping Results"></a>6.3. Prototyping Results
+### 6.3. Prototyping Results
 
 Architecture prototyping was done to validate architecture on early stages. An evolutional prototyping technique was used. Thus all prototype components were used with non-significant changes and additional features for further development.
 
-### <a name="6.4. Open Questions and Known Issues"></a>6.4. Open Questions and Known Issues
+### 6.4. Open Questions and Known Issues
 
 None
 
-### <a name="6.5. Results Analysis"></a>6.5. Results Analysis
+### 6.5. Results Analysis
 
 Not applicable, since no quantitative or qualitative analysis was performed.

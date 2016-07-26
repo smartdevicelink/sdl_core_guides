@@ -1,6 +1,6 @@
-## <a name="2.  Case Background"></a>2.  Case Background
+## 2.  Case Background
 
-### <a name="2.1. System Context, Mission and Scope"></a>2.1. System Context, Mission and Scope
+### 2.1. System Context, Mission and Scope
 
 SmartDeviceLink system is developed to serve as a proxy between vehicle Head Unit sub-system and an Application that runs at any of compatible Mobile Devices:
 
@@ -57,7 +57,7 @@ The following Use Case diagrams show the actors, the processes and their interac
 #### HMI level resumption Use Case diagram
 ![HMI level resumption](./assets/image13.png)
 
-### <a name="2.2. Product Stakeholders"></a>2.2. Product Stakeholders
+### 2.2. Product Stakeholders
 
 Actors are stakeholders that interact with product directly.
 || Stakeholder Name       || Actor (Yes/No) || Concern ||
@@ -66,12 +66,12 @@ Actors are stakeholders that interact with product directly.
 | Developers               | Yes            | Construct and deploy the system from specifications |
 | Testers                  | No             | Test the system to ensure that it is suitable for use |
 
-### <a name="2.3. Business Goals"></a>2.3. Business Goals
+### 2.3. Business Goals
 
 Luxoft delivered to Ford a prototype of POSIX compliant Applink Core in March, 2013.
 To support FORD goal of successful acceptance of Applink (new name is SmartDeviceLink) Core by open source community of GENIVI consortium further enhancements will be required. The purpose of the project is to develop component of SmartDeviceLink 4.x Core by adding new features required by Ford.
 
-### <a name="2.4. Significant Driving Requirements"></a>2.4. Significant Driving Requirements
+### 2.4. Significant Driving Requirements
 
 The requirements are listed in the table below and ordered by descending of their significance from architectural solution point of view.
 

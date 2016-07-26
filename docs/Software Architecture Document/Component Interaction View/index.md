@@ -1,8 +1,8 @@
-## <a name="4.2. Component Interaction View"></a>4.2. Component Interaction View
+## 4.2. Component Interaction View
 
 According to layer architectural approach (see chapter 6.1), Component Interaction View could be split to Transport, Protocol and Business layer diagrams.
 
-### <a name="4.2.1. Transport layer"></a>4.2.1. Transport layer
+### 4.2.1. Transport layer
 
 **Behavior**:
 	All device notifications are transferred through the Transport Adapter, accumulated by Transport Manger and provided for the upper levels with an unique device and connection identifier.
@@ -10,7 +10,7 @@ According to layer architectural approach (see chapter 6.1), Component Interacti
 ### Transport layer notification and data transferring diagram 
 ![Transport layer notification and data transferring](./assets/image16.png)
 
-### <a name="4.2.2. Protocol layer"></a>4.2.2. Protocol layer
+### 4.2.2. Protocol layer
 **Behavior**:
 Protocol layer is responsible for transferring Transport and Protocol events to the Business layer.
 
@@ -20,7 +20,7 @@ Protocol layer is responsible for transferring Transport and Protocol events to 
 ### Protocol Layer - data transferring diagram
 ![Protocol Layer - data transferring](./assets/image18.png)
 
-### <a name="4.2.3. Business layer"></a>4.2.3. Business layer
+### 4.2.3. Business layer
 **Behavior**:
 	Business layer is responsible for processing all income and outcome RPC data and media data streaming.
 

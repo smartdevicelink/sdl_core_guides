@@ -1,10 +1,10 @@
-## <a name="1. Introduction"></a>1. Introduction
+## 1. Introduction
 
-### <a name="1.1. Purpose and Scope of the SAD"></a>1.1. Purpose and Scope of the SAD
+### 1.1. Purpose and Scope of the SAD
 
 This document defines the high-level software architecture for the SmartDeviceLink (SDL) system. It describes the structure and the main components of the system, the project basis and dependencies. The goal of the document is to describe, in sufficient detail, the software components, their responsibilities, behavior, and interfaces. This document provides support for Luxoft, Ford, open-source developers and others to learn system design, limitations, stakeholders, and ways of extension and further development.
 
-### <a name="1.2. Definitions and Abbreviations"></a>1.2. Definitions and Abbreviations
+### 1.2. Definitions and Abbreviations
 
 Abbreviations used in this document please find in the table below.
 
@@ -29,7 +29,7 @@ Definitions used in this document are in the table below.
 | Model          | A particular diagram or description constructed following the method defined in a viewpoint. These provide the specific description of the system, which can include identifiable subsystems and elements. |
 | Stakeholder    | An individual, group or organization that has at least one concern relating to the system. |
 
-### <a name="1.3. Document Roadmap"></a>1.3. Document Roadmap
+### 1.3. Document Roadmap
 
 The SW architecture of system is considered from different viewpoints:
 

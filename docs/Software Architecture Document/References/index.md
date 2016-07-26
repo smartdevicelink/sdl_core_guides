@@ -1,4 +1,4 @@
-### <a name="7.  References"></a>7.  References
+### 7.  References
 
 1. SmartDeviceLink Protocol specification - [*https://github.com/smartdevicelink/protocol\_spec/blob/master/README.md*](https://github.com/smartdevicelink/protocol_spec/blob/master/README.md)
 2. Cmake documentation - <https://cmake.org/documentation/>
@@ -6,7 +6,7 @@
 4. Google Mock documentation - <https://github.com/google/googletest/blob/master/googlemock/docs/Documentation.md>
 5. Google C++ Style Guide - <https://google.github.io/styleguide/cppguide.html> 
 
-### <a name="8. List of Figures"></a>8.  List of Figures
+### 8.  List of Figures
 
 |||
 ### Overview Use Case Diagram
@@ -101,6 +101,6 @@
 ![Deployment View](../Deployment View/assets/image24.png)
 |||
 
-### <a name="9.  Appendices"></a>9.  Appendices
+### 9.  Appendices
 
 None
