@@ -57,7 +57,14 @@ Architecture prototyping was done to validate architecture on early stages. An e
 
 ### 6.4. Open Questions and Known Issues
 
-None
+List of opened questions and issues is available in sdl_core github repository:
+-  [https://github.com/smartdevicelink/sdl_core/issues](https://github.com/smartdevicelink/sdl_core/issues)
+
+List of Luxoft to Ford opened question is internally available in Luxoft Jira:
+-  [https://adc.luxoft.com/jira/issues/?jql=project=APPLINK AND issuetype=Question AND resolution=Unresolved AND labels=to_discuss ORDER BY key DESC](https://adc.luxoft.com/jira/issues/?jql=project=APPLINK AND issuetype=Question AND resolution=Unresolved AND labels=to_discuss ORDER BY key DESC)
+
+List of Luxoft internal questions is available in Luxoft Jira:
+-  [https://adc.luxoft.com/jira/issues/?jql=project=APPLINK AND issuetype=Question AND resolution=Unresolved AND labels!=to_discuss ORDER BY key DESC](https://adc.luxoft.com/jira/issues/?jql=project=APPLINK AND issuetype=Question AND resolution=Unresolved AND labels!=to_discuss ORDER BY key DESC)
 
 ### 6.5. Results Analysis
 
