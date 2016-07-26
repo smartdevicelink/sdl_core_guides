@@ -1,4 +1,4 @@
-### 4.9. Operational View
+### 4.10. Operational View
 
 This view describes how the architecture provides the ability for operation/support teams to monitor and manage the system. To make system more flexible and to support different platforms, SW provides a configuration and logging components, which are able to change system behavior according to settings defined in smartDeviceLink.ini file and to diagnostic 
 

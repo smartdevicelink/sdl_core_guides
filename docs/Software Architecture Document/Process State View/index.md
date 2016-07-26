@@ -1,4 +1,4 @@
-## 4.5. Process State View
+## 4.6. Process State View
 
 The process State view shows the global SmartDeviceLink states according to system life cycle.
 

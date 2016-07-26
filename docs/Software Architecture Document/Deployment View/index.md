@@ -1,4 +1,4 @@
-## 4.8. Deployment View
+## 4.9. Deployment View
 
 The deployment view takes into account the system's requirements such as system availability, reliability (fault tolerance), performance (throughput), and scalability. This view maps the various elements identified in the logical, process, and development views—networks, processes, tasks, and objects—onto the processing nodes.
 The deployment diagram is used for modeling the static deployment view of a system.
