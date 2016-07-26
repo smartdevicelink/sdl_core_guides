@@ -82,6 +82,3 @@ The requirements are listed in the table below and ordered by descending of thei
 | 3. | APIs for communication between Mobile Application and SDL system described in appropriate documents have to be fully supported by the system. |
 | 4. | There has to be relatively easy way to port existing HMI Modules (such as UI, VR, TTS, etc.) to work with SDL system. |
 | 5. | APIs for communication between SDL system and HMI Modules have to be fully described in appropriate document and fully supported by SDL system. |
-| 6. | HMI Module in order to communicate properly with SDL system has to follow rules specified in appropriate documents (i.e. mentioned above API describing document). |
-| 7. | Mobile Application has to follow the rules specified in appropriate documents (i.e. mentioned above API describing document) in order to communicate with SDL system properly. |
-| 8. | Each request, provided by Mobile Application, is generated correctly - according to appropriate protocol standard |
