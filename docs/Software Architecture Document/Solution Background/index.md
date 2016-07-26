@@ -41,8 +41,15 @@ During the architecture designing the following aspects and rules were primary c
 
 ### 6.2. Requirements Coverage
 
-There are indirect requirements which may impact on Architectural decisions, such as limitation of usage of RAM, ROM, requirements to support specific SDL Core to HMI transport layers. All the requirements of this kind were taken into account while creating Architecture Design. 
--   [*SmartDeviceLink Protocol specification*](https://github.com/smartdevicelink/protocol_spec/blob/master/README.md)
+There are indirect requirements which may impact on Architectural decisions, such as limitation of usage of RAM, ROM, requirements to support specific SDL Core to HMI transport layers. All the requirements of this kind were taken into account while creating Architecture Design.
+-  [FORD Mobile API Spec](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/MOBILE_API.xml)
+-  [FORD HMI API Spec](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/HMI_API.xml)
+-  [SmartDeviceLink Protocol specification](https://github.com/smartdevicelink/protocol_spec/blob/master/README.md)
+   [comment]: # (TODO(EZamakhov): Change from HMI git repository to DocDown [hmi/master/getting-started/])
+-  [HMI Integration Guidelines](https://github.com/smartdevicelink/sdl_hmi_integration_guidelines/blob/master/docs/Getting%20Started/index.md)
+-  [SDL-Core Requirements](https://adc.luxoft.com/confluence/display/APPLINK/SDL-GENIVI+Requirements)
+   [comment]: # (TODO(EZamakhov): Add link to open-source requirements)
+  - Note: This requirements are handled Luxoft internally and not delivered to open-source.
 
 ### 6.3. Prototyping Results
 
