@@ -105,17 +105,20 @@ The view is represented by module and subsystem diagrams that show the system's 
 #### Commands
   - *Responsibility* 
     - Mobile and HMI RPC data verification according to business-requirements
-    - Transferring Mobile RPC Requests to HMI subsystems (UI, VR, TTS and other available ones) and HMI to Mobile Responses and Notifications  
+    - Transferring Mobile RPC Requests to HMI subsystems (UI, VR, TTS and other available ones) and HMI to Mobile Responses and Notifications
   - *Relations*
     - Created by ***ApplicationManager***
     - Composed by ***RequestController***
   - *Interfaces* 
     - Provides ***Command*** interface 
   - *Behavior* 
-    - Mobile Requests are spitted between responsible HMI interfaces and sent as separate HMI Requests or Notifications.   
-    - HMI Responses and notifications are verified according to business requirements and provided to Mobile 
+    - Mobile Requests are spitted between responsible HMI interfaces and sent as separate HMI Requests or Notifications.
+    - HMI Responses and notifications are verified according to business requirements and provided to Mobile.
   - *Constraints*
-    - *N/A* 
+    - [FORD Mobile API Spec](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/MOBILE_API.xml)
+    - [FORD HMI API Spec](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/HMI_API.xml)
+[comment]: # (TODO EZamakhov: Change from HMI git repository to Portal link)
+    - Commands happy paths are depends on correct [HMI Behavior](https://github.com/smartdevicelink/sdl_hmi_integration_guidelines/blob/master/docs/Getting%20Started/index.md) implementation.
 
 #### Request Controller
   - *Responsibility*
@@ -192,7 +195,7 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Behavior*
     - Decodes income raw transport data and encodes outcome RPCs according to protocol specification. 
   - *Constraints*
-    - *N/A* 
+    - [SmartDeviceLink Protocol specification](https://github.com/smartdevicelink/protocol_spec/blob/master/README.md)
 
 #### Connection Handler
   - *Responsibility*
@@ -210,7 +213,7 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Behavior*
     - Connection Handler works as a proxy from business-layer to transport layer and provides additional information related to protocol sessions and services. 
   - *Constraints*
-    - *N/A* 
+    - [SmartDeviceLink Protocol specification](https://github.com/smartdevicelink/protocol_spec/blob/master/README.md)
 
 #### Security Manager
   - *Responsibility*
@@ -227,7 +230,8 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Behavior*
     - ***Security Manager*** provides methods to establish encrypted connection to mobile. 
   - *Constraints* 
-    - Needs to be a switchable components: dynamically by configuration file and statically by SDL build define. 
+    - Needs to be a switchable components: dynamically by configuration file and statically by SDL build define.
+    - [SmartDeviceLink Protocol specification](https://github.com/smartdevicelink/protocol_spec/blob/master/README.md)
 
 ### Transport layer components:
 
@@ -245,7 +249,7 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Behavior*
     - Accumulative class for all available in system devices and connections. 
   - *Constraints*
-    - For Bluetooth transport there are only 32 connections available.
+    - *N/A* 
 
 #### Transport Adapter
  - *Responsibility*
@@ -257,4 +261,5 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Behavior*
     - Adopts transport searching, connecting, data transferring API for one ***TransportAdapters interface.*** 
   - *Constraints*
-    - *N/A* 
+    - For Bluetooth transport there are only 32 connections available.
+    - [Transport Manager Programming guide](../../Transport Manager Programming/index.md)
