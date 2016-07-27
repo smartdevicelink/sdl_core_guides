@@ -5,60 +5,67 @@ For further information, please, follow http://plantuml.com/
 '/
 
 skinparam state {
-  BackgroundColor #B2EDEA
-  BorderColor black
-  ArrowColor blue
+  BackgroundColor #B2EDEA
+  BorderColor black
+  ArrowColor blue
 }
+' Happy path
 [*] --> init : [Platform initialization]
-init -right-> waiting_hmi : [Success]
+init -right-> waiting_hmi     : [Success]
+waiting_hmi -right-> working  : [Success]
+working     -right-> stopping : [Stop]
+stopping     -->     [*]      : [Exit]
+
+' Additional paths
 waiting_hmi -right-> stopping : [Stop]
-waiting_hmi -right-> working : [Success]
-working -> stopping : [Stop]
-stopping --> [*] : [Exit]
-init -right-> stopping  : [Failure]
+init        -right-> stopping : [Failure]
+
 State "Initialization" as init {
-    config --> logger
-    logger --> start_components
-     
-    State "Loading Configuration" as config
-    State "Initialization logger" as logger
-    State "Initialization components" as start_components {
-        business --> protocol
-        protocol  --> transport
-         
-        State "Loading Transport \nlayer components" as transport
-        State "Loading Protocol  \nlayer components" as protocol
-        State "Loading Business  \nlayer components" as business
-    }
+    config --> logger
+    logger --> start_components
+     
+    State "Loading Configuration" as config
+    State "Initialization logger" as logger
+    State "Initialization components" as start_components {
+        business --> protocol
+        protocol  --> transport
+         
+        State "Loading Transport \nlayer components" as transport
+        State "Loading Protocol  \nlayer components" as protocol
+        State "Loading Business  \nlayer components" as business
+    }
 }
 State "HMI connection" as waiting_hmi {
-    wait_hmi--> connect_hmi
-    connect_hmi --> hmi_handshake
-    State "Waiting HMi \nconnection" as wait_hmi
-    State "Connecting HMI" as connect_hmi
-    State "HMI negotiation" as hmi_handshake
+    wait_hmi--> connect_hmi
+    connect_hmi --> hmi_handshake
+
+    State "Waiting HMi \nconnection" as wait_hmi
+    State "Connecting HMI" as connect_hmi
+    State "HMI negotiation" as hmi_handshake
 }
-State "Processing data" as working  {
-    waiting_hmi_data --> process_hmi_data
-    connect_device --> app_reg
-    app_reg --> process_app_data
-    process_app_data --> app_unreg
-    process_hmi_data -right-> process_app_data
-    process_app_data -right-> process_hmi_data
-    State "Waiting HMI data" as waiting_hmi_data
-    State "Processing HMI data" as process_hmi_data
-    State "Connecting device" as connect_device
-    State "Application Registration" as app_reg
-    State "Processing app data" as process_app_data
-    State "Unregister application" as app_unreg
+State "Processing data" as working  {
+    waiting_hmi_data --> process_hmi_data
+    connect_device --> app_reg
+    app_reg --> process_app_data
+    process_app_data --> app_unreg
+    process_hmi_data -right-> process_app_data
+    process_app_data -right-> process_hmi_data
+
+    State "Waiting HMI data" as waiting_hmi_data
+    State "Processing HMI data" as process_hmi_data
+    State "Connecting device" as connect_device
+    State "Application Registration" as app_reg
+    State "Processing app data" as process_app_data
+    State "Unregister application" as app_unreg
 }
 State "Shutting down" as stopping {
-    all_app_unreg --> hmi_disconnect
-    hmi_disconnect --> stop_components
-    stop_components --> de_logger
-    State "All application \nunregistration" as all_app_unreg
-    State "HMI disconnection" as hmi_disconnect
-    State "Deinitialization \ncomponents" as stop_components
-    State "Deinitialization \nlogger" as de_logger
+    all_app_unreg --> hmi_disconnect
+    hmi_disconnect  --> stop_components
+    stop_components --> de_logger
+
+    State "All application \nunregistration" as all_app_unreg
+    State "HMI disconnection" as hmi_disconnect
+    State "Deinitialization \ncomponents" as stop_components
+    State "Deinitialization \nlogger" as de_logger
 }
 @enduml
