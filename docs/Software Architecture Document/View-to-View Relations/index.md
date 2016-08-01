@@ -7,8 +7,8 @@ Each of the views specified in Section 3 provides a different perspective and de
 The following table is a mapping between the elements in the Component view and the Development view. The relationship shown is *is-implemented-by*, i.e. the layers from the Development view shown at the top of the table are implemented by any selected elements from the Component view, denoted by an "X" in the corresponding cell.
 
 | ***Component / Layer***   | **Application Layer** | **Protocol Layer** | **Transport Layer** | **OS Layer** |
-|---------------------------|-----------------------|--------------------|---------------------|--------------|
-| ***Life Cycle***          |           X           |                    |                     |              |
+|---------------------------|:---------------------:|:------------------:|:-------------------:|:------------:|
+| ***Life Cycle***          | X                     |                    |                     |              |
 | ***Config Profile***      | X                     |                    |                     |              |
 | ***Application Manager*** | X                     |                    |                     |              |
 | ***Commands***            | X                     |                    |                     |              |
@@ -23,13 +23,14 @@ The following table is a mapping between the elements in the Component view and 
 | ***Transport Manager***   |                       |                    | X                   |              |
 | ***Transport Adapter***   |                       |                    | X                   | X            |
 | ***Utils***               |                       |                    |                     | X            |
+| ***Component / Layer***   | **Application Layer** | **Protocol Layer** | **Transport Layer** | **OS Layer** |
 
 ### 5.2. Data-to-Layer View
 
 The following table is a mapping between the elements in the Data view and the Development view. The relationship shown is *is-implemented-by*, i.e. the layers from the Development view shown at the top of the table are implemented by any selected elements from the Component view, denoted by an "X" in the corresponding cell.
 
 | ***Data / Layer***    | **Application Layer** | **Protocol Layer** | **Transport Layer** | **OS Layer** |
-|-----------------------|-----------------------|--------------------|---------------------|--------------|
+|-----------------------|:---------------------:|:------------------:|:-------------------:|:------------:|
 | ***Message***         | X                     |                    |                     |              |
 | ***SmartObject***     | X                     |                    |                     |              |
 | ***Mobile Command***  | X                     |                    |                     |              |
@@ -39,3 +40,4 @@ The following table is a mapping between the elements in the Data view and the D
 | ***RawMessage***      |                       | X                  | X                   | X            |
 | ***JSON::Value***     |                       |                    | X                   | X            |
 | ***DBUS message***    |                       |                    | X                   | X            |
+
