@@ -21,5 +21,6 @@ This view describes how the architecture provides the ability for operation/supp
     - ***ERROR*** message shows, that the problem occurred and SDL has not accomplished some internal or API activities. Error is successfully handled by SDL, but notifies about some business logic's flow breakdown. 
     - ***WARNING*** message warns against uncommon or rare flow. This message indicates handling some expected by SDL issue according to specified requirements.
     - ***INFO*** informs SDL user, integrators or support engineer about the component high-level activity success.
-    - ***DEBUG*** and ***TRACE*** messages contain debug information for software engineer diagnostics and deep issues analysis. 
-  - For further information about logger configuration and usage please refer related article [16].
+    - ***DEBUG*** and ***TRACE*** messages contain debug information for software engineer diagnostics and deep issues analysis.
+    [comment]: # (TODO(EZamakhov): Move Configuration levels article to Wiki or directly to SAD - APPLINK-26781
+  - For further information about logger configuration and usage please refer [related article](https://adc.luxoft.com/confluence/display/APPLINK/Logger+levels+and+property+files+usage).
