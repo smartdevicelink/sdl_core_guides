@@ -60,7 +60,9 @@ The following Use Case diagrams show the actors, the processes and their interac
 ### 2.2. Product Stakeholders
 
 Actors are stakeholders that interact with product directly.
-|| Stakeholder Name       || Actor (Yes/No) || Concern ||
+
+| Stakeholder Name         | Actor (Yes/No) | Concern  |
+|--------------------------|----------------|----------|
 | Ford Company             | No             | Get the SDL system with enough quality and functionality that fulfill their goals |
 | PM / Architect / Analyst | No             | Use Customer Requirements Specification |
 | Developers               | Yes            | Construct and deploy the system from specifications |
