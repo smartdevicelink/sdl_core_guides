@@ -2,8 +2,10 @@
 
 The process State view shows the global SmartDeviceLink states according to system life cycle.
 
+|||
 ##### Life cycle states diagram
 ![Life cycle states](./assets/image22.png)
+|||
 
 ***Elements description***
 

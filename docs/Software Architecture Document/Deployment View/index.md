@@ -4,8 +4,10 @@ The deployment view takes into account the system's requirements such as system 
 The deployment diagram is used for modeling the static deployment view of a system.
 The figure below depicts the deployment diagram for SDL system.
 
+|||
 ##### Deployment View Diagram
 ![Deployment View](./assets/image24.png)
+|||
 
 ***Elements description***
 

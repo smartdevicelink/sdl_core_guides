@@ -4,8 +4,10 @@ The Data View shows relations between separated data types and actors that perfo
 
 The following Diagram shows relations between separated data types and actors that perform information processing in the SmartDeviceLink.
 
+|||
 ##### Data flow diagram
 ![Data flow](./assets/image21.png)
+|||
 
 ***Elements description*** 
 

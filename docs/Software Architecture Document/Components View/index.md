@@ -6,8 +6,10 @@ The view is represented by module and subsystem diagrams that show the system's 
 
 *Note*: UML notation for this Components View diagram is extended: both component and it's interfaces are highlighted with the same colour. 
 
+|||
 ##### Component View diagram
 ![Component View](./assets/image15.png)
+|||
 
 ***Elements description***
 
