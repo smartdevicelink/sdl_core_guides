@@ -9,27 +9,27 @@ The process State view shows the global SmartDeviceLink states according to syst
 
 ***Elements description***
 
-### Initialization
+#### Initialization
   - *Behaviour:*
     - SDL creates and initializes component according to configuration file. 
   - *Relations:*
     - If all SDL subsystems successfully started, SDL starts waiting HMI and mobile connections.
     - If failed, SmartDeviceLink is ***shutting down***. 
 
-### HMI connection
+#### HMI connection
   - *Behaviour:*
     - SDL waits for an HMI connection. 
   - *Relations:*
     - If HMI successfully connected, SDL starts ***processing*** all mobile ***data***.
     - On receiving stop signal SmartDeviceLink is ***shutting down***.
  
-### Processing data
+#### Processing data
   - *Behaviour:*
     - SDL handles HMI and mobile data and proceed according to business requirements. 
   - *Relations:*
     - SDL starts shutdown procedure on getting stop signal from HMI or OS.
 
-### Shutting down
+#### Shutting down
   - *Behaviour:*
     - SDL unregisters all mobile applications, disconnects from HMI and denitializes all components.
   - *Relations:*
