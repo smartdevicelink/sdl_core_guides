@@ -1,0 +1,80 @@
+@startuml
+/'
+It is a source file for SDL SAD sequence diagram.
+For further information, please, follow http://plantuml.com/ 
+'/
+
+title "Protocol layer - data transferring"
+participant "Transport Manager" as TM #DDDDDD
+participant "Protocol Handler" as PH
+participant "Connection Handler" as CH
+participant "Security Manager" as SM
+participant "Application Manager" as AM #DDDDDD
+participant "Media Manager" as MM #DDDDDD
+== Mobile data receive ==
+TM -> PH : Raw Message
+PH -> PH : Extract Protocol Frames
+opt Consecutive frame
+    PH -> PH : Assembling frame
+end
+opt Frame is encrypted
+    PH -> SM : Encrypted frame
+    SM -> PH : Decrypted frame
+end
+alt Control message
+    alt Session or service start request
+        PH -> CH : Session or service open request
+        CH -> AM : Service open request
+        AM -> CH : Response
+        CH -> PH : Response
+    end
+    PH -> TM : Control message Acknowledge
+else  Handshake data
+    PH -> SM : Handshake data
+else RPC service data
+    PH -> AM : RPC frame
+else Media services data
+    PH -> MM : Video or Audio frame
+    ...
+    MM -> PH : Video/Audio processing Acknowledge
+    PH -> TM : Send Video Frames Acknowledge
+end
+== Mobile data to send ==
+Note over SM, AM:  Data ready to send
+alt RPC data to send
+    AM -> PH : RPC message
+else Handshake data to send
+    SM -> PH : Handshake data
+end
+PH -> PH : Prepare Frame
+opt Frame is bigger MTU
+    PH -> PH : Disassembled frames
+end
+opt Service is encrypted
+    PH -> SM : Decrypted frame
+    SM -> PH : Encrypted frame
+end
+PH -> TM : Raw message
+ 
+skinparam defaultFontSize 16
+skinparam sequence {
+    ArrowColor Blue
+    ArrowFontColor #2027E8
+    ArrowFontStyle bold
+     
+    LifeLineBorderColor black
+     
+    ParticipantBorderColor black
+    ParticipantBackgroundColor white
+    ParticipantFontSize 17
+    ParticipantFontColor black
+     
+    ActorBorderColor black
+    ActorBackgroundColor white
+    ActorFontColor Blue
+    ActorFontSize 17
+    ActorFontName Blue
+    sequenceArrowFontSize  16        
+    DividerBackgroundColor #FEFECE
+}
+@enduml
