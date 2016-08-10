@@ -136,6 +136,20 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Constraints* 
     - Configurable count of threads usage.
 
+#### App Launch
+  - *Responsibility*
+    - Launch known applications on devices.
+  - *Relations*
+    - Composed by ***Application Manager*** 
+    - Use ***Resume Controller*** interface to get HMI level of saved application.
+  - *Interfaces*
+    - Provides ***App Launch Controller*** interface 
+  - *Behavior*
+    - ***App Launch*** launch all known applications on newly connected device.
+  - *Constraints*
+    - Not work for Android apps.
+    - Not work for apps connected via SDL protocol version lower than 4.
+
 #### Resumption
   - *Responsibility*
     - Restoring application data

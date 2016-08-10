@@ -13,6 +13,7 @@ The following table is a mapping between the elements in the Component view and 
 | ***Application Manager*** | X                     |                    |                     |              |
 | ***Commands***            | X                     |                    |                     |              |
 | ***Request Controller***  | X                     |                    |                     |              |
+| ***App Launch***          | X                     |                    |                     |              |
 | ***Resumption***          | X                     |                    |                     |              |
 | ***Policy***              | X                     |                    |                     |              |
 | ***Media Manager***       | X                     |                    |                     |              |

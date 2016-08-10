@@ -69,6 +69,7 @@ Development view organizes SmartDeviceLink components into logical and abstract 
     - MediaManager
     - Command
     - RequestController
+    - App Launch
     - Resumption
     - Policy
    - *Behavior:*
