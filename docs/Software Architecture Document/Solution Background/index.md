@@ -46,7 +46,7 @@ There are indirect requirements which may impact on Architectural decisions, suc
 -  [FORD HMI API Spec](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/HMI_API.xml)
 -  [SmartDeviceLink Protocol specification](https://github.com/smartdevicelink/protocol_spec/blob/master/README.md)
    [comment]: # (TODO(EZamakhov): Change from HMI git repository to DocDown [hmi/master/getting-started/])
--  [HMI Integration Guidelines](https://github.com/smartdevicelink/sdl_hmi_integration_guidelines/blob/master/docs/Getting%20Started/index.md)
+-  [HMI Integration Guidelines][hmi/master/overview]
 -  [SDL-Core Requirements](https://adc.luxoft.com/confluence/display/APPLINK/SDL-GENIVI+Requirements)
    [comment]: # (TODO(EZamakhov): Add link to open-source requirements)
   - Note: This requirements are handled Luxoft internally and not delivered to open-source.

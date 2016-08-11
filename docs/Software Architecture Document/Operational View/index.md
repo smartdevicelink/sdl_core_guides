@@ -13,7 +13,7 @@ This view describes how the architecture provides the ability for operation/supp
     - Global properties like HelpPrompt, TimeoutPrompt, HelpTitle, HelpCommand
     - Default Timeout for mobile application commands
     - Desirable location of the system data (log files, persistence data, temporary data) 
-  - For further information with a list of all available parameters please refer to chapter "15.1 SDL’s configuration file structure" of [HMI Guideline](TODO(EZamakhov):add cross-link) or [*smartDeviceLink .ini file*](https://github.com/smartdevicelink/sdl_core/blob/master/src/appMain/smartDeviceLink.ini).
+  - For further information with a list of all available parameters please refer to chapter "15.1 SDL’s configuration file structure" of [HMI Guideline][hmi] or [*smartDeviceLink .ini file*](https://github.com/smartdevicelink/sdl_core/blob/master/src/appMain/smartDeviceLink.ini).
 
 #### Diagnostics
   - SmartDeviceLink system provides diagnostics messages log file with following types of messages:
