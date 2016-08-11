@@ -264,4 +264,4 @@ The view is represented by module and subsystem diagrams that show the system's 
     - Adopts transport searching, connecting, data transferring API for one ***TransportAdapters interface.*** 
   - *Constraints*
     - For Bluetooth transport there are only 32 connections available.
-    - [Transport Manager Programming guide](../../Transport Manager Programming/index.md)
+    - [Transport Manager Programming guide](../../transport-manager-programming)
