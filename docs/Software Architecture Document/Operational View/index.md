@@ -23,4 +23,4 @@ This view describes how the architecture provides the ability for operation/supp
     - ***INFO*** informs SDL user, integrators or support engineer about the component high-level activity success.
     - ***DEBUG*** and ***TRACE*** messages contain debug information for software engineer diagnostics and deep issues analysis.
     [comment]: # (TODO(EZamakhov): Move Configuration levels article to Wiki or directly to SAD - APPLINK-26781
-  - For further information about logger configuration and usage please refer [related article](https://adc.luxoft.com/confluence/display/APPLINK/Logger+levels+and+property+files+usage).
+  - For further information about logging levels usage please refer [related article](https://github.com/smartdevicelink/sdl_core/wiki/SDL-Logging-levels).
