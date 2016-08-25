@@ -28,6 +28,9 @@
 | 2.16        | 06/30/2016 | Reviewed        | [Elisey Zamakhov]      | Minor review changes |
 | 3.0         | 06/30/2016 | Approved        | [Nataly Snitsar]       | Approve by management |
 | 3.1         | 08/01/2016 | Draft           | [Elisey Zamakhov]      | Porting to [Ford developers portal] <br> Update Requirements Coverage chapter <br> Add GitHubOpen Questions and Known Issues <br> Update Components View description with Constraints <br> Update Layers Constraints <br> Removed assumptions from 2.4. Significant Driving <br> Update Requirements |
+| 3.2         | 08/10/2016 | Draft           | [Sergey Levchenko]     | Add AppLaunch Component |
+| 3.3         | 08/11/2016 | Draft           | [Elisey Zamakhov]      | Use cases moved to a separate chapter <br> Add applications data storing in Process State View |
+| 3.4         | 08/16/2016 | Draft           | [Elisey Zamakhov]      | Update Diagnostics chapter with log4cxx features usage |
 
 #### 10.2. Approve History
 | Version     | Data       | Approver             | Approve item   |
@@ -46,5 +49,7 @@
 [Justin Dickow]: https://github.com/justinjdickow
 [Klimenko Dmitriy]: https://github.com/DKlimenko
 [Nataly Snitsar]: mailto:NSnitsar@luxoft.com
+[Sergey Levchenko ]: https://github.com/LevchenkoS
+
 [Ford developers portal]: https://smartdevicelink.com/en/guides/core/software-architecture-document/introduction/
 
