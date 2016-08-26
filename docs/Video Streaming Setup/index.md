@@ -133,27 +133,27 @@ chromium-browser index.html
 To Do: Provide public mobile application that supports video streaming.
 
 Mobile application settings (Wifi/TCP connection):
-- Deselect Heartbeat.
-- Select MobileNavi (video source).
-- Select H264 video format.
-- Select wifi as the connection type.
-- Input the Virtual Machine's IP Address and port 12345.
-- Press the Ok button in the App to start the connection.
-- In the web HMI, click the italic "i" and select your app.
-- In the app, select "start service" to request permission to stream video.
-- The HMI will prompt you to give permission to the app to stream video. Click "Ok"
-- In the app, press "Start File Streaming". Depending on your video playback configuration, the video will begin playing in the web browser, or a gstreamer window open and begin playing the video.
+* Deselect Heartbeat.
+* Select MobileNavi (video source).
+* Select H264 video format.
+* Select wifi as the connection type.
+* Input the Virtual Machine's IP Address and port 12345.
+* Press the Ok button in the App to start the connection.
+* In the web HMI, click the italic "i" and select your app.
+* In the app, select "start service" to request permission to stream video.
+* The HMI will prompt you to give permission to the app to stream video. Click "Ok"
+* In the app, press "Start File Streaming". Depending on your video playback configuration, the video will begin playing in the web browser, or a gstreamer window open and begin playing the video.
 
 Mobile application settings (USB connection):
-- After core is started, connect a phone to your machine with a usb cable.
-- Phone will prompt which app you want to run, select your app.
-- Now start the app on your phone.
-- Deselect Heartbeat.
-- Select MobileNavi (video source).
-- Select H264 video format.
-- Select usb as the connection type.
-- Press the Ok button in the App to start the connection.
-- In the web HMI, click the italic "i" and select your app.
-- In the app, select "start service" to request permission to stream video.
-- The HMI will prompt you to give permission to the app to stream video. Click "Ok"
-- In the app, press "Start File Streaming". Depending on your video playback configuration, the video will begin playing in the web browser, or a gstreamer window open and begin playing the video.
+* After core is started, connect a phone to your machine with a usb cable.
+* The phone will prompt which app you want to run, select your app.
+* Start the app on your phone.
+* Deselect Heartbeat.
+* Select MobileNavi (video source).
+* Select H264 video format.
+* Select usb as the connection type.
+* Press the Ok button in the App to start the connection.
+* In the web HMI, click the italic "i" and select your app.
+* In the app, select "start service" to request permission to stream video.
+* The HMI will prompt you to give permission to the app to stream video. Click "Ok"
+* In the app, press "Start File Streaming". Depending on your video playback configuration, the video will begin playing in the web browser, or a gstreamer window open and begin playing the video.
