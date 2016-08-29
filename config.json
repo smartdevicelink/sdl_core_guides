@@ -10,50 +10,37 @@
             "navigation": [
                 {
                     "name": "Table of Contents"
-                },
-                {
+                }, {
                     "name": "Introduction"
-                },
-                {
+                }, {
                     "name": "Case Background"
-                },
-                {
+                }, {
                     "name": "Solution Overview"
-                },
-                {
+                }, {
+                    "name": "Use Case View"
+                }, {
                     "name": "Components View"
-                },
-                {
+                }, {
                     "name": "Component Interaction View"
-                },
-                {
+                }, {
                     "name": "User Interface"
-                },
-                {
+                }, {
                     "name": "Data View"
-                },
-                {
+                }, {
                     "name": "Process State View"
-                },
-                {
+                }, {
                     "name": "Process View"
-                },
-                {
+                }, {
                     "name": "Development View"
-                },
-                {
+                }, {
                     "name": "Deployment View"
-                },
-                {
+                }, {
                     "name": "Operational View"
-                },
-                {
+                }, {
                     "name": "View-to-View Relations"
-                },
-                {
+                }, {
                     "name": "Solution Background"
-                },
-                {
+                }, {
                     "name": "References"
                 }
             ]
