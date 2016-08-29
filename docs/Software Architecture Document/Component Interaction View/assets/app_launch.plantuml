@@ -1,0 +1,47 @@
+@startuml
+/'
+It is a source file for SDL SAD sequence diagram.
+For further information, please, follow http://plantuml.com/ 
+'/
+
+title "Business layer - App Launch"
+
+participant "Connection Handler" as CH #DDD
+participant "Application Manager" as AM #DDD
+participant "App Launch" as AL
+participant "Resumption" as Resum
+
+== Device connected ==
+
+CH -> AM : Notification
+AM -> AL : Device Connected
+AL -> AL : Get apps data for device
+loop For each saved app
+	AL -> Resum : Get HMI level for app
+	AL <-- Resum
+	AL -> AM : Launch app
+	AM -> CH : Launch app
+end
+
+skinparam defaultFontSize 16
+skinparam sequence {
+    ArrowColor Blue
+    ArrowFontColor #2027E8
+    ArrowFontStyle bold
+     
+    LifeLineBorderColor black
+     
+    ParticipantBorderColor black
+    ParticipantBackgroundColor white
+    ParticipantFontSize 17
+    ParticipantFontColor black
+     
+    ActorBorderColor black
+    ActorBackgroundColor white
+    ActorFontColor Blue
+    ActorFontSize 17
+    ActorFontName Blue
+    sequenceArrowFontSize  16
+    DividerBackgroundColor #FEFECE
+}
+@enduml

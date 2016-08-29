@@ -39,3 +39,8 @@ Protocol layer is responsible for transferring Transport and Protocol events to 
 ### Business layer - RPC processing diagram
 ![Business layer - RPC processing](./assets/image20.png)
 |||
+
+|||
+### Business layer - App Launch
+![Business layer - App Launch](./assets/app_launch.png)
+|||
