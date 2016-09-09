@@ -93,4 +93,4 @@ Development view organizes SmartDeviceLink components into logical and abstract 
 -   Source Control System: GitHub
 -   Issue Tracking System: LuxProject (JIRA)
 -   Document Management System: LuxProject (JIRA, Confluence, SVN)
--   Coding style: [*Google C++ Style Guide*](https://google.github.io/styleguide/cppguide.html)
+-   Coding style: [*SDL C++ Style*](https://github.com/smartdevicelink/sdl_core/wiki/SDL-Coding-Style-Guide)
