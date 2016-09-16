@@ -4,7 +4,7 @@
 2. Cmake documentation - <https://cmake.org/documentation/>
 3. Google Test documentation - <https://github.com/google/googletest/blob/master/googletest/docs/Documentation.md>
 4. Google Mock documentation - <https://github.com/google/googletest/blob/master/googlemock/docs/Documentation.md>
-5. Google C++ Style Guide - <https://google.github.io/styleguide/cppguide.html> 
+5. SDL C++ Coding Style Guide - <https://github.com/smartdevicelink/sdl_core/wiki/SDL-Coding-Style-Guide> 
 
 ### 8.  List of Figures
 
