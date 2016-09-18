@@ -141,16 +141,16 @@ Description template:<br>
 > **Description**<br>
 > *\<Hihg level description of how requirements have to be implemented.\>*
 > Parts of [DOD-LINK] expected to be delievered:
-> -[] Source code updates
-> -[] Code comments
-> -[] UTs add/update
-> -[] Integration tests add/update
-> -[] SDD updates
-> -[] SAD updates
-> -Other guidelines updates
-> -[] Guideline 1
-> -[] Guideline 2
-> -[] Guideline 3
+- [] Source code updates
+- [] Code comments
+- [] UTs add/update
+- [] Integration tests add/update
+- [] SDD updates
+- [] SAD updates
+Other guidelines updates
+- [] Guideline 1
+- [] Guideline 2
+- [] Guideline 3
 ...
 
 3. Establish links.<br>
