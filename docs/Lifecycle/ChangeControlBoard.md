@@ -18,10 +18,10 @@ CCB include following roles:
 
 Following are responsibilities of BA:
 1. Proposal review
-- Provide approval on proposal specification readiness
-- Create set of requirements issues in respective repositories
-- Create set of technical tasks in respective repositories
-- Maintain links between proposals, requirements and technical tasks
+	* Provide approval on proposal specification readiness
+	* Create set of requirements issues in respective repositories
+	* Create set of technical tasks in respective repositories
+	* Maintain links between proposals, requirements and technical tasks
 
 2. Delivery acceptance (overall review and acceptance)
 
@@ -29,29 +29,29 @@ Following are responsibilities of BA:
 
 Following are responsibilities of Architect:
 1. Proposal review
-- Review and approve architecture impact
+	* Review and approve architecture impact
 
 2. Delivery acceptance
-- Review and approve SAD updates
-- Review and approve SDD updates
+	* Review and approve SAD updates
+	* Review and approve SDD updates
 
 ### Test Lead Engineer
 
 Following are responsibilities of Test Lead Engineer:
 1. Proposal review
-- Review and approve acceptance criteria
+	* Review and approve acceptance criteria
 
 2. Delivery acceptance
-- Review and approve integration scripts
+	* Review and approve integration scripts
 
 ### Developer Lead Engineer
 
 Following are responsibilities of Developer Lead Engineer:
 1. Proposal review
-- Review and approve applicability/relevance of the proposal
+	* Review and approve applicability/relevance of the proposal
 
 2. Delivery acceptance
-- Review and approve UTs and major code changes
+	* Review and approve UTs and major code changes
 
 ### CCB Group Manager
 
@@ -61,7 +61,7 @@ Following are CCB Group Manager responsibilities:
 3. Facilitation
 4. Processes development and updates
 
-CCB team Lead can be assigned as proposal responsible.
+CCB Group Manager can be assigned as proposal responsible.
 
 ## **Delegation**
 
