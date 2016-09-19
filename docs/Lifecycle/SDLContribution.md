@@ -26,14 +26,14 @@ Afterwards this release branch is used in [SDL Release][SDL-REL-LINK] process.
 As long as SDL support fork and pull model, all *Maintainers* should also stick to the same practice. Following picture shows how *Maintainers* can align local repositories with requested model.<br>
 ![Fork & pull](assets/fork-pull-model.png "Fork & pull model")<br>
 
-Follwing is usual scenario for SDL contribution process:
-1. Get assignment from [CCB][CCB-LINK]
-2. Consult [CCB][CCB-LINK] Group Manager for branch and CI/CD configurations
+Following is usual scenario for SDL contribution process:
+1. Get implementation request from *Stakeholders* or [CCB][CCB-LINK] with list of requirements, technical tasks or defects which have to be released
+2. Consult [CCB][CCB-LINK] for branch and CI configurations
 3. Fork respective SDL repository
 4. Commit your changes to forked repository
 5. Sync forked repository with upstream repository
 6. Send pull request to respective branch in upstream repository
-7. Send request for review to [CCB][CCB-LINK] Group Manager, specifying pull request number
+7. Send request for review to [CCB][CCB-LINK], specifying pull request number
 8. Provide feedback and make necessary changes basing on review comments
 
 Approved pull request will be merged into respective branch and eventualy into develop branch by [CCB][CCB-LINK] member.

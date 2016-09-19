@@ -86,7 +86,7 @@ SDL development is based on two principles:
 
 ### [SDL Release][SDL-REL-LINK]
 Frequent releases are basis for stable software development.
-In SDL releases must be requested by Stakeholders through [CCB][CCB-LINK].
+In SDL releases are requested by Stakeholders through [CCB][CCB-LINK].
 
 **Outcome:**
 - Stable release for *Community*
