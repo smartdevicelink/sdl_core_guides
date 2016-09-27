@@ -4,8 +4,7 @@
 2. SmartDeviceLink Protocol specification - <https://github.com/smartdevicelink/protocol_spec/blob/master/README.md>
 3. ATF Developers guide - <https://adc.luxoft.com/svn/APPLINK/doc/technical/testing/AutomatedTestFramework/ATF_Versions/ATF2_DeveloperGuide.pdf>
 4. ATF User guide - <https://adc.luxoft.com/svn/APPLINK/doc/technical/testing/AutomatedTestFramework/ATF_Versions/ATF2_UserManual.pdf>
-
-[comment]: # (TODO(EZamakhov): Fix link
+5. SmartDeviceLink Protocol specification - <https://github.com/smartdevicelink/protocol_spec/blob/master/README.md>
 
 ### 8.  List of Figures
 
