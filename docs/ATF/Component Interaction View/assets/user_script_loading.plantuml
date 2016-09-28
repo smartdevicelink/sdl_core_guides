@@ -1,0 +1,63 @@
+@startuml
+/'
+It is a source file for ATF SAD diagram.
+For further information, please, follow http://plantuml.com/ 
+'/
+
+title User Script Loading
+
+participant "User Script" as user_script
+participant "Connection Test" as con_test
+participant "Test Base" as test_base
+participant "Mobile Connection" as mob_con
+participant "Mobile Session" as mob_sess
+participant "Validator" as validator
+participant "Protocol Handler" as ph
+participant "HMI Connection" as hmi_con
+participant "SDL" as sdl
+
+[-> user_script : Load
+user_script -> con_test : Load
+con_test -> test_base : Load
+test_base -> test_base : Initialize \n//Test// detection
+con_test -> mob_con : Load
+con_test -> mob_sess : Load
+con_test -> validator : Load
+con_test -> ph : Load
+con_test -> hmi_con : Load
+con_test -> sdl : Load
+
+con_test -> con_test : Connect \ncomponents
+con_test -> user_script
+
+loop For each User Script //Function//
+    user_script -> user_script : Load //Function//
+    opt //Function// is a //Test//
+        user_script -> test_base : Add //Test// for execution
+        test_base -> user_script
+    end
+end
+[<- user_script
+
+skinparam defaultFontSize 16
+skinparam sequence {
+    ArrowColor Blue
+    ArrowFontColor #2027E8
+    ArrowFontStyle bold
+     
+    LifeLineBorderColor black
+     
+    ParticipantBorderColor black
+    ParticipantBackgroundColor white
+    ParticipantFontSize 17
+    ParticipantFontColor black
+     
+    ActorBorderColor black
+    ActorBackgroundColor white
+    ActorFontColor Blue
+    ActorFontSize 17
+    ActorFontName Blue
+    sequenceArrowFontSize  16
+    DividerBackgroundColor #FEFECE
+}
+@enduml
