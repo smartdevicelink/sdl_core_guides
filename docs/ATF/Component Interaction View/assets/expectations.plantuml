@@ -1,0 +1,72 @@
+@startuml
+/'
+It is a source file for ATF SAD diagram.
+For further information, please, follow http://plantuml.com/ 
+'/
+
+title Events and expectations processing
+
+participant "Connection Test" as con_test
+participant "Events" as events
+participant "Test Base" as test_base
+participant "User Script" as user_script
+
+== Setting up expectation ==
+[-> con_test : Set expectations
+con_test -> events : Add Event with expectation
+events -> con_test
+opt Required event action
+    con_test -> events : Add //Function// for expectation
+    events -> con_test
+end
+opt Required to occur several times
+    con_test -> events : Set //Times//
+    events -> con_test
+end
+opt Required custom timeout
+    con_test -> events: Add custom timeout
+    events -> con_test
+end
+opt Required Additional validation
+    con_test -> events: Add additional validation //Function// 
+    events -> con_test
+end
+[<- con_test : return control
+
+== Events Processing ==
+[-> events : Raise event
+events -> events: Validate Event data\n and occurrence count
+opt Required Additional validation
+    events -> user_script : Run additional validation
+    ref over user_script: User //Function// execution
+    user_script -> events
+end
+opt Event is valid
+    events -> user_script : Run expectation //Function//
+    ref over user_script: User //Function// execution
+    user_script -> events
+end
+[<- events : return control
+
+skinparam defaultFontSize 16
+skinparam sequence {
+    ArrowColor Blue
+    ArrowFontColor #2027E8
+    ArrowFontStyle bold
+     
+    LifeLineBorderColor black
+     
+    ParticipantBorderColor black
+    ParticipantBackgroundColor white
+    ParticipantFontSize 17
+    ParticipantFontColor black
+     
+    ActorBorderColor black
+    ActorBackgroundColor white
+    ActorFontColor Blue
+    ActorFontSize 17
+    ActorFontName Blue
+    sequenceArrowFontSize  16
+    DividerBackgroundColor #FEFECE
+}
+@enduml

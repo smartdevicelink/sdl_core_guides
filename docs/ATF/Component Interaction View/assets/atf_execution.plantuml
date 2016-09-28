@@ -1,0 +1,71 @@
+@startuml
+/'
+It is a source file for ATF SAD diagram.
+For further information, please, follow http://plantuml.com/
+'/
+
+title User Scripts Execution with ATF
+
+actor "User" as user
+participant "C++ Core" as cpp_core
+participant "Launch" as launch
+participant "User Script" as user_script
+
+user -> cpp_core : Start with a list of \ncommand line arguments
+
+cpp_core -> cpp_core: Execute first \nargument as a script
+
+alt First argument is Launch
+    cpp_core -> launch : Execute Launch Script
+    launch -> launch : Parse command \nline arguments
+    loop For each User script
+        launch -> user_script : User Script loading
+        ref over user_script: User Script loading
+        user_script -> launch
+    end
+    launch -> cpp_core
+else First argument is UserScript
+    note over cpp_core, user_script
+        Legacy scenario due to parsing
+        command line arguments absent.
+    end note
+    cpp_core -> user_script : User Script loading
+    ref over user_script: User Script loading
+    user_script -> launch
+end
+
+cpp_core -> cpp_core: Start Qt Meta-Object System
+loop For each Registered //Test//
+    cpp_core -> user_script : Execute User script //Function//
+    ref over user_script: User //Function// execution
+    user_script -> cpp_core
+end
+
+cpp_core -> user: Exit
+
+skinparam defaultFontSize 16
+skinparam sequence {
+    ArrowColor Blue
+    ArrowFontColor #2027E8
+    ArrowFontStyle bold
+     
+    LifeLineBorderColor black
+     
+    ParticipantBorderColor black
+    ParticipantBackgroundColor white
+    ParticipantFontSize 17
+    ParticipantFontColor black
+     
+    ActorBorderColor black
+    ActorBackgroundColor white
+    ActorFontColor Blue
+    ActorFontSize 17
+    ActorFontName Blue
+    sequenceArrowFontSize  16
+    DividerBackgroundColor #FEFECE
+}
+skinparam note {
+    BackgroundColor #EEEEEE 
+    BorderColor black
+}
+@enduml

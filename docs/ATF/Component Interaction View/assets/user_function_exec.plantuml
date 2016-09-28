@@ -1,0 +1,83 @@
+@startuml
+/'
+It is a source file for ATF SAD diagram.
+For further information, please, follow http://plantuml.com/ 
+'/
+
+title User Function execution
+
+participant "Test Base" as test_base
+participant "User Script" as user_script
+participant "Connection Test" as con_test
+participant "SDL" as sdl
+participant "Mobile Connection" as mob_con
+participant "Mobile Session" as mob_sess
+participant "HMI Connection" as hmi_con
+participant "Protocol Handler" as ph
+
+test_base -> user_script: Execute //Function//
+
+opt Required SDL start or stop
+    user_script -> con_test : Start/Stop SDL
+    con_test -> sdl
+end
+opt Required HMI (re)connection
+    user_script -> con_test : Init HMI
+    con_test -> hmi_con : Connect to SDL as HMI
+    loop For each HMI Interface
+        con_test -> hmi_con : Register Interface 
+        con_test -> hmi_con : Subscribe on mandatory RPCs
+    end
+end
+opt Required Mobile connection
+    user_script -> con_test : Connect as Mobile device
+    con_test -> mob_con : Connect to SDL as Mobile device
+end
+opt Required Session establishing
+    user_script -> con_test : Establish new Session\nfor selected connection
+    con_test -> mob_sess : Connect to SDL as Mobile device
+end
+
+opt Required HMI RPC emulation
+    user_script -> con_test : Send HMI RPC to SDL
+    con_test -> hmi_con : Send RPC to the HMI connection
+end
+
+opt Required Mobile RPC emulation
+    user_script -> con_test : Send Mobile RPC to SDL
+    con_test -> mob_sess : Send RPC to the Session
+    mob_sess -> ph : (De)serialize Protocol frames
+end
+
+opt Required SDL results expectation
+    user_script -> con_test : Set HMI and/or Mobile expectation
+    ref over con_test : Set up expectation
+end
+
+user_script -> test_base : Return control
+
+ref over test_base, user_script : Events Processing
+
+
+skinparam defaultFontSize 16
+skinparam sequence {
+    ArrowColor Blue
+    ArrowFontColor #2027E8
+    ArrowFontStyle bold
+     
+    LifeLineBorderColor black
+     
+    ParticipantBorderColor black
+    ParticipantBackgroundColor white
+    ParticipantFontSize 17
+    ParticipantFontColor black
+     
+    ActorBorderColor black
+    ActorBackgroundColor white
+    ActorFontColor Blue
+    ActorFontSize 17
+    ActorFontName Blue
+    sequenceArrowFontSize  16
+    DividerBackgroundColor #FEFECE
+}
+@enduml

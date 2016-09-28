@@ -5,12 +5,13 @@
 3. ATF Developers guide - <https://adc.luxoft.com/svn/APPLINK/doc/technical/testing/AutomatedTestFramework/ATF_Versions/ATF2_DeveloperGuide.pdf>
 4. ATF User guide - <https://adc.luxoft.com/svn/APPLINK/doc/technical/testing/AutomatedTestFramework/ATF_Versions/ATF2_UserManual.pdf>
 5. SmartDeviceLink Protocol specification - <https://github.com/smartdevicelink/protocol_spec/blob/master/README.md>
+6. Qt Framework Meta-Object System - <http://doc.qt.io/qt-5/metaobjects.html>
 
 ### 8.  List of Figures
 
 |||
 #### Solution overview
-![Solution overview](../use-case-view/assets/image14.png)
+![Solution overview](../use-case-view/.png)
 |||
 
 [comment]: # (TODO(EZamakhov): Add all
