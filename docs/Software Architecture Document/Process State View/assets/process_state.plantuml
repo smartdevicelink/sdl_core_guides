@@ -19,6 +19,7 @@ stopping     -->     [*]      : [Exit]
 ' Additional paths
 waiting_hmi -right-> stopping : [Stop]
 init        -right-> stopping : [Failure]
+stopping    -left->  working  : [Awake]
 
 State "Initialization" as init {
     config --> logger
@@ -59,10 +60,12 @@ State "Processing data" as working  {
     State "Unregister application" as app_unreg
 }
 State "Shutting down" as stopping {
+    data_store    --> all_app_unreg
     all_app_unreg --> hmi_disconnect
     hmi_disconnect  --> stop_components
     stop_components --> de_logger
 
+    State "Store applications data" as data_store
     State "All application \nunregistration" as all_app_unreg
     State "HMI disconnection" as hmi_disconnect
     State "Deinitialization \ncomponents" as stop_components

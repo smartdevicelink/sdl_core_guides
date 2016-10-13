@@ -1,12 +1,12 @@
-## 4.7. Development View
+## 4.8. Development View
 
-### 4.7.1. Implementation Technologies
+### 4.8.1. Implementation Technologies
 
 - C++98 language is selected as a programming language for SmartDeviceLink as a OS and CPU architecture independent.
 - [*CMake*](https://cmake.org/documentation/) tool-chain selected as a cross-platform building tools.
 - [Google Test](https://github.com/google/googletest/blob/master/googletest/docs/Documentation.md) with [Google Mock](https://github.com/google/googletest/blob/master/googlemock/docs/Documentation.md) extension is chosen as an opensource C++ test framework.
 
-### 4.7.2. Modules and Code Base Organization
+### 4.8.2. Modules and Code Base Organization
 
 Development view organizes SmartDeviceLink components into logical and abstract groups called layers. The layers describe the major tasks that the components perform. The layers have different responsibilities and different providers
 
@@ -78,7 +78,7 @@ Development view organizes SmartDeviceLink components into logical and abstract 
     - [FORD Mobile API Spec](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/MOBILE_API.xml)
     - [FORD HMI API Spec](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/HMI_API.xml)
 
-### 4.7.3. Development Environment and Standards
+### 4.8.3. Development Environment and Standards
 -   Development and testing environment for Ubuntu 14.04 LTS x32/x64
     -   Debug Environment: Ubuntu 14.04 LTS x32/x64, Qt 5.3
     -   Compiler: GCC 4.9.3 (OS Ubuntu), Lua 5.2
