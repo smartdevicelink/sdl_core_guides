@@ -275,5 +275,5 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Behavior*
     - Adopts transport searching, connecting, data transferring API for one ***TransportAdapters interface.*** 
   - *Constraints*
-    - For Bluetooth transport there are only 32 connections available.
+    - For Bluetooth BlueZ transport there are only 30 connections available due to RFCOMM channels limitations.
     - [Transport Manager Programming guide](../../Transport Manager Programming/index.md)
