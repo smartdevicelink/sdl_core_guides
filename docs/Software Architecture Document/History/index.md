@@ -32,7 +32,7 @@
 | 3.3         | 08/11/2016 | Draft           | [Elisey Zamakhov]      | Use cases moved to a separate chapter <br> Add applications data storing in Process State View |
 | 3.4         | 08/16/2016 | Draft           | [Elisey Zamakhov]      | Update Diagnostics chapter with log4cxx features usage |
 | 3.5         | 09/09/2016 | Draft           | [Elisey Zamakhov]      | Change Coding style |
-| 3.6         | 21/09/2016 | Draft           | [Elisey Zamakhov]      | Update BT BlueZ limitation |
+| 3.6         | 09/21/2016 | Draft           | [Elisey Zamakhov]      | Update BT BlueZ limitation |
 
 #### 10.2. Approve History
 | Version     | Data       | Approver             | Approve item   |
