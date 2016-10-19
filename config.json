@@ -61,6 +61,14 @@
         },
         {
             "name": "Video Streaming Setup"
+        },
+        {
+            "name": "Release Notes",
+            "navigation": [
+                {
+                "name": "Release Notes 4.2.0"
+                }
+            ]
         }
     ]
 }
