@@ -138,9 +138,9 @@ Description template:<br>
 > **Description**<br>
 > *\<High level description of what is required to be done and acceptance criteria or link to the document in repository.\>*
 > Expected delivery (in order of execution):<br>
->  [ ] Link to technical task 1
->  [ ] Link to technical task 2
->  [ ] Link to technical task 3
+>  [ ] Link to technical task 1<br>
+>  [ ] Link to technical task 2<br>
+>  [ ] Link to technical task 3<br>
 >  ...<br>
 
 *Establish links.<br>*
