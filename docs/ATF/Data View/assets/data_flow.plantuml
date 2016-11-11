@@ -1,0 +1,46 @@
+@startuml
+/'
+It is a source file for ATF SAD diagram.
+For further information, please, follow http://plantuml.com/
+'/
+
+skinparam shadowing false
+skinparam actorBackgroundColor white
+skinparam actorBorderColor blue
+skinparam usecase {
+	BackgroundColor white
+	BorderColor black
+
+	ArrowColor blue
+	ActorBorderColor blue
+}
+'---------------------------
+title Data flow
+
+rectangle "Mobile flow" as mob_data {
+	usecase (Socket\nraw data)      as socket
+	usecase (Cached data)           as cache
+	usecase (Ford protocol\npacket) as packet
+	usecase (Json data)             as json1
+	usecase (Mobile RPC)            as mrpc
+
+	socket    ->    packet
+	packet  -up->   cache
+	cache  -down-> socket
+	packet   <->    json1
+	json1    <->    mrpc
+	}
+
+rectangle "HMI flow" as hmi_data {
+	usecase (WebSocket\nraw data) as wsocket
+	usecase (Json data)           as json2
+	usecase (HMI RPC)             as hrpc
+
+	wsocket <-> json2
+	json2 <-> hrpc
+	}
+
+' Beatify
+mob_data -[hidden]up- hmi_data
+
+@enduml
