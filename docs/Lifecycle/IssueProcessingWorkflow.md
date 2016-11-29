@@ -12,6 +12,8 @@ Issue readiness is split on 3 major parts: <br>
 2. Integrated in **develop** branch <br>
 3. Integrated in **master** within a release <br>
 
+_**Note:**_ After passing to the Integrated state in project an issue must be closed manually.
+
 ### Project naming and description
 **Project naming** must consist of two parts: release number in square brackets and feature name after space:<br>
 _[release number] feature name_ (for ex.: [4.3.0] Extended policy support)<br>
