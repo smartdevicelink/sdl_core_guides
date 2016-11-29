@@ -31,8 +31,12 @@ Columns in the project defines state of the issue in workflow. <br>
 
 ### Type of work packages and quality gates
 There must be separated packages for implementation of features and for release of set of milestones. <br>
-Each feature efforts include implementation on dedicated branch and integration of results in **develop**. <br>
+<br>
+**Feature** development efforts include implementation on dedicated branch and integration of results in **develop**. <br>
 Readiness of features is verified on dedicated branch, on **develop** and on **master** after release. <br>
+<br>
+**Release** stabilization and integration must be formed as separated work package.<br>
+Integration of the release branch into **master** can be done only by _Maintainers_.<br>
 <br>
 Quality assurance is done by CI system for feature development and execution of set of published manual tests (User Acceptance Tests) for release.
 
@@ -50,7 +54,7 @@ After certain milestone a new **release** can be published. <br>
 Following is schema of inclusion of issues in milestones and releases. <br>
 ![Issue inclusion schema](https://github.com/mghiumiusliu/sdl_core_guides/blob/lifecycle/docs/Lifecycle/assets/issue-inclusion-schema.png)
 
-As shown on schema release can include one or more milestones, which includes one or more features, which includes one or more issues.
+As shown on schema release can include one or more milestones, which includes one or more features, which includes one or more issues. To distinguish from release it is recommended to use _alphanumeric codes_ for milestones (for eх.: names of US cities).
 
 ## Versioning
 SDL organization uses 4 digit version numbering: **X.Y.Z.B** <br>
