@@ -65,6 +65,20 @@ SDL organization uses 4 digit version numbering: **X.Y.Z.B** <br>
 
 **sdl_atf** repository represents a sub-product must also have 4 digit version number, however might not be the same as sdl_core. <br>
 
+## **Useful links**
+[Change Control Board][CCB-LINK]<br>
+[SDL Release][SDL-REL-LINK]<br>
+[SDL Contribution][SDLContribution]<br>
+[Issue processing workflow][SDL-ISSUE-PROCESSING]<br>
+[Collaborating with issues and pull requests][GH-COL-LINK]<br>
+
+[SDL-ISSUE-PROCESSING]:https://github.com/mghiumiusliu/sdl_core_guides/blob/lifecycle/docs/Lifecycle/IssueProcessingWorkflow.md "Issue Processing Workflow"
+[ForkAndPull]: https://help.github.com/articles/fork-a-repo/ "Fork & Pull model"
+[CCB-LINK]: ChangeControlBoard.md "Change Control Board"
+[SDL-REL-LINK]: SDLRelease.md "SDL Release"
+[GH-COL-LINK]: https://help.github.com/categories/collaborating-with-issues-and-pull-requests/ "Collaborating with issues and pull requests"
+[GitFlowModel]: http://nvie.com/posts/a-successful-git-branching-model/ "A successful Git branching model"
+[GitMultiTri]: https://github.com/blog/2042-git-2-5-including-multiple-worktrees-and-triangular-workflows "Multiple worktrees and triangular workflows"
 [SDLContribution]:https://github.com/mghiumiusliu/sdl_core_guides/blob/lifecycle/docs/Lifecycle/SDLContribution.md "SDL Contribution"
 [GitHubProjects]:https://help.github.com/articles/tracking-the-progress-of-your-work-with-projects/ "GitHub Projects"
 [GitHubMilestone]:https://help.github.com/articles/about-milestones/ "GitHub Milestones"
