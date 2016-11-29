@@ -70,8 +70,8 @@ SDL organization uses 4 digit version numbering: **X.Y.Z.B** <br>
 [SDL Release][SDL-REL-LINK]<br>
 [SDL Contribution][SDLContribution]<br>
 [Collaborating with issues and pull requests][GH-COL-LINK]<br>
-[GitHub Projects][GitHubProjects]
-[GitHub Milestones][GitHubMilestone]
+[GitHub Projects][GitHubProjects]<br>
+[GitHub Milestones][GitHubMilestone]<br>
 
 
 [SDL-ISSUE-PROCESSING]:https://github.com/mghiumiusliu/sdl_core_guides/blob/lifecycle/docs/Lifecycle/IssueProcessingWorkflow.md "Issue Processing Workflow"
