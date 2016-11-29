@@ -36,7 +36,7 @@ Following is usual scenario for SDL contribution process:
 7. Send request for review to [CCB][CCB-LINK], specifying pull request number
 8. Provide feedback and make necessary changes basing on review comments
 
-Approved pull request will be merged into respective branch and eventually into develop branch by [CCB][CCB-LINK] member.
+Additional details regarding issue processing, release forming and versioning can be found in [Issue processing workflow][SDL-ISSUE-PROCESSING] description.
 
 ## **Usefull links**
 [Fork & Pull model][ForkAndPull]<br>
@@ -93,9 +93,12 @@ Approved pull request will be merged into respective branch and eventually into 
 [Fork & Pull model][ForkAndPull]<br>
 [Change Control Board][CCB-LINK]<br>
 [SDL Release][SDL-REL-LINK]<br>
+[Issue processing workflow][SDL-ISSUE-PROCESSING]<br>
 [Collaborating with issues and pull requests][GH-COL-LINK]<br>
 [Multiple worktrees and triangular workflows][GitMultiTri]<br>
 
+
+[SDL-ISSUE-PROCESSING]:https://github.com/mghiumiusliu/sdl_core_guides/blob/lifecycle/docs/Lifecycle/IssueProcessingWorkflow.md "Issue Processing Workflow"
 [ForkAndPull]: https://help.github.com/articles/fork-a-repo/ "Fork & Pull model"
 [CCB-LINK]: ChangeControlBoard.md "Change Control Board"
 [SDL-REL-LINK]: SDLRelease.md "SDL Release"
