@@ -14,7 +14,9 @@ Issue readiness is split on 3 major parts: <br>
 
 ### Project naming and description
 **Project naming** must consist of two parts: release number in square brackets and feature name after space:<br>
-_[release number] feature name_ (for ex.: [4.3.0] Extended policy support)
+_[release number] feature name_ (for ex.: [4.3.0] Extended policy support)<br>
+_**Note:**_ Completed projects (implemented features) must receive underscore ("\_") prefix (for ex.: _[4.2.0] New version of SDL).<br>
+This is useful for sorting of projects by Name. Backlog will be on top, ongoing project right behind and completed on bottom of the list.
 
 **Project description** must conform following template:
 > # Milestone: [\<milestone name\>](https://github.com/smartdevicelink/sdl_core/milestone/TBD)
