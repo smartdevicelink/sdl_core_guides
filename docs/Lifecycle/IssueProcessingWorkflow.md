@@ -46,11 +46,11 @@ Quality assurance is done by CI system for feature development and execution of 
 
 ## Backlog
 One special type of project is defined: **[Backlog]**. <br>
-It contains 3 columns: <br>
+It contains 4 columns: <br>
 **Open**: accepted proposals and defects <br>
 **Under clarification**: issue is being prioritized <br>
 **Ready for assignment**: prioritized issues ready to be placed in project <br>
-**Rejected**: not accepted proposals and defects <br>
+**Postponed**: good ideas which do not fit any of forseen plans <br>
 
 ## Milestones and release forming
 [Milestones][GitHubMilestone] in SDL organization groups features intended to be created in parallel to a certain date. <br>
