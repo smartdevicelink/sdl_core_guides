@@ -8,7 +8,8 @@
 6. Qt Framework Meta-Object System - <http://doc.qt.io/qt-5/metaobjects.html>
 7. Lua documentation - <https://www.lua.org/manual/5.3/>
 8. Lua Tables Tutorial - <http://lua-users.org/wiki/TablesTutorial>
-
+9. Google C++ Style Guide -<https://google.github.io/styleguide/cppguide.html>
+10. Lua Style Guide - <http://lua-users.org/wiki/LuaStyleGuide>
 
 
 ### 8.  List of Figures
