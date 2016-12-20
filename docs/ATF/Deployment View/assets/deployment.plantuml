@@ -1,0 +1,68 @@
+@startuml
+/'
+It is a source file for ATF SAD diagram.
+For further information, please, follow http://plantuml.com/
+'/
+skinparam componentStyle uml2
+skinparam ranksep 5
+
+node "ATF machine" {
+    folder "ATF Directory" as atf_dir {
+        artifact ATF [
+            <b>ATF
+            ====
+            ATF Start script
+            ....
+            ATF C++ Core
+            ....
+            ATF Lua Modules
+            ....
+            ATF Lua 3rd-parties
+            ....
+            ATF Binary 3rd-parties ]
+        component "ATF Config file" as atf_conf
+        component "SDL Mobile and HMI API" as sdl_api
+
+        ' Beatifying
+        ATF -[hidden]up- atf_conf
+        atf_conf -[hidden]up- sdl_api
+    } /' folder atf_dir '/
+
+    folder "User Scripts Directory" as user_scripts_dir {
+        component "User Script" as user_script
+        component "User Common \nfunctions" as user_common_script
+        component "Media Data"  as media_data
+
+        ' Beatifying
+        user_script   -[hidden]down- user_common_script
+        user_common_script   -[hidden]down- media_data
+    } /' folder user_scripts_dir '/
+} /' node "ATF machine" '/
+
+node "SDL machine" {
+    folder "SDL Core Directory" as sdl_core_dir {
+        artifact sdl_core [
+            <b>SDL Core
+            ====
+            SDL Core binary
+            ....
+            SDL Core Policy library
+            ....
+            SDL Core Utilities libraries
+            ....
+            SDL Core 3rd-parties ]
+        artifact sdl_configs [
+            <b>SDL configuration
+            ====
+            smartDeviceLink.ini
+            ....
+            Policy preloaded files
+            ....
+            <i> other]
+        ' Beatifying
+        sdl_core -[hidden]down- sdl_configs
+    } /' folder sdl_core_dir '/
+
+} /' node "SDL machine" '/
+
+@enduml
