@@ -1,4 +1,4 @@
-### 4.10. Operational View
+## 4.10. Operational View
 
 This view describes how the architecture provides the ability for operation/support teams to monitor and manage the system. To make system more flexible and to support different platforms, SW provides a configuration and logging components, which are able to change system behavior according to settings defined in smartDeviceLink.ini file and to diagnostic.
 
@@ -7,7 +7,7 @@ ATF provides default *config.lua* script specifies the desirable system behavior
 
   - Mobile and HMI transports connection
   - Protocol, Connection
-  - Path to SDL binary, HMI and MObile interfaces
+  - Path to SDL binary, HMI and Mobile interfaces
   - SDL-related ATF behavior
   - Reporting parameters
   - List of application and they registration parameters

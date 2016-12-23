@@ -1,6 +1,6 @@
 ## 5.  View-to-View Relations
 
-Each of the views specified in Section 3 provides a different perspective and design handle on a system, and each is valid and useful in its own right. Although the views give different system perspectives, they are not independent. Elements of one view will be related to elements of other views, and we need to reason about these relations.
+Each of the views specified in Section 4 provides a different perspective and design handle on a system, and each is valid and useful in its own right. Although the views give different system perspectives, they are not independent. Elements of one view will be related to elements of other views, and we need to reason about these relations.
 
 ### 5.1. Component-to-Layer
 

@@ -20,7 +20,7 @@ Definitions used in this document are in the table below.
 | Model          | A particular diagram or description constructed following the method defined in a viewpoint. These provide the specific description of the system, which can include identifiable subsystems and elements. |
 | Stakeholder    | An individual, group or organization that has at least one concern relating to the system. |
 
-For further definitions and abbreviations, please follow [SDL SAD][Software Architecture Document]
+For further definitions and abbreviations, please follow [SDL SAD](../../software-architecture-document/introduction/#12-definitions-and-abbreviations)
 
 ### 1.3. Document Roadmap
 

@@ -16,7 +16,7 @@ Following diagrams is focused on **ATF Core** component and shows to the **User 
   - *Behaviour:*
     - ATF initialize own components and load User Scripts 
   - *Relations:*
-    - If all ATF subsystems and USer Scripts successfully loaded, ATF starts processing Test Cases.
+    - If all ATF subsystems and User Scripts successfully loaded, ATF starts processing Test Cases.
     - If failed, ATF is ***shutting down***. 
  
 #### Testing
@@ -28,6 +28,6 @@ Following diagrams is focused on **ATF Core** component and shows to the **User 
 
 #### Shutting down
   - *Behaviour:*
-    - ATF stores all disconnects from SDL and denitializes all components.
+    - ATF stores all disconnects from SDL and deinitializes all components.
   - *Relations:*
     - Finish ATF life cycle

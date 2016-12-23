@@ -39,7 +39,7 @@ In common case ATF and SDL Core could be deployed on the same machine.
 
 #### SDL Core Directory
   - *Short Description:*
-    - Contains SDl Core binaries, dependencies and configuration files
+    - Contains SDL Core binaries, dependencies and configuration files
   - *Relations:*
     - Required for **User Scripts** execution.
   - *Requirements:*

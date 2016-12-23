@@ -97,7 +97,7 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Interfaces* 
     - Provides ***ATF logger*** interface
   - *Behavior*
-    - ***ATF logger*** provides API for logging all internal information for further SDL issues analisys
+    - ***ATF logger*** provides API for logging all internal information for further SDL issues analysis
   - *Constraints*
     - *N/A*
 
