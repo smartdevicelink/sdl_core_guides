@@ -34,9 +34,10 @@ rectangle ATF {
 (e_hmi) ..> (processing) : <<include>>
 (e_hmi) ..> (validation) : <<include>>
 
-(negotiation) <. (interfaces) 
-(interfaces)  <. (processing) 
-(processing)  <. (validation) 
+(negotiation) <. (interfaces) : <<extend>>
+(interfaces)  <. (processing) : <<extend>>
+
+(processing)  .> (validation) : <<include>>
 
 :SDL: -up- (negotiation)
 :SDL: -up- (interfaces)

@@ -12,7 +12,8 @@
 | 0.7         | 12/06/2016 | Draft           | [Elisey Zamakhov]      | Add Deployment View, Operational View, <br> View-to-View Relations chapters|
 | 0.8         | 12/08/2016 | Draft           | [Elisey Zamakhov]      | Add Solution Background chapter |
 | 0.9         | 12/09/2016 | Draft           | [Elisey Zamakhov]      | Update References, List of Figures |
-| 0.10        | 12/29/2016 | Draft           | [Elisey Zamakhov]      | Update Actors in Stockholders list, <br> List of Figures, <br> Overview diagram, <br> Use Cases diagrams, <br> spelling fixes |
+| 0.10        | 12/23/2016 | Draft           | [Elisey Zamakhov]      | Update Actors in Stockholders list, <br> List of Figures, <br> Overview diagram, <br> spelling fixes |
+| 0.11        | 12/29/2016 | Draft           | [Elisey Zamakhov]      | Update Use Cases diagrams |
 
 #### 10.2. Approve History
 | Version     | Data       | Approver             | Approve item   |

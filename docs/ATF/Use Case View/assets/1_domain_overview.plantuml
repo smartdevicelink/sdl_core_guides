@@ -30,8 +30,8 @@ usecase (Test result analisys) as (test_analisys)
 :user: -down- (test_collect)
 :user: -down- (test_analisys)
 
-(requirements) <. (test_case) 
-(test_case) <. (test_exec) 
-(test_exec) <. (test_collect)
-(test_collect) <. (test_analisys)
+(requirements) <. (test_case)     : <<extend>>
+(test_case) <. (test_exec)        : <<extend>>
+(test_exec) <. (test_collect)     : <<extend>>
+(test_collect) <. (test_analisys) : <<extend>>
 @enduml

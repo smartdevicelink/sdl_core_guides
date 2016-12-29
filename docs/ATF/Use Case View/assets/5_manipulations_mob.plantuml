@@ -32,16 +32,17 @@ rectangle ATF {
 
 :script: -- (e_mob)
 
-(e_mob) ..> (negotiation): <<include>>
-(e_mob) ..> (protocol) : <<include>>
-(e_mob) ..> (service) : <<include>>
-(e_mob) ..> (processing) : <<include>>
-(e_mob) ..> (validation) : <<include>>
+(e_mob) ..> (negotiation) : <<include>>
+(e_mob) ..> (protocol)    : <<include>>
+(e_mob) ..> (service)     : <<include>>
+(e_mob) ..> (processing)  : <<include>>
+(e_mob) ..> (validation)  : <<include>>
 
-(negotiation) <. (protocol) 
-(protocol)    <. (service) 
-(service)     <. (processing) 
-(processing)  <. (validation) 
+(negotiation) <. (protocol)   : <<extend>>
+(protocol)    <. (service)    : <<extend>>
+(service)     <. (processing) : <<extend>>
+
+(processing)  .> (validation) : <<include>>
 
 :SDL: -up- (negotiation)
 :SDL: -up- (protocol)

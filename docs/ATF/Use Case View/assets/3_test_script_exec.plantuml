@@ -20,18 +20,19 @@ title Test Script execution
 actor "Test Script" as :script:
 actor :SDL:
 rectangle ATF {
-    usecase (Test script execution)  as (test_exec_auto)
+    usecase (Test script execution) as (test_exec_auto)
     usecase (SDL manipulation)      as (e_sdl)
     usecase (Emulate HMI)           as (e_hmi)
     usecase (Emulate Mobile)        as (e_mob)
 }
 
-:script:  -[hidden] :SDL:
-
 :script: -- (test_exec_auto)
-:SDL:    -- (test_exec_auto)
 
 (test_exec_auto) ..> (e_sdl) : <<include>>
 (test_exec_auto) ..> (e_hmi) : <<include>>
 (test_exec_auto) ..> (e_mob) : <<include>>
+
+:SDL: -up- (e_sdl)
+:SDL: -up- (e_hmi)
+:SDL: -up- (e_mob)
 @enduml

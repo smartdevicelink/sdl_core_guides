@@ -31,19 +31,17 @@ rectangle ATF {
 }
 
 :SDL: -[hidden]right- :user:
-:SDL: -down- (test_exec)
-':user: <left-
+:SDL:  -down- (test_exec)
 :user: -down- (test_case)
 :user: -down- (test_exec)
 :user: -down- (test_collect)
 
-(test_case) <.down. (test_case_auto) : <<extend>>
-(test_exec) <.down. (test_exec_auto) : <<extend>>
-(test_collect) <.down. (test_collect_auto) : <<extend>>
+(test_case) <. (test_exec)    : <<extend>>
+(test_exec) <. (test_collect) : <<extend>>
 
-(test_case) <. (test_exec) 
-(test_exec) <. (test_collect)
-' (test_case_auto) <.right. (test_exec_auto) 
+(test_case)    <|-down- (test_case_auto)
+(test_exec)    <|-down- (test_exec_auto)
+(test_collect) <|-down- (test_collect_auto)
 
 :script: -up- (test_case_auto)
 :script: -up- (test_exec_auto)
