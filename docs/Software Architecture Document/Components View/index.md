@@ -148,6 +148,21 @@ The view is represented by module and subsystem diagrams that show the system's 
     - Not work for Android apps.
     - Not work for apps connected via SDL protocol version lower than 4.
 
+#### Plugin Manager
+  - *Responsibility*
+    - Loads all .so files from specific directory, checking if they’re exporting required methods
+    - Stores information about plugin capabilities
+  - *Relations*
+    - Composed by ***Application Manager*** 
+    - Compose ***Plugin***
+  - *Interfaces*
+    - Provides ***Plugin Manager*** interface 
+  - *Behavior*
+    - Loads and manage plugins from specific directory.
+  - *Constraints*
+    - N/A
+
+
 #### Resumption
   - *Responsibility*
     - Restoring application data
@@ -229,6 +244,27 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Constraints*
     - [SmartDeviceLink Protocol specification](https://github.com/smartdevicelink/protocol_spec/blob/master/README.md)
 
+#### CAN Module
+  - *Responsibility*
+    - Allows incorporating additional functionality to the core application by application extension.
+    - Implements specific mobile requests handling.
+    - Implements specific HMI request/response/notification handling.
+  - *Relations*
+    - Composed by ***Plugin manager*** 
+    - Handle ***Application Manager*** by ***Service*** interface
+  - *Interfaces*
+    - Provides ***Plugin Manager*** interface   
+  - *Behavior*
+    - Receives data from Core
+    - Parses data
+    - Creates commands.
+    - Handles incoming HMI notifications
+    - Sends RPC to HMI
+    - Sends RPC to mobile
+    - Extend basic applications with additional functionality
+  - *Constraints*
+    - N/A
+    
 #### Security Manager
   - *Responsibility*
     - Data encryption and decryption
