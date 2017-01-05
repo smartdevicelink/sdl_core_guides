@@ -14,14 +14,14 @@
 | 0.9         | 12/09/2016 | Draft           | [Elisey Zamakhov]      | Update References, List of Figures |
 | 0.10        | 12/23/2016 | Draft           | [Elisey Zamakhov]      | Update Actors in Stockholders list, <br> List of Figures, <br> Overview diagram, <br> spelling fixes |
 | 0.11        | 12/29/2016 | Draft           | [Elisey Zamakhov]      | Update Use Cases diagrams |
-| 0.12        | 01/05/2017 | Draft           | [Elisey Zamakhov]      | MInor spelling fixes |
+| 0.12        | 01/05/2017 | Draft           | [Elisey Zamakhov]      | Minor spelling fixes |
 
 #### 10.2. Approve History
 | Version     | Data       | Approver             | Approve item   |
 |-------------|------------|----------------------|----------------|
-| 1.0         | 00/00/2016 | [Nataly Snitsar]     | [APPLINK-XXXX](https://adc.luxoft.com/jira/browse/APPLINK-XXXX)      |
-| 1.0         | 00/00/2016 | [Justin Dickow]      | [PR #YY](https://github.com/smartdevicelink/sdl_core_guides/pull/YY) |
+| 1.0         | 01/10/2017 | [Aleksandr Stasiuk]  | [APPLINK-31326](https://adc.luxoft.com/jira/browse/APPLINK-31326)    |
+| 1.0         | 00/00/2017 | [Justin Dickow]      | [PR #YY](https://github.com/smartdevicelink/sdl_core_guides/pull/YY) |
 
 
 [Elisey Zamakhov]: https://github.com/pestOO
-[Nataly Snitsar]: mailto:NSnitsar@luxoft.com
+[Aleksandr Stasiuk]: https://github.com/AStasiuk
