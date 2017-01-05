@@ -62,7 +62,7 @@
 |||
 |||
 #### Component View diagram
-![Component View](../components-view/assets/image15.png)
+![Component View](../components-view/assets/ComponentView.png)
 |||
 |||
 #### Transport layer notification and data transferring diagram 
