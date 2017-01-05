@@ -22,7 +22,7 @@ Following diagrams is focused on **ATF Core** component and shows to the **User 
 #### Testing
   - *Behaviour:*
     - ATF executes **User Scripts** test cases: emulates Mobile, HMI side, add and verifies expectations
-    - ATF handles Events, proceeds according to own business requirements and provides to UserScript verification.
+    - ATF handles Events, proceeds according to own business requirements and provides to User Script verification.
   - *Relations:*
     - ATF starts shutdown procedure on getting stop signal and in case of Critical Test Case failure.
 

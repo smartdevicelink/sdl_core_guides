@@ -14,6 +14,7 @@
 | 0.9         | 12/09/2016 | Draft           | [Elisey Zamakhov]      | Update References, List of Figures |
 | 0.10        | 12/23/2016 | Draft           | [Elisey Zamakhov]      | Update Actors in Stockholders list, <br> List of Figures, <br> Overview diagram, <br> spelling fixes |
 | 0.11        | 12/29/2016 | Draft           | [Elisey Zamakhov]      | Update Use Cases diagrams |
+| 0.12        | 01/05/2017 | Draft           | [Elisey Zamakhov]      | MInor spelling fixes |
 
 #### 10.2. Approve History
 | Version     | Data       | Approver             | Approve item   |

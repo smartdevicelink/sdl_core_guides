@@ -27,8 +27,8 @@ The view is represented by module and subsystem diagrams that show the system's 
 
 #### Launch
   - *Responsibility* 
-    - Declare a command line arguments
-    - Start ***User Scripts*** list one by one
+    - Declares a command line arguments
+    - Starts ***User Scripts*** list one by one
   - *Relations*
     - Starts ***User Scripts***
   - *Interfaces* 
@@ -36,7 +36,7 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Behavior* 
     - ***Launch*** declares command line arguments and execute all left parameters as ***User Scripts***
   - *Constraints* 
-    - Need to be run by ***C++ Core***
+    - Needs to be run by ***C++ Core***
     - *Note:* ATF provides *run_tests.sh* script for automation run ***Launch*** by ***C++ Core***
 
 #### Connection Test
@@ -104,7 +104,7 @@ The view is represented by module and subsystem diagrams that show the system's 
 #### Utils
   - *Responsibility* 
     - Support methods implementation
-    - Encapsulation system API calls.
+    - Encapsulation system API calls
     - Parsing command line arguments
   - *Relations*
     - Used by all components.
@@ -125,7 +125,7 @@ The view is represented by module and subsystem diagrams that show the system's 
       - Tcp-Sockets
   - *Relations*
     -  Requires Qt Framework for signal/slots system, WebSocket implementation
-    -  Require Lua Development Library Kit
+    -  Requires Lua Development Library Kit
   - *Interfaces* 
     - Provides set of Lua interfaces
   - *Behavior*
@@ -133,25 +133,25 @@ The view is represented by module and subsystem diagrams that show the system's 
     - Provides executable for starting Lua scripts with additional Qt meta-system functionality.
     - ***C++ Core*** executable parses  with ***Launch*** as a first argument, all following parameters are passed to the ***Launch***.
   - *Constraints*
-    - Require Qt 5.3+ for WebSocket support
-    - Require Lua Development kit version 5.2
+    - Requires Qt 5.3+ for WebSocket support
+    - Requires Lua Development kit version 5.2
 
 
 ### Business layer:
 
 #### SDL
   - *Responsibility* 
-    - Start and stop SDL executable manipulation
+    - Starts and stops SDL executable manipulation
     - SDL executable status monitoring
-    - SDL log grab via telnet and save it to corresponding directory. 
+    - SDL log grabbing via telnet and save it to corresponding directory. 
   - *Relations*
-    - Require ***Data assess layer*** interfaces
+    - Requires ***Data assess layer*** interfaces
   - *Interfaces* 
     - Provides ***SDL*** interface
   - *Behavior*
     - Starts SDL binary and saves process id for further stop and status monitoring.
   - *Constraints*
-    - Require POSIX system environment for bash script and calling OS commands like *cat*, *test*, *cat*, *sleep*
+    - Requires POSIX system environment for bash script and calling OS commands like *cat*, *test*, *cat*, *sleep*
 
 #### Test Base
   - *Responsibility* 
@@ -160,8 +160,8 @@ The view is represented by module and subsystem diagrams that show the system's 
       - ***User Script*** expectation
       - SDL executable status monitoring
   - *Relations*
-    -  Require ***SDL*** interface
-    -  Require ***Events*** interface
+    -  Requires ***SDL*** interface
+    -  Requires ***Events*** interface
   - *Interfaces* 
     - Provides ***Test Base*** interface
   - *Behavior*
@@ -173,7 +173,7 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Responsibility* 
     - RPCs structure and format validation
   - *Relations*
-    - Require ***Data assess layer*** interfaces
+    - Requires ***Data assess layer*** interfaces
   - *Interfaces* 
     - Provides ***Validator*** interface
   - *Behavior*
@@ -187,10 +187,10 @@ The view is represented by module and subsystem diagrams that show the system's 
 #### Protocol Handler
   - *Responsibility*
     - Control and business data distributing to appropriate sessions and service
-    - Control message processing
+    - Control messages processing
     - Multi-frames assembling and disassembling
   - *Relations*
-    - Require ***Data assess layer*** interfaces
+    - Requires ***Data assess layer*** interfaces
   - *Interfaces*
     - Provides ***Protocol Handler*** interface
   - *Behavior*
@@ -205,7 +205,7 @@ The view is represented by module and subsystem diagrams that show the system's 
     - Subscription to income mobile service data
     - Heartbeat functionality
   - *Relations*
-    - Require ***Data assess layer*** interfaces
+    - Requires ***Data assess layer*** interfaces
   - *Interfaces* 
     - Provides ***Mobile Session*** interface
   - *Behavior*
@@ -222,7 +222,7 @@ The view is represented by module and subsystem diagrams that show the system's 
     - Sending HMI-related data
     - Subscription to income HMI data
   - *Relations*
-    - Require ***Data assess layer*** interfaces
+    - Requires ***Data assess layer*** interfaces
   - *Interfaces* 
     - Provides ***HMI connection*** interface
   - *Behavior*
@@ -237,7 +237,7 @@ The view is represented by module and subsystem diagrams that show the system's 
     - Subscription to income Mobile data
     - Outcome data caching to file before sending to SDL
   - *Relations*
-    - Require ***Data assess layer*** interfaces
+    - Requires ***Data assess layer*** interfaces
   - *Interfaces* 
     - Provides ***Mobile connection*** interface
   - *Behavior*
