@@ -6,7 +6,7 @@ The view is represented by module and subsystem diagrams that show the system's 
 
 |||
 ##### Component View diagram
-![Component View](./assets/image15.png)
+![Component View](./assets/ComponentView.png)
 |||
 
 ***Elements description***
