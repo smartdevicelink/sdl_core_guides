@@ -1,0 +1,32 @@
+@startuml
+
+participant "Protocol handler" as PH
+participant "Application Manager" as AM
+participant "Plugin Manager" as PM
+participant "Plugin 1" as P1
+participant "Plugin 2" as P2
+
+PH -> AM : Send data
+AM -> AM : Create message from data
+AM -> PM : Process message
+
+alt Some plugin able to Process Message
+
+PM -> P1 : Process
+P1 -> PM : Cannot process
+PM -> P2 : Process
+P2 -> AM : Send Message to HMI/Mobile
+else
+
+PM -> P1 : Process
+P1 -> PM : Cannot process
+PM -> P2 : Process
+P2 -> PM : Cannot process
+PM -> AM : Cannot Process
+AM -> Commands : Process Message
+Commands -> AM : Send Message to HMI/Mobile
+
+end
+
+@enduml
+
