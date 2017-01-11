@@ -154,11 +154,11 @@ The view is represented by module and subsystem diagrams that show the system's 
     - Stores information about plugin capabilities
   - *Relations*
     - Composed by ***Application Manager*** 
-    - Compose ***Plugin***
+    - Composes ***Plugin***
   - *Interfaces*
     - Provides ***Plugin Manager*** interface 
   - *Behavior*
-    - Loads and manage plugins from specific directory.
+    - Loads and manages plugins from specific directory.
   - *Constraints*
     - N/A
 
@@ -244,24 +244,24 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Constraints*
     - [SmartDeviceLink Protocol specification](https://github.com/smartdevicelink/protocol_spec/blob/master/README.md)
 
-#### CAN Module
+#### Remote control
   - *Responsibility*
     - Allows incorporating additional functionality to the core application by application extension.
-    - Implements specific mobile requests handling.
+    - Implements specific mobile RPC handling.
     - Implements specific HMI request/response/notification handling.
   - *Relations*
     - Composed by ***Plugin manager*** 
-    - Handle ***Application Manager*** by ***Service*** interface
+    - Handles ***Application Manager*** by ***Service*** interface
   - *Interfaces*
     - Provides ***Plugin Manager*** interface   
   - *Behavior*
-    - Receives data from Core
+    - Receives data from CoreService
     - Parses data
     - Creates commands.
     - Handles incoming HMI notifications
     - Sends RPC to HMI
     - Sends RPC to mobile
-    - Extend basic applications with additional functionality
+    - Extends basic applications with additional RPC's
   - *Constraints*
     - N/A
     
