@@ -46,6 +46,6 @@ Protocol layer is responsible for transferring Transport and Protocol events to 
 |||
 
 |||
-### Business layer - App Launch
+### Business layer - Plugin Manager 
 ![Business layer - Plugin Manager](./assets/plugin_manager_interaction_view.png)
 |||
