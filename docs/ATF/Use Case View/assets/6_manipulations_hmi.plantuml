@@ -1,0 +1,46 @@
+@startuml
+/'
+It is a source file for ATF SAD diagram.
+For further information, please, follow http://plantuml.com/
+'/
+
+skinparam shadowing false
+skinparam actorBackgroundColor white
+skinparam actorBorderColor blue
+skinparam usecase {
+	BackgroundColor white
+	BorderColor black
+	
+	ArrowColor blue
+	ActorBorderColor blue
+}
+'---------------------------
+title HMI emulation
+
+actor "Test Script" as :script:
+actor :SDL:
+rectangle ATF {
+    usecase (Emulate HMI)                  as (e_hmi)
+    usecase (WebSocket negotiation)        as (negotiation)
+    usecase (HMI Interfaces Registering)   as (interfaces)
+    usecase (HMI RPC processing)           as (processing)
+    usecase (SDL-to-HMI RPC validation)    as (validation)
+}
+
+:script: -- (e_hmi)
+
+(e_hmi) ..> (negotiation): <<include>>
+(e_hmi) ..> (interfaces) : <<include>>
+(e_hmi) ..> (processing) : <<include>>
+(e_hmi) ..> (validation) : <<include>>
+
+(negotiation) <. (interfaces) : <<extend>>
+(interfaces)  <. (processing) : <<extend>>
+
+(processing)  .> (validation) : <<include>>
+
+:SDL: -up- (negotiation)
+:SDL: -up- (interfaces)
+:SDL: -up- (processing)
+
+@enduml

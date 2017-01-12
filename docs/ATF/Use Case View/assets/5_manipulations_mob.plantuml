@@ -1,0 +1,52 @@
+@startuml
+/'
+It is a source file for ATF SAD diagram.
+For further information, please, follow http://plantuml.com/
+'/
+
+skinparam shadowing false
+skinparam actorBackgroundColor white
+skinparam actorBorderColor blue
+skinparam usecase {
+	BackgroundColor white
+	BorderColor black
+	
+	ArrowColor blue
+	ActorBorderColor blue
+}
+'---------------------------
+title Mobile emulation
+
+actor "Test Script" as :script:
+actor :SDL:
+rectangle ATF {
+    usecase (Emulate Mobile)                     as (e_mob)
+    usecase (TCP negotiation)                    as (negotiation)
+    usecase (Ford Protocol \n Packets handling)  as (protocol)
+    usecase (Service/Session \n negotiation)     as (service)
+    usecase processing as "Mobile RPC
+    ..and..
+    Video/Audio processing"
+    usecase (SDL-to-Mobile RPC \n validation)    as (validation)
+}
+
+:script: -- (e_mob)
+
+(e_mob) ..> (negotiation) : <<include>>
+(e_mob) ..> (protocol)    : <<include>>
+(e_mob) ..> (service)     : <<include>>
+(e_mob) ..> (processing)  : <<include>>
+(e_mob) ..> (validation)  : <<include>>
+
+(negotiation) <. (protocol)   : <<extend>>
+(protocol)    <. (service)    : <<extend>>
+(service)     <. (processing) : <<extend>>
+
+(processing)  .> (validation) : <<include>>
+
+:SDL: -up- (negotiation)
+:SDL: -up- (protocol)
+:SDL: -up- (service)
+:SDL: -up- (processing)
+
+@enduml

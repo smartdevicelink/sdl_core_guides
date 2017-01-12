@@ -1,0 +1,38 @@
+@startuml
+/'
+It is a source file for ATF SAD diagram.
+For further information, please, follow http://plantuml.com/
+'/
+
+skinparam shadowing false
+skinparam actorBackgroundColor white
+skinparam actorBorderColor blue
+skinparam usecase {
+	BackgroundColor white
+	BorderColor black
+	
+	ArrowColor blue
+	ActorBorderColor blue
+}
+'---------------------------
+title SDL manipulation
+
+actor "Test Script" as :script:
+actor :SDL:
+rectangle ATF {
+    usecase (SDL manipulation) as (e_sdl)
+    usecase (Start SDL)        as (start)
+    usecase (Stop SDL)         as (stop)
+    usecase (Handle SDL logs)  as (logs)
+    usecase (Detect SDL crash) as (crash)
+}
+
+:script: -- (e_sdl)
+:SDL:    -- (e_sdl)
+
+(e_sdl) ..> (start): <<include>>
+(e_sdl) ..> (stop) : <<include>>
+(e_sdl) ..> (logs) : <<include>>
+(e_sdl) ..> (crash): <<include>>
+
+@enduml

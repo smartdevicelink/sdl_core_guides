@@ -1,0 +1,37 @@
+@startuml
+/'
+It is a source file for ATF SAD diagram.
+For further information, please, follow http://plantuml.com/
+'/
+
+skinparam shadowing false
+skinparam actorBackgroundColor white
+skinparam actorBorderColor blue
+skinparam usecase {
+	BackgroundColor white
+	BorderColor black
+	
+	ArrowColor blue
+	ActorBorderColor blue
+}
+'---------------------------
+title Test Domain overview
+
+actor "Test Engineer" as :user: <<User>>
+usecase (Review requirements) as (requirements)
+usecase (Test Case preparing) as (test_case)
+usecase (Test execution) as (test_exec)
+usecase (Test result collection) as (test_collect)
+usecase (Test result analisys) as (test_analisys)
+
+:user: -down- (requirements)
+:user: -down- (test_case)
+:user: -down- (test_exec)
+:user: -down- (test_collect)
+:user: -down- (test_analisys)
+
+(requirements) <. (test_case)     : <<extend>>
+(test_case) <. (test_exec)        : <<extend>>
+(test_exec) <. (test_collect)     : <<extend>>
+(test_collect) <. (test_analisys) : <<extend>>
+@enduml

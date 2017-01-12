@@ -1,0 +1,56 @@
+@startuml
+/'
+It is a source file for ATF SAD diagram.
+For further information, please, follow http://plantuml.com/
+'/
+
+skinparam state {
+  BackgroundColor #B2EDEA
+  BorderColor black
+  ArrowColor blue
+}
+' Happy path
+[*]             --> init     : [Platform initialization]
+init       -right-> working  : [Success]
+init       -right-> stopping : [Failure]\n\n\n\n\n\n
+working    -right-> stopping : [Stop]
+stopping        --> [*]      : [Exit]
+
+State "Initialization" as init {
+    load_cpp_core    --> load_lua_core
+    load_lua_core    --> load_user_script
+    load_user_script --> gen_test_cases
+     
+    State "Loading C++ Core" as load_cpp_core
+    State "Loading Lua Core" as load_lua_core
+    State "Loading User Scripts" as load_user_script
+    State "Test Cases Generation" as gen_test_cases
+}
+State "Testing" as working {
+    exec_core -right-> exec_test
+
+    State "Test Case Execution" as exec_test {
+        check   --> emulate
+        emulate --> add_expect
+
+        State "Check expectation HMI/Mobile" as check
+        State "Emulation HMI/Mobile" as emulate
+        State "Adding expectation" as add_expect
+    }
+
+    State "Core Execution" as exec_core {
+        waiting --> proceed
+
+        State "Waiting Events" as waiting
+        State "Processing by Core" as proceed
+    }
+   '' proceed -left-> emulate
+
+}
+State "Shutting down" as stopping {
+    deinit_lua_core  --> deinit_cpp_core
+     
+    State "De-initialize Lua Core" as deinit_lua_core
+    State "De-initialize C++ Core" as deinit_cpp_core
+}
+@enduml
