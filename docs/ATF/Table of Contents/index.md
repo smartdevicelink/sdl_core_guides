@@ -1,4 +1,5 @@
-# Table of contents
+# ATF Software Architecture Document (SAD)
+## Table of contents
 
 -   [1. Introduction](../introduction/#1-introduction)
     -   [1.1. Purpose and Scope of the SAD](../introduction/#11-purpose-and-scope-of-the-sad)
