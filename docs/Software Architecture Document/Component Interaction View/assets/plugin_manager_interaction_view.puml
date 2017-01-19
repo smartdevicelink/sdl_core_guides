@@ -1,0 +1,55 @@
+@startuml
+/'
+It is a source file for SDL SAD sequence diagram.
+For further information, please, follow http://plantuml.com/ 
+'/
+
+participant "Protocol handler" as PH
+participant "Application Manager" as AM
+participant "Plugin Manager" as PM
+participant "Plugin 1" as P1
+participant "Plugin 2" as P2
+
+PH -> AM : Send message
+AM -> PM : Process message
+
+alt Some plugin able to Process Message
+
+PM -> P1 : Process
+P1 -> PM : Cannot process
+PM -> P2 : Process
+P2 -> AM : Send Message to HMI/Mobile
+else
+
+PM -> P1 : Process
+P1 -> PM : Cannot process
+PM -> P2 : Process
+P2 -> PM : Cannot process
+PM -> AM : Cannot Process
+AM -> Commands : Process Message
+Commands -> AM : Send Message to HMI/Mobile
+
+end
+skinparam defaultFontSize 16
+skinparam sequence {
+    ArrowColor Blue
+    ArrowFontColor #2027E8
+    ArrowFontStyle bold
+     
+    LifeLineBorderColor black
+     
+    ParticipantBorderColor black
+    ParticipantBackgroundColor white
+    ParticipantFontSize 17
+    ParticipantFontColor black
+     
+    ActorBorderColor black
+    ActorBackgroundColor white
+    ActorFontColor Blue
+    ActorFontSize 17
+    ActorFontName Blue
+    sequenceArrowFontSize  16
+    DividerBackgroundColor #FEFECE
+}
+@enduml
+
