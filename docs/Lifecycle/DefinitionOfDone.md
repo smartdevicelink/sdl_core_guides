@@ -5,7 +5,7 @@ Every Pull Requests should have following description:<br>
 > - Pull request 1<br>
 > - Pull request 2<br>
 > ...<br>
-> **Taks** *\<implemented technical tasks/defects\>*<br>
+> **Tasks** *\<implemented technical tasks/defects\>*<br>
 > - Technical task 1<br>
 > *Deliverables:*<br>
 > [ ] Deliverable 1<br>
@@ -44,7 +44,7 @@ Complete delivery to SDL consist of following deliverables:
 5. SDD/SAD updates
 6. Other guidelines
 
-Tеchnical tasks must contains in its description explicit list of stated items.<br>
+Technical tasks must contains in its description explicit list of stated items.<br>
 In case of trivial changes which do not require SDD/SAD/Guidelines updates,<br>
 technical task might contained shrtened list of deliverables.<br>
 In this case only stated in technial task expected delivery have to be implemented.<br>
