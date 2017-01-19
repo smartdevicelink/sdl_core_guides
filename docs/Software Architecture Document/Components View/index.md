@@ -152,6 +152,7 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Responsibility*
     - Loads all .so files from specific directory, checking if they’re exporting required methods
     - Stores information about plugin capabilities
+    - Check's if plugin's is able to process RPC
   - *Relations*
     - Composed by ***Application Manager*** 
     - Composes ***Plugin***
@@ -160,7 +161,7 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Behavior*
     - Loads and manages plugins from specific directory.
   - *Constraints*
-    - N/A
+    - Able to load only RPC layer plugins
 
 
 #### Resumption
@@ -248,7 +249,7 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Responsibility*
     - Allows incorporating additional functionality to the core application by application extension.
     - Implements specific mobile RPC handling.
-    - Implements specific HMI request/response/notification handling.
+    - Implements specific HMI RPC handling.
   - *Relations*
     - Composed by ***Plugin manager*** 
     - Handles ***Application Manager*** by ***Service*** interface
