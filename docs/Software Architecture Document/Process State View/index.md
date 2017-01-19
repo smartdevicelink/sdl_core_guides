@@ -1,4 +1,4 @@
-## 4.5. Process State View
+## 4.6. Process State View
 
 The process State view shows the global SmartDeviceLink states according to system life cycle.
 
@@ -31,6 +31,7 @@ The process State view shows the global SmartDeviceLink states according to syst
 
 #### Shutting down
   - *Behaviour:*
-    - SDL unregisters all mobile applications, disconnects from HMI and denitializes all components.
+    - SDL stores all resumption data, unregisters all mobile applications,  disconnects from HMI and denitializes all components.
   - *Relations:*
-    - Finish SDL life cycle. 
+    - Finish SDL life cycle,
+    - Continue processing data on getting Awake command from HMI. 

@@ -10,55 +10,55 @@
 
 |||
 #### Overview Use Case Diagram
-![Overview](../case-background/assets/image2.png)
+![Overview](../use-case-view/assets/image2.png)
 |||
 |||
 #### Disconnect Use Case diagram
-![Disconnect](../case-background/assets/image3.png)
+![Disconnect](../use-case-view/assets/image3.png)
 |||
 |||
 #### Connection Use Case diagram
-![Connection](../case-background/assets/image4.png)
+![Connection](../use-case-view/assets/image4.png)
 |||
 |||
 #### Service data transferring Use Case diagram
-![Service data transferring](../case-background/assets/image5.png)
+![Service data transferring](../use-case-view/assets/image5.png)
 |||
 |||
 #### Encryption Use Case diagram
-![Encryption](../case-background/assets/image6.png)
+![Encryption](../use-case-view/assets/image6.png)
 |||
 |||
 #### Data verification Use Case diagram
-![Data verification](../case-background/assets/image7.png)
+![Data verification](../use-case-view/assets/image7.png)
 |||
 |||
 #### RPC Use Case diagram
-![RPC](../case-background/assets/image8.png)
+![RPC](../use-case-view/assets/image8.png)
 |||
 |||
 #### Mobile to HMI RPC processing Use Case diagram
-![Mobile to HMI RPC processing](../case-background/assets/image9.png)
+![Mobile to HMI RPC processing](../use-case-view/assets/image9.png)
 |||
 |||
 #### HMI to Mobile RPC processing Use Case diagram
-![HMI to Mobile RPC processing](../case-background/assets/image10.png)
+![HMI to Mobile RPC processing](../use-case-view/assets/image10.png)
 |||
 |||
 #### Resumption Use Case diagram
-![Resumption](../case-background/assets/image11.png)
+![Resumption](../use-case-view/assets/image11.png)
 |||
 |||
 #### Application data resumption Use Case diagram
-![Application data resumption](../case-background/assets/image12.png)
+![Application data resumption](../use-case-view/assets/image12.png)
 |||
 |||
 #### HMI level resumption Use Case diagram
-![HMI level resumption](../case-background/assets/image13.png)
+![HMI level resumption](../use-case-view/assets/image13.png)
 |||
 |||
 #### Solution overview
-![Solution overview](../case-background/assets/image14.png)
+![Solution overview](../use-case-view/assets/image14.png)
 |||
 |||
 #### Component View diagram
