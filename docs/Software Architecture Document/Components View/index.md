@@ -6,7 +6,7 @@ The view is represented by module and subsystem diagrams that show the system's 
 
 |||
 ##### Component View diagram
-![Component View](./assets/image15.png)
+![Component View](./assets/ComponentView.png)
 |||
 
 ***Elements description***
@@ -148,6 +148,22 @@ The view is represented by module and subsystem diagrams that show the system's 
     - Not work for Android apps.
     - Not work for apps connected via SDL protocol version lower than 4.
 
+#### Plugin Manager
+  - *Responsibility*
+    - Loads all .so files from specific directory, checking if they’re exporting required methods
+    - Stores information about plugin capabilities
+    - Check's if plugin's is able to process RPC
+  - *Relations*
+    - Composed by ***Application Manager*** 
+    - Composes ***Plugin***
+  - *Interfaces*
+    - Provides ***Plugin Manager*** interface 
+  - *Behavior*
+    - Loads and manages plugins from specific directory.
+  - *Constraints*
+    - Able to load only RPC layer plugins
+
+
 #### Resumption
   - *Responsibility*
     - Restoring application data
@@ -229,6 +245,27 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Constraints*
     - [SmartDeviceLink Protocol specification](https://github.com/smartdevicelink/protocol_spec/blob/master/README.md)
 
+#### Remote control
+  - *Responsibility*
+    - Allows incorporating additional functionality to the core application by application extension.
+    - Implements specific mobile RPC handling.
+    - Implements specific HMI RPC handling.
+  - *Relations*
+    - Composed by ***Plugin manager*** 
+    - Handles ***Application Manager*** by ***Service*** interface
+  - *Interfaces*
+    - Provides ***Plugin Manager*** interface   
+  - *Behavior*
+    - Receives data from CoreService
+    - Parses data
+    - Creates commands.
+    - Handles incoming HMI notifications
+    - Sends RPC to HMI
+    - Sends RPC to mobile
+    - Extends basic applications with additional RPC's
+  - *Constraints*
+    - N/A
+    
 #### Security Manager
   - *Responsibility*
     - Data encryption and decryption
