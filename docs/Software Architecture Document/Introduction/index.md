@@ -20,7 +20,6 @@ Abbreviations used in this document please find in the table below.
 | SEE              | Software Engineering Environment |
 | TTS              | Text To Speech                   |
 | VR               | Voice Recognition                |
-| CAN              | Controller Area Network          |
 
 Definitions used in this document are in the table below.
 
