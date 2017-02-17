@@ -152,7 +152,7 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Responsibility*
     - Loads all .so files from specific directory, checking if they’re exporting required methods
     - Stores information about plugin capabilities
-    - Check's if plugin's is able to process RPC
+    - Checks plugins capability to handle RPCs
   - *Relations*
     - Composed by ***Application Manager*** 
     - Composes ***Plugin***
@@ -208,6 +208,27 @@ The view is represented by module and subsystem diagrams that show the system's 
   - *Constraints*
     - Configurable Media-adapter usage 
 
+#### Remote control
+  - *Responsibility*
+    - Allows incorporating additional functionality to the core application by application extension.
+    - Implements specific mobile RPC handling.
+    - Implements specific HMI RPC handling.
+  - *Relations*
+    - Composed by ***Plugin manager*** 
+    - Handles ***Application Manager*** by ***Service*** interface
+  - *Interfaces*
+    - Provides ***Plugin Manager*** interface   
+  - *Behavior*
+    - Receives data from CoreService
+    - Parses data
+    - Creates commands.
+    - Handles incoming HMI notifications
+    - Sends RPC to HMI
+    - Sends RPC to mobile
+    - Extends basic applications with additional RPC's
+  - *Constraints*
+    - N/A
+
 ### Protocol layer components: 
 
 #### Protocol Handler
@@ -244,27 +265,6 @@ The view is represented by module and subsystem diagrams that show the system's 
     - Connection Handler works as a proxy from business-layer to transport layer and provides additional information related to protocol sessions and services. 
   - *Constraints*
     - [SmartDeviceLink Protocol specification](https://github.com/smartdevicelink/protocol_spec/blob/master/README.md)
-
-#### Remote control
-  - *Responsibility*
-    - Allows incorporating additional functionality to the core application by application extension.
-    - Implements specific mobile RPC handling.
-    - Implements specific HMI RPC handling.
-  - *Relations*
-    - Composed by ***Plugin manager*** 
-    - Handles ***Application Manager*** by ***Service*** interface
-  - *Interfaces*
-    - Provides ***Plugin Manager*** interface   
-  - *Behavior*
-    - Receives data from CoreService
-    - Parses data
-    - Creates commands.
-    - Handles incoming HMI notifications
-    - Sends RPC to HMI
-    - Sends RPC to mobile
-    - Extends basic applications with additional RPC's
-  - *Constraints*
-    - N/A
     
 #### Security Manager
   - *Responsibility*
