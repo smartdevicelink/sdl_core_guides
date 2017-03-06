@@ -6,7 +6,7 @@ The figure below depicts the deployment diagram for SDL system.
 
 |||
 ##### Deployment View Diagram
-![Deployment View](./assets/image24.png)
+![Deployment View](./assets/deployment_view.png)
 |||
 
 ***Elements description***
