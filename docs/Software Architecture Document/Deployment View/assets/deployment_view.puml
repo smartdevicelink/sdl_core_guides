@@ -1,0 +1,48 @@
+@startuml
+/'
+It is a source file for SDL SAD sequence diagram.
+For further information, please, follow http://plantuml.com/ 
+'/
+
+title Packages - Class Diagram
+
+cloud Cloud <<Clout service>> {
+frame Policies
+database Statistics
+}
+node MobileDevice <<device>> {
+  entity Application1
+  entity Application2
+  entity ApplicationN
+}
+
+
+node HeadUnit <<device>> {
+ folder SmartDeviceLink {
+    artifact "SDL binary"
+    artifact "Configuration Files"
+    artifact "Policy dynamic library"
+    artifact "Logger dynamic lybrary"
+    artifact "Remote Controll dynamic lybrary"
+ }
+ folder VehicleFunctionInterfaces {
+   interface Button <<Button>>
+   interface BC <<Basic Communication>>
+   interface VR <<Voice Recognition>>
+   interface UI <<User Interface>>
+   interface Navigation <<Navigation>>
+   interface VI <<Vehicle Info>>
+   interface SDL <<SDL>>
+   interface RC <<Remote Controll>>
+ }
+ agent "OS drivers" as OS
+}
+
+MobileDevice -- OS
+OS -- SmartDeviceLink
+Cloud -- MobileDevice 
+
+
+skinparam defaultFontSize 16
+
+@enduml

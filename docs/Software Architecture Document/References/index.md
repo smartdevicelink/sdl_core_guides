@@ -98,7 +98,7 @@
 |||
 |||
 #### Deployment View Diagram
-![Deployment View](../deployment-view/assets/image24.png)
+![Deployment View](../deployment-view/assets/deployment_view.png)
 |||
 
 #### 9.  Appendices
