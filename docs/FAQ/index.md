@@ -29,9 +29,9 @@ Change it to:
 ```
 That will cause the SDP queries to not be performed by default. This means you will need to create a way to perform SDP queries using an event trigger. So in the HMI implementation you will need to tie an event (button press or voice command) to sending the following RPC message to the Core service:
 
-```c++
+```javascript
     return ({
         'jsonrpc': '2.0',
         'method': 'BasicCommunication.OnStartDeviceDiscovery'
-    }
+    })
 ```
