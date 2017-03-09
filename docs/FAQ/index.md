@@ -35,3 +35,5 @@ That will cause the SDP queries to not be performed by default. This means you w
         'method': 'BasicCommunication.OnStartDeviceDiscovery'
     })
 ```
+##What is the integration time of SDL in an infotainment system?
+Timing is dependent on the OEM or Supplier implementing SDL, and also dependent on factors such as OS, hardware, etc.
