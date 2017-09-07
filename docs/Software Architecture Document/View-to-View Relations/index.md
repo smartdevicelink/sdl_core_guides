@@ -21,6 +21,7 @@ The following table is a mapping between the elements in the Component view and 
 | ***Connection Handler***  |                       | X                  |                     |              |
 | ***Security Manager***    |                       | X                  |                     |              |
 | ***HMI Message Handler*** |                       |                    | X                   | X            |
+| ***Plugin Manager***      | X                     |                    |                     |              |
 | ***Transport Manager***   |                       |                    | X                   |              |
 | ***Transport Adapter***   |                       |                    | X                   | X            |
 | ***Utils***               |                       |                    |                     | X            |

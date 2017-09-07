@@ -33,6 +33,7 @@
 | 3.4         | 08/16/2016 | Draft           | [Elisey Zamakhov]      | Update Diagnostics chapter with log4cxx features usage |
 | 3.5         | 09/09/2016 | Draft           | [Elisey Zamakhov]      | Change Coding style |
 | 3.6         | 09/21/2016 | Draft           | [Elisey Zamakhov]      | Update BT BlueZ limitation |
+| 3.7         | 06/09/2017 | Draft           | [Aleksandr Kutsan]     | Add arhitecture changes related to SDL RC |
 
 #### 10.2. Approve History
 | Version     | Data       | Approver             | Approve item   |

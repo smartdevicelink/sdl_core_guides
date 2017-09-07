@@ -62,7 +62,7 @@
 |||
 |||
 #### Component View diagram
-![Component View](../components-view/assets/image15.png)
+![Component View](../components-view/assets/ComponentView.png)
 |||
 |||
 #### Transport layer notification and data transferring diagram 
@@ -98,7 +98,7 @@
 |||
 |||
 #### Deployment View Diagram
-![Deployment View](../deployment-view/assets/image24.png)
+![Deployment View](../deployment-view/assets/deployment_view.png)
 |||
 
 #### 9.  Appendices
