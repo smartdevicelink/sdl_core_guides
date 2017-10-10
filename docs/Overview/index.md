@@ -6,5 +6,4 @@ Table of Contents:
 
 - [Transport Manager Programmers Guide](../transport-manager-programming/)
 - [Video Stream Setup](../video-streaming-setup/)
-- [Automated Test Framework (ATF) SW Architecture](../atf/table-of-contents/)
 - [Frequently Asked Questions](../faq)
