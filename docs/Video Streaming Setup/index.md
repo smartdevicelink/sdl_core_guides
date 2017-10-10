@@ -156,12 +156,12 @@ In the build folder
 
 ```
 cd bin
-./smartDeviceLinkCore
+./start.sh
 ```
 !!! NOTE
 If you want to use a USB connection, you must run
 ```
-sudo ./smartDeviceLinkCore
+sudo ./start.sh
 ```
 !!!
 
