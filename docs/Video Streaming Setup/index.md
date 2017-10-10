@@ -27,6 +27,7 @@ CD into sdl_core/ and checkout the [master branch](https://github.com/smartdevic
 ```
 git checkout -b master origin/master
 ```
+
 ## Clone the SDL HMI Repository
 
 Clone the Web HMI [repository](https://github.com/smartdevicelink/sdl_hmi)
@@ -40,6 +41,7 @@ CD into sdl_hmi/ and checkout the [master branch](https://github.com/smartdevice
 ```
 git checkout origin/master
 ```
+
 ## Setup the Build Environment
 
 Create build folder outside of sdl_core/ directory
@@ -56,12 +58,6 @@ make
 make install
 ```
 
-Copy keys from bin/ to src/appMain
-
-```
-cp bin/myKey.pem src/appMain
-cp bin/myCert.pem src/appMain
-```
 ## Pipe Stream Setup
 
 ### GSTREAMER Setup
@@ -99,11 +95,11 @@ AudioStreamConsumer = pipe
 
 ### Video Stream Pipe
 
-After you start SDL Core, cd into the src/appMain/storage directory and there should be a file named "video_stream_pipe". Use the gst-launch command that worked for your environment and set file source to the video_stream_pipe file. You should see “setting pipeline to PAUSED” and “Pipeline is PREROLLING”.
+After you start SDL Core, cd into the bin/storage directory and there should be a file named "video_stream_pipe". Use the gst-launch command that worked for your environment and set file source to the video_stream_pipe file. You should see “setting pipeline to PAUSED” and “Pipeline is PREROLLING”.
 
 #### Raw H.264
 ```
-gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/src/appmain/storage/video_stream_pipe ! decodebin ! videoconvert ! xvimagesink sync=false
+gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/video_stream_pipe ! decodebin ! videoconvert ! xvimagesink sync=false
 ```
 
 #### H.264 over RTP (Ubuntu 16.04+, GStreamer 1.4+)
@@ -113,8 +109,9 @@ gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/video_stream_pipe ! 
 
 #### Audio Stream Pipe (Raw PCM)
 ```
-gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/src/appmain/storage/audio_stream_pipe ! audio/x-raw,format=S32BE,rate=8000,channels=1 ! pulsesink
+gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/audio_stream_pipe ! audio/x-raw,format=S32BE,rate=8000,channels=1 ! pulsesink
 ```
+
 ## Socket Streaming
 
 ### Configuration (smartDeviceLink.ini)
@@ -174,6 +171,7 @@ CD into the HMI repository and run
 ```
 chromium-browser index.html
 ```
+
 ### Start Video Stream
 
 !!! NOTE
