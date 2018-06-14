@@ -180,4 +180,4 @@ No public mobile application currently exists that implements video streaming.
 
 [iOS Video Streaming Guide](../../iOS/mobile-navigation/video-streaming/)
 
-(No existing Video Streaming Guide for Android)
+[Android Video Streaming Guide](../../Android/mobile-navigation/video-streaming/)
