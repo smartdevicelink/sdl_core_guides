@@ -13,6 +13,9 @@
         },
         {
             "name": "FAQ"
+        },
+        {
+            "name" : "Multiple Transports Configuration"
         }
     ]
 }
