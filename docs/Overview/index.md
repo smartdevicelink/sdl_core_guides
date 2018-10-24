@@ -6,4 +6,5 @@ Table of Contents:
 
 - [Transport Manager Programmers Guide](../transport-manager-programming/)
 - [Video Stream Setup](../video-streaming-setup/)
+- [Multiple Transports Configuration](../multiple-transports-configuration/)
 - [Frequently Asked Questions](../faq)

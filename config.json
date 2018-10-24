@@ -12,10 +12,11 @@
             "name": "Video Streaming Setup"
         },
         {
-            "name": "FAQ"
+            "name" : "Multiple Transports Configuration"
         },
         {
-            "name" : "Multiple Transports Configuration"
+            "name": "FAQ"
         }
+        
     ]
 }
