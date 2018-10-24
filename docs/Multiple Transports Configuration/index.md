@@ -51,32 +51,32 @@ Using the information in the StartService ACK and TransportEventUpdate frames, t
 ## Operation Examples
 
 |||
-Start Service(WiFi as secondary transport)
+Start Service (WiFi as secondary transport)
 ![StartService](./assets/StartService.png)
 |||
 
 |||
-Start Video/Audio service(Over secondary transport)
+Start Video/Audio service (Over secondary transport)
 ![StartServiceVideo](./assets/StartServiceVideo.png)
 |||
   
 |||
-Start Video/Audio service(No transport available)
+Start Video/Audio service (No transport available)
 ![StartServiceVideo NAK](./assets/StartServiceNAK_Video.png)
 |||  
 
 |||
-Backwards Compatibility(New Proxy/Old Core)
+Backwards Compatibility (New Proxy/Old Core)
 ![Compatibility NewProxy OldCore](./assets/Compatibility_NP_OC.png)
 |||  
 
 |||
-Backwards Compatibility(Old Proxy/New Core)
+Backwards Compatibility (Old Proxy/New Core)
 ![Compatibility OldProxy NewCore](./assets/Compatibility_OP_NC.png)
 |||  
 
 |||
-TransportEventUpdate(Secondary Transport unavailable)
+TransportEventUpdate (Secondary Transport unavailable)
 ![TransportEventUpdate](./assets/TransportEventUpdate_Disconnected.png)
 |||
 
@@ -105,7 +105,7 @@ SecondaryTransportForBluetooth = WiFi
 ```
 
 !!! NOTE   
-The values which can be used in the `SecondaryTransportFor` configuration are `Wifi`, `Bluetooth` and `USB`  
+The values which can be used in the `SecondaryTransportFor` configuration are `WiFi`, `Bluetooth` and `USB`  
 !!!
 
 
