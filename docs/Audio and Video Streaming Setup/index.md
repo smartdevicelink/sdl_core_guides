@@ -188,7 +188,7 @@ CD into the HMI repository and run
 chromium-browser index.html
 ```
 
-### Start Video Stream
+### Start Video or Audio Stream
 
 !!! NOTE
 No public mobile application currently exists that implements video streaming.
