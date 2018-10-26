@@ -1,5 +1,3 @@
-# SDL Core Video Stream Setup
-
 ## Initial Configuration
 
 ### Install Packages
