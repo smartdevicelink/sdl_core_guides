@@ -107,9 +107,12 @@ gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/video_stream_pipe ! 
 gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/video_stream_pipe ! "application/x-rtp-stream" ! rtpstreamdepay ! "application/x-rtp,media=(string)video,clock-rate=90000,encoding-name=(string)H264" ! rtph264depay ! "video/x-h264, stream-format=(string)avc, alignment=(string)au" ! avdec_h264 ! videoconvert ! ximagesink sync=false
 ```
 
-#### Audio Stream Pipe (Raw PCM)
+### Audio Stream Pipe
+
+#### RAW PCM
+
 ```
-gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/audio_stream_pipe ! audio/x-raw,format=S32BE,rate=8000,channels=1 ! pulsesink
+gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/audio_stream_pipe ! audio/x-raw,format=S16LE,rate=16000,channels=1 ! pulsesink
 ```
 
 ## Socket Streaming
@@ -139,7 +142,7 @@ Using socket streaming may require a modification to the SDL HMI, comment out th
 //SDL.SDLModel.data.naviVideo.play();
 ```
 
-### Video Stream Pipe
+### Video Stream Socket
 
 #### Raw H.264
 ```
@@ -149,6 +152,14 @@ gst-launch-1.0 souphttpsrc location=http://127.0.0.1:5050 ! decodebin ! videocon
 #### H.264 over RTP (Ubuntu 16.04+, GStreamer 1.4+)
 ```
 gst-launch-1.0 souphttpsrc location=http://127.0.0.1:5050 ! "application/x-rtp-stream" ! rtpstreamdepay ! "application/x-rtp,media=(string)video,clock-rate=90000,encoding-name=(string)H264" ! rtph264depay ! "video/x-h264, stream-format=(string)avc, alignment=(string)au" ! avdec_h264 ! videoconvert ! ximagesink sync=false
+```
+
+### Audio Stream Socket
+
+#### RAW PCM
+
+```
+gst-launch-1.0 souphttpsrc location=127.0.0.1:5080 ! audio/x-raw,format=S16LE,rate=16000,channels=1 ! pulsesink
 ```
 
 # Start SDL Core
