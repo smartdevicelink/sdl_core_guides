@@ -5,6 +5,6 @@ Here you will find guides on how to use different features of the SDL Core appli
 Table of Contents:
 
 - [Transport Manager Programmers Guide](../transport-manager-programming/)
-- [Video Stream Setup](../video-streaming-setup/)
+- [Audio and Video Streaming Setup](../audio-and-video-streaming-setup/)
 - [Multiple Transports Configuration](../multiple-transports-configuration/)
 - [Frequently Asked Questions](../faq)
