@@ -137,13 +137,7 @@ Using socket streaming may require a modification to the SDL HMI, comment out th
 
 #### VIDEO
 ```
-//  SDL.SDLModel.data.naviVideo = document.getElementById('html5Player');
-//  SDL.SDLModel.data.naviVideo.src = SDL.SDLController.getApplicationModel(
-//      appID
-//  ).navigationStream;
-
 //  SDL.SDLModel.playVideo(appID);
-
 ```
 
 #### AUDIO
