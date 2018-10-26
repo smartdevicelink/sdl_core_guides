@@ -14,7 +14,7 @@ sudo apt-get upgrade
 sudo ldconfig
 ```
 
-## Clone the SDL Core Repository
+### Clone the SDL Core Repository
 
 Clone the SDL Core [repository](https://github.com/smartdevicelink/sdl_core)
 
@@ -25,10 +25,10 @@ git clone https://github.com/smartdevicelink/sdl_core.git
 CD into sdl_core/ and checkout the [master branch](https://github.com/smartdevicelink/sdl_core/tree/master)
 
 ```
-git checkout -b master origin/master
+git checkout origin/master
 ```
 
-## Clone the SDL HMI Repository
+### Clone the SDL HMI Repository
 
 Clone the Web HMI [repository](https://github.com/smartdevicelink/sdl_hmi)
 
@@ -42,7 +42,7 @@ CD into sdl_hmi/ and checkout the [master branch](https://github.com/smartdevice
 git checkout origin/master
 ```
 
-## Setup the Build Environment
+### Setup the Build Environment
 
 Create build folder outside of sdl_core/ directory
 
@@ -57,8 +57,6 @@ cmake ../sdl_core
 make
 make install
 ```
-
-## Pipe Stream Setup
 
 ### GSTREAMER Setup
 
