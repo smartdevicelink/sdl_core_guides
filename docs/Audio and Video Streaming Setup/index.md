@@ -111,10 +111,14 @@ gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/video_stream_pipe ! 
 gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/audio_stream_pipe ! audio/x-raw,format=S16LE,rate=16000,channels=1 ! pulsesink
 ```
 
+!!! NOTE
+Currently there is a cutoff issue with Audio Pipe Streaming
+!!!
+
 ## Socket Streaming
 
 ### Configuration (smartDeviceLink.ini)
-In the build folder directory, open bin/smartDeviceLink.ini in a text editor and the make the following changes:
+In the build folder directory, open `bin/smartDeviceLink.ini` in a text editor and the make the following changes:
 ```
 ; Socket ports for video and audio streaming
 VideoStreamingPort = 5050
