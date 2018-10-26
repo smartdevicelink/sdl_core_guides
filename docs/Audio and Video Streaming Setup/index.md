@@ -164,7 +164,7 @@ gst-launch-1.0 souphttpsrc location=http://127.0.0.1:5050 ! "application/x-rtp-s
 #### RAW PCM
 
 ```
-gst-launch-1.0 souphttpsrc location=127.0.0.1:5080 ! audio/x-raw,format=S16LE,rate=16000,channels=1 ! pulsesink
+gst-launch-1.0 souphttpsrc location=http://127.0.0.1:5080 ! audio/x-raw,format=S16LE,rate=16000,channels=1 ! pulsesink
 ```
 
 # Start SDL Core
