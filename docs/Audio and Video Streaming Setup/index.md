@@ -112,7 +112,7 @@ gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/audio_stream_pipe ! 
 ```
 
 !!! NOTE
-Currently there is a cutoff issue with Audio Pipe Streaming
+Currently there is a [known issue](https://github.com/smartdevicelink/sdl_core/issues/2633) with audio pipe streaming where the audio will cut off before all of the data has been played.
 !!!
 
 ## Socket Streaming
