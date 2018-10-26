@@ -142,7 +142,7 @@ Using socket streaming may require a modification to the SDL HMI, comment out th
 //      appID
 //  ).navigationStream;
 
-//  var playPromise = SDL.SDLModel.data.naviVideo.play();
+//  SDL.SDLModel.playVideo(appID);
 
 ```
 
