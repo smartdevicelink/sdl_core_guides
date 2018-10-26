@@ -131,13 +131,24 @@ AudioStreamConsumer = socket
 ```
 
 ### HMI Modifications
-Using socket streaming may require a modification to the SDL HMI, comment out the following lines in `app/model/sdl/Abstract/Model.js` , as such: 
+Using socket streaming may require a modification to the SDL HMI, comment out the following lines in `app/model/sdl/Abstract/Model.js` 
+
+#### VIDEO
 ```
-//SDL.SDLModel.data.naviVideo = document.getElementById('html5Player');
-//SDL.SDLModel.data.naviVideo.src = SDL.SDLController.getApplicationModel(
-//  appID
-//).navigationStream;
-//SDL.SDLModel.data.naviVideo.play();
+//  SDL.SDLModel.data.naviVideo = document.getElementById('html5Player');
+//  SDL.SDLModel.data.naviVideo.src = SDL.SDLController.getApplicationModel(
+//      appID
+//  ).navigationStream;
+
+//  var playPromise = SDL.SDLModel.data.naviVideo.play();
+
+```
+
+#### AUDIO
+```
+//  SDL.StreamAudio.play(
+//      SDL.SDLController.getApplicationModel(appID).navigationAudioStream
+//  );
 ```
 
 ### Video Stream Socket
