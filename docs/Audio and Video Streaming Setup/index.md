@@ -89,6 +89,21 @@ VideoStreamConsumer = pipe
 AudioStreamConsumer = pipe
 ```
 
+### HMI Modifications
+Using pipe streaming may require a modification to the SDL HMI.
+
+#### VIDEO
+
+##### RTP
+Comment out the following lines in `ffw/NavigationRPC.js`:
+```
+//  if (request.params.config.protocol != 'RAW') {
+//    Em.Logger.log('FFW.' + request.method + ' rejects protocol: '
+//                  + request.params.config.protocol);
+//    rejectedParams.push('protocol');
+//  }
+```
+
 ### Video Stream Pipe
 
 After you start SDL Core, cd into the bin/storage directory and there should be a file named "video_stream_pipe". Use the gst-launch command that worked for your environment and set file source to the video_stream_pipe file. You should see “setting pipeline to PAUSED” and “Pipeline is PREROLLING”.
@@ -133,14 +148,26 @@ AudioStreamConsumer = socket
 ```
 
 ### HMI Modifications
-Using socket streaming may require a modification to the SDL HMI, comment out the following lines in `app/model/sdl/Abstract/Model.js` 
+Using socket streaming may require a modification to the SDL HMI.
 
 #### VIDEO
+Comment out the following lines in `app/model/sdl/Abstract/Model.js`:
 ```
 //  SDL.SDLModel.playVideo(appID);
 ```
 
+##### RTP
+Comment out the following lines in `ffw/NavigationRPC.js`:
+```
+//  if (request.params.config.protocol != 'RAW') {
+//    Em.Logger.log('FFW.' + request.method + ' rejects protocol: '
+//                  + request.params.config.protocol);
+//    rejectedParams.push('protocol');
+//  }
+```
+
 #### AUDIO
+Comment out the following lines in `app/model/sdl/Abstract/Model.js`:
 ```
 //  SDL.StreamAudio.play(
 //      SDL.SDLController.getApplicationModel(appID).navigationAudioStream
