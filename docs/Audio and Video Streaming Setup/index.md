@@ -1,5 +1,3 @@
-# SDL Core Video Stream Setup
-
 ## Initial Configuration
 
 ### Install Packages
@@ -14,7 +12,7 @@ sudo apt-get upgrade
 sudo ldconfig
 ```
 
-## Clone the SDL Core Repository
+### Clone the SDL Core Repository
 
 Clone the SDL Core [repository](https://github.com/smartdevicelink/sdl_core)
 
@@ -25,10 +23,10 @@ git clone https://github.com/smartdevicelink/sdl_core.git
 CD into sdl_core/ and checkout the [master branch](https://github.com/smartdevicelink/sdl_core/tree/master)
 
 ```
-git checkout -b master origin/master
+git checkout origin/master
 ```
 
-## Clone the SDL HMI Repository
+### Clone the SDL HMI Repository
 
 Clone the Web HMI [repository](https://github.com/smartdevicelink/sdl_hmi)
 
@@ -42,7 +40,7 @@ CD into sdl_hmi/ and checkout the [master branch](https://github.com/smartdevice
 git checkout origin/master
 ```
 
-## Setup the Build Environment
+### Setup the Build Environment
 
 Create build folder outside of sdl_core/ directory
 
@@ -57,8 +55,6 @@ cmake ../sdl_core
 make
 make install
 ```
-
-## Pipe Stream Setup
 
 ### GSTREAMER Setup
 
@@ -93,6 +89,21 @@ VideoStreamConsumer = pipe
 AudioStreamConsumer = pipe
 ```
 
+### HMI Modifications
+Using pipe streaming may require a modification to the SDL HMI.
+
+#### VIDEO
+
+##### RTP
+Comment out the following lines in `ffw/NavigationRPC.js`:
+```
+//  if (request.params.config.protocol != 'RAW') {
+//    Em.Logger.log('FFW.' + request.method + ' rejects protocol: '
+//                  + request.params.config.protocol);
+//    rejectedParams.push('protocol');
+//  }
+```
+
 ### Video Stream Pipe
 
 After you start SDL Core, cd into the bin/storage directory and there should be a file named "video_stream_pipe". Use the gst-launch command that worked for your environment and set file source to the video_stream_pipe file. You should see “setting pipeline to PAUSED” and “Pipeline is PREROLLING”.
@@ -107,15 +118,22 @@ gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/video_stream_pipe ! 
 gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/video_stream_pipe ! "application/x-rtp-stream" ! rtpstreamdepay ! "application/x-rtp,media=(string)video,clock-rate=90000,encoding-name=(string)H264" ! rtph264depay ! "video/x-h264, stream-format=(string)avc, alignment=(string)au" ! avdec_h264 ! videoconvert ! ximagesink sync=false
 ```
 
-#### Audio Stream Pipe (Raw PCM)
+### Audio Stream Pipe
+
+#### RAW PCM
+
 ```
-gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/audio_stream_pipe ! audio/x-raw,format=S32BE,rate=8000,channels=1 ! pulsesink
+gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/audio_stream_pipe ! audio/x-raw,format=S16LE,rate=16000,channels=1 ! pulsesink
 ```
+
+!!! NOTE
+Currently there is a [known issue](https://github.com/smartdevicelink/sdl_core/issues/2633) with audio pipe streaming where the audio will cut off before all of the data has been played.
+!!!
 
 ## Socket Streaming
 
 ### Configuration (smartDeviceLink.ini)
-In the build folder directory, open bin/smartDeviceLink.ini in a text editor and the make the following changes:
+In the build folder directory, open `bin/smartDeviceLink.ini` in a text editor and the make the following changes:
 ```
 ; Socket ports for video and audio streaming
 VideoStreamingPort = 5050
@@ -130,16 +148,33 @@ AudioStreamConsumer = socket
 ```
 
 ### HMI Modifications
-Using socket streaming may require a modification to the SDL HMI, comment out the following lines in `app/model/sdl/Abstract/Model.js` , as such: 
+Using socket streaming may require a modification to the SDL HMI.
+
+#### VIDEO
+Comment out the following lines in `app/model/sdl/Abstract/Model.js`:
 ```
-//SDL.SDLModel.data.naviVideo = document.getElementById('html5Player');
-//SDL.SDLModel.data.naviVideo.src = SDL.SDLController.getApplicationModel(
-//  appID
-//).navigationStream;
-//SDL.SDLModel.data.naviVideo.play();
+//  SDL.SDLModel.playVideo(appID);
 ```
 
-### Video Stream Pipe
+##### RTP
+Comment out the following lines in `ffw/NavigationRPC.js`:
+```
+//  if (request.params.config.protocol != 'RAW') {
+//    Em.Logger.log('FFW.' + request.method + ' rejects protocol: '
+//                  + request.params.config.protocol);
+//    rejectedParams.push('protocol');
+//  }
+```
+
+#### AUDIO
+Comment out the following lines in `app/model/sdl/Abstract/Model.js`:
+```
+//  SDL.StreamAudio.play(
+//      SDL.SDLController.getApplicationModel(appID).navigationAudioStream
+//  );
+```
+
+### Video Stream Socket
 
 #### Raw H.264
 ```
@@ -149,6 +184,14 @@ gst-launch-1.0 souphttpsrc location=http://127.0.0.1:5050 ! decodebin ! videocon
 #### H.264 over RTP (Ubuntu 16.04+, GStreamer 1.4+)
 ```
 gst-launch-1.0 souphttpsrc location=http://127.0.0.1:5050 ! "application/x-rtp-stream" ! rtpstreamdepay ! "application/x-rtp,media=(string)video,clock-rate=90000,encoding-name=(string)H264" ! rtph264depay ! "video/x-h264, stream-format=(string)avc, alignment=(string)au" ! avdec_h264 ! videoconvert ! ximagesink sync=false
+```
+
+### Audio Stream Socket
+
+#### RAW PCM
+
+```
+gst-launch-1.0 souphttpsrc location=http://127.0.0.1:5080 ! audio/x-raw,format=S16LE,rate=16000,channels=1 ! pulsesink
 ```
 
 # Start SDL Core
@@ -172,7 +215,7 @@ CD into the HMI repository and run
 chromium-browser index.html
 ```
 
-### Start Video Stream
+### Start Video or Audio Stream
 
 !!! NOTE
 No public mobile application currently exists that implements video streaming.
