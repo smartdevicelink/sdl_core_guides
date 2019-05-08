@@ -12,11 +12,13 @@
             "name": "Audio and Video Streaming Setup"
         },
         {
-            "name" : "Multiple Transports Configuration"
+            "name": "App Service Provider Guide"
+        },
+        {
+            "name": "Multiple Transports Configuration"
         },
         {
             "name": "FAQ"
         }
-        
     ]
 }
