@@ -8,11 +8,11 @@
 |ASC|App Service Consumer|
 |RPC|Remote Procedure Call|
 
-### App Service RPCs
+## App Service RPCs
 
 There are currently four RPCs related to app services which must be supported by every ASP:
 
-#### PublishAppService
+### PublishAppService
 
 **Direction:** *ASP -> Core*
 
@@ -23,7 +23,7 @@ PublishAppService
 ![PublishAppService](./assets/PublishAppService.png)
 |||
 
-#### GetAppServiceData
+### GetAppServiceData
 
 **Direction:** *ASC -> Core -> ASP*
 
@@ -38,7 +38,7 @@ GetAppServiceData
 ![GetAppServiceData](./assets/GetAppServiceData.png)
 |||
 
-#### OnAppServiceData
+### OnAppServiceData
 
 **Direction:** *ASP -> Core -> ASC*
 
@@ -53,7 +53,7 @@ OnAppServiceData
 ![OnAppServiceData](./assets/OnAppServiceData.png)
 |||
 
-#### PerformAppServiceInteraction
+### PerformAppServiceInteraction
 
 **Direction:** *ASC -> Core -> ASP*
 
@@ -68,11 +68,12 @@ PerformAppServiceInteraction
 ![PerformAppServiceInteraction](./assets/PerformAppServiceInteraction.png)
 |||
 
-#### RPC Passing
+## RPC Passing
 
 There are a number of existing RPCs which are allowed to be handled by the ASP based on service type:
 
-###### MEDIA
+#### MEDIA
+
 * `ButtonPress` with the following values for `buttonName`
     * `OK`
     * `PLAY_PAUSE`
@@ -83,14 +84,16 @@ There are a number of existing RPCs which are allowed to be handled by the ASP b
     * `SHUFFLE`
     * `REPEAT`
 
-###### WEATHER
+#### WEATHER
+
 N/A
 
-###### NAVIGATION
+#### NAVIGATION
+
 * `SendLocation`
 * `GetWayPoints`
 
-##### Flow
+### Flow
 
 When RPC passing is performed with a request which relates to several components (such as ButtonPress), not all uses of this RPC will be intended for this service. As such, it is expected that the ASP will indicate when they are unable to process a specific instance of an RPC by responding with an `UNSUPPORTED_REQUEST` response code. This informs Core that it should pass this specific request to another component or app service that handles this RPC.
 
@@ -107,7 +110,7 @@ This "Waterfall" flow used by Core during RPC passing is defined as follows:
 4. Core handles the RPC normally, generates a response
 5. Core sends the RPC response to App1
 
-##### Validation
+### Validation
 
 When Core passes an RPC to a ASP according to it's `handledRPCs` list, it performs no additional processing on the message. This means that there is no guarantee that this message is valid according to the RPC Spec. This approach is taken specifically for forward-compatibility reasons, in case the ASP supports a newer version of the RPC Spec than Core (which could include breaking changes). As a consequence, the ASP will need to perform validation on this message itself.
 
@@ -117,7 +120,7 @@ Validation steps for existing passthrough RPCs:
 2. Verify that mandatory parameters are present 
 3. For ButtonPress, verify that the `buttonName` is correctly tied to the `moduleType`
 
-##### Policies
+### Policies
 
 With regards to permission handling during RPC passing:
 
