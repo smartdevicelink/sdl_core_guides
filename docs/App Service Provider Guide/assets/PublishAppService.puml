@@ -1,0 +1,10 @@
+@startuml PublishAppService
+
+participant ASP
+participant Core
+
+ASP -> Core: PublishAppService\n("MEDIA", "Media Service")
+Core ->> ASP: OnSystemCapabilityUpdated\n(APP_SERVICES, PUBLISHED)
+Core --> ASP: PublishAppService\n(serviceId: "service1")
+
+@enduml

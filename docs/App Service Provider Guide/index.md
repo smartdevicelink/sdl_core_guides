@@ -1,5 +1,13 @@
 # App Service Provider Guide
 
+## Terms and Abbreviations
+
+|Abbreviation|Meaning|
+|:-----------|:------|
+|ASP|App Service Provider|
+|ASC|App Service Consumer|
+|RPC|Remote Procedure Call|
+
 ### App Service RPCs
 
 There are currently four RPCs related to app services which must be supported by every ASP:
@@ -8,31 +16,57 @@ There are currently four RPCs related to app services which must be supported by
 
 **Direction:** *ASP -> Core*
 
-This function is sent by the ASP to initially create the service. This is where the service's manifest is defined, which includes the type of data provided by the service as well as what RPCs can be handled by the service.
+This request is sent by the ASP to initially create the service. This is where the service's manifest is defined, which includes the type of data provided by the service as well as what RPCs can be handled by the service.
+
+|||
+PublishAppService
+![PublishAppService](./assets/PublishAppService.png)
+|||
 
 #### GetAppServiceData
 
 **Direction:** *ASC -> Core -> ASP*
 
-This function is sent to the ASP when an ASC sends this message. The ASP is expected to respond to this message with its most recent service data. 
-
+!!! NOTE
 The ASP can receive this message _only_ when its service is active.
+!!!
+
+This request is sent to the ASP when an ASC sends this message. The ASP is expected to respond to this message with its most recent service data. 
+
+|||
+GetAppServiceData
+![GetAppServiceData](./assets/GetAppServiceData.png)
+|||
 
 #### OnAppServiceData
 
 **Direction:** *ASP -> Core -> ASC*
 
-This notification is expected to be sent by the ASP whenever there are any significant changes to its service data _or_ if its service becomes active. Core will forward this message to any ASCs that have subscribed to data for this service type. 
-
+!!! NOTE
 The ASP is expected to send this message _only_ when its service is active.
+!!!
+
+This notification is expected to be sent by the ASP whenever there are any significant changes to its service data _or_ if its service becomes active. Core will forward this message to any ASCs that have subscribed to data for this service type.
+
+|||
+OnAppServiceData
+![OnAppServiceData](./assets/OnAppServiceData.png)
+|||
 
 #### PerformAppServiceInteraction
 
 **Direction:** *ASC -> Core -> ASP*
 
-This function is sent to the ASP when an ASC sends this message with the ASP's specific service ID. This indicates that the ASC wishes to perform a service-specific function on the ASP. The API for such interactions must be defined by the ASP separately. The ASP is expected to process this message and respond with `SUCCESS` or return an error response if the interaction was not successful. 
-
+!!! NOTE
 This ASP can receive this message regardless of whether its service is active, since it is directed at a specific service.
+!!!
+
+This request is sent to the ASP when an ASC sends this message with the ASP's specific service ID. This indicates that the ASC wishes to perform a service-specific function on the ASP. The API for such interactions must be defined by the ASP separately. The ASP is expected to process this message and respond with `SUCCESS` or return an error response if the interaction was not successful.
+
+|||
+PerformAppServiceInteraction
+![PerformAppServiceInteraction](./assets/PerformAppServiceInteraction.png)
+|||
 
 #### RPC Passing
 
@@ -75,7 +109,7 @@ This "Waterfall" flow used by Core during RPC passing is defined as follows:
 
 ##### Validation
 
-When Core passes an RPC to a ASP according to it's `handledRPCs` list, it performs no additional processing on the message. This means that there is no guarantee that this message is valid according to the RPC Spec. This is specifically for forward-compatibility reasons, in case the ASP supports a newer version of the RPC Spec than Core (which could include breaking changes). As a consequence of this, the ASP will need to perform validation on this message itself.
+When Core passes an RPC to a ASP according to it's `handledRPCs` list, it performs no additional processing on the message. This means that there is no guarantee that this message is valid according to the RPC Spec. This approach is taken specifically for forward-compatibility reasons, in case the ASP supports a newer version of the RPC Spec than Core (which could include breaking changes). As a consequence, the ASP will need to perform validation on this message itself.
 
 Validation steps for existing passthrough RPCs:
 
@@ -85,6 +119,7 @@ Validation steps for existing passthrough RPCs:
 
 ##### Policies
 
-With regards to permission handling during RPC passing, all RPCs which are known to Core (determined by its RPC spec version) are checked normally against the policy table. As such, so long as the RPC is supported by the module, the ASP can assume that the app specifically has permissions to use the this RPC in it's current HMI level.
+With regards to permission handling during RPC passing:
 
-For RPCs unknown to Core, an ASC needs to be granted specific permissions by the OEM (controlled by the `allow_unknown_rpc_passthrough` policy field) to send such a message, even if it is handled by the ASP.
+* For RPCs which are known to Core (determined by its RPC spec version), they are checked normally against the policy table. As such, the ASP can assume in this case that the app specifically has permissions to use the this RPC in it's current HMI level.
+* For RPCs unknown to Core, an ASC needs to be granted specific permissions by the OEM (controlled by the `allow_unknown_rpc_passthrough` policy field) to send this message, even if it is handled by the ASP.

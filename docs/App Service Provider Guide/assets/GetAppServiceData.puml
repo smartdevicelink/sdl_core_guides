@@ -1,0 +1,14 @@
+@startuml GetAppServiceData
+
+participant ASC
+participant Core
+participant ASP
+
+note right of ASP: ASP's service is the\nactive MEDIA service
+
+ASC -> Core: GetAppServiceData("MEDIA")
+Core -> ASP: GetAppServiceData("MEDIA")
+ASP --> Core: GetAppServiceData
+Core --> ASC: GetAppServiceData
+
+@enduml
