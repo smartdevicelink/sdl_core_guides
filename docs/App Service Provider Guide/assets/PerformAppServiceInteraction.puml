@@ -1,0 +1,15 @@
+@startuml PerformAppServiceInteraction
+
+participant ASC
+participant Core
+participant ASP
+
+note right of ASP: ASP has published a service\nwith ID "providerID"
+
+ASC -> Core : PerformAppServiceInteraction\n(serviceID: "providerID", \nserviceUri: "method:sample")
+Core -> ASP : PerformAppServiceInteraction\n("providerID", "method:sample")
+
+ASP --> Core : PerformAppServiceInteraction\n(serviceSpecificResult:"result", \nSUCCESS)
+Core --> ASC : PerformAppServiceInteraction\n("result", SUCCESS)
+
+@enduml
