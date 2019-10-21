@@ -116,10 +116,6 @@ gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/video_stream_pipe ! 
 gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/audio_stream_pipe ! audio/x-raw,format=S16LE,rate=16000,channels=1 ! pulsesink
 ```
 
-!!! NOTE
-Currently there is a [known issue](https://github.com/smartdevicelink/sdl_core/issues/2633) with audio pipe streaming where the audio will cut off before all of the data has been played.
-!!!
-
 ## Socket Streaming
 
 ### Configuration (smartDeviceLink.ini)
