@@ -193,6 +193,10 @@ chromium-browser index.html
 
 ### Start Video or Audio Stream
 
+!!! NOTE
+No open source mobile application currently implements video streaming.
+!!!
+
 [iOS Video Streaming Guide](../../iOS/mobile-navigation/video-streaming/)
 
 [Android Video Streaming Guide](../../Android/mobile-navigation/video-streaming/)
