@@ -94,16 +94,6 @@ Using pipe streaming may require a modification to the SDL HMI.
 
 #### VIDEO
 
-##### RTP
-Comment out the following lines in `ffw/NavigationRPC.js`:
-```
-//  if (request.params.config.protocol != 'RAW') {
-//    Em.Logger.log('FFW.' + request.method + ' rejects protocol: '
-//                  + request.params.config.protocol);
-//    rejectedParams.push('protocol');
-//  }
-```
-
 ### Video Stream Pipe
 
 After you start SDL Core, cd into the bin/storage directory and there should be a file named "video_stream_pipe". Use the gst-launch command that worked for your environment and set file source to the video_stream_pipe file. You should see “setting pipeline to PAUSED” and “Pipeline is PREROLLING”.
@@ -125,10 +115,6 @@ gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/video_stream_pipe ! 
 ```
 gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/audio_stream_pipe ! audio/x-raw,format=S16LE,rate=16000,channels=1 ! pulsesink
 ```
-
-!!! NOTE
-Currently there is a [known issue](https://github.com/smartdevicelink/sdl_core/issues/2633) with audio pipe streaming where the audio will cut off before all of the data has been played.
-!!!
 
 ## Socket Streaming
 
@@ -154,16 +140,6 @@ Using socket streaming may require a modification to the SDL HMI.
 Comment out the following lines in `app/model/sdl/Abstract/Model.js`:
 ```
 //  SDL.SDLModel.playVideo(appID);
-```
-
-##### RTP
-Comment out the following lines in `ffw/NavigationRPC.js`:
-```
-//  if (request.params.config.protocol != 'RAW') {
-//    Em.Logger.log('FFW.' + request.method + ' rejects protocol: '
-//                  + request.params.config.protocol);
-//    rejectedParams.push('protocol');
-//  }
 ```
 
 #### AUDIO
@@ -218,7 +194,7 @@ chromium-browser index.html
 ### Start Video or Audio Stream
 
 !!! NOTE
-No public mobile application currently exists that implements video streaming.
+No open source mobile application currently implements video streaming.
 !!!
 
 [iOS Video Streaming Guide](../../iOS/mobile-navigation/video-streaming/)
