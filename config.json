@@ -15,6 +15,9 @@
             "name" : "Multiple Transports Configuration"
         },
         {
+            "name" : "Encryption Configuration"
+        },
+        {
             "name": "FAQ"
         }
         
