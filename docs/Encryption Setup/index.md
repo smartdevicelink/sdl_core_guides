@@ -7,7 +7,7 @@ openssl genrsa -out client.key 2048
 
 Create CSR:
 ```
-openssl req -new -key client.key -days 10000 -out client.req -subj '/C=US/ST=MI/L=Detroit/O=SDL/OU=HeadUnit/CN=client/emailAddress=sample@sdl.com'
+openssl req -new -key client.key -out client.req -subj '/C=US/ST=MI/L=Detroit/O=SDL/OU=HeadUnit/CN=client/emailAddress=sample@sdl.com'
 ```
 
 Create Public Certificate:
