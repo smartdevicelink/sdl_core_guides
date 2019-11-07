@@ -6,6 +6,9 @@
             "name": "Overview"
         },
         {
+            "name": "Getting Started"
+        },
+        {
             "name": "Transport Manager Programming"
         },
         {
@@ -18,7 +21,7 @@
             "name": "Multiple Transports Configuration"
         },
         {
-            "name" : "Encryption Setup"
+            "name": "Encryption Setup"
         },
         {
             "name": "FAQ"
