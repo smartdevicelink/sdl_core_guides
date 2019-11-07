@@ -1,6 +1,6 @@
 
 # Getting Started
-A quick guide to installing, configuring, and running an instance of the SDL Core on a linux OS.
+A quick guide to installing, configuring, and running an instance of the SDL Core on a linux OS (default environment is Ubuntu 18.04 LTS).
 
 First, clone [SDL Core](https://github.com/smartdevicelink/sdl_core), then create a folder for your build outside of the source folder.
 
@@ -8,6 +8,7 @@ First, clone [SDL Core](https://github.com/smartdevicelink/sdl_core), then creat
 The dependencies for SDL Core vary based on the configuration. You can change SDL Core's build configuration in the top level CMakeLists.txt. We have defaulted this file to a configuration which we believe is common for people who are interested in getting up and running quickly, generally on a Linux VM.
 
 The default dependencies for SDL Core can be installed with the following command:
+
 ```
 sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl1.0-dev libssl-1.0.0 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev
 ```
@@ -45,9 +46,21 @@ You'll use the CMake configuration to set up SDL before you compile, and enable 
 
 After installing the appropriate dependencies for your build configuration, you can run cmake with your chosen configuration. 
 
-From the build folder you created, run `cmake {path_to_sdl_core_source_folder}`  with any flags that you want to change in the format of `-D<option-name>=<value>`
+First, create a build folder separate from your source folder, for example:
+
+```
+mkdir ../sdl_build
+cd ../sdl_build
+```
+
+From the build folder you created, run `cmake {path_to_sdl_core_source_folder}`  with any flags that you want to change in the format of `-D<option-name>=<value>`, for example:
+
+```
+cmake -DENABLE_HMI_PTU_DECRYPTION=OFF ../sdl_core
+```
 
 From there, you can build the project, run the following commands in your build folder:
+
 ```
 make
 make install
@@ -61,7 +74,7 @@ cd bin/
 ./start.sh
 ```
 
-If, for some reason you get a linking error when running Core, you might need to run the following command:
+If you get a linking error when running Core, the following command may be needed to resolve it:
 
 ```
 sudo ldconfig
