@@ -6,7 +6,15 @@
             "name": "Overview"
         },
         {
-            "name": "Getting Started"
+            "name": "Getting Started",
+            "navigation": [
+                {
+                    "name": "Install and Run"
+                },
+                {
+                    "name": "INI Configuration"
+                }
+            ]
         },
         {
             "name": "Transport Manager Programming"

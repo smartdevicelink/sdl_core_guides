@@ -1,5 +1,4 @@
-
-# Getting Started
+# Installation
 A quick guide to installing, configuring, and running an instance of the SDL Core on a linux OS (default environment is Ubuntu 18.04 LTS).
 
 First, clone [SDL Core](https://github.com/smartdevicelink/sdl_core), then create a folder for your build outside of the source folder.
@@ -59,7 +58,7 @@ From the build folder you created, run `cmake {path_to_sdl_core_source_folder}` 
 cmake -DENABLE_HMI_PTU_DECRYPTION=OFF ../sdl_core
 ```
 
-From there, you can build the project, run the following commands in your build folder:
+From there, you can build and install the project, run the following commands in your build folder:
 
 ```
 make
