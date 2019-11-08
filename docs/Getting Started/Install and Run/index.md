@@ -61,8 +61,8 @@ cmake -DENABLE_HMI_PTU_DECRYPTION=OFF ../sdl_core
 From there, you can build and install the project, run the following commands in your build folder:
 
 ```
-make
-make install
+make install-3rd_party
+make -j3 install
 ```
 
 ## Start SDL Core
