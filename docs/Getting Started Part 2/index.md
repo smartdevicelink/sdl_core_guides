@@ -1,4 +1,4 @@
-# Getting Started
+# Getting Started Part 2
 
 ## Connecting HMI to SDL
 
@@ -145,7 +145,7 @@ The HMI must:
   * Respond to each of the `IsReady` RPCs
   * Register for the notifications it would like to receive
 
-  The above steps should only once per each life cycle of SDL Core
+The above steps should only occur once per life cycle of SDL Core
 
 !!!
 
