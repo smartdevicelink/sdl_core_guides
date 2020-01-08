@@ -9,7 +9,7 @@ The dependencies for SDL Core vary based on the configuration. You can change SD
 The default dependencies for SDL Core can be installed with the following command:
 
 ```
-sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl1.0-dev libssl-1.0.0 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev
+sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl1.0-dev libssl1.0.0 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev
 ```
 
 ### CMake Build Configuration
