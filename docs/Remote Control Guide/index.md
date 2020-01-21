@@ -159,8 +159,8 @@ The driver is always considered to be within the service area.
 SDL will assume actions performed by the driver are consented to by the driver.
 !!!
 
-| User Location | Allow Multiple Access | Requesting App HMI Level | Requested Module State | Access Mode | SDL Action |
-| ----- | --- | ---- | --- | --- | --- | --- |
+|User Location|Allow Multiple Access|Requesting App HMI Level|Requested Module State|Access Mode|SDL Action|
+|:-----|:---|:---|:---|:---|:---|
 |out of service area|any|any|any|any|disallow|
 |in service area|true|any|any|any|allow|
 |in service area|false|any|free|any|allow|
