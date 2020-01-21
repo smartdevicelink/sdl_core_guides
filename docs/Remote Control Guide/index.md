@@ -28,6 +28,7 @@ Hello, this guide will explain how to use Remote Control within SDL. The guide w
 The remote control capabilities struct contains a capabilities struct for each different remote control type.
 
 Each capabilities struct is used to inform an app of what is available to be controlled.
+
 * [ClimateControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#climatecontrolcapabilities)
 * [RadioControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#radiocontrolcapabilities)
 * [SeatControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#seatcontrolcapabilities)
@@ -40,6 +41,7 @@ Each capabilities struct is used to inform an app of what is available to be con
 The module data struct contains information used to identify a module type, and the control data associated with that module.
 
 Each control data struct is used to observe or change the attributes of a specific module type.
+
 * [RadioControlData](https://smartdevicelink.com/en/guides/hmi/common/structs/#radiocontroldata)
 * [ClimateControlData](https://smartdevicelink.com/en/guides/hmi/common/structs/#climatecontroldata)
 * [SeatControlData](https://smartdevicelink.com/en/guides/hmi/common/structs/#seatcontroldata)
