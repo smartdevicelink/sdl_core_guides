@@ -58,36 +58,43 @@ The grid struct is used to generically describe the space within a vehicle.
 ### IsReady
 
 After the `BC.IsReady` notification is received, SDL will send out an `IsReady` request for each interface. The response to this RPC just includes the boolean parameter `available` indicating if the HMI supports that interface and would like to continue to interact with it.
+
 [View `IsReady` in the HMI Documentation](../../hmi/rc/isready)
 
 ### GetCapabilities
 
 Once SDL has received a positive `IsReady` response it will send a `GetCapabilities` request to the HMI. The HMI should respond with a `RemoteControlCapabilities` parameter for SDL to store and use later when a mobile application sends a `GetSystemCapability` request. This will overwrite the capabilities SDL loaded from the `hmi_capabilities.json` configuration file.
+
 [View `GetCapabilities` in the HMI Documentation](../../hmi/rc/getcapabilities)
 
 ### GetSystemCapability
 
 This RPC is the starting point for an app using remote control features, it will tell you what is available to be controlled within the vehicle. GetSystemCapability is not specific to Remote Control, but a generic function used to retreive the capabilities of multiple different modules within SDL such as navigation, video streaming or app services. However, when GetSystemCapability is called with the capability type of `REMOTE_CONTROL`, it will return the `RemoteControlCapabilities` object which in turn contains objects describing the capabilities of each remote control module present in the vehicle. These capabilities objects will contain properties like `heatedMirrorsAvailable` to indicate if a vehicle is equipped with heated mirrors, or `supportedLights` to inform SDL of which lights are available to be controlled.
+
 [View `GetSystemCapability` in the HMI Documentation](../../hmi/rc/getsystemcapability)
 
 ### GetInteriorVehicleData
 
 GetInteriorVehicleData is used to request information about a specific module. This RPC, provided a module is specified by `moduleType` and `moduleId`, will return the status of the module and if relevant, its' submodules. This RPC can also be used to subscribe to updates of a module's status via the `subscribe` parameter. If this non-mandatory parameter is set to true, the head unit will register `OnInteriorVehicleData` notifications for the requested module. Conversely, if this parameter is set to false, the head unit will unregister `OnInteriorVehicleData` notifications for the requested module.
+
 [View `GetInteriorVehicleData` in the HMI Documentation](../../hmi/rc/getinteriorvehicledata)
 
 ### OnInteriorVehicleData
 
 OnInteriorVehicleData is a notification sent out by SDL when an update is made to a remote control module. You can subscribe to these notifications via GetInteriorVehicleData. This RPC will come with a `ModuleData` structure identifying the changed module and containing the control data object with the new state.
+
 [View `OnInteriorVehicleData` in the HMI Documentation](../../hmi/rc/oninteriorvehicledata)
 
 ### SetInteriorVehicleData
 
 SetInteriorVehicleData is used to set the values of a remote control module by passing in a `ModuleData` structure. The `moduleType` and `moduleId` fields are used to identify the targeted module, and the changes in the respective control data object are applied to that module.
+
 [View `SetInteriorVehicleData` in the HMI Documentation](../../hmi/rc/setinteriorvehicledata)
 
 ### OnRemoteControlSettings
 
 OnRemoteControlSettings is used to notify SDL when passengers of a vehicle change whether remote control is allowed or not via the HMI or if they change the access mode that will be used for resource allocation. It contains a self-explainatory boolean parameter `allowed` and can also contain an access mode, one of auto allow, auto deny, or ask driver.
+
 [View `OnRemoteControlSettings` in the HMI Documentation](../../hmi/rc/onremotecontrolsettings)
 
 ### OnRCStatus
@@ -98,16 +105,19 @@ OnRCStatus is a notification sent out by SDL when an update is made to a remote 
 ### GetInteriorVehicleDataConsent
 
 GetInteriorVehicleDataConsent is a request used to reserve a remote control module. If a module does not allow multiple access, only the application that requested consent first (excluding takeover situations described in the Consent section) will be able to interact with that module. This request requires a `moduleType` and `moduleId` to identify the target module.
+
 [View `GetInteriorVehicleDataConsent` in the HMI Documentation](../../hmi/rc/getinteriorvehicledataconsent)
 
 ### ReleaseInteriorVehicleDataModule
 
 ReleaseInteriorVehicleDataModule is a request used to free a remote control module once an application is finished interacting with it. This request requires a `moduleType` and `moduleId` to identify the target module.
+
 [View `ReleaseInteriorVehicleDataModule` in the HMI Documentation](../../hmi/rc/releaseinteriorvehicledatamodule)
 
 ### SetGlobalProperties
 
 SetGlobalProperties is a request sent by a mobile app to inform SDL of a user's location within the vehicle. The request includes an `appId` and a `userLocation` parameter which contains a grid. The location of a user is important for SDL to know so it can determine whether or not a user is within a module's service area.
+
 [View `SetGlobalProperties` in the HMI Documentation](../../hmi/rc/setglobalproperties)
 
 ## Remote Control Modules
@@ -150,7 +160,7 @@ SDL will assume actions performed by the driver are consented to by the driver.
 !!!
 
 |User Location|Allow Multiple Access|Requesting App HMI Level|Requested Module State|Access Mode|SDL Action|
-|:---|:---|:---|:---|:--------|:---------|:----------|
+| --- | --- | --- | --- | --- | --- | --- |
 |out of service area|any|any|any|any|disallow|
 |in service area|true|any|any|any|allow|
 |in service area|false|any|free|any|allow|
