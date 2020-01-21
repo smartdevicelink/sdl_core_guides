@@ -2,7 +2,7 @@
 
 ## Connecting HMI to SDL
 
-WebSocket is the primary means of communicating with the SDL component from the vehicle. In a basic example, an HTML5 HMI would use a native WebSocket library to communicate with SDL Core.
+WebSocket is the primary means of communicating with the SDL Core component from the vehicle. In a basic example, an HTML5 HMI would use a native WebSocket library to communicate with SDL Core.
 
 The HMI Adapter must:
 
@@ -19,12 +19,12 @@ For opening a WebSocket connection, a handshake must be performed.
 
 !!! info
   1. Client/Server relationship
-    * SDL is the Server
+    * SDL Core is the Server
     * The HMI is the Client
   2. Host
-    * SDL is listening on **127.0.0.1:8087** by default
-    * The IP and port is configurable in Core's smartDeviceLink.ini file
-  3. WebSocket Protocol Version 13 is used by SDL
+    * SDL Core is listening on **127.0.0.1:8087** by default
+    * The IP and port is configurable in SDL Core's smartDeviceLink.ini file
+  3. WebSocket Protocol Version 13 is used by SDL Core
 
 !!!
 
@@ -32,13 +32,13 @@ For opening a WebSocket connection, a handshake must be performed.
 
 ### Request
 
-The HMI must register each component which can communicate with SDL using the following RPC format
+The HMI must register each component which can communicate with SDL Core using the following RPC format
 
 | Key     | Value Info    |
 | :------------- | :------------- |
 | "id"       | a multiple of 100 (100, 200, 300, ..., 700) |
-| "jsonrpc" | "2.0" - constant for all messages between SDL and the HMI|
-| "method" | "MB.registerComponent" - the request is assigned to SDL's MessageBroker where the component name will be associated with the socket ID. Further, SDL will send messages related to the named component over the corresponding connection|
+| "jsonrpc" | "2.0" - constant for all messages between SDL Core and the HMI|
+| "method" | "MB.registerComponent" - the request is assigned to SDL Core's MessageBroker where the component name will be associated with the socket ID. Further, SDL Core will send messages related to the named component over the corresponding connection|
 |"componentName"| The name of the component being registered. Must correspond to the appropriate component name described in the current guidelines.|
 
 Example Request:
@@ -84,16 +84,16 @@ Example Response:
 
 ## Component Readiness Requests 
 
-Once the components are registered, the HMI must notify sdl that it is ready to begin further communication using the [BasicCommunication.OnReady](../basiccommunication/onready) notification.
+Once the components are registered, the HMI must notify SDL Core that it is ready to begin further communication using the [BasicCommunication.OnReady](../basiccommunication/onready) notification.
 
-Upon receipt of the OnReady notification, SDL will begin checking the availability of the different HMI components via a chain of requests:
+Upon receipt of the OnReady notification, SDL Core will begin checking the availability of the different HMI components via a chain of requests:
 
   * `UI.IsReady` - The display availability
   * `VR.IsReady` - The voice recognition module availability
   * `TTS.IsReady` - The Text-To-Speech module availability
   * `Navigation.IsReady` - Navigation engine availability
   * `VehicleInfo.IsReady` - Indicates whether vehicle information can be collected and provided
-  * `RC.IsReady` - Indicates whether vehicle RC modules are present and ready to communicate with SDL
+  * `RC.IsReady` - Indicates whether vehicle RC modules are present and ready to communicate with SDL Core
 
 !!! note
 
@@ -108,7 +108,7 @@ IsReady Sequence
 
 !!! info
 
-If the response to any of the component `IsReady` requests contains `{"available": false}`, SDL will no longer communicate with that component.
+If the response to any of the component `IsReady` requests contains `{"available": false}`, SDL Core will no longer communicate with that component.
 
 !!!
 
@@ -151,7 +151,7 @@ The above steps should only occur once per life cycle of SDL Core
 
 ## Communicating with SDL Core
 
-This section describes the message structure for communication between your HMI and SDL. The JSON RPC 2.0 format is taken as a basis.
+This section describes the message structure for communication between your HMI and SDL Core. The JSON RPC 2.0 format is taken as a basis.
 
 From this point forward the actors for exchanging messages will be considered:
   - **Client** - can send requests and notifications
@@ -162,8 +162,8 @@ An RPC call is represented by sending a Request object to a Server. The Request 
 
 | Property | Description    |
 | :------------- | :------------- |
-| "id"       | An identifier established by the Client. This value must be of unsigned int type in the frames of communication between your HMI and SDL. The value should never be Null. If "id" is not included the message is assumed to be a notification and the receiver should not respond.|
-| "jsonrpc" | A string specifying the version of JSON RPC protocol being used. Must be exactly **"2.0"** currently in all versions of SDL.|
+| "id"       | An identifier established by the Client. This value must be of unsigned int type in the frames of communication between your HMI and SDL Core. The value should never be Null. If "id" is not included the message is assumed to be a notification and the receiver should not respond.|
+| "jsonrpc" | A string specifying the version of JSON RPC protocol being used. Must be exactly **"2.0"** currently in all versions of SDL Core.|
 | "method" | A String containing the information of the method to be invoked. The format is `[componentName].[methodName]`.|
 | "params" | A structured value that holds the parameter values to be used during the invocation of the method. This property may be omitted.|
 
