@@ -36,7 +36,7 @@ The HMI must register each component which can communicate with SDL Core using t
 
 | Key     | Value Info    |
 | :------------- | :------------- |
-| "id"       | a multiple of 100 (100, 200, 300, ..., 700) |
+| "id"       | a multiple of 100 (100, 200, 300, ...) |
 | "jsonrpc" | "2.0" - constant for all messages between SDL Core and the HMI|
 | "method" | "MB.registerComponent" - the request is assigned to SDL Core's MessageBroker where the component name will be associated with the socket ID. Further, SDL Core will send messages related to the named component over the corresponding connection|
 |"componentName"| The name of the component being registered. Must correspond to the appropriate component name described in the current guidelines.|
@@ -54,15 +54,15 @@ Example Request:
 ```
 
 The possible componentNames are:  
-  * `BasicCommunication` - Generic interface responsible for a collection of information and user actions. Includes UpdateAppList and OnAppregistered.
-  * `UI` - Interface responsible for RPCs and information made visible to the user. Includes `Show` and `Alert`. 
+  * `BasicCommunication` - Generic interface responsible for a collection of information and user actions. Includes `UpdateAppList` and `OnAppRegistered`.
+  * `UI` - Interface responsible for RPC events and information made visible to the user. Includes `Show` and `Alert`. 
   * `Buttons` - Interface responsible for RPC events and information related to hard and soft buttons in the vehicle. Includes `OnButtonPress` and `OnButtonEvent`.
   * `VR` - Interface responsible for RPC events and information related to voice recognition. Contains RPC voice recognition counterparts to the UI component RPCs.
   * `TTS` - Interface responsible for RPC events and information related to text to speech capabilities. Includes RPC `Speak`.
   * `Navigation`- Interface responsible for RPC events and information related to navigation. Includes `StartStream` and `GetWayPoints`.
-  * `VehicleInfo`- Interface responsible for RPC events and information related to vehicle data. Includes `GetVehicleData` and `OnVehicleData`.
-  * `RC` - Interface responsible for RPC events and information related to the [Remote Control Feature](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0065-remote-control.md)
-  * `AppService` - Interface responsible for RPC events and information related to the [App Services Feature](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0065-remote-control.md)
+  * `VehicleInfo`- Interface responsible for RPC events and information related to vehicle data. Includes `GetVehicleData` and `SubscribeVehicleData`.
+  * `RC` - Interface responsible for RPC events and information related to the [Remote Control Feature](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0065-remote-control.md).
+  * `AppService` - Interface responsible for RPC events and information related to the [App Services Feature](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0065-remote-control.md).
 
 ### Response
 
@@ -97,7 +97,7 @@ Upon receipt of the OnReady notification, SDL Core will begin checking the avail
 
 !!! note
 
-In the case of a WebSocket connection, the RPCs to each of the components is sent within each separate WebSocket connection.
+In the case of a WebSocket connection, RPCs to each of the components are sent within a separate WebSocket connection.
 
 !!!
 
@@ -165,10 +165,10 @@ An RPC call is represented by sending a Request object to a Server. The Request 
 | "id"       | An identifier established by the Client. This value must be of unsigned int type in the frames of communication between your HMI and SDL Core. The value should never be null. If "id" is not included the message is assumed to be a notification and the receiver should not respond.|
 | "jsonrpc" | A string specifying the version of JSON RPC protocol being used. Must be exactly **"2.0"** currently in all versions of SDL Core.|
 | "method" | A String containing the information of the method to be invoked. The format is `[componentName].[methodName]`.|
-| "params" | A structured value that holds the parameter values to be used during the invocation of the method. This property may be omitted.|
+| "params" | A structured object that holds the parameter values to be used during the invocation of the method. This property may be omitted.|
 
 ### Example Requests
-#### Request with No Parameters
+#### Request with no Parameters
 ```json
 {
   "id": 125,
@@ -213,14 +213,14 @@ A notification is a request object without an `id` property. For all the other p
 The receiver should not reply to a notification, i.e. no response object needs to be returned to the client upon receipt of a notification.
 
 ### Example Notifications
-#### Notification With No Parameters
+#### Notification with no Parameters
 ```json
 {
   "jsonrpc": "2.0",
   "method": "UI.OnReady"
 }
 ```
-#### Notifications With Parameters
+#### Notifications with Parameters
 ```json
 {
   "jsonrpc": "2.0",
@@ -247,10 +247,10 @@ On receipt of a request message, the server must reply with a response. The resp
 | :------------- | :------------- |
 | "id"      | Required property which must be the same as the value of the associated request object. If there was an error in detecting the id in the request object, this value must be null  |
 |"jsonrpc"| Must be exactly **"2.0"**|
-|"result"| Required on Success. Must not exist if there was an error invoking the method. The result property must contain a `method` field which is the same as the corresponding request, a `code` field with **0** to indicate success or **21** to indicate success with warnings.  No other [result codes](../common/enums/#result) should be sent in the result property. The result property may also include additional properties as defined in the HMI_API.|
+|"result"| Required on success. Must not exist if there was an error invoking the method. The result property must contain a `method` field which is the same as the corresponding request, a `code` field with **0** to indicate success or **21** to indicate success with warnings.  No other [result codes](../common/enums/#result) should be sent in the result property. The result property may also include additional properties as defined in the HMI API.|
 
 ### Example Responses
-#### Response with No Parameters
+#### Response with no Parameters
 ```json
 {
   "id": 167,
@@ -321,5 +321,3 @@ The error object has the following members:
   }
 }
 ```
-
-
