@@ -162,7 +162,7 @@ An RPC call is represented by sending a Request object to a Server. The Request 
 
 | Property | Description    |
 | :------------- | :------------- |
-| "id"       | An identifier established by the Client. This value must be of unsigned int type in the frames of communication between your HMI and SDL Core. The value should never be Null. If "id" is not included the message is assumed to be a notification and the receiver should not respond.|
+| "id"       | An identifier established by the Client. This value must be of unsigned int type in the frames of communication between your HMI and SDL Core. The value should never be null. If "id" is not included the message is assumed to be a notification and the receiver should not respond.|
 | "jsonrpc" | A string specifying the version of JSON RPC protocol being used. Must be exactly **"2.0"** currently in all versions of SDL Core.|
 | "method" | A String containing the information of the method to be invoked. The format is `[componentName].[methodName]`.|
 | "params" | A structured value that holds the parameter values to be used during the invocation of the method. This property may be omitted.|
@@ -245,7 +245,7 @@ On receipt of a request message, the server must reply with a response. The resp
 
 | Property | Description    |
 | :------------- | :------------- |
-| "id"      | Required property which must be the same as the value of the associated request object. If there was an error in detecting the id in the request object, this value must be **null**    |
+| "id"      | Required property which must be the same as the value of the associated request object. If there was an error in detecting the id in the request object, this value must be null  |
 |"jsonrpc"| Must be exactly **"2.0"**|
 |"result"| Required on Success. Must not exist if there was an error invoking the method. The result property must contain a `method` field which is the same as the corresponding request, a `code` field with **0** to indicate success or **21** to indicate success with warnings.  No other [result codes](../common/enums/#result) should be sent in the result property. The result property may also include additional properties as defined in the HMI_API.|
 
@@ -302,7 +302,7 @@ The error object has the following members:
 
 | Property | Description     |
 | :------------- | :------------- |
-| "id"       | Required to be the same as the value of "id" in the corresponding Request object. If there was an error in detecting the id of the request object, then this property must be Null   |
+| "id"       | Required to be the same as the value of "id" in the corresponding Request object. If there was an error in detecting the id of the request object, then this property must be null   |
 | "jsonrpc"| Must be exactly "2.0"|
 | "error" | Required on error. Must not exist if there was no error triggered during invocation. The error field must contain a `code` field with the [result code](../common/enums/#result) value that indicates the error type that occurred, a `message` field containing the string that provides a short description of the error, and a `data` field that must contain the `method` from the original request.|
 
