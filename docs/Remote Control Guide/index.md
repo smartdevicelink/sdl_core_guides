@@ -29,12 +29,12 @@ The remote control capabilities struct contains a capabilities struct for each d
 
 Each capabilities struct is used to inform an app of what is available to be controlled.
 
-* [ClimateControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#climatecontrolcapabilities)
 * [RadioControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#radiocontrolcapabilities)
+* [ClimateControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#climatecontrolcapabilities)
 * [SeatControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#seatcontrolcapabilities)
 * [AudioControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#audiocontrolcapabilities)
-* [HMISettingsControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#hmisettingscontrolcapabilities)
 * [LightControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#lightcontrolcapabilities)
+* [HMISettingsControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#hmisettingscontrolcapabilities)
 * [ButtonCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#buttoncapabilities)
 
 [**ModuleData**](https://smartdevicelink.com/en/guides/hmi/common/structs/#moduledata)
