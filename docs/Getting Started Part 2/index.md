@@ -36,7 +36,7 @@ The HMI must register each component which can communicate with SDL Core using t
 
 | Key     | Value Info    |
 | :------------- | :------------- |
-| "id"       | a multiple of 100 (100, 200, 300, ..., 700) |
+| "id"       | a multiple of 100 (100, 200, 300, ...) |
 | "jsonrpc" | "2.0" - constant for all messages between SDL Core and the HMI|
 | "method" | "MB.registerComponent" - the request is assigned to SDL Core's MessageBroker where the component name will be associated with the socket ID. Further, SDL Core will send messages related to the named component over the corresponding connection|
 |"componentName"| The name of the component being registered. Must correspond to the appropriate component name described in the current guidelines.|
@@ -321,5 +321,4 @@ The error object has the following members:
   }
 }
 ```
-
 
