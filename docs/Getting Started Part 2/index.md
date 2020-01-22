@@ -23,7 +23,7 @@ For opening a WebSocket connection, a handshake must be performed.
     * The HMI is the Client
   2. Host
     * SDL Core is listening on **127.0.0.1:8087** by default
-    * The IP and port is configurable in SDL Core's smartDeviceLink.ini file
+    * The IP and port are configurable in SDL Core's smartDeviceLink.ini file
   3. WebSocket Protocol Version 13 is used by SDL Core
 
 !!!
@@ -32,7 +32,7 @@ For opening a WebSocket connection, a handshake must be performed.
 
 ### Request
 
-The HMI must register each component which can communicate with SDL Core using the following RPC format
+The HMI must register each component which can communicate with SDL Core using the following RPC format.
 
 | Key     | Value Info    |
 | :------------- | :------------- |
@@ -66,7 +66,7 @@ The possible componentNames are:
 
 ### Response
 
-SDL Provides a JSON Response
+SDL provides a JSON Response
 
 | Key | Value Info   |
 | :------------- | :------------- |
@@ -114,7 +114,7 @@ If the response to any of the component `IsReady` requests contains `{"available
 
  
 ## Registering for Notifications
-The HMI must also register for notifications individually using the following RPC format
+The HMI must also register for notifications individually using the following RPC format.
 
 ```json
 {
@@ -247,7 +247,7 @@ On receipt of a request message, the server must reply with a response. The resp
 | :------------- | :------------- |
 | "id"      | Required property which must be the same as the value of the associated request object. If there was an error in detecting the id in the request object, this value must be null  |
 |"jsonrpc"| Must be exactly **"2.0"**|
-|"result"| Required on success. Must not exist if there was an error invoking the method. The result property must contain a `method` field which is the same as the corresponding request, a `code` field with **0** to indicate success or **21** to indicate success with warnings.  No other [result codes](../common/enums/#result) should be sent in the result property. The result property may also include additional properties as defined in the HMI API.|
+|"result"| Required on success. Must not exist if there was an error invoking the method. The result property must contain a `method` field which is the same as the corresponding request and a `code` field with **0** to indicate success or **21** to indicate success with warnings. No other [result codes](../common/enums/#result) should be sent in the result property. The result property may also include additional properties as defined in the HMI API.|
 
 ### Example Responses
 #### Response with no Parameters
