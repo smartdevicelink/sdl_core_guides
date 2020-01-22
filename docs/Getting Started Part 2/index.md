@@ -7,8 +7,8 @@ WebSocket is the primary means of communicating with the SDL Core component from
 The HMI Adapter must:
 
 !!! must
-  * be installed on the same vehicle HU OS where SDL is installed, or the HMI must be able to be networked to SDL and address it via a static IP address.
-  * create and initialize components which are defined in the HMI_API specification for the version of SDL which is running on the vehicle HU. (BasicCommunication, UI, Buttons, VR, TTS, Navigation, VehicleInfo, RC, AppService)
+  * Be installed on the same vehicle HU OS where SDL is installed, or the HMI must be able to be networked to SDL and address it via a static IP address.
+  * Create and initialize components which are defined in the HMI_API specification for the version of SDL which is running on the vehicle HU. (For example: BasicCommunication, UI, Buttons, VR, TTS, Navigation, VehicleInfo, RC, AppService)
   * Establish a separate WebSocket connection with SDL for each of components defined in the HMI_API specification.
   * Use the appropriate corresponding connection when sending responses and notifications to any connected component.
 
@@ -54,6 +54,7 @@ Example Request:
 ```
 
 The possible componentNames are:  
+
   * `BasicCommunication` - Generic interface responsible for a collection of information and user actions. Includes `UpdateAppList` and `OnAppRegistered`.
   * `UI` - Interface responsible for RPC events and information made visible to the user. Includes `Show` and `Alert`. 
   * `Buttons` - Interface responsible for RPC events and information related to hard and soft buttons in the vehicle. Includes `OnButtonPress` and `OnButtonEvent`.
@@ -62,7 +63,7 @@ The possible componentNames are:
   * `Navigation`- Interface responsible for RPC events and information related to navigation. Includes `StartStream` and `GetWayPoints`.
   * `VehicleInfo`- Interface responsible for RPC events and information related to vehicle data. Includes `GetVehicleData` and `SubscribeVehicleData`.
   * `RC` - Interface responsible for RPC events and information related to the [Remote Control Feature](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0065-remote-control.md).
-  * `AppService` - Interface responsible for RPC events and information related to the [App Services Feature](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0065-remote-control.md).
+  * `AppService` - Interface responsible for RPC events and information related to the [App Services Feature](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0167-app-services.md).
 
 ### Response
 
@@ -247,7 +248,7 @@ On receipt of a request message, the server must reply with a response. The resp
 | :------------- | :------------- |
 | "id"      | Required property which must be the same as the value of the associated request object. If there was an error in detecting the id in the request object, this value must be null  |
 |"jsonrpc"| Must be exactly **"2.0"**|
-|"result"| Required on success. Must not exist if there was an error invoking the method. The result property must contain a `method` field which is the same as the corresponding request and a `code` field with **0** to indicate success or **21** to indicate success with warnings. No other [result codes](../common/enums/#result) should be sent in the result property. The result property may also include additional properties as defined in the HMI API.|
+|"result"| Required on success or warning. Must not exist if there was an error invoking the method. The result property must contain a `method` field which is the same as the corresponding request and a corresponding [result code](../common/enums/#result) should be sent in the result property. The result property may also include additional properties as defined in the HMI API.|
 
 ### Example Responses
 #### Response with no Parameters
