@@ -11,12 +11,23 @@ Figure 1: Transport Overview
 
 The Transport Manager is responsible for routing commands and messages between the transport adapters and other major components in core. A Transport Manager can contain any number of Transport Adapters, each of which is responsible for handling communication via one type of transport, such as TCP or Bluetooth. The Transport Manager also contains data necessary to handle its responsibilities, such as a mapping of each device to the Transport Adapter it uses to communicate. Other components within Core are also able to register a Transport Manager Listener with the manager, which will receive events from the Transport Manager. The default Transport Manager follows the singleton pattern, but this is not necessary if you would like to use a custom solution.
 
-#### Transport Manager Structure
+#### Transport Manager Inheritance Structure
 
 |||
 Figure 2: Transport Manager UML Diagram
 ![TM](./assets/tm.png)
 |||
+
+!!! NOTE
+Implementation (*Impl) classes just represent concretions and may not actually be named the same in the SDL core project.
+
+UML Refresher
+
+* Aggregation: Solid line with open diamond
+* Composition: Solid line with filled diamond
+* Inheritance: Dotted line with open arrow
+* Dependency: Dotted line with two prong arrow
+!!!
 
 ## Transport Adapter
 
@@ -58,12 +69,23 @@ void TcpTransportAdapter::Store() const {
 }
 ```
 
-#### Transport Adapter Structure
+#### Transport Adapter Inheritance Structure
 
 |||
 Figure 3: Transport Adapter UML Diagram
 ![TA](./assets/ta.png)
 |||
+
+!!! NOTE
+Implementation (*Impl) classes only represent concretions and may not actually be named the same in the SDL core project.
+
+UML Refresher
+
+* Aggregation: Solid line with open diamond
+* Composition: Solid line with filled diamond
+* Inheritance: Dotted line with open arrow
+* Dependency: Dotted line with two prong arrow
+!!!
 
 ### Transport Adapter Workers
 
