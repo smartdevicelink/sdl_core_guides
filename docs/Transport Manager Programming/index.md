@@ -19,7 +19,7 @@ Figure 2: Transport Manager UML Diagram
 |||
 
 !!! NOTE
-Implementation (*Impl) classes just represent concretions and may not actually be named the same in the SDL core project.
+Implementation (*Impl) classes just represent concretions and may not be named the same in the SDL core project.
 
 UML Refresher
 
@@ -77,7 +77,7 @@ Figure 3: Transport Adapter UML Diagram
 |||
 
 !!! NOTE
-Implementation (*Impl) classes only represent concretions and may not actually be named the same in the SDL core project.
+Implementation (*Impl) classes only represent concretions and may not be named the same in the SDL core project.
 
 UML Refresher
 
