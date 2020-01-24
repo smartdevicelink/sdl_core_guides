@@ -31,7 +31,7 @@ UML Refresher
 
 ## Transport Adapter
 
-Each Transport Adapter is responsible for one specific type of connection, such as TCP or Bluetooth. Similar to Transport Managers, other components in Core are able to register a Transport Adapter Listener with a Transport Adapter to later receive events from the Adapter such as `OnConnectDone`. The Transport Adapter will contain the code to connect and disconnect devices, as well as send and receive data. Depending on the transport type, a transport adapter may implement sub-components, called workers, such as a Device Scanner, a Client Connection Listener, or a Server Connection Factory. Currently, Transport Adapters are registered with the Transport Manager within the [TransportManagerDefault::Init](https://github.com/smartdevicelink/sdl_core/blob/develop/src/components/transport_manager/src/transport_manager_default.cc#L62) method; you can add code here to include your custom Transport Adapter. Depending on your implementation, most of the functionality of the Transport Adapter will likely live in the workers. Two big functions that will for sure need to be implemented in a Transport Adapter are Store() and Restore() which are used to save and resume the state of the Adapter when there is an unexpected disconnect or SDL Core is restarted. In the case of the TCP Transport Adapter, the Store() function will save a list of devices' names and addresses, along with the applications each device was running and their corresponding port number. When resuming, Restore() will reconnect to the devices saved in the last state and resumes communication with the the applications on each device.
+Each Transport Adapter is responsible for one specific type of connection, such as TCP or Bluetooth. Similar to Transport Managers, other components in Core are able to register a Transport Adapter Listener with a Transport Adapter to later receive events from the Adapter such as `OnConnectDone`. The Transport Adapter will contain the code to connect and disconnect devices, as well as send and receive data. Depending on the transport type, a transport adapter may implement sub-components, called workers, such as a Device Scanner, a Client Connection Listener, or a Server Connection Factory. Currently, Transport Adapters are registered with the Transport Manager within the [TransportManagerDefault::Init](https://github.com/smartdevicelink/sdl_core/blob/develop/src/components/transport_manager/src/transport_manager_default.cc#L62) method; you can add code here to include your custom Transport Adapter. Depending on your implementation, most of the functionality of the Transport Adapter will likely live in the workers. Two big functions that will for sure need to be implemented in a Transport Adapter are Store() and Restore() which are used to save and resume the state of the Adapter when there is an unexpected disconnect or SDL Core is restarted. In the case of the [TCP Transport Adapter](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/transport_manager/src/tcp/tcp_transport_adapter.cc), the Store() function will save a list of devices' names and addresses, along with the applications each device was running and their corresponding port number. When resuming, Restore() will reconnect to the devices saved in the last state and resumes communication with the the applications on each device.
 
 ```
 // tcp_transport_adapter.cc
@@ -89,17 +89,17 @@ UML Refresher
 
 ### Transport Adapter Workers
 
-The Client Connection Listener implements receiving a connection that is originated by a device. This will typically wait for connection from a device, then establish that connection, finally alerting the Transport Manager via the Transport Manager Listener of the newly connected device and app IDs. The TCP transport adapter has a good example implementation of a Client Connection Listener.
+The Client Connection Listener implements receiving a connection that is originated by a device. This will typically wait for connection from a device, then establish that connection, finally alerting the Transport Manager via the Transport Manager Listener of the newly connected device and app IDs. The TCP transport adapter has a good [example implementation](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/transport_manager/src/tcp/tcp_client_listener.cc) of a Client Connection Listener.
 
-The Server Connection Factory implements a connection that is originated from Core. For example, Core reaches out to a predefined web address to start a cloud websocket application. This type of communication requires that the Transport Adapter knows of the device and application in advance. When this connection is created, the Transport Adapter will alert the Transport Manager of the new devices and applications in a similar fashion to other workers. USB and Bluetooth are additional examples that implement this sub-component.
+The Server Connection Factory implements a connection that is originated from Core. For example, Core reaches out to a predefined web address to start a cloud websocket application. This type of communication requires that the Transport Adapter knows of the device and application in advance. When this connection is created, the Transport Adapter will alert the Transport Manager of the new devices and applications in a similar fashion to other workers. [USB](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/transport_manager/src/usb/usb_connection_factory.cc) and [Bluetooth](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/transport_manager/src/bluetooth/bluetooth_connection_factory.cc) are additional examples that implement this sub-component.
 
-The Device Scanner is responsible for scanning for new devices to connect with. When a device is found, this worker is responsible for alerting the Transport Adapter, as well as alerting the Transport Manager via the Transport Adapter Listener. Next, the Transport Manager will instruct the Transport Adapter to connect with the devices. The Bluetooth Transport Adapter has a great example implementation of the Device Scanner that search for bluetooth services advertising the SDL bluetooth UUID.
+The Device Scanner is responsible for scanning for new devices to connect with. When a device is found, this worker is responsible for alerting the Transport Adapter, as well as alerting the Transport Manager via the Transport Adapter Listener. Next, the Transport Manager will instruct the Transport Adapter to connect with the devices. The Bluetooth Transport Adapter has a great [example implementation](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/transport_manager/src/bluetooth/bluetooth_device_scanner.cc) of the Device Scanner that search for bluetooth services advertising the SDL bluetooth UUID.
 
 Depending on what your type of transport is, whether Core will be the server or the client, you will likely implement either the Client Connection Listener or the Server Connection Factory.
 
 #### Client Connection Listener
 
-Using the TCP Transport Adapter as an example for a client connection listener implementation, let's take a look at `Init()`.
+Using the [TCP Transport Adapter](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/transport_manager/src/tcp/tcp_client_listener.cc) as an example for a client connection listener implementation, let's take a look at `Init()`.
 
 ```
 // tcp_client_listener.cc
@@ -219,7 +219,7 @@ TransportAdapter::Error BluetoothConnectionFactory::CreateConnection(
 
 #### Device Scanner
 
-The TCP Transport Adapter does not use a device scanner because it waits for incoming connections. We will use the Bluetooth Transport Adapter’s Device Scanner as an example here.
+The TCP Transport Adapter does not use a device scanner because it waits for incoming connections. We will use the [Bluetooth Transport Adapter’s Device Scanner](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/transport_manager/src/bluetooth/bluetooth_device_scanner.cc) as an example here.
 
 The Init() function is called once and is responsible for preparing for the life-cycle of your device scanner. Here, the bluetooth device scanner will start the device scanner worker thread. This worker thread will either scan for devices repeatedly or only when requested via a conditional variable. This behavior is determined by the second and third parameters to the constructor, a boolean `auto_repeat_search` and an integer `auto_repeat_pause_sec`. If `auto_repeat_search` is set to false, the device scanner will only scan when instructed to, otherwise it will scan every `auto_repeat_pause_sec` seconds.
 
@@ -292,6 +292,11 @@ void BluetoothDeviceScanner::UpdateTotalDeviceList() {
 The Scan() function returns an error code, not the actual results of the scan. When the scanning is complete, all devices (existing and newly found) will be passed to the Transport Adapter via the function SearchDeviceDone(). In the Bluetooth device scanner, the Scan() function will signal to the scanning thread that a device scan was requested.
 
 ## Operation Examples
+
+|||
+New Device Connection
+![New Connection](./assets/newDeviceConnection.png)
+|||
 
 |||
 Connection Close Command
