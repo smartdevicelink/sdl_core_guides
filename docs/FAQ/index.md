@@ -10,7 +10,7 @@ The most common errors come from dependancies issues. Ensure your system has all
 
 ```
 sudo apt-get update
-sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl1.0-dev libssl1.0.0 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev
+sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl1.0-dev libssl1.0.0 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools
 ```
 
 ## I'm experiencing choppy audio through bluetooth, what should I do?

@@ -9,8 +9,18 @@ The dependencies for SDL Core vary based on the configuration. You can change SD
 The default dependencies for SDL Core can be installed with the following command:
 
 ```
-sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl1.0-dev libssl1.0.0 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev
+sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl1.0-dev libssl1.0.0 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools
 ```
+
+### Initialize Submodules
+
+Before building for the first time, there are a few commands that need to be run in the source folder to initialize the project:
+
+```
+cd sdl_core
+git submodule init
+git submodule update
+``` 
 
 ### CMake Build Configuration
 You'll use the CMake configuration to set up SDL before you compile, and enable or disable features like logging. The latest list of CMake configurations can be found in the root CMake file of the project, located at [sdl_core/CMakeLists.txt](https://github.com/smartdevicelink/sdl_core/blob/master/CMakeLists.txt). Listed below are the possible configurations, default values are bolded.
