@@ -9,7 +9,7 @@ Figure 1: Transport Overview
 
 ## Transport Manager
 
-The Transport Manager is responsible for routing commands and messages between the transport adapters and other major components in core. A Transport Manager can contain any number of Transport Adapters, each of which is responsible for handling communication via one type of transport, such as TCP or Bluetooth. The Transport Manager also contains data necessary to handle its responsibilities, such as a mapping of each device to the Transport Adapter it uses to communicate. Other components within Core are also able to register a Transport Manager Listener with the manager, which will receive events from the Transport Manager. The default Transport Manager follows the singleton pattern, but this is not necessary if you would like to use a custom solution.
+The Transport Manager is responsible for routing commands and messages between the transport adapters and other major components in SDL Core. A Transport Manager can contain any number of Transport Adapters, each of which is responsible for handling communication via one type of transport, such as TCP or Bluetooth. The Transport Manager also contains data necessary to handle its responsibilities, such as a mapping of each device to the Transport Adapter it uses to communicate. Other components within SDL Core are also able to register a Transport Manager Listener with the manager, which will receive events from the Transport Manager. The default Transport Manager follows the singleton pattern, but this is not necessary if you would like to use a custom solution.
 
 #### Transport Manager Inheritance Structure
 
@@ -19,7 +19,7 @@ Figure 2: Transport Manager UML Diagram
 |||
 
 !!! NOTE
-Implementation (*Impl) classes just represent concretions and may not be named the same in the SDL core project.
+Classes named like *Impl only _represent_ implementations of the abstract sub classes and may not be named the same in the SDL Core project.
 
 UML Refresher
 
@@ -77,7 +77,7 @@ Figure 3: Transport Adapter UML Diagram
 |||
 
 !!! NOTE
-Implementation (*Impl) classes only represent concretions and may not be named the same in the SDL core project.
+Classes named like *Impl only _represent_ implementations of the abstract sub classes and may not be named the same in the SDL Core project.
 
 UML Refresher
 
@@ -383,7 +383,7 @@ Indicates that the Transport Config has been updated. This will prompt the Proto
 
 **OnConnectPending**
 
-Indicates that a connection is pending. The Transport Manager will then add the connection to the connection list if it has not already been added. In the case of the cloud websocket transport adapter, this event is emitted once a connection with a new device is created.
+Indicates that a connection is pending. The Transport Manager will then add the connection to the connection list if it has not already been added. In the case of the cloud websocket transport adapter, this event is emitted once a connection configuration is known to SDL Core, but before the connection is actually established.
 
 **OnConnectionStatusUpdated**
 
