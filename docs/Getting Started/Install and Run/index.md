@@ -72,7 +72,13 @@ From there, you can build and install the project, run the following commands in
 
 ```
 make install-3rd_party
-make -j3 install
+make install
+```
+
+For a faster build, you can run the last command with the `-j` flag, which will enable multithreaded building:
+
+```
+make -j `nproc` install
 ```
 
 ## Start SDL Core
