@@ -17,6 +17,14 @@
             ]
         },
         {
+            "name": "Integrating Your HMI",
+            "navigation": [
+                {
+                    "name": "Vehicle Data"
+                }
+            ]
+        }
+        {
             "name": "Transport Manager Programming"
         },
         {
