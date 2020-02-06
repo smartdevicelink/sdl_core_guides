@@ -107,7 +107,7 @@ View **OnRCStatus** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spe
 
 ### GetInteriorVehicleDataConsent
 
-GetInteriorVehicleDataConsent is a request used to reserve remote control modules. If a module does not allow multiple access, only the application that requested consent first (excluding takeover situations described in the Consent section) will be able to interact with that module. This request requires a `moduleType` and an array of `moduleId`s to identify the target modules. Core will reply with an array of booleans indicating the consent for each requested `moduleId` where true signals allowed and vice versa.
+GetInteriorVehicleDataConsent is a request used to reserve remote control modules. If a module does not allow multiple access, only the application that requested consent first (excluding takeover situations described in the [Consent section](#consent)) will be able to interact with that module. This request requires a `moduleType` and an array of `moduleId`s to identify the target modules. Core will reply with an array of booleans indicating the consent for each requested `moduleId` where true signals allowed and vice versa.
 
 View **GetInteriorVehicleDataConsent** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#getinteriorvehicledataconsent) or the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/rc/getinteriorvehicledataconsent)
 
