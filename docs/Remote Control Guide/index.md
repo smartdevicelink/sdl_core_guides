@@ -77,7 +77,7 @@ View **GetSystemCapability** in the [RPC Spec](https://github.com/smartdevicelin
 
 ### GetInteriorVehicleData
 
-GetInteriorVehicleData is used to request information about a specific module. This RPC, provided a module is specified by `moduleType` and `moduleId`, will return the status of the module and if relevant, its' submodules. This RPC can also be used to subscribe to updates of a module's status via the `subscribe` parameter. If this non-mandatory parameter is set to true, the head unit will register `OnInteriorVehicleData` notifications for the requested module. Conversely, if this parameter is set to false, the head unit will unregister `OnInteriorVehicleData` notifications for the requested module.
+GetInteriorVehicleData is used to request information about a specific module. This RPC, provided a module is specified by `moduleType` and `moduleId`, will return the status of the module and, if relevant, its submodules. This RPC can also be used to subscribe to updates of a module's status via the `subscribe` parameter. If this non-mandatory parameter is set to true, the head unit will register `OnInteriorVehicleData` notifications for the requested module. Conversely, if this parameter is set to false, the head unit will unregister `OnInteriorVehicleData` notifications for the requested module.
 
 View **GetInteriorVehicleData** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#getinteriorvehicledata) or the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/rc/getinteriorvehicledata)
 
@@ -95,13 +95,13 @@ View **SetInteriorVehicleData** in the [RPC Spec](https://github.com/smartdevice
 
 ### OnRemoteControlSettings
 
-OnRemoteControlSettings is used to notify SDL when passengers of a vehicle change the remote control settings via the HMI. This includes allowing or disallowing remote control or changing the access mode that will be used for resource allocation.
+OnRemoteControlSettings is used to notify SDL when passengers of a vehicle change the remote control settings via the HMI. This includes allowing or disallowing Remote Control or changing the access mode that will be used for resource allocation.
 
 View **OnRemoteControlSettings** in the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/rc/onremotecontrolsettings)
 
 ### OnRCStatus
 
-OnRCStatus is a notification sent out by SDL when an update is made to a remote control module's availability. When SDL either allocates a module to an app, or deallocates it from an app, SDL will send OnRCStatus to both the application and the HMI. This notification contains two lists, one describing the modules that are allocated to the application and the other describing the free modules that can be accessed by the application. This notification also contains an `allowed` parameter, which indicates to apps whether or not remote control is currently allowed. If `allowed` is false, both module lists will be empty.
+OnRCStatus is a notification sent out by SDL when an update is made to a remote control module's availability. When SDL either allocates a module to an app, or deallocates it from an app, SDL will send OnRCStatus to both the application and the HMI. This notification contains two lists, one describing the modules that are allocated to the application and the other describing the free modules that can be accessed by the application. This notification also contains an `allowed` parameter, which indicates to apps whether or not Remote Control is currently allowed. If `allowed` is false, both module lists will be empty.
 
 View **OnRCStatus** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#onrcstatus) or the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/rc/onrcstatus)
 
@@ -155,7 +155,7 @@ Button is an interesting remote control component because it is not a remote con
 
 ## Consent
 
-The behavior of module allocation in SDL core is shown in the following table:
+The behavior of module allocation in SDL Core is shown in the following table:
 
 !!! NOTE
 The driver is always considered to be within the service area.
