@@ -209,7 +209,7 @@ An RPC call is represented by sending a Request object to a Server. The Request 
 ```
 
 ## Notification
-A notification is a request object without an `id` property. For all the other properties, see the Request Section above.
+A notification is a Request object without an `id` property. For all the other properties, see the Request section above.
 
 The receiver should not reply to a notification, i.e. no response object needs to be returned to the client upon receipt of a notification.
 
@@ -242,7 +242,7 @@ The receiver should not reply to a notification, i.e. no response object needs t
 ```
 
 ## Response
-On receipt of a request message, the server must reply with a response. The response is expressed as a single JSON Object with the following properties.
+On receipt of a request message, the server must reply with a Response. The Response is expressed as a single JSON Object with the following properties.
 
 | Property | Description    |
 | :------------- | :------------- |
