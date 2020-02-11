@@ -28,6 +28,21 @@ For opening a WebSocket connection, a handshake must be performed.
 
 !!!
 
+### Example: Connecting to SDL Core with Javascript
+
+```js
+connectToSDL() {
+  this.socket = new WebSocket("ws://localhost:8087")
+  this.socket.onopen = this.onopen.bind(this)
+  this.socket.onclose = this.onclose.bind(this)
+  this.socket.onmessage = this.onmessage.bind(this)
+}
+```
+
+!!! note
+SDL Core accepts multiple websocket clients and the HMI can choose connect each interface to SDL Core via individual websocket connections.
+!!!
+
 ## Component Registration
 
 ### Request
