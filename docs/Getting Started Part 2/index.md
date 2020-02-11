@@ -248,7 +248,7 @@ On receipt of a request message, the server must reply with a Response. The Resp
 | :------------- | :------------- |
 | "id"      | Required property which must be the same as the value of the associated request object. If there was an error in detecting the id in the request object, this value must be null  |
 |"jsonrpc"| Must be exactly **"2.0"**|
-|"result"| Required on success or warning. Must not exist if there was an error invoking the method. The result property must contain a `method` field which is the same as the corresponding request and a corresponding [result code](../common/enums/#result) should be sent in the result property. The result property may also include additional properties as defined in the HMI API.|
+|"result"| Required on success or warning. Must not exist if there was an error invoking the method. The result property must contain a `method` field which is the same as the corresponding request and a corresponding [result code](../common/enums/#result) should be sent in the result property. The result property may also include additional properties as defined in the [HMI API](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/HMI_API.xml).|
 
 ### Example Responses
 #### Response with no Parameters
