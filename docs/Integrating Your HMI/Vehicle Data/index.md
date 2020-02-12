@@ -1,11 +1,112 @@
 # Vehicle Data
 
-Vehicle data can be exposed to app developers by creating a `VehicleInfo` component within your HMI. The primary RPCs used by this component are:
+## RPCs
 
-* VehicleInfo.GetVehicleData - A request from Core to retrieve specific vehicle data items from the system.
-* VehicleInfo.SubscribeVehicleData - A request from Core to receive periodic updates for specific vehicle data items from the system.
-* VehicleInfo.UnsubscribeVehicleData - A request from Core to stop receiving periodic updates for specific vehicle data items from the system.
-* VehicleInfo.OnVehicleData - A notification from the HMI indicating that one or more of the subscribed vehicle data items were updated.
+Vehicle data can be exposed to app developers by creating a `VehicleInfo` component within your HMI. To communicate with this component, you will first need to register it with the message broker and respond to the `VehicleInfo.IsReady` message from SDL (see [HMI Getting Started](https://smartdevicelink.com/en/guides/hmi/getting-started/) for more information).
+
+The primary RPCs used by this component are:
+
+### VehicleInfo.GetVehicleData
+
+A request from Core to retrieve specific vehicle data items from the system.
+
+Example Request:
+```json
+{
+    "id": 123,
+    "jsonrpc": "2.0",
+    "method": "VehicleInfo.GetVehicleData",
+    "params" : {
+        "speed" : true
+    }
+}
+```
+
+Example Response:
+```json
+{
+    "id": 123,
+    "jsonrpc": "2.0",
+    "result" : {
+        "speed" : 100
+    }
+}
+```
+
+### VehicleInfo.SubscribeVehicleData
+
+A request from Core to receive periodic updates for specific vehicle data items from the system.
+
+Example Request:
+```json
+{
+    "id": 123,
+    "jsonrpc": "2.0",
+    "method": "VehicleInfo.SubscribeVehicleData",
+    "params" : {
+        "speed" : true
+    }
+}
+```
+
+Example Response:
+```json
+{
+    "id": 123,
+    "jsonrpc": "2.0",
+    "result" : {
+        "speed" : {
+            "dataType" : "VEHICLEDATA_SPEED",
+            "resultCode" : "SUCCESS"
+        }
+    }
+}
+```
+
+### VehicleInfo.UnsubscribeVehicleData
+
+A request from Core to stop receiving periodic updates for specific vehicle data items from the system.
+
+Example Request:
+```json
+{
+    "id": 123,
+    "jsonrpc": "2.0",
+    "method": "VehicleInfo.UnsubscribeVehicleData",
+    "params" : {
+        "speed" : true
+    }
+}
+```
+
+Example Response:
+```json
+{
+    "id": 123,
+    "jsonrpc": "2.0",
+    "result" : {
+        "speed" : {
+            "dataType" : "VEHICLEDATA_SPEED",
+            "resultCode" : "SUCCESS"
+        }
+    }
+}
+```
+
+### VehicleInfo.OnVehicleData
+
+A notification from the HMI indicating that one or more of the subscribed vehicle data items were updated.
+
+Example Notification:
+```json
+{
+    "jsonrpc": "2.0",
+    "method": "VehicleInfo.OnVehicleData",
+    "result" : {
+        "speed" : 100
+    }
+}
+```
 
 More information regarding this component is available in the VehicleInfo section of the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/overview/)
 
@@ -42,9 +143,13 @@ Below is a list of all of the vehicle data items which are available via SDL as 
 
 ## Custom Vehicle Data Items
 
-Starting with [SDL Core version 6.0.0](https://github.com/smartdevicelink/sdl_core/releases/tag/6.0.0), custom vehicle data items can be defined via the policy table. These items are structured in a similar manner to the [MOBILE API](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/MOBILE_API.xml) and contained in the `vehicle_data` section of the policy table. For example:
+Starting with [SDL Core version 6.0.0](https://github.com/smartdevicelink/sdl_core/releases/tag/6.0.0), custom vehicle data items can be defined via the policy table. See [SDL-0173](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0173-Read-Generic-Network-Signal-data.md) for the full proposal details. These items are structured in a similar manner to the [MOBILE API](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/MOBILE_API.xml) and contained in the `vehicle_data` section of the policy table.
 
-```
+In addition to custom items, this feature can be used to expose other vehicle data items that were introduced to the project in later versions. This can be useful when the software version on the head unit cannot be updated easily. If a vehicle data item is added into the project, the definition of this item will be included in the policy table by default. Any vehicle data items which are defined in Core's local Mobile API will be ignored from the policy table, but newer items will be interpreted as custom items. This allows apps to use these data items normally if they are exposed by the head unit, even when they were not initially supported.
+
+### Example Entry
+
+```json
 "vehicle_data": {
     "schema_version": "1.0.0",
     "schema_items": [
@@ -121,7 +226,7 @@ Starting with [SDL Core version 6.0.0](https://github.com/smartdevicelink/sdl_co
                     "maxvalue": 100,
                     "type": "Integer",
                     "mandatory": true,
-                    "deprecated": true
+                    "deprecated": true,
                     "since": "7.0"
                 }
             ],
@@ -133,13 +238,29 @@ Starting with [SDL Core version 6.0.0](https://github.com/smartdevicelink/sdl_co
 }
 ```
 
-In addition to custom items, this feature can be used to expose other vehicle data items that were introduced to the project in later versions. This can be useful when the software version on the head unit cannot be updated easily. If a vehicle data item is added into the project, the definition of this item will be included in the policy table by default. Any vehicle data items which are defined in Core's local Mobile API will be ignored from the policy table, but newer items will be interpreted as custom items. This allows apps to use these data items normally if they are exposed by the head unit, even when they were not initially supported.
+### Custom Data Fields
+* _name_ : Is the vehicle data item in question. e.g. gps, speed etc. SDL core would use this as the vehicle data param for requests from the app and to validate policies permissions.
+* _type_ : Is the return data type of the vehicle data item. It can either be a generic SDL data type (Integer, String, Float, Boolean, Struct) or an enumeration defined in Mobile API XML. For a vehicle data item that has sub-params, this would be Struct.
+* _key_ : Is a reference for the OEM Network Mapping table which defines signal attributes for this vehicle data items. OEMs may use this table to differentiate between various vehicle and SW configurations. SDL core will pass along this reference to HMI, and then HMI would be responsible to resolve this reference using the Vehicle Data Mapping table (see [Vehicle Data Mapping File](#vehicle-data-mapping-file)).
+* _array_ : A boolean value used to specify if the vehicle data item/param response is an array, rather than a single value of the given _type_.
+* _mandatory_ : A boolean value used to specify if the vehicle data param is mandatory to be included in response for the overall vehicle data item.
+* _params_ : A recursive list of sub-params for a vehicle data item, see example above (`customStruct`) for structure definition.
+* _since_, _until_ : String values related to API versioning which are optional per vehicle data item. 
+* _removed_, _deprecated_ : Boolean values related to API versioning which are optional per vehicle data item. 
+* _minvalue_, _maxvalue_ : Integer/Float values which are used for controlling the bounds of number values (Integer, Float).
+* _minsize_, _maxsize_ : Integer values which are used for controlling the bounds of array values (where _array_ is true).
+* _minlength_, _maxlength_ : Integer values which are used for controlling the bounds of String values.
+
+!!! NOTE
+* _name_ is required for top level vehicle data items while _dataType_, _reference_ & _mandatory_ are required fields for vehicle data & sub-params. However _array_ can be omitted, If omitted, _array_ defaults to *false*.
+* _Custom/OEM Specific_ vehicle data parameters that are not a part of the rpc spec should not have any version related tags included (_since_, _until_, _removed_, _deprecated_). These vehicle data parameters would not be able to have the same versioning system as the rpc spec, since any version number supplied would not be the version associated with any known public rpc spec.
+!!!
 
 ### Custom Vehicle Data Requests
 
 Custom vehicle data requests have a separate structure to normal vehicle data requests. While normal vehicle data items are requested using the key structure of `"<item.name>: true"`, custom items are constructed using the `item.key` field and can have a nested structure (when requesting `Struct` items). For example, when requesting all of the vehicle data items which are defined above, the HMI would receive the following message:
 
-```
+```json
 {
     "id" : 139,
     "jsonrpc" : "2.0",
@@ -161,9 +282,65 @@ Custom vehicle data requests have a separate structure to normal vehicle data re
 
 ### Vehicle Data Mapping File
 
-Since these keys may not be immediately known by the HMI, a vehicle data mapping file can be used to connect these keys to actual readable values from the vehicle. The location where this file is hosted can be specified in the policy table in the `module_config.endpoints.custom_vehicle_data_mapping` field (see [Policy Endpoints](https://smartdevicelink.com/en/guides/sdl-overview-guides/policies/policy-fields/#endpoints)). The format of this file is OEM-defined.
+Since these keys may not be immediately known by the HMI, a vehicle data mapping file can be used to connect these keys to actual readable values from the vehicle. The HMI primarily uses this file to convert CAN data values into an SDL-compatible format. The location where this file is hosted can be specified in the policy table in the `module_config.endpoints.custom_vehicle_data_mapping` field (see [Policy Endpoints](https://smartdevicelink.com/en/guides/sdl-overview-guides/policies/policy-fields/#endpoints)). The format of this file is OEM-defined.
+
+#### Example Format
+```json
+{
+    "version":"0.0.1",
+    "date":"01-01-2020",
+    "vehicleDataTable": [
+        {
+            "CGEA1.3c":{
+                "defaultPowertrain": {
+                    "vehicleData": [
+                    ]
+                },
+                "PHEV":{
+                    "vehicleData":[
+                        {
+                            "key":"OEM_REF_FUELLEVEL",
+                            "type":"Integer",
+                            "minFrequency":200,
+                            "maxLatency":10,
+                            "messageName":"Cluster_Info3",
+                            "messageID":"0x434",
+                            "signalName":"FuelLvl_Pc_Dsply",
+                            "transportChannel":"HS3",
+                            "resolution":0.109,
+                            "offset":-5.2174
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
+In addition to complex vehicle data items, this mapping file can also be used to make some CAN values directly readable via a String value:
+
+#### Policy Definition
+```json
+{
+    "name":"messageName",
+    "type":"String",
+    "key":"OEM_REF_MSG",
+    "array":true,
+    "mandatory":false,
+    "since":"X.x",
+    "maxsize":100,
+    "params":[]
+}
+```
+
+#### HMI Response
+```json
+{
+    "messageName": "AB 04 D1 9E 84 5C B8 22"
+}
+```
 
 !!! NOTE
 In order for the HMI to determine when this file needs to be updated, this file can be assigned a version via the `module_config.endpoint_properties.custom_vehicle_data_mapping.version` field. The HMI can retrieve this field using the [SDL.GetPolicyConfigurationData](https://smartdevicelink.com/en/guides/hmi/sdl/getpolicyconfigurationdata/) RPC.
 !!!
-
