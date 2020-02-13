@@ -165,7 +165,7 @@ Resources can only be acquired by apps in HMI level full.
 
 |User Location|Allow Multiple Access|Requested Module State|Access Mode|SDL Action|
 |:-----|:---|:---|:---|:---|
-|out of service area|any|any|any|any|disallow|
+|out of service area|any|any|any|disallow|
 |in service area|true|any|any|allow|
 |in service area|false|free|any|allow|
 |in service area|false|busy|any|disallow|
