@@ -40,7 +40,7 @@ connectToSDL() {
 ```
 
 !!! note
-SDL Core accepts multiple websocket clients and the HMI can choose connect each interface to SDL Core via individual websocket connections.
+SDL Core accepts multiple websocket clients and the HMI can choose to connect each interface to SDL Core via individual websocket connections.
 !!!
 
 ## Component Registration
