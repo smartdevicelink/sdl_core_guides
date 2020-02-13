@@ -6,7 +6,7 @@ This guide will explain how to use Remote Control within SDL. The guide will cov
 - [Relevant structs](#relevant-structs)
 - [Relevant RPCs](#relevant-rpcs)
 - [Modules and their components](#remote-control-modules)
-- [Consent matrix](#consent)
+- [Consent rules](#consent)
 - [Limiting permissions with policies](#policies)
 
 #### Relevant Evolution Proposals
@@ -24,7 +24,7 @@ This guide will explain how to use Remote Control within SDL. The guide will cov
 
 ## Relevant Structs
 
-[**RemoteControlCapabilities**](https://smartdevicelink.com/en/guides/hmi/common/structs/#remotecontrolcapabilities)
+### [**RemoteControlCapabilities**](https://smartdevicelink.com/en/guides/hmi/common/structs/#remotecontrolcapabilities)
 The remote control capabilities struct contains a capabilities struct for each different remote control type.
 
 Each capabilities struct is used to inform an app of what is available to be controlled.
@@ -37,7 +37,7 @@ Each capabilities struct is used to inform an app of what is available to be con
 * [HMISettingsControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#hmisettingscontrolcapabilities)
 * [ButtonCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#buttoncapabilities)
 
-[**ModuleData**](https://smartdevicelink.com/en/guides/hmi/common/structs/#moduledata)
+### [**ModuleData**](https://smartdevicelink.com/en/guides/hmi/common/structs/#moduledata)
 The module data struct contains information used to identify a module type, and the control data associated with that module.
 
 Each control data struct is used to observe or change the attributes of a specific module type.
@@ -77,7 +77,7 @@ View **GetSystemCapability** in the [RPC Spec](https://github.com/smartdevicelin
 
 ### GetInteriorVehicleData
 
-GetInteriorVehicleData is used to request information about a specific module. This RPC, provided a module is specified by `moduleType` and `moduleId`, will return the status of the module and, if relevant, its submodules. This RPC can also be used to subscribe to updates of a module's status via the `subscribe` parameter. If this non-mandatory parameter is set to true, the head unit will register `OnInteriorVehicleData` notifications for the requested module. Conversely, if this parameter is set to false, the head unit will unregister `OnInteriorVehicleData` notifications for the requested module.
+GetInteriorVehicleData is used to request information about a specific module. This RPC, provided a module is specified by `moduleType` and `moduleId`, will return the status of the requested remote-control module. This RPC can also be used to subscribe to updates of a module's status via the `subscribe` parameter. If this non-mandatory parameter is set to true, the head unit will register `OnInteriorVehicleData` notifications for the requested module. Conversely, if this parameter is set to false, the head unit will unregister `OnInteriorVehicleData` notifications for the requested module.
 
 View **GetInteriorVehicleData** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#getinteriorvehicledata) or the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/rc/getinteriorvehicledata)
 
@@ -107,7 +107,7 @@ View **OnRCStatus** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spe
 
 ### GetInteriorVehicleDataConsent
 
-GetInteriorVehicleDataConsent is a request used to reserve remote control modules. If a module does not allow multiple access, only the application that requested consent first (excluding takeover situations described in the [Consent section](#consent)) will be able to interact with that module. This request requires a `moduleType` and an array of `moduleId`s to identify the target modules. Core will reply with an array of booleans indicating the consent for each requested `moduleId` where true signals allowed and vice versa.
+GetInteriorVehicleDataConsent is a request used to reserve remote control modules. If a module does not allow multiple access, only the application that requested consent first will be able to interact with that module. Otherwise, if the module does allow multiple access, the rules specified in the [Consent section](#consent)) apply. This request requires a `moduleType` and an array of `moduleId`s to identify the target modules. Core will reply with an array of booleans indicating the consent for each requested `moduleId` where true signals allowed and vice versa.
 
 View **GetInteriorVehicleDataConsent** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#getinteriorvehicledataconsent) or the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/rc/getinteriorvehicledataconsent)
 
@@ -160,19 +160,19 @@ The behavior of module allocation in SDL Core is shown in the following table:
 !!! NOTE
 The driver is always considered to be within the service area.
 SDL will assume actions performed by the driver are consented to by the driver.
+Resources can only be acquired by apps in HMI level full.
 !!!
 
-|User Location|Allow Multiple Access|Requesting App HMI Level|Requested Module State|Access Mode|SDL Action|
-|:-----|:---|:---|:---|:---|:---|
+|User Location|Allow Multiple Access|Requested Module State|Access Mode|SDL Action|
+|:-----|:---|:---|:---|:---|
 |out of service area|any|any|any|any|disallow|
-|in service area|true|any|any|any|allow|
-|in service area|false|any|free|any|allow|
-|in service area|false|any|busy|any|disallow|
-|in service area|false|any|in use|any|disallow|
-|in service area|true|BACKGROUND or LIMITED|in use|any|disallow|
-|in service area|true|FULL|in use|auto allow|allow|
-|in service area|true|FULL|in use|auto deny|disallow|
-|in service area|true|FULL|in use|ask driver|ask driver|
+|in service area|true|any|any|allow|
+|in service area|false|free|any|allow|
+|in service area|false|busy|any|disallow|
+|in service area|false|in use|any|disallow|
+|in service area|true|in use|auto allow|allow|
+|in service area|true|in use|auto deny|disallow|
+|in service area|true|in use|ask driver|ask driver|
 
 #### Requested Module State
 
