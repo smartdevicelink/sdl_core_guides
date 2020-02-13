@@ -1,5 +1,7 @@
 # Vehicle Data
 
+The purpose of this guide is to explain how vehicle data items can be exposed to app developers through the HMI.
+
 Vehicle data can be exposed to app developers by creating a `VehicleInfo` component within your HMI. To communicate with this component, you will first need to register it with the message broker and respond to the `VehicleInfo.IsReady` message from SDL (see [HMI Getting Started](https://smartdevicelink.com/en/guides/hmi/getting-started/) for more information).
 
 ## RPCs
@@ -257,17 +259,17 @@ In addition to custom items, this feature can be used to expose other vehicle da
 * _since_, _until_ : String values related to API versioning which are optional per vehicle data item. 
 * _removed_, _deprecated_ : Boolean values related to API versioning which are optional per vehicle data item. 
 * _minvalue_, _maxvalue_ : Integer/Float values which are used for controlling the bounds of number values (Integer, Float).
-* _minsize_, _maxsize_ : Integer values which are used for controlling the bounds of array values (where _array_ is true).
+* _minsize_, _maxsize_ : Integer values which are used for controlling the bounds of array values (where _array_ is **true**).
 * _minlength_, _maxlength_ : Integer values which are used for controlling the bounds of String values.
 
 !!! NOTE
-* _name_ is required for top level vehicle data items while _type_, _key_ & _mandatory_ are required fields for vehicle data & sub-params. However _array_ can be omitted, in which case _array_ defaults to *false*.
+* _name_ is required for top level vehicle data items while _type_, _key_ & _mandatory_ are required fields for vehicle data & sub-params. However _array_ can be omitted, in which case _array_ defaults to **false**.
 * _Custom/OEM Specific_ vehicle data parameters that are not a part of the rpc spec should not have any version related tags included (_since_, _until_, _removed_, _deprecated_). These vehicle data parameters would not be able to have the same versioning system as the rpc spec, since any version number supplied would not be the version associated with any known public rpc spec.
 !!!
 
 ### Custom Vehicle Data Requests
 
-Custom vehicle data requests have a separate structure to normal vehicle data requests. While normal vehicle data items are requested using the key structure of `"<item.name>: true"`, custom items are constructed using the `item.key` field and can have a nested structure (when requesting `Struct` items). For example, when requesting all of the vehicle data items which are defined above, the HMI would receive the following message:
+Custom vehicle data requests have a separate structure to normal vehicle data requests. While normal vehicle data items are requested using the key structure of `"<name>: true"`, custom items are constructed using the _key_ field and can have a nested structure (when requesting _Struct_ items). For example, when requesting all of the vehicle data items which are defined above, the HMI would receive the following message:
 
 ```json
 {
@@ -333,7 +335,7 @@ In order for the HMI to determine when this file needs to be updated, this file 
 
 ### Reading Raw CAN Data
 
-In addition to complex vehicle data items, the vehicle data mapping file can also be used to make some CAN values directly readable via a String value:
+In addition to complex vehicle data items, the vehicle data mapping file can also be used to make some CAN values directly readable via a _String_ value:
 
 #### Policy Definition
 ```json
