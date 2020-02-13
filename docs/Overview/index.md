@@ -9,3 +9,4 @@ Table of Contents:
 - [Multiple Transports Configuration](../multiple-transports-configuration/)
 - [App Service Provider Guide](../app-service-provider-guide/)
 - [Frequently Asked Questions](../faq)
+- [Remote Control Guide](../remote-control-guide/)
