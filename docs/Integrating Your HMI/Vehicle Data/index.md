@@ -1,16 +1,18 @@
 # Vehicle Data
 
-## RPCs
-
 Vehicle data can be exposed to app developers by creating a `VehicleInfo` component within your HMI. To communicate with this component, you will first need to register it with the message broker and respond to the `VehicleInfo.IsReady` message from SDL (see [HMI Getting Started](https://smartdevicelink.com/en/guides/hmi/getting-started/) for more information).
+
+## RPCs
 
 The primary RPCs used by this component are:
 
 ### VehicleInfo.GetVehicleData
 
+**Description:**
+
 A request from Core to retrieve specific vehicle data items from the system.
 
-Example Request:
+**Example Request:**
 ```json
 {
     "id": 123,
@@ -22,7 +24,7 @@ Example Request:
 }
 ```
 
-Example Response:
+**Example Response:**
 ```json
 {
     "id": 123,
@@ -35,9 +37,11 @@ Example Response:
 
 ### VehicleInfo.SubscribeVehicleData
 
+**Description:**
+
 A request from Core to receive periodic updates for specific vehicle data items from the system.
 
-Example Request:
+**Example Request:**
 ```json
 {
     "id": 123,
@@ -49,7 +53,7 @@ Example Request:
 }
 ```
 
-Example Response:
+**Example Response:**
 ```json
 {
     "id": 123,
@@ -65,9 +69,11 @@ Example Response:
 
 ### VehicleInfo.UnsubscribeVehicleData
 
+**Description:**
+
 A request from Core to stop receiving periodic updates for specific vehicle data items from the system.
 
-Example Request:
+**Example Request:**
 ```json
 {
     "id": 123,
@@ -79,7 +85,7 @@ Example Request:
 }
 ```
 
-Example Response:
+**Example Response:**
 ```json
 {
     "id": 123,
@@ -95,9 +101,11 @@ Example Response:
 
 ### VehicleInfo.OnVehicleData
 
+**Description:**
+
 A notification from the HMI indicating that one or more of the subscribed vehicle data items were updated.
 
-Example Notification:
+**Example Notification:**
 ```json
 {
     "jsonrpc": "2.0",
@@ -253,7 +261,7 @@ In addition to custom items, this feature can be used to expose other vehicle da
 * _minlength_, _maxlength_ : Integer values which are used for controlling the bounds of String values.
 
 !!! NOTE
-* _name_ is required for top level vehicle data items while _dataType_, _reference_ & _mandatory_ are required fields for vehicle data & sub-params. However _array_ can be omitted, If omitted, _array_ defaults to *false*.
+* _name_ is required for top level vehicle data items while _type_, _key_ & _mandatory_ are required fields for vehicle data & sub-params. However _array_ can be omitted, in which case _array_ defaults to *false*.
 * _Custom/OEM Specific_ vehicle data parameters that are not a part of the rpc spec should not have any version related tags included (_since_, _until_, _removed_, _deprecated_). These vehicle data parameters would not be able to have the same versioning system as the rpc spec, since any version number supplied would not be the version associated with any known public rpc spec.
 !!!
 
@@ -319,7 +327,13 @@ Since these keys may not be immediately known by the HMI, a vehicle data mapping
 }
 ```
 
-In addition to complex vehicle data items, this mapping file can also be used to make some CAN values directly readable via a String value:
+!!! NOTE
+In order for the HMI to determine when this file needs to be updated, this file can be assigned a version via the `module_config.endpoint_properties.custom_vehicle_data_mapping.version` field. The HMI can retrieve this field using the [SDL.GetPolicyConfigurationData](https://smartdevicelink.com/en/guides/hmi/sdl/getpolicyconfigurationdata/) RPC.
+!!!
+
+### Reading Raw CAN Data
+
+In addition to complex vehicle data items, the vehicle data mapping file can also be used to make some CAN values directly readable via a String value:
 
 #### Policy Definition
 ```json
@@ -341,7 +355,3 @@ In addition to complex vehicle data items, this mapping file can also be used to
     "messageName": "AB 04 D1 9E 84 5C B8 22"
 }
 ```
-
-!!! NOTE
-In order for the HMI to determine when this file needs to be updated, this file can be assigned a version via the `module_config.endpoint_properties.custom_vehicle_data_mapping.version` field. The HMI can retrieve this field using the [SDL.GetPolicyConfigurationData](https://smartdevicelink.com/en/guides/hmi/sdl/getpolicyconfigurationdata/) RPC.
-!!!
