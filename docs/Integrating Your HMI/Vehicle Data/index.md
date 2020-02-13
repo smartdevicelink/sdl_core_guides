@@ -6,7 +6,7 @@ Vehicle data can be exposed to app developers by creating a `VehicleInfo` compon
 
 ## RPCs
 
-The primary RPCs used by this component are:
+Below are descriptions for the primary RPCs used by the `VehicleInfo` component of SDL. More information regarding this component is available in the `VehicleInfo` section of the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/overview/).
 
 ### VehicleInfo.GetVehicleData
 
@@ -117,8 +117,6 @@ A notification from the HMI indicating that one or more of the subscribed vehicl
     }
 }
 ```
-
-More information regarding this component is available in the VehicleInfo section of the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/overview/)
 
 ## Available Vehicle Data Items
 
