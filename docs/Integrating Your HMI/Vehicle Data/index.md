@@ -115,6 +115,7 @@ More information regarding this component is available in the VehicleInfo sectio
 Below is a list of all of the vehicle data items which are available via SDL as of [Release 6.1.0](https://github.com/smartdevicelink/sdl_core/releases/tag/6.1.0) of SDL Core. New vehicle data items are proposed regularly via the [SDL Evolution process](https://github.com/smartdevicelink/sdl_evolution).
 
 |Name|Result Type|Description|
+|:---|:----------|:----------|
 |accPedalPosition|Float|Accelerator pedal position (as a number from 0 to 100 representing percentage depressed)|
 |beltStatus|[Common.BeltStatus](https://smartdevicelink.com/en/guides/hmi/common/structs/#beltstatus)|The status of each of the seat belts in the vehicle|
 |bodyInformation|[Common.BodyInformation](https://smartdevicelink.com/en/guides/hmi/common/structs/#bodyinformation)|The body information for the vehicle, including information such as ignition status and door status|
