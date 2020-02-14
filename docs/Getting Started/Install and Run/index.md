@@ -8,7 +8,7 @@ The dependencies for SDL Core vary based on the configuration. You can change SD
 
 The default dependencies for SDL Core can be installed with the following command:
 
-```
+```bash
 sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl1.0-dev libssl1.0.0 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools
 ```
 
@@ -16,7 +16,7 @@ sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl1.0-
 
 Before building for the first time, there are a few commands that need to be run in the source folder to initialize the project:
 
-```
+```bash
 cd sdl_core
 git submodule init
 git submodule update
@@ -57,40 +57,40 @@ After installing the appropriate dependencies for your build configuration, you 
 
 First, create a build folder separate from your source folder, for example:
 
-```
+```bash
 mkdir ../sdl_build
 cd ../sdl_build
 ```
 
 From the build folder you created, run `cmake {path_to_sdl_core_source_folder}`  with any flags that you want to change in the format of `-D<option-name>=<value>`, for example:
 
-```
+```bash
 cmake -DENABLE_HMI_PTU_DECRYPTION=OFF ../sdl_core
 ```
 
 From there, you can build and install the project, run the following commands in your build folder:
 
-```
+```bash
 make install-3rd_party
 make install
 ```
 
 For a faster build, you can run the last command with the `-j` flag, which will enable multithreaded building:
 
-```
+```bash
 make -j `nproc` install
 ```
 
 ## Start SDL Core
 Once SDL Core is compiled and installed you can start it from the executable in the bin folder
 
-```
+```bash
 cd bin/
 ./start.sh
 ```
 
 If you get a linking error when running Core, the following command may be needed to resolve it:
 
-```
+```bash
 sudo ldconfig
 ```
