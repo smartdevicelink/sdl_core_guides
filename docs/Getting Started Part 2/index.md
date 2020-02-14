@@ -106,7 +106,7 @@ Upon receipt of the OnReady notification, SDL Core will begin checking the avail
 
   * `UI.IsReady` - The display availability
   * `VR.IsReady` - The voice recognition module availability
-  * `TTS.IsReady` - The Text-To-Speech module availability
+  * `TTS.IsReady` - The text to speech module availability
   * `Navigation.IsReady` - Navigation engine availability
   * `VehicleInfo.IsReady` - Indicates whether vehicle information can be collected and provided
   * `RC.IsReady` - Indicates whether vehicle RC modules are present and ready to communicate with SDL Core
@@ -151,7 +151,7 @@ The HMI must also register for notifications individually using the following RP
   * Navigation.OnVideoDataStreaming
   * SDL.OnStatusUpdate
 
-Core's message broker will not route notifications to the HMI unless the notifications are subscribed to.
+Core's MessageBroker will not route notifications to the HMI unless the notifications are subscribed to.
 
 !!! must
 
@@ -167,7 +167,7 @@ The above steps should only occur once per life cycle of SDL Core
 
 ## Communicating with SDL Core
 
-This section describes the message structure for communication between your HMI and SDL Core. The JSON RPC 2.0 format is taken as a basis.
+This section describes the message structure for communication between your HMI and SDL Core.
 
 From this point forward the actors for exchanging messages will be considered:
   - **Client** - can send requests and notifications
