@@ -24,10 +24,10 @@ When there are changes to the registered apps list, Core will send the HMI a `Ba
 
 For each app listed in the `UpdateAppList` request, the HMI's App List should show a button that includes the app's name and icon.
 
- |||
- App List with a registered application
- ![App List](./assets/AppList1.png)
- |||
+|||
+App List with a registered application
+![App List](./assets/AppList1.png)
+|||
 
 If an app is disconnected or unregistered, Core will send an UpdateAppList request to the HMI and that application will not be included in the app list array.
 
@@ -128,10 +128,10 @@ The defined strings for each template can be found in `PredefinedLayout` struct 
 
 The in App Menu should be made accessible from an app's template view. Please note the example placement of the hamburger menu icon in the top right of this screen shot.
 
- |||
- Media template with menu icon circled
- ![Menu Icon](./assets/menu_circled.jpg)
- |||
+|||
+Media template with menu icon circled
+![Menu Icon](./assets/menu_circled.jpg)
+|||
 
 !!! NOTE
 If the user chooses to open the menu, the HMI must send a `UI.OnSystemContext` notification with the `SystemContext` enum: `MENU`. After the user exits the menu, another `UI.OnSystemContext` notification must be sent with the `SystemContext` value: `MAIN`.
@@ -141,15 +141,15 @@ The contents of the HMI's menu are populated by the RPC `UI.AddCommand`. Each `U
 
 There is some minor customization for the app menu. An HMI can choose to implement the app menu in a tile view, list view, or both. If an app has a preference for a type of menu layout, the HMI will receive a `UI.SetGlobalProperties` request from SDL Core.
 
- |||
- List Style Menu
- ![List Menu](./assets/list_menu.png)
- |||
+|||
+List Style Menu
+![List Menu](./assets/list_menu.png)
+|||
 
- |||
- Tiles Style Menu
- ![Tiles Menu](./assets/tiles_menu.png)
- |||
+|||
+Tiles Style Menu
+![Tiles Menu](./assets/tiles_menu.png)
+|||
 
 ## Implementing Popups
 
@@ -160,36 +160,36 @@ There are several rpcs that are meant to display a popup or an overlay to the us
 
 Alert is a simple popup that can contain an image, text, and buttons.
 
- |||
- Alert
- ![Alert](./assets/alert.png)
- |||
+|||
+Alert
+![Alert](./assets/alert.png)
+|||
 
 ### `UI.PerformInteraction`
 
 `PerformInteraction` is a ppoup with contents displayed similar to the app menu
 
- |||
- Perform Interaction
- ![Perform Interaction](./assets/perform_interaction.png)
- |||
+|||
+Perform Interaction
+![Perform Interaction](./assets/perform_interaction.png)
+|||
 
 ### `UI.Slider`
 
 `Slider` is a popup that allows the user to enter an input via a slider button.
 
- |||
- Slider
- ![Slider](./assets/slider.png)
- |||
+|||
+Slider
+![Slider](./assets/slider.png)
+|||
 
 
 ### `UI.ScrollableMessage`
 
- |||
- Scrollable Message
- ![Scrollable Message](./assets/scrollable_message.png)
- |||
+|||
+Scrollable Message
+![Scrollable Message](./assets/scrollable_message.png)
+|||
 
 `ScrollableMessage` is a popup that allows the user to read a longer message that requires scrolling.
 
