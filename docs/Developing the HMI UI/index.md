@@ -3,15 +3,14 @@
 ## First Steps 
 
 Before starting the development of the SDL HMI user interface, there are a few RPC prerequisites that are required. 
-Please refer to the guide `Getting Started Part 2`, which covers establishing a connection to SDL Core, registering the
-HMI's sub-components, and subscribing to SDL Core notifications.
+Please refer to the guide `Getting Started Part 2`, which covers establishing a connection to SDL Core, registering the HMI's sub-components, and subscribing to SDL Core notifications.
 
-The minimum prerequisites from that guide for implementing an SDL compatible user interface are:
+The minimum prerequisites to connect your SDL compatible user interface are:
 
 1. Establish an HMI websocket connection to SDL Core.
-2. Register at minimum the following components: BasicCommunication, Buttons, and UI.
-3. Send Core the BasicCommunication.OnReady notification.
-4. Respond to each components' `IsReady` request.
+2. Register the following components: BasicCommunication, Buttons, and UI.
+3. Send the `BasicCommunication.OnReady` notification to SDL Core.
+4. Respond to the `IsReady` request for each registered component.
 5. Subscribe to the following Core notifications: 
     - `BasicCommunication.OnAppRegistered`
     - `BasicCommunication.OnAppUnregistered`
@@ -20,35 +19,35 @@ The minimum prerequisites from that guide for implementing an SDL compatible use
 
 ## Creating the App List
 
-When there are changes to the registered apps list, Core will send the HMI a `BasicCommunication.UpdateAppList` RPC request. This request contains an array of applications' information. The HMI should use the information to update its internal app list state and app list display.
+When there are changes to the list of registered apps, Core will send a `BasicCommunication.UpdateAppList` RPC request to the HMI. This request contains an array of information for all connected and pending applications. The HMI should use the information provided in this request to update its internal app list state and app list display.
 
 For each app listed in the `UpdateAppList` request, the HMI's App List should show a button that includes the app's name and icon.
 
 ![App List](./assets/AppList1.png)
 
-If an app is disconnected or unregistered, Core will send an UpdateAppList request to the HMI and that application will not be included in the app list array.
+If an app is disconnected or unregistered, Core will send an `UpdateAppList` request to the HMI with that application omitted from the app list array.
 
-The HMI should make sure its app list is always up to date, and only shows applications included in the most recent UpdateAppList request.
+The HMI should make sure its app list is always up to date, and only show applications that were included in the most recent `UpdateAppList` request.
 
 ## Activating an Application
 
 ### User Selection
 
-When the user selects an application from the app list, we define this action as "activating" an application. The first step required by the HMI after the user selects an app from the app list, is for the HMI to send a `SDL.ActivateApp` request to Core. 
+When the user selects an application from the app list, a request should be made to bring this app to the foreground (this is called "activating" the application). The first step required by the HMI when an application is selected is to send a `SDL.ActivateApp` request to Core.
 
 When Core responds with a successful `SDL.ActivateApp` response, the HMI can switch views from the app list to the app's default template.
 
 !!! NOTE
-The default template for an app should be used if the app has not requested to use a template via `UI.SetDisplayLayout`(deprecated) or `UI.Show`'s `templateConfiguration` parameter.
+The default template for an app should be used if the app has not requested to use a specific template via the `UI.Show.templateConfiguration` parameter or `UI.SetDisplayLayout` (deprecated).
 
 The default template for media apps is `MEDIA`, and the default template for all other apps should be `NON-MEDIA`.
 
-You can check if the app is a media application from the app's `isMediaApplication` parameter sent in the `BasicCommunication.UpdateAppList` request. 
+You can check a given app is a media application using that app's `isMediaApplication` parameter, sent in the `BasicCommunication.UpdateAppList` request.
 !!!
 
 ### User Consent
 
-If the `SDL.ActivateApp` response returns with the parameter `isPermissionsConsentNeeded = true`, the HMI should send a `SDL.GetListOfPermissions` request. This happens when the activating app requires permissions that the user must consent to. For example, if an app wants to access vehicle data, an SDL policy configuration might require the user consents to the app collecting this information. 
+If the `SDL.ActivateApp` response returns with the parameter `isPermissionsConsentNeeded = true`, the HMI should send a `SDL.GetListOfPermissions` request. This happens when the activating app requires permissions that the user must provide consent for. For example, if an app wants to access vehicle data, an SDL policy configuration might require that the user consent to allow the app to collect this information.
 
 After receiving the list of permissions for the app, the HMI should show the user the `PermissionItem` name and status for each requested permission. The user should have the ability to enable or disable each permission item. If any permission changes are made by the user, these updates should be communicated to core via `SDL.OnAppPermissionConsent` notification.
 
@@ -58,14 +57,14 @@ Permissions are managed by SDL Core's policy table.
 
 ### Resumption
 
-If an app is disconnected from SDL Core and reconnects within a specified time limit, Core will try to resume the app into the same HMI state the app was in before resumption. The HMI should expect a `BasicCommunication.ActivateApp` request from SDL Core, and return the app into the requested state. For example, if the requested HMI level is `FULL`, the HMI should activate the app and put that app's template into view.
+If an app is disconnected from SDL Core and reconnects within a specified time limit, Core will try to resume the app into the same HMI state the app was in before resumption. The HMI should be prepared to handle a `BasicCommunication.ActivateApp` request from SDL Core, in which case the HMI should return the app into the requested state (or respond with an error if unable to). For example, if the requested HMI level is `FULL`, the HMI should activate the app and put that app's template into view.
 
 !!! NOTE
-`BasicCommunication.ActivateApp` and the previously described `SDL.ActivateApp` RPC are easy to get confused. 
+`BasicCommunication.ActivateApp` is used differently than the previously described `SDL.ActivateApp`, but can be easily confused.
 
 `SDL.ActivateApp` is a request originating from the HMI and should be sent when the user selects an app to activate.
 
-`BasicCommunication.ActivateApp` is a request originating from SDL Core to put an app into a requested tate. It is usually received by the HMI during app resumption.
+`BasicCommunication.ActivateApp` is a request originating from SDL Core to move an app into a specific state. It is generally received by the HMI during app resumption.
 !!!
 
 ## Displaying Information
@@ -76,9 +75,9 @@ When an app wants to display information on the head unit, the HMI will receive 
 
 The HMI should merge the information in `UI.Show` requests with existing show information received for an app. 
 
-If an HMI receives a request with text parameter`mainfield1` and a second request with text parameter `mainfield2`, the HMI should display both `mainfield1` and `mainfield2`.
+If an HMI receives a request with text parameter `mainfield1` and a second request with text parameter `mainfield2`, the HMI should display both `mainfield1` and `mainfield2`.
 
-If an app wants to clear information sent in a previous `UI.Show` request, SDL Core will send the HMI a request with that parameters value set to an empty string ("").
+If an app wants to clear a text field that it sent in a previous `UI.Show` request, SDL Core will send the HMI a request with that parameter's value set to an empty string ("").
 
 !!!
 
@@ -86,44 +85,42 @@ If an app wants to clear information sent in a previous `UI.Show` request, SDL C
 
 A `Softbutton` received from a `UI.Show` request should be displayed when the app is displaying a template. A template can have a max of 8 `Softbuttons`. These buttons can be of type `TEXT`, `IMAGE`, or `BOTH`.
 
-The HMI should keep an internal state of `SoftButtons` received by `UI.Show` requests, similar to how text fields and graphics are stored. Each `SoftButton` has a unique ID and must be saved by the HMI. The ID's are used in any message notification to SDL Core when a user interacts with a `SoftButton`
+The HMI should keep an internal state of `SoftButtons` received by `UI.Show` requests, similar to how text fields and graphics are stored. Each `SoftButton` has a unique ID which must be saved by the HMI. These ID's are used in any messages sent to SDL Core when a user interacts with a `SoftButton`.
 
 The actions expected of the HMI when the user selects a `SoftButton` are:
- - HMI Sends a notification `UI.OnButtonEvent` with mode = `DOWN` when the user presses a button.
- - HMI Sends a notification `UI.OnButtonEvent` with mode = `UP` when the user releases a button.
- - HMI Sends a notification `UI.OnButtonPress` with mode = `SHORT` or `LONG`, depending on how long the user held the button in a down state. 
+ - HMI Sends a notification `UI.OnButtonEvent` with buttonEventMode = `DOWN` when the user presses a button.
+ - HMI Sends a notification `UI.OnButtonEvent` with buttonEventMode = `UP` when the user releases a button.
+ - HMI Sends a notification `UI.OnButtonPress` with buttonPressMode = `SHORT` or `LONG`, depending on how long the user held the button in a down state.
 
 !!! NOTE
 Not all HMIs support the ability to detect a button press duration, or differentiate between an up and down button event. In this case the HMI should make sure its ButtonCapabilities are accurately sent to core via the `ButtonCapabilities` parameter in `UI.GetCapabilities`. 
 
-More on HMI capabilities are covered later in this guide.
+[More on HMI capabilities](#defining-the-ui-capabilities).
 !!!
 
 ## Switching Templates
 
-SDL Core will request the HMI to change an apps template from a `UI.Show` request, or the deprecated RPC `UI.SetDisplayLayout`.
+SDL Core can request the HMI to change an app's template using a `UI.Show` request, or the deprecated RPC `UI.SetDisplayLayout`.
 
-The `UI.Show` request has a parameter `templateConfiguration` which includes a string for the requested layout.
+In order to specify the template to be displayed, the `UI.Show` request uses the `templateConfiguration` parameter, which includes a string for the requested layout.
 
-The `UI.SetDisplayLayout` request includes a string parameter, `displayLayout`.
+For `UI.SetDisplayLayout`, the `displayLayout` string parameter is used for the same purpose.
 
-`UI.Show` is meant to be the preferred method because a `UI.Show` request can change the layout of the screen and the screen contents in a single request. This helps prevent lag and screen flashing when an app wants to change an app template. 
+Using `UI.Show` is the preferred method because the request can be used to change the layout of the screen and the screen contents in a single request. This helps prevent lag and screen flashing when an app wants to change an app template.
 
 An SDL app should only request to view templates that are supported in the HMI Capabilities. The HMI may return a failed response to Core in the event an unsupported template is requested. 
 
-More on HMI capabilities will be discussed later in this guide.
+[More on HMI capabilities](#defining-the-ui-capabilities).
 
 ## Supported Template Views
 
-A reference list for all supported template views can be found [here](https://smartdevicelink.com/en/guides/sdl-overview-guides/user-interface/supported-templates/).
-
-This list shows screen shots of the 15 supported template views and how their text, graphic, and soft button components are layed out.
+A reference list for all supported template views can be found [here](https://smartdevicelink.com/en/guides/sdl-overview-guides/user-interface/supported-templates/). This list shows screen shots of the 15 supported template views and how their text, graphic, and soft button components are arranged.
 
 The defined strings for each template can be found in `PredefinedLayout` struct in the Mobile API RPC Specification. 
 
 ## Creating the App Menu
 
-The in App Menu should be made accessible from an app's template view. Please note the example placement of the hamburger menu icon in the top right of this screen shot.
+Each application is able to maintain a list of menu commands through SDL. This in-app menu should be made accessible from an app's template view. Please note the example placement of the hamburger menu icon in the top right of the screen shot below.
 
 ![Menu Icon](./assets/menu_circled.jpg)
 
@@ -131,281 +128,319 @@ The in App Menu should be made accessible from an app's template view. Please no
 If the user chooses to open the menu, the HMI must send a `UI.OnSystemContext` notification with the `SystemContext` enum: `MENU`. After the user exits the menu, another `UI.OnSystemContext` notification must be sent with the `SystemContext` value: `MAIN`.
 !!!
 
-The contents of the HMI's menu are populated by the RPC `UI.AddCommand`. Each `UI.AddCommand` received corresponds to an individual menu item. When the user selects a menu item, the HMI should send a `UI.OnCommand` notification. We believe it is best practice to exit the menu after a user makes a selection from the list of commands.
+The contents of the app's menu are populated by the RPC `UI.AddCommand`. Each `UI.AddCommand` received corresponds to an individual menu item. When the user selects a menu item via the UI, the HMI should send a `UI.OnCommand` notification. It is best practice to exit the menu after a user makes a selection from the list of commands.
 
-There is some minor customization for the app menu. An HMI can choose to implement the app menu in a tile view, list view, or both. If an app has a preference for a type of menu layout, the HMI will receive a `UI.SetGlobalProperties` request from SDL Core.
+There are some minor customization options available for the app menu. An HMI can choose to implement the app menu in a tile view, list view, or both. If an app has a preference for a type of menu layout, the HMI will receive a `UI.SetGlobalProperties` request from SDL Core containing this preference in the `menuLayout` field.
+
+#### List Menu Example
 
 ![List Menu](./assets/list_menu.png)
+
+#### Tiles Menu Example
 
 ![Tiles Menu](./assets/tiles_menu.png)
 
 ## Implementing Popups
 
-There are several rpcs that are meant to display a popup or an overlay to the user.
+There are several RPCs which are used to display a popup or an overlay to the user.
 
+### UI.Alert
 
-### `UI.Alert`
+Alert is used to display a simple popup that can contain an image, text, and buttons.
 
-Alert is a simple popup that can contain an image, text, and buttons.
+![Alert](./assets/alert.png)
 
- ![Alert](./assets/alert.png)
+### UI.PerformInteraction
 
-### `UI.PerformInteraction`
-
-`PerformInteraction` is a ppoup with contents displayed similar to the app menu
+`PerformInteraction` is used to display a popup with contents which are displayed in a similar way to the app menu.
 
 ![Perform Interaction](./assets/perform_interaction.png)
 
-### `UI.Slider`
+### UI.Slider
 
-`Slider` is a popup that allows the user to enter an input via a slider button.
+`Slider` is used to display a popup that allows the user to enter a value via a slider input.
 
 ![Slider](./assets/slider.png)
 
-### `UI.ScrollableMessage`
+### UI.ScrollableMessage
+
+`ScrollableMessage` is used to display a popup which shows a long message to the user that requires scrolling.
 
 ![Scrollable Message](./assets/scrollable_message.png)
 
-`ScrollableMessage` is a popup that allows the user to read a longer message that requires scrolling.
-
 !!! NOTE
 
-It is important that the HMI sends SDL Core a `UI.OnSystemContext` notification when displaying and then hiding a popup. `UI.Alert` is the only popup to have it's own SystemContext enum `ALERT`. All other popups must use the SystemContext enum value, `HMI_OBSCURED`.
+It is important that the HMI sends SDL Core a `UI.OnSystemContext` notification when displaying and closing a popup. A `systemContext` value of `ALERT` is used when `UI.Alert` is active, `HMI_OBSCURED` is used for all other popups.
 
 !!!
 
 ## Navigating Through the IVI
 
-It is common for an SDL UI to be integrated into an existing OEM's UI. In order for SDL Core to work well with a head unit that has other embedded components, the HMI should make use of the `BasicCommunication.OnEventChanged` notification. This notification allows connected SDL applications to receive updates about their HMI statuses when a user interacts with other components like the embedded navigation or radio. For example if an SDL media application has been activated and is playing audio, and a user selects to switch the audio source to the embedded radio, the HMI should send SDL Core a `BasicCommunication.OnEventChanged` notification with `eventName = AUDIO_SOURCE` and `isActive = true`. This HMI notification will let the media application know that it no longer has control of the audio source and its SDL capabilities are overwritten by the embedded audio's capabilities.
+It is common for an SDL UI to be integrated into an existing OEM's UI. In order for SDL Core to work well with a head unit that has other embedded components, the HMI should make use of the `BasicCommunication.OnEventChanged` notification. This notification allows connected SDL applications to receive updates about their HMI status when a user interacts with other components like the embedded navigation or radio. For example, if an SDL media application is active and is playing audio, then the user switches the audio source to the embedded radio, the HMI should send SDL Core a `BasicCommunication.OnEventChanged` notification with `eventName = AUDIO_SOURCE` and `isActive = true`. This HMI notification will let the media application know that it no longer has control of the audio source.
 
-If the user selects the media app as the audio source again, the HMI should send the same `BasicCommunication.OnEventChanged` notification, but with `isActive = false`. This will indicate to SDL Core that the application has control of the audio again.
+If the user selects the media app as the audio source again, the HMI should send the same `BasicCommunication.OnEventChanged` notification, but with `isActive = false`. This will indicate to SDL Core that the application has regained control of the audio.
 
 ## Defining the UI Capabilities
 
-There are several ways that the HMI should communicate its UI capabilities to SDL Core. When first connecting the HMI to SDL Core, SDL Core will send a `UI.GetCapabilities` request (a similar GetCapabilities request is sent for every interface). The HMI's response should include accurate information relating to supported display capabilities, audio pass through capabilities, soft button capabilities, and other system capabilities. 
+There are several ways that the HMI should communicate its UI capabilities to SDL Core. When first connecting the HMI to SDL Core, SDL Core will send a `UI.GetCapabilities` request (a similar GetCapabilities request is sent for every interface). The HMI's response should include accurate information relating to its supported display capabilities, audio pass through capabilities, soft button capabilities, and various other system capabilities (See [UI.GetCapabilities](https://smartdevicelink.com/en/guides/hmi/ui/getcapabilities/#parameters_1)).
 
-It is likely that the UI capabilities will be different for each template view, therefore it is important for the HMI to send updates about its capabilities to SDL Core. For example, if an app requests a new template configuration, after switching to that view, the HMI must send an `OnSystemCapabilityUpdated` notification for the `SystemCapability` type, `DISPLAYS`.  
+It is likely that the UI capabilities will be different for each template view, therefore it is important for the HMI to send updates about its capabilities to SDL Core. For example, if an app requests a new template configuration, after switching to that view the HMI must send an `OnSystemCapabilityUpdated` notification for `"systemCapabilityType": "DISPLAYS"`.
 
 !!! NOTE
-Even though `UI.SetDisplayLayout` is deprecated, the HMI can still receive requests to change layouts from this RPC. It is important that the response for `UI.SetDisplayLayout` includes accurate display capabilities for the new layout.
+Even though `UI.SetDisplayLayout` is deprecated, the HMI can still receive requests to change layouts from this RPC from older applications. It is important that the response for `UI.SetDisplayLayout` includes accurate display capabilities for the new layout as well.
 !!!
 
-As an example, if SDL Core requests to change the layout to the `MEDIA` template, the `OnSystemCapabilitiesUpdated` notification parameters may look something like this (taken from the generic hmi):
-
+As an example, if SDL Core requests to change the layout to the `MEDIA` template, the `OnSystemCapabilitiesUpdated` notification parameters may look something like this (taken from the [Generic HMI](https://github.com/smartdevicelink/generic_hmi)):
 ```JSON
 {
-	"appID": "1234",
-	"systemCapability": {
-		"systemCapabilityType": "DISPLAYS",
-		"displayCapabilities": {
-			"displayName": "GENERIC_HMI",
-			"windowTypeSupported": [{
-				"type": "MAIN",
-				"maximumNumberOfWindows": 1
-			}],
-			"windowCapabilities": [{
-				"windowID": 0,
-				"textFields": [{
-						"name": "mainField1",
-						"characterSet": "TYPE2SET",
-						"width": 500,
-						"rows": 1
-					},
-					{
-						"name": "mainField2",
-						"characterSet": "TYPE2SET",
-						"width": 500,
-						"rows": 1
-					},
-					{
-						"name": "mainField3",
-						"characterSet": "TYPE2SET",
-						"width": 500,
-						"rows": 1
-					},
-					{
-						"name": "statusBar",
-						"characterSet": "TYPE2SET",
-						"width": 500,
-						"rows": 1
-					},
-					{
-						"name": "mediaClock",
-						"characterSet": "TYPE2SET",
-						"width": 500,
-						"rows": 1
-					},
-					{
-						"name": "mediaTrack",
-						"characterSet": "TYPE2SET",
-						"width": 500,
-						"rows": 1
-					},
-					{
-						"name": "templateTitle",
-						"characterSet": "TYPE2SET",
-						"width": 50,
-						"rows": 1
-					},
-					{
-						"name": "alertText1",
-						"characterSet": "TYPE2SET",
-						"width": 500,
-						"rows": 1
-					},
-					{
-						"name": "alertText2",
-						"characterSet": "TYPE2SET",
-						"width": 500,
-						"rows": 1
-					},
-					{
-						"name": "alertText3",
-						"characterSet": "TYPE2SET",
-						"width": 500,
-						"rows": 1
-					},
-					{
-						"name": "menuName",
-						"characterSet": "TYPE2SET",
-						"width": 500,
-						"rows": 1
-					},
-					{
-						"name": "secondaryText",
-						"characterSet": "TYPE2SET",
-						"width": 500,
-						"rows": 1
-					},
-					{
-						"name": "tertiaryText",
-						"characterSet": "TYPE2SET",
-						"width": 500,
-						"rows": 1
-					},
-					{
-						"name": "menuTitle",
-						"characterSet": "TYPE2SET",
-						"width": 500,
-						"rows": 1
-					}
-				],
-				"imageFields": [
-                    {
-						"name": "choiceImage",
-						"imageTypeSupported": ["GRAPHIC_PNG"],
-						"imageResolution": {
-							"resolutionWidth": 40,
-							"resolutionHeight": 40
-						}
-					},
-					{
-						"name": "softButtonImage",
-						"imageTypeSupported": ["GRAPHIC_PNG"],
-						"imageResolution": {
-							"resolutionWidth": 50,
-							"resolutionHeight": 50
-						}
-					},
-					{
-						"name": "softButtonImage",
-						"imageTypeSupported": ["GRAPHIC_PNG"],
-						"imageResolution": {
-							"resolutionWidth": 50,
-							"resolutionHeight": 50
-						}
-					},
-					{
-						"name": "menuIcon",
-						"imageTypeSupported": ["GRAPHIC_PNG"],
-						"imageResolution": {
-							"resolutionWidth": 40,
-							"resolutionHeight": 40
-						}
-					},
-					{
-						"name": "cmdIcon",
-						"imageTypeSupported": ["GRAPHIC_PNG"],
-						"imageResolution": {
-							"resolutionWidth": 150,
-							"resolutionHeight": 150
-						}
-					},
-					{
-						"name": "appIcon",
-						"imageTypeSupported": ["GRAPHIC_PNG"],
-						"imageResolution": {
-							"resolutionWidth": 50,
-							"resolutionHeight": 50
-						}
-					},
-					{
-						"name": "graphic",
-						"imageTypeSupported": ["GRAPHIC_PNG"],
-						"imageResolution": {
-							"resolutionWidth": 360,
-							"resolutionHeight": 360
-						}
-					},
-					{
-						"name": "alertIcon",
-						"imageTypeSupported": ["GRAPHIC_PNG"],
-						"imageResolution": {
-							"resolutionWidth": 225,
-							"resolutionHeight": 225
-						}
-					}
-				],
-				"imageTypeSupported": ["DYNAMIC", "STATIC"],
-				"templatesAvailable": [
-					"DEFAULT", "MEDIA", "NON-MEDIA", "LARGE_GRAPHIC_WITH_SOFTBUTTONS", "LARGE_GRAPHIC_ONLY",
-					"GRAPHIC_WITH_TEXTBUTTONS", "TEXTBUTTONS_WITH_GRAPHIC", "TEXTBUTTONS_ONLY",
-					"TEXT_WITH_GRAPHIC", "GRAPHIC_WITH_TEXT", "DOUBLE_GRAPHIC_WITH_SOFTBUTTONS"
-				],
-				"buttonCapabilities": [
-                    {
-						"shortPressAvailable": true,
-						"longPressAvailable": false,
-						"upDownAvailable": false,
-						"name": "OK"
-					},
-					{
-						"shortPressAvailable": true,
-						"longPressAvailable": false,
-						"upDownAvailable": false,
-						"name": "PLAY_PAUSE"
-					},
-					{
-						"shortPressAvailable": true,
-						"longPressAvailable": false,
-						"upDownAvailable": false,
-						"name": "SEEKLEFT"
-					},
-					{
-						"shortPressAvailable": true,
-						"longPressAvailable": false,
-						"upDownAvailable": false,
-						"name": "SEEKRIGHT"
-					}
-				],
-				"softButtonsCapabilities": [
-                    {
-                        "shortPressAvailable": true,
-                        "longPressAvailable": false,
-                        "upDownAvailable": false,
-                        "imageSupported": true,
-                        "textSupported": true
-                    }, {
-                        "shortPressAvailable": true,
-                        "longPressAvailable": false,
-                        "upDownAvailable": false,
-                        "imageSupported": true,
-                        "textSupported": true
-                    }
-                ],
-				"menuLayoutsAvailable": ["LIST", "TILES"]
-			}]
-		}
-	}
+  "appID":"1234",
+  "systemCapability":{
+    "systemCapabilityType":"DISPLAYS",
+    "displayCapabilities":{
+      "displayName":"GENERIC_HMI",
+      "windowTypeSupported":[
+        {
+          "type":"MAIN",
+          "maximumNumberOfWindows":1
+        }
+      ],
+      "windowCapabilities":[
+        {
+          "windowID":0,
+          "textFields":[
+            {
+              "name":"mainField1",
+              "characterSet":"TYPE2SET",
+              "width":500,
+              "rows":1
+            },
+            {
+              "name":"mainField2",
+              "characterSet":"TYPE2SET",
+              "width":500,
+              "rows":1
+            },
+            {
+              "name":"mainField3",
+              "characterSet":"TYPE2SET",
+              "width":500,
+              "rows":1
+            },
+            {
+              "name":"statusBar",
+              "characterSet":"TYPE2SET",
+              "width":500,
+              "rows":1
+            },
+            {
+              "name":"mediaClock",
+              "characterSet":"TYPE2SET",
+              "width":500,
+              "rows":1
+            },
+            {
+              "name":"mediaTrack",
+              "characterSet":"TYPE2SET",
+              "width":500,
+              "rows":1
+            },
+            {
+              "name":"templateTitle",
+              "characterSet":"TYPE2SET",
+              "width":50,
+              "rows":1
+            },
+            {
+              "name":"alertText1",
+              "characterSet":"TYPE2SET",
+              "width":500,
+              "rows":1
+            },
+            {
+              "name":"alertText2",
+              "characterSet":"TYPE2SET",
+              "width":500,
+              "rows":1
+            },
+            {
+              "name":"alertText3",
+              "characterSet":"TYPE2SET",
+              "width":500,
+              "rows":1
+            },
+            {
+              "name":"menuName",
+              "characterSet":"TYPE2SET",
+              "width":500,
+              "rows":1
+            },
+            {
+              "name":"secondaryText",
+              "characterSet":"TYPE2SET",
+              "width":500,
+              "rows":1
+            },
+            {
+              "name":"tertiaryText",
+              "characterSet":"TYPE2SET",
+              "width":500,
+              "rows":1
+            },
+            {
+              "name":"menuTitle",
+              "characterSet":"TYPE2SET",
+              "width":500,
+              "rows":1
+            }
+          ],
+          "imageFields":[
+            {
+              "name":"choiceImage",
+              "imageTypeSupported":[
+                "GRAPHIC_PNG"
+              ],
+              "imageResolution":{
+                "resolutionWidth":40,
+                "resolutionHeight":40
+              }
+            },
+            {
+              "name":"softButtonImage",
+              "imageTypeSupported":[
+                "GRAPHIC_PNG"
+              ],
+              "imageResolution":{
+                "resolutionWidth":50,
+                "resolutionHeight":50
+              }
+            },
+            {
+              "name":"softButtonImage",
+              "imageTypeSupported":[
+                "GRAPHIC_PNG"
+              ],
+              "imageResolution":{
+                "resolutionWidth":50,
+                "resolutionHeight":50
+              }
+            },
+            {
+              "name":"menuIcon",
+              "imageTypeSupported":[
+                "GRAPHIC_PNG"
+              ],
+              "imageResolution":{
+                "resolutionWidth":40,
+                "resolutionHeight":40
+              }
+            },
+            {
+              "name":"cmdIcon",
+              "imageTypeSupported":[
+                "GRAPHIC_PNG"
+              ],
+              "imageResolution":{
+                "resolutionWidth":150,
+                "resolutionHeight":150
+              }
+            },
+            {
+              "name":"appIcon",
+              "imageTypeSupported":[
+                "GRAPHIC_PNG"
+              ],
+              "imageResolution":{
+                "resolutionWidth":50,
+                "resolutionHeight":50
+              }
+            },
+            {
+              "name":"graphic",
+              "imageTypeSupported":[
+                "GRAPHIC_PNG"
+              ],
+              "imageResolution":{
+                "resolutionWidth":360,
+                "resolutionHeight":360
+              }
+            },
+            {
+              "name":"alertIcon",
+              "imageTypeSupported":[
+                "GRAPHIC_PNG"
+              ],
+              "imageResolution":{
+                "resolutionWidth":225,
+                "resolutionHeight":225
+              }
+            }
+          ],
+          "imageTypeSupported":[
+            "DYNAMIC",
+            "STATIC"
+          ],
+          "templatesAvailable":[
+            "DEFAULT",
+            "MEDIA",
+            "NON-MEDIA",
+            "LARGE_GRAPHIC_WITH_SOFTBUTTONS",
+            "LARGE_GRAPHIC_ONLY",
+            "GRAPHIC_WITH_TEXTBUTTONS",
+            "TEXTBUTTONS_WITH_GRAPHIC",
+            "TEXTBUTTONS_ONLY",
+            "TEXT_WITH_GRAPHIC",
+            "GRAPHIC_WITH_TEXT",
+            "DOUBLE_GRAPHIC_WITH_SOFTBUTTONS"
+          ],
+          "buttonCapabilities":[
+            {
+              "shortPressAvailable":true,
+              "longPressAvailable":false,
+              "upDownAvailable":false,
+              "name":"OK"
+            },
+            {
+              "shortPressAvailable":true,
+              "longPressAvailable":false,
+              "upDownAvailable":false,
+              "name":"PLAY_PAUSE"
+            },
+            {
+              "shortPressAvailable":true,
+              "longPressAvailable":false,
+              "upDownAvailable":false,
+              "name":"SEEKLEFT"
+            },
+            {
+              "shortPressAvailable":true,
+              "longPressAvailable":false,
+              "upDownAvailable":false,
+              "name":"SEEKRIGHT"
+            }
+          ],
+          "softButtonsCapabilities":[
+            {
+              "shortPressAvailable":true,
+              "longPressAvailable":false,
+              "upDownAvailable":false,
+              "imageSupported":true,
+              "textSupported":true
+            },
+            {
+              "shortPressAvailable":true,
+              "longPressAvailable":false,
+              "upDownAvailable":false,
+              "imageSupported":true,
+              "textSupported":true
+            }
+          ],
+          "menuLayoutsAvailable":[
+            "LIST",
+            "TILES"
+          ]
+        }
+      ]
+    }
+  }
 }
 ```
