@@ -20,6 +20,9 @@
             "name": "Integrating Your HMI",
             "navigation": [
                 {
+                    "name": "SDL Core and HMI Communication"                    
+                },
+                {
                     "name": "Vehicle Data"
                 }
             ]
