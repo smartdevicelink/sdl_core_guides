@@ -41,14 +41,14 @@ The default template for an app should be used if the app has not requested to u
 
 The default template for media apps is `MEDIA`, and the default template for all other apps should be `NON-MEDIA`.
 
-You can check a given app is a media application using that app's `isMediaApplication` parameter, sent in the `BasicCommunication.UpdateAppList` request.
+You can check if a given app is a media application using that app's `isMediaApplication` parameter, sent in the `BasicCommunication.UpdateAppList` request.
 !!!
 
 ### User Consent
 
 If the `SDL.ActivateApp` response returns with the parameter `isPermissionsConsentNeeded = true`, the HMI should send a `SDL.GetListOfPermissions` request. This happens when the activating app requires permissions that the user must provide consent for. For example, if an app wants to access vehicle data, an SDL policy configuration might require that the user consent to allow the app to collect this information.
 
-After receiving the list of permissions for the app, the HMI should show the user the `PermissionItem` name and status for each requested permission. The user should have the ability to enable or disable each permission item. If any permission changes are made by the user, these updates should be communicated to core via `SDL.OnAppPermissionConsent` notification.
+After receiving the list of permissions for the app, the HMI should show the user the `PermissionItem` name and status for each requested permission. The user should have the ability to enable or disable each permission item. If any permission changes are made by the user, these updates should be communicated to Core via the `SDL.OnAppPermissionConsent` notification.
 
 !!! NOTE
 Permissions are managed by SDL Core's policy table. Refer to the [SDL Overview Policy Guide](https://smartdevicelink.com/en/guides/sdl-overview-guides/policies/overview/).
@@ -68,7 +68,7 @@ If an app is disconnected from SDL Core and reconnects within a specified time l
 
 ## Displaying Information
 
-When an app wants to display information on the head unit, the HMI will receive a `UI.Show` request. The `UI.Show` request provides the HMI with the text, soft button information, and images an app has requested to display. The HMI should store the information in these requests for when an app activated and put into full. `UI.Show` requests are not always sent when an app is activated and in view.
+When an app wants to display information on the head unit, the HMI will receive a `UI.Show` request. The `UI.Show` request provides the HMI with the text, soft button information, and images an app has requested to display. The HMI should store the information in these requests for when an app is activated and put into full. `UI.Show` requests are not always sent when an app is activated and in view.
 
 !!! NOTE
 
@@ -84,15 +84,16 @@ If an app wants to clear a text field that it sent in a previous `UI.Show` reque
 
 A `Softbutton` received from a `UI.Show` request should be displayed when the app is displaying a template. A template can have a max of 8 `Softbuttons`. These buttons can be of type `TEXT`, `IMAGE`, or `BOTH`.
 
-The HMI should keep an internal state of `SoftButtons` received by `UI.Show` requests, similar to how text fields and graphics are stored. Each `SoftButton` has a unique ID which must be saved by the HMI. These ID's are used in any messages sent to SDL Core when a user interacts with a `SoftButton`.
+The HMI should keep an internal state of `SoftButtons` received by `UI.Show` requests, similar to how text fields and graphics are stored. Each `SoftButton` has a unique ID which must be saved by the HMI. These IDs are used in any messages sent to SDL Core when a user interacts with a `SoftButton`.
 
 The actions expected of the HMI when the user selects a `SoftButton` are:
- - HMI Sends a notification `UI.OnButtonEvent` with buttonEventMode = `DOWN` when the user presses a button.
- - HMI Sends a notification `UI.OnButtonEvent` with buttonEventMode = `UP` when the user releases a button.
- - HMI Sends a notification `UI.OnButtonPress` with buttonPressMode = `SHORT` or `LONG`, depending on how long the user held the button in a down state.
+
+ - HMI sends a notification `UI.OnButtonEvent` with buttonEventMode = `DOWN` when the user presses a button.
+ - HMI sends a notification `UI.OnButtonEvent` with buttonEventMode = `UP` when the user releases a button.
+ - HMI sends a notification `UI.OnButtonPress` with buttonPressMode = `SHORT` or `LONG`, depending on how long the user holds the button in a down state.
 
 !!! NOTE
-Not all HMIs support the ability to detect a button press duration, or differentiate between an up and down button event. In this case the HMI should make sure its ButtonCapabilities are accurately sent to core via the `ButtonCapabilities` parameter in `UI.GetCapabilities`. 
+Not all HMIs support the ability to detect a button press duration, or differentiate between an up and down button event. In this case the HMI should make sure its ButtonCapabilities are accurately sent to Core via the `ButtonCapabilities` parameter in `UI.GetCapabilities`. 
 
 [More on HMI capabilities](#defining-the-ui-capabilities).
 !!!
@@ -113,13 +114,13 @@ An SDL app should only request to view templates that are supported in the HMI C
 
 ## Supported Template Views
 
-A reference list for all supported template views can be found [here](https://smartdevicelink.com/en/guides/sdl-overview-guides/user-interface/supported-templates/). This list shows screen shots of the 15 supported template views and how their text, graphic, and soft button components are arranged.
+A reference list for all supported template views can be found [here](https://smartdevicelink.com/en/guides/sdl-overview-guides/user-interface/supported-templates/). This list shows screenshots of the 15 supported template views and how their text, graphic, and soft button components are arranged.
 
-The defined strings for each template can be found in `PredefinedLayout` struct in the Mobile API RPC Specification. 
+The defined strings for each template can be found in the `PredefinedLayout` struct in the Mobile API RPC Specification. 
 
 ## Creating the App Menu
 
-Each application is able to maintain a list of menu commands through SDL. This in-app menu should be made accessible from an app's template view. Please note the example placement of the hamburger menu icon in the top right of the screen shot below.
+Each application is able to maintain a list of menu commands through SDL. This in-app menu should be made accessible from an app's template view. Please note the example placement of the hamburger menu icon in the top right of the screenshot below.
 
 ![Menu Icon](./assets/menu_circled.jpg)
 
