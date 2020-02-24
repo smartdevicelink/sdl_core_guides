@@ -8,9 +8,9 @@ Currently the SDL Core repo is built for Ubuntu 18.04 as our default environment
 ## I'm getting a lot of compilation errors, how do I get past them?
 The most common errors come from dependancies issues. Ensure your system has all the required packages to compile the project. Try running the following commands:
 
-```
+```bash
 sudo apt-get update
-sudo apt-get install git cmake build-essential libavahi-client-dev libsqlite3-dev chromium-browser libssl-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev
+sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl1.0-dev libssl1.0.0 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools
 ```
 
 ## I'm experiencing choppy audio through bluetooth, what should I do?

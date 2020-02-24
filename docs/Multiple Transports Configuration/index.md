@@ -119,7 +119,7 @@ Modify the services map in `smartdeviceLink.ini` to restrict video and audio str
 AudioServiceTransports = TCP_WIFI
 VideoServiceTransports = TCP_WIFI, AOA_USB
 ```
-- Transports are listed in preffered order
+- Transports are listed in preferred order
 - If a transport is not listed, then the service is not allowed to run on that transport
 - If the `AudioServiceTransports`/`VideoServiceTransports` line is omitted, service will be allowed to run on the primary transport
 

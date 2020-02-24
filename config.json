@@ -6,7 +6,26 @@
             "name": "Overview"
         },
         {
-            "name": "Getting Started Part 2"
+            "name": "Getting Started",
+            "navigation": [
+                {
+                    "name": "Install and Run"
+                },
+                {
+                    "name": "INI Configuration"
+                },
+            ]
+        },
+        {
+            "name": "Integrating Your HMI",
+            "navigation": [
+                {
+                    "name": "SDL Core and HMI Communication"                    
+                },
+                {
+                    "name": "Vehicle Data"
+                }
+            ]
         },
         {
             "name": "Transport Manager Programming"
@@ -21,7 +40,10 @@
             "name": "Multiple Transports Configuration"
         },
         {
-            "name" : "Encryption Setup"
+            "name": "Remote Control Guide"
+        },
+        {
+            "name": "Encryption Setup"
         },
         {
             "name": "FAQ"

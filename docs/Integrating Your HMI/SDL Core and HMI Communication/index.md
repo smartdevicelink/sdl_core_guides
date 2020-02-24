@@ -1,4 +1,4 @@
-# Getting Started Part 2
+# SDL Core and HMI Communication
 
 ## Connecting HMI to SDL
 
