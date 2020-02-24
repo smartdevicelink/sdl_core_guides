@@ -2,8 +2,7 @@
 
 ## First Steps 
 
-Before starting the development of the SDL HMI user interface, there are a few RPC prerequisites that are required. 
-Please refer to the guide `Getting Started Part 2`, which covers establishing a connection to SDL Core, registering the HMI's sub-components, and subscribing to SDL Core notifications.
+Before starting the development of the SDL HMI user interface, there are a few RPC prerequisites that are required.
 
 The minimum prerequisites to connect your SDL compatible user interface are:
 
@@ -52,7 +51,7 @@ If the `SDL.ActivateApp` response returns with the parameter `isPermissionsConse
 After receiving the list of permissions for the app, the HMI should show the user the `PermissionItem` name and status for each requested permission. The user should have the ability to enable or disable each permission item. If any permission changes are made by the user, these updates should be communicated to core via `SDL.OnAppPermissionConsent` notification.
 
 !!! NOTE
-Permissions are managed by SDL Core's policy table.
+Permissions are managed by SDL Core's policy table. Refer to the [SDL Overview Policy Guide](https://smartdevicelink.com/en/guides/sdl-overview-guides/policies/overview/).
 !!!
 
 ### Resumption
