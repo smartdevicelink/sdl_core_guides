@@ -6,7 +6,26 @@
             "name": "Overview"
         },
         {
-            "name": "Developing the HMI UI"
+            "name": "Getting Started",
+            "navigation": [
+                {
+                    "name": "Install and Run"
+                },
+                {
+                    "name": "INI Configuration"
+                }
+            ]
+        },
+        {
+            "name": "Integrating Your HMI",
+            "navigation": [
+                {
+                    "name": "Developing the HMI UI"
+                },
+                {
+                    "name": "Vehicle Data"
+                }
+            ]
         },
         {
             "name": "Transport Manager Programming"
@@ -21,7 +40,10 @@
             "name": "Multiple Transports Configuration"
         },
         {
-            "name" : "Encryption Setup"
+            "name": "Remote Control Guide"
+        },
+        {
+            "name": "Encryption Setup"
         },
         {
             "name": "FAQ"
