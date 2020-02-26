@@ -116,7 +116,7 @@ The defined strings for each template can be found in the `PredefinedLayout` str
 
 ## Creating the App Menu
 
-Each application is able to maintain a list of menu commands through SDL. This in-app menu should be made accessible from an app's template view. Please note the example placement of the hamburger menu icon in the top right of the screenshot below.
+Each application is able to maintain a list of menu commands through SDL. This in-app menu should be made accessible from an app's template view. Please note the example placement of the menu icon in the top right of the screenshot below.
 
 ![Menu Icon](./assets/menu_circled.jpg)
 
