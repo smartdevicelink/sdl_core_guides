@@ -23,6 +23,9 @@
                     "name": "SDL Core and HMI Communication"                    
                 },
                 {
+                    "name": "Developing the HMI UI"
+                },
+                {
                     "name": "Vehicle Data"
                 }
             ]
