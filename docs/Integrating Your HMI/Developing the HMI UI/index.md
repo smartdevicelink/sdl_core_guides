@@ -20,7 +20,7 @@ The minimum prerequisites to connect your SDL compatible user interface are:
 
 When there are changes to the list of registered apps, Core will send a `BasicCommunication.UpdateAppList` RPC request to the HMI. This request contains an array of information for all connected and pending applications. The HMI should use the information provided in this request to update its internal app list state and app list display.
 
-For each app listed in the `UpdateAppList` request, the HMI's App List should show a button that includes the app's name and icon.
+For each app listed in the `UpdateAppList` request, the HMI's app list view should show a button that includes the app's name and icon.
 
 ![App List](./assets/AppList1.png)
 
