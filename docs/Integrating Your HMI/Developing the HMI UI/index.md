@@ -44,10 +44,12 @@ You can check if a given app is a media application using that app's `isMediaApp
 
 If the `SDL.ActivateApp` response returns with the parameter `isPermissionsConsentNeeded = true`, the HMI should send a `SDL.GetListOfPermissions` request. This happens when the activating app requires permissions that the user must provide consent for. For example, if an app wants to access vehicle data, an SDL policy configuration might require the user to provide consent before the app can collect this information.
 
-After receiving the list of permissions for the app, the HMI should show the user the `PermissionItem` name and status for each requested permission. The user should have the ability to enable or disable each permission item. If any permission changes are made by the user, these updates should be communicated to Core via the `SDL.OnAppPermissionConsent` notification.
+After receiving the list of permissions for the app, the HMI should show the user the `PermissionItem` name and status for each requested permission. If available, the HMI should also show a consent prompt that contains a user friendly message describing what the user is agreeing to. The user should have the ability to enable or disable each permission item. If any permission changes are made by the user, these updates should be communicated to Core via the `SDL.OnAppPermissionConsent` notification.
 
 !!! NOTE
 Permissions are managed by SDL Core's policy table. Refer to the [SDL Overview Policy Guide](https://smartdevicelink.com/en/guides/sdl-overview-guides/policies/overview/).
+
+[OEM defined consent prompts](https://smartdevicelink.com/en/guides/sdl-overview-guides/policies/policy-fields/#consumer-friendly-messages) can be retrieved from the policy table via a `BasicCommunication.GetUserFriendlyMessage` RPC.
 !!!
 
 ### Resumption
