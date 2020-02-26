@@ -46,6 +46,9 @@
             "name": "Encryption Setup"
         },
         {
+            "name": "Doxygen Inline Documentation"
+        },
+        {
             "name": "FAQ"
         }
     ]
