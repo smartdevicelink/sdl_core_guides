@@ -22,19 +22,15 @@ When there are changes to the list of registered apps, Core will send a `BasicCo
 
 For each app listed in the `UpdateAppList` request, the HMI's app list view should show a button that includes the app's name and icon.
 
-![App List](./assets/AppList1.png)
+![App List](./assets/app_list.png)
 
-If an app is disconnected or unregistered, Core will send an `UpdateAppList` request to the HMI with that application omitted from the app list array.
-
-The HMI should make sure its app list is always up to date, and only show applications that were included in the most recent `UpdateAppList` request.
+If an app is disconnected or unregistered, Core will send an `UpdateAppList` request to the HMI with that application omitted from the app list array. The HMI should make sure its app list is always up to date, and only show applications that were included in the most recent `UpdateAppList` request.
 
 ## Activating an Application
 
 ### User Selection
 
-When the user selects an application from the app list, a request should be made to bring this app to the foreground (this is called "activating" the application). The first step required by the HMI when an application is selected is to send a `SDL.ActivateApp` request to Core.
-
-When Core responds with a successful `SDL.ActivateApp` response, the HMI can switch views from the app list to the app's default template.
+When the user selects an application from the app list, a request should be made to bring this app to the foreground (this is called "activating" the application). The first step required by the HMI when an application is selected is to send a `SDL.ActivateApp` request to Core. When Core responds with a successful `SDL.ActivateApp` response, the HMI can switch views from the app list to the app's default template.
 
 !!! NOTE
 The default template for an app should be used if the app has not requested to use a specific template via the `UI.Show.templateConfiguration` parameter or `UI.SetDisplayLayout` RPC (deprecated).
