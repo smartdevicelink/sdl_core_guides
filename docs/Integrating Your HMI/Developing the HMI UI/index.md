@@ -37,16 +37,16 @@ When the user selects an application from the app list, a request should be made
 When Core responds with a successful `SDL.ActivateApp` response, the HMI can switch views from the app list to the app's default template.
 
 !!! NOTE
-The default template for an app should be used if the app has not requested to use a specific template via the `UI.Show.templateConfiguration` parameter or `UI.SetDisplayLayout` (deprecated).
+The default template for an app should be used if the app has not requested to use a specific template via the `UI.Show.templateConfiguration` parameter or `UI.SetDisplayLayout` RPC (deprecated).
 
-The default template for media apps is `MEDIA`, and the default template for all other apps should be `NON-MEDIA`.
+The default template for media apps is `MEDIA`, and the default template for all other apps is `NON-MEDIA`.
 
 You can check if a given app is a media application using that app's `isMediaApplication` parameter, sent in the `BasicCommunication.UpdateAppList` request.
 !!!
 
 ### User Consent
 
-If the `SDL.ActivateApp` response returns with the parameter `isPermissionsConsentNeeded = true`, the HMI should send a `SDL.GetListOfPermissions` request. This happens when the activating app requires permissions that the user must provide consent for. For example, if an app wants to access vehicle data, an SDL policy configuration might require that the user consent to allow the app to collect this information.
+If the `SDL.ActivateApp` response returns with the parameter `isPermissionsConsentNeeded = true`, the HMI should send a `SDL.GetListOfPermissions` request. This happens when the activating app requires permissions that the user must provide consent for. For example, if an app wants to access vehicle data, an SDL policy configuration might require the user to provide consent before the app can collect this information.
 
 After receiving the list of permissions for the app, the HMI should show the user the `PermissionItem` name and status for each requested permission. The user should have the ability to enable or disable each permission item. If any permission changes are made by the user, these updates should be communicated to Core via the `SDL.OnAppPermissionConsent` notification.
 
@@ -59,7 +59,7 @@ Permissions are managed by SDL Core's policy table. Refer to the [SDL Overview P
 If an app is disconnected from SDL Core and reconnects within a specified time limit, Core will try to resume the app into the same HMI state the app was in before it was disconnected. The HMI should be prepared to handle a `BasicCommunication.ActivateApp` request from SDL Core, in which case the HMI should return the app into the requested state (or respond with an error if unable to). For example, if the requested HMI level is `FULL`, the HMI should activate the app and put that app's template into view.
 
 !!! NOTE
-`BasicCommunication.ActivateApp` is used differently than the previously described `SDL.ActivateApp`, but can be easily confused.
+`BasicCommunication.ActivateApp` is used differently than the previously described `SDL.ActivateApp`, but the two can be easily confused.
 
 `SDL.ActivateApp` is a request originating from the HMI and should be sent when the user selects an app to activate.
 
@@ -74,7 +74,7 @@ When an app wants to display information on the head unit, the HMI will receive 
 
 The HMI should merge the information in `UI.Show` requests with existing show information received for an app. 
 
-If an HMI receives a request with text parameter `mainfield1` and a second request with text parameter `mainfield2`, the HMI should display both `mainfield1` and `mainfield2`.
+For example, if the HMI receives a request with the text parameter `mainfield1` and a second request with the text parameter `mainfield2`, the HMI should display both `mainfield1` and `mainfield2`.
 
 If an app wants to clear a text field that it sent in a previous `UI.Show` request, SDL Core will send the HMI a request with that parameter's value set to an empty string ("").
 
@@ -146,7 +146,7 @@ There are several RPCs which are used to display a popup or an overlay to the us
 
 ### UI.Alert
 
-Alert is used to display a simple popup that can contain an image, text, and buttons.
+`Alert` is used to display a simple popup that can contain an image, text, and buttons.
 
 ![Alert](./assets/alert.png)
 
@@ -176,7 +176,9 @@ It is important that the HMI sends SDL Core a `UI.OnSystemContext` notification 
 
 ## Navigating Through the IVI
 
-It is common for an SDL UI to be integrated into an existing OEM's UI. In order for SDL Core to work well with a head unit that has other embedded components, the HMI should make use of the `BasicCommunication.OnEventChanged` notification. This notification allows connected SDL applications to receive updates about their HMI status when a user interacts with other components like the embedded navigation or radio. For example, if an SDL media application is active and is playing audio, then the user switches the audio source to the embedded radio, the HMI should send SDL Core a `BasicCommunication.OnEventChanged` notification with `eventName = AUDIO_SOURCE` and `isActive = true`. This HMI notification will let the media application know that it no longer has control of the audio source.
+It is common for an SDL UI to be integrated into an existing OEM's UI. In order for SDL Core to work well with a head unit that has other embedded components, the HMI should make use of the `BasicCommunication.OnEventChanged` notification. This notification allows connected SDL applications to receive updates about their HMI status when a user interacts with other components like the embedded navigation or radio.
+
+For example, if an SDL media application is active and is playing audio, then the user switches the audio source to the embedded radio, the HMI should send SDL Core a `BasicCommunication.OnEventChanged` notification with `eventName = AUDIO_SOURCE` and `isActive = true`. This HMI notification will let the media application know that it no longer has control of the audio source.
 
 If the user selects the media app as the audio source again, the HMI should send the same `BasicCommunication.OnEventChanged` notification, but with `isActive = false`. This will indicate to SDL Core that the application has regained control of the audio.
 
