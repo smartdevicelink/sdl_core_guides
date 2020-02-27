@@ -21,7 +21,11 @@ This chapter describes about the capability, a function setting information that
 The Specification of Capability is defined by the OEMs, however, as a reference information, this chapter discribes Capability setting as TOYOTA specification.
 </ol>
 
-### 1.5. Definitions when the HU returns RPC Error
+### [1.5. Definitions when the HU returns RPC Error](./1.5.Definitions_when_the_HU_returns_RPC_Error/index.md)
+<ol>
+This chapter describes the RPC in MOBILE_API.xml and HMI_API.xml that has a lack of or incorrect description.
+In addition, we have modified the incorrect definition and complemented the missing details on these RPC parameters.
+</ol>
 
 ### [1.6. Behavior when the HU returns RPC Error](./1.6.Behavior_when_the_HU_returns_RPC_Error/index.md)
 <ol>
@@ -51,7 +55,7 @@ Some systems do not have the Hard SW, and set it as the Software SW in a fixed a
 In this chapter, all mentioned above will be treated synonymously as the Hard SW.
 </ol>
 
-### [2.5. Behavior after ACC OFFON(Resume of Last Launched SDL App)](./2.5.Behavior_after_ACC_OFFON(Resume_of_Last_Launched_SDL_App))
+### [2.5. Behavior after ACC OFFON(Resume of Last Launched SDL App)](./2.5.Behavior_after_ACC_OFFON(Resume_of_Last_Launched_SDL_App)/index.md)
 <ol>
 This chapter describes the behavior of the SDL App after ACC OFF/ON.
 </ol>
@@ -66,7 +70,10 @@ This chapter describes the method to switch between the SDL App and other smartp
 This chapter describes the sequence of switching SDL Apps.
 </ol>
 
-### 4.1. Switching Communication Paths
+### [4.1. Switching Communication Paths](./4.1.Switching_Communication_Paths/index.md)
+<ol>
+This chapter describes the priority rule and status notification to switch connections in case of the system connects a device via multiple paths.
+</ol>
 
 ### [4.2. WiFi Connection](./4.2.WiFi_Connection/index.md)
 <ol>
