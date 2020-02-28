@@ -6,7 +6,7 @@ Here are a few of the most common questions new developers have around the SDL C
 Currently the SDL Core repo is built for Ubuntu 18.04 as our default environment.
 
 ## I'm getting a lot of compilation errors, how do I get past them?
-The most common errors come from dependencies issues. Ensure your system has all the required packages to compile the project. Try running the commands in the [dependencies section](https://smartdevicelink.com/en/guides/core/getting-started/install-and-run/#dependencies) of the getting started guide.
+The most common errors come from dependencies issues. Ensure your system has all the required packages to compile the project. Try running the commands in the [dependencies section](../getting-started/install-and-run/#dependencies) of the getting started guide.
 
 ## Can I use SDL on Android OS?
 
@@ -28,11 +28,11 @@ If you are not running core for the first time, core will use the existing polic
 
 ## Can I build SDL with/without certain features(such as logging or build tests)?
 
-You can enable/disable certain features by modifying the [CMakeLists.txt](https://github.com/smartdevicelink/sdl_core/blob/master/CMakeLists.txt) file. The [Cmake Build Configuration section](https://smartdevicelink.com/en/guides/core/getting-started/install-and-run/#cmake-build-configuration) section contains a list of features which can be included/excluded for a build.
+You can enable/disable certain features by modifying the [CMakeLists.txt](https://github.com/smartdevicelink/sdl_core/blob/master/CMakeLists.txt) file. The [Cmake Build Configuration section](../getting-started/install-and-run/#cmake-build-configuration) section contains a list of features which can be included/excluded for a build.
 
 ## What options can I modify in SDL without having to rebuild?
 
-The [SmartDeviceLink.ini](https://github.com/smartdevicelink/sdl_core/blob/master/src/appMain/smartDeviceLink.ini) file located in your `build/src/appMain` directory is where runtime options can be configured for your instance of SDL Core. The [INI Configuration](https://smartdevicelink.com/en/guides/core/getting-started/ini-configuration) page has more information about individual runtime options.
+The [SmartDeviceLink.ini](https://github.com/smartdevicelink/sdl_core/blob/master/src/appMain/smartDeviceLink.ini) file located in your `build/src/appMain` directory is where runtime options can be configured for your instance of SDL Core. The [INI Configuration](../getting-started/ini-configuration) page has more information about individual runtime options.
 
 ## I'm experiencing choppy audio through bluetooth, what should I do?
 The default SDL Core repo actually performs an SDP on loop. Because SDP queries are a resource intensive operation it can cause the audio coming from the phone to become very choppy. This can be fixed by doing the following:
