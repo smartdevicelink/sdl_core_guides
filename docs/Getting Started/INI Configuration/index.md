@@ -5,7 +5,7 @@ The ini file, located at `build/src/appMain/smartDeviceLink.ini` after you compi
 ## Sections
 
 * `HMI` - Settings relating to the HMI connection, including server and port information.
-* `MEDIA MANAGER` - Settings related to media features (audio/video streaming and audio pass thru). Several of these options are described in more detail in the [Audio/Video Streaming Setup guide](https://smartdevicelink.com/en/guides/core/audio-and-video-streaming-setup/).
+* `MEDIA MANAGER` - Settings related to media features (audio/video streaming and audio pass thru). Several of these options are described in more detail in the [Audio/Video Streaming Setup guide](../../feature-documentation/audio-and-video-streaming-setup/).
 * `GLOBAL PROPERTIES` - Settings to define default values to set when `ResetGlobalProperties` is sent by a mobile application.
 * `FILESYSTEM RESTRICTIONS` - Settings to define limits for file operations by applications in the `NONE` HMI Level.
 * `AppInfo` - Settings for where to store application info for resumption purposes.
