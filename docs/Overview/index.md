@@ -12,3 +12,4 @@ Table of Contents:
 - [App Service Provider Guide](../app-service-provider-guide/)
 - [Frequently Asked Questions](../faq/)
 - [Remote Control Guide](../remote-control-guide/)
+- [Doxygen Inline Documentation](../doxygen-inline-documentation/)
