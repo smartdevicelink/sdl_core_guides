@@ -62,8 +62,6 @@ VideoStreamConsumer = pipe
 AudioStreamConsumer = pipe
 ```
 
-#### VIDEO
-
 ### Video Stream Pipe
 
 After you start SDL Core, cd into the bin/storage directory and there should be a file named "video_stream_pipe". Use the gst-launch command that worked for your environment and set file source to the video_stream_pipe file. You should see “setting pipeline to PAUSED” and “Pipeline is PREROLLING”.
