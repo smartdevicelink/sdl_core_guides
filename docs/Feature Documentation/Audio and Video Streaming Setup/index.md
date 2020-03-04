@@ -4,6 +4,31 @@
 
 If you don't already have Core built, you can follow the [install and run guide](../../getting-started/install-and-run/).
 
+### SDL HMI Setup
+
+If you don't already have the SDL HMI, download it via the following command
+
+```
+git clone -b master https://github.com/smartdevicelink/sdl_hmi.git
+```
+
+### HMI Modifications
+Using either pipe or socket streaming may require a modification to the SDL HMI.
+
+#### VIDEO
+Comment out the following line in `app/model/sdl/Abstract/Model.js`:
+```
+//  SDL.SDLModel.playVideo(appID);
+```
+
+#### AUDIO
+Comment out the following lines in `app/model/sdl/Abstract/Model.js`:
+```
+//  SDL.StreamAudio.play(
+//      SDL.SDLController.getApplicationModel(appID).navigationAudioStream
+//  );
+```
+
 ### GSTREAMER Setup
 
 First, we must determine what gstreamer command works in your environment
@@ -24,27 +49,10 @@ If you're using tcp, you can connect the stream directly with your phone's IP ad
 gst-launch-1.0 tcpclientsrc host=<Device IP Address> port=3000 ! decodebin ! videoconvert ! ximagesink sync=false
 ```
 
-### HMI Modifications
-Using either pipe or socket streaming may require a modification to the SDL HMI.
-
-#### VIDEO
-Comment out the following line in `app/model/sdl/Abstract/Model.js`:
-```
-//  SDL.SDLModel.playVideo(appID);
-```
-
-#### AUDIO
-Comment out the following lines in `app/model/sdl/Abstract/Model.js`:
-```
-//  SDL.StreamAudio.play(
-//      SDL.SDLController.getApplicationModel(appID).navigationAudioStream
-//  );
-```
-
 ## Pipe Streaming
 
 ### Configuration (smartDeviceLink.ini)
-In the Core build folder, open bin/smartDeviceLink.ini and the make the following changes:
+In the Core build folder, open `bin/smartDeviceLink.ini` and the make the following changes:
 ```
 ;VideoStreamConsumer = socket
 ;AudioStreamConsumer = socket
@@ -81,7 +89,7 @@ gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/audio_stream_pipe ! 
 ## Socket Streaming
 
 ### Configuration (smartDeviceLink.ini)
-In the build folder directory, open `bin/smartDeviceLink.ini` in a text editor and the make the following changes:
+In the Core build folder, open `bin/smartDeviceLink.ini` and the make the following changes:
 ```
 ; Socket ports for video and audio streaming
 VideoStreamingPort = 5050
@@ -120,14 +128,14 @@ gst-launch-1.0 souphttpsrc location=http://127.0.0.1:5080 ! audio/x-raw,format=S
 This section describes how Core manages the streaming states of mobile applications. Only one application may stream video at a time, but audio applications may stream while in the LIMITED state with other applications.
 
 When an app is moved to HMI level `FULL`:
-- All non-streaming applications go to HMI level `BACKGROUND`
-- All apps with the same App HMI Type go to `BACKGROUND`
-- Streaming apps with a different App HMI Type that were in `FULL` go to `LIMITED`
+* All non-streaming applications go to HMI level `BACKGROUND`
+* All apps with the same App HMI Type go to `BACKGROUND`
+* Streaming apps with a different App HMI Type that were in `FULL` go to `LIMITED`
 
 When an app is moved to HMI level `LIMITED`:
-- All non-streaming applications keep their HMI level
-- All applications with a different App HMI Type keep their HMI level
-- Applications with the same App HMI Type go to `BACKGROUND`
+* All non-streaming applications keep their HMI level
+* All applications with a different App HMI Type keep their HMI level
+* Applications with the same App HMI Type go to `BACKGROUND`
 
 ### Start the Web HMI
 
