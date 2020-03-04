@@ -126,3 +126,96 @@ With regards to permission handling during RPC passing:
 
 * For RPCs which are known to Core (determined by its RPC spec version), they are checked normally against the policy table. As such, the ASP can assume in this case that the app specifically has permissions to use the this RPC in its current HMI level.
 * For RPCs unknown to Core, an ASC needs to be granted specific permissions by the OEM (controlled by the `allow_unknown_rpc_passthrough` policy field) to send this message, even if it is handled by the ASP.
+
+## Example Use Case
+
+### Sending a POI to a Navigation Provider
+
+Before the implementation of App Services, SDL applications could only send points of interest to the vehicle's embedded navigation by using the `SendLocation` RPC. The App Services feature was created as a generalized solution to answer the problem question: "How can my SDL application send a point of interest to the active SDL navigation application?". 
+
+Through RPC Passing, the App Services feature allows a non-navigation SDL application (App Service Consumers) to send a `SendLocation` RPC request to SDL Core. If there is an active navigation service, SDL Core will route the request to the SDL navigation application (App Service provider) instead of the vehicle's navigation system.
+
+#### App Service Provider Prerequisites
+
+1. Proper permissions must be granted to the navigation provider in SDL Core's policy table.
+    
+    - The application acting as the provider must have permissions to send a PublishAppService RPC
+    - The application's permissions must have a "NAVIGATION" object key in the "app_services" object.
+    - The "NAVIGATION" object must have the functionID of SendLocation listed as a handled RPC.
+```JSON
+{ // example sdl_preloaded_pt.json entry
+    ...
+    "app_policies": {
+        "<provider_app_id>": {
+            "keep_context": false,
+            "steal_focus": false,
+            "priority": "NONE",
+            "default_hmi": "NONE",
+            "groups": [
+                "Base-4", "AppServiceProvider"
+            ],
+            "RequestType": [],
+            "RequestSubType": [],
+            "app_services:": {
+                "NAVIGATION": {
+                    "handled_rpcs": [{"function_id": 39}]
+                }
+            }
+        }
+    }
+}
+```
+2. The application acting as the navigation service provider must register its navigation capabilities as an app service with SDL Core via the PublishAppService RPC. The `AppServiceManifest` included in the request must include the function ID for `SendLocation` (49) in the `handledRPCs` array.
+
+3. The navigation application's app service must be active. This will happen a number of different ways.
+
+    - If there is no other active navigation service, SDL Core will make an app service active when it is published.
+    - If there are multiple navigation app services, SDL Core will set an app's navigation service to active when the app is in `HMI_LEVEL::FULL`
+    - An app service consumer can request a specific navigation provider to become active via the `PerformAppServiceInteraction` RPC.
+
+#### App Service Consumer Prerequisites
+
+Proper SendLocation permissions must be granted to the navigation consumer in SDL Core's policy table.
+
+```JSON
+{ // example sdl_preloaded_pt.json entry
+    ...
+    "app_policies": {
+        "<consumer_app_id>": {
+            "keep_context": false,
+            "steal_focus": false,
+            "priority": "NONE",
+            "default_hmi": "NONE",
+            "groups": [
+                "Base-4", "SendLocation"
+            ],
+            "RequestType": [],
+            "RequestSubType": [],
+        }
+    }
+}
+```
+
+#### Use Case Solution RPC Flow
+
+- Navigation consumer application sends `SendLocation` RPC request to SDL Core.
+- SDL Core checks if there is an active App Service Provider that can handle the `SendLocation` RPC.
+- SDL Core sends an outgoing `SendLocation` request to the active navigation provider.
+- The navigation provider handles the request, sets its navigation destination to the requested POI, and responds with a success to SDL Core.
+- SDL Core receives the response and recognizes the message is part of an RPC Passing action. SDL Core passes the response to the navigation consumer that originated the `SendLocation` request.
+
+|||
+Example SendLocation RPC Passing
+![OnAppServiceData](https://raw.githubusercontent.com/smartdevicelink/sdl_evolution/master/assets/proposals/0167-app-services/rpc_passthrough.png)
+|||
+
+
+
+
+
+
+
+
+
+
+
