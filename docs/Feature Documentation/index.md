@@ -1,6 +1,6 @@
 ## SDL Core Feature Documentation
 
-Here you will find guides on how to use different features of the SDL Core application.
+Here you will find guides on how to use different features of SDL Core.
 
 Table of Contents:
 
