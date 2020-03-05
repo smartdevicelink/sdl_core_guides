@@ -9,3 +9,4 @@ Table of Contents:
 - [Transport Manager Programmers Guide](../transport-manager-programming/)
 - [Feature Documentation](../feature-documentation/)
 - [Frequently Asked Questions](../faq/)
+- [Doxygen Inline Documentation](../doxygen-inline-documentation/)
