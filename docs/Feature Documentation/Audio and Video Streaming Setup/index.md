@@ -2,7 +2,7 @@
 
 ### SDL Core Setup
 
-If you don't already have Core built, you can follow the [install and run guide](../../getting-started/install-and-run/).
+If you don't already have Core built, you can follow the [Install and Run Guide](../../getting-started/install-and-run/).
 
 ### SDL HMI Setup
 
