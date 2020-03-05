@@ -34,16 +34,21 @@
             "name": "Transport Manager Programming"
         },
         {
-            "name": "Audio and Video Streaming Setup"
-        },
-        {
-            "name": "App Service Provider Guide"
-        },
-        {
-            "name": "Multiple Transports Configuration"
-        },
-        {
-            "name": "Remote Control Guide"
+            "name": "Feature Documentation",
+            "navigation": [
+                {
+                    "name": "Audio and Video Streaming Setup"
+                },
+                {
+                    "name": "App Service Provider Guide"
+                },
+                {
+                    "name": "Multiple Transports Configuration"
+                },
+                {
+                    "name": "Remote Control Guide"
+                }
+            ]
         },
         {
             "name": "Encryption Setup"
