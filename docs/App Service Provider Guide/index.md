@@ -133,7 +133,7 @@ With regards to permission handling during RPC passing:
 
 Before the implementation of App Services, SDL applications could only send points of interest to the vehicle's embedded navigation by using the `SendLocation` RPC. The App Services feature was created as a generalized solution to answer the problem question: "How can my SDL application send a point of interest to the active SDL navigation application?". 
 
-Through RPC Passing, the App Services feature allows a non-navigation SDL application (App Service Consumers) to send a `SendLocation` RPC request to SDL Core. If there is an active navigation service, SDL Core will route the request to the SDL navigation application (App Service provider) instead of the vehicle's navigation system.
+Through RPC Passing, the App Services feature allows a non-navigation SDL application (App Service Consumer) to send a `SendLocation` RPC request to SDL Core. If there is an active navigation service, SDL Core will route the request to the SDL navigation application (App Service Provider) instead of the vehicle's navigation system.
 
 #### App Service Provider Prerequisites
 
@@ -208,7 +208,6 @@ Proper SendLocation permissions must be granted to the navigation consumer in SD
 Example SendLocation RPC Passing
 ![OnAppServiceData](https://raw.githubusercontent.com/smartdevicelink/sdl_evolution/master/assets/proposals/0167-app-services/rpc_passthrough.png)
 |||
-
 
 
 
