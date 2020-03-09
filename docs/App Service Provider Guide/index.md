@@ -141,7 +141,7 @@ Through RPC Passing, the App Services feature allows a non-navigation SDL applic
     
     - The application acting as the provider must have permissions to send a PublishAppService RPC.
     - The application's permissions must have a "NAVIGATION" object key in the "app_services" object.
-    - The "NAVIGATION" object must have the functionID of SendLocation listed as a handled RPC.
+    - The "NAVIGATION" object must have the functionID of `SendLocation` listed as a handled RPC.
 ```JSON
 { // example sdl_preloaded_pt.json entry
     ...
@@ -208,7 +208,6 @@ Proper SendLocation permissions must be granted to the navigation consumer in SD
 Example SendLocation RPC Passing
 ![OnAppServiceData](https://raw.githubusercontent.com/smartdevicelink/sdl_evolution/master/assets/proposals/0167-app-services/rpc_passthrough.png)
 |||
-
 
 
 
