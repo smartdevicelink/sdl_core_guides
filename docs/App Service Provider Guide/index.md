@@ -139,7 +139,7 @@ Through RPC Passing, the App Services feature allows a non-navigation SDL applic
 
 1. Proper permissions must be granted to the navigation provider in SDL Core's policy table.
     
-    - The application acting as the provider must have permissions to send a PublishAppService RPC.
+    - The application acting as the provider must have permissions to send a `PublishAppService` RPC.
     - The application's permissions must have a "NAVIGATION" object key in the "app_services" object.
     - The "NAVIGATION" object must have the functionID of `SendLocation` listed as a handled RPC.
 ```JSON
@@ -165,7 +165,7 @@ Through RPC Passing, the App Services feature allows a non-navigation SDL applic
     }
 }
 ```
-2. The application acting as the navigation service provider must register its navigation capabilities as an app service with SDL Core via the PublishAppService RPC. The `AppServiceManifest` included in the request must include the function ID for `SendLocation` (39) in the `handledRPCs` array.
+2. The application acting as the navigation service provider must register its navigation capabilities as an app service with SDL Core via the `PublishAppService` RPC. The `AppServiceManifest` included in the request must include the function ID for `SendLocation` (39) in the `handledRPCs` array.
 
 3. The navigation application's app service must be active. This will happen a number of different ways.
 
