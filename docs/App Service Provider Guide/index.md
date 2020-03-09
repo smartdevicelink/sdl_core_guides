@@ -175,7 +175,7 @@ Through RPC Passing, the App Services feature allows a non-navigation SDL applic
 
 #### App Service Consumer Prerequisites
 
-Proper SendLocation permissions must be granted to the navigation consumer in SDL Core's policy table.
+Proper `SendLocation` permissions must be granted to the navigation consumer in SDL Core's policy table.
 
 ```JSON
 { // example sdl_preloaded_pt.json entry
@@ -208,7 +208,6 @@ Proper SendLocation permissions must be granted to the navigation consumer in SD
 Example SendLocation RPC Passing
 ![OnAppServiceData](https://raw.githubusercontent.com/smartdevicelink/sdl_evolution/master/assets/proposals/0167-app-services/rpc_passthrough.png)
 |||
-
 
 
 
