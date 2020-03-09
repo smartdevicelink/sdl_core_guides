@@ -170,7 +170,7 @@ Through RPC Passing, the App Services feature allows a non-navigation SDL applic
 3. The navigation application's app service must be active. This will happen a number of different ways.
 
     - If there is no other active navigation service, SDL Core will make an app service active when it is published.
-    - If there are multiple navigation app services, SDL Core will set an app's navigation service to active when the app is in `HMI_LEVEL::FULL`
+    - If there are multiple navigation app services, SDL Core will set an app's navigation service to active when the app is in `HMI_LEVEL::FULL`.
     - An app service consumer can request a specific navigation provider to become active via the `PerformAppServiceInteraction` RPC.
 
 #### App Service Consumer Prerequisites
@@ -208,7 +208,6 @@ Proper SendLocation permissions must be granted to the navigation consumer in SD
 Example SendLocation RPC Passing
 ![OnAppServiceData](https://raw.githubusercontent.com/smartdevicelink/sdl_evolution/master/assets/proposals/0167-app-services/rpc_passthrough.png)
 |||
-
 
 
 
