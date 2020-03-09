@@ -165,7 +165,7 @@ Through RPC Passing, the App Services feature allows a non-navigation SDL applic
     }
 }
 ```
-2. The application acting as the navigation service provider must register its navigation capabilities as an app service with SDL Core via the PublishAppService RPC. The `AppServiceManifest` included in the request must include the function ID for `SendLocation` (49) in the `handledRPCs` array.
+2. The application acting as the navigation service provider must register its navigation capabilities as an app service with SDL Core via the PublishAppService RPC. The `AppServiceManifest` included in the request must include the function ID for `SendLocation` (39) in the `handledRPCs` array.
 
 3. The navigation application's app service must be active. This will happen a number of different ways.
 
@@ -208,7 +208,6 @@ Proper SendLocation permissions must be granted to the navigation consumer in SD
 Example SendLocation RPC Passing
 ![OnAppServiceData](https://raw.githubusercontent.com/smartdevicelink/sdl_evolution/master/assets/proposals/0167-app-services/rpc_passthrough.png)
 |||
-
 
 
 
