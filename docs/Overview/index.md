@@ -6,6 +6,7 @@ Table of Contents:
 
 - [Getting Started](../getting-started/install-and-run/)
 - [Integrating Vehicle Data](../integrating-your-hmi/vehicle-data/)
+- [Encryption Setup](../integrating-your-hmi/encryption-setup/)
 - [Transport Manager Programmers Guide](../transport-manager-programming/)
 - [Feature Documentation](../feature-documentation/)
 - [Frequently Asked Questions](../faq/)
