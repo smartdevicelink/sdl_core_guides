@@ -42,7 +42,319 @@ Also, Table3 below shows the various status transition and the expected behavior
 </div>
 
 **Table3.** Various Status Transition and Expected behavior related to Various Trigger
-![table3_various_status_transition_and_expected_behavior_related_to_various_trigger.png](./assets/table3_various_status_transition_and_expected_behavior_related_to_various_trigger.png)
+
+<table>
+  <tr>
+    <th align="center" rowspan="2"> ID </th>
+    <th align="center" rowspan="2"> Notify/Request </th>
+    <th align="center" rowspan="2"> EVENTID </th>
+    <th align="center" rowspan="2"> Parameter </th>
+    <th align="center" rowspan="2"> APPHMITYPE </th>
+    <th align="center" colspan="3"> BEFORE Change </th>
+    <th align="center" colspan="3"> AFTER Change </th>
+    <th align="center" rowspan="2"> App Behavior </th>
+  </tr>
+  <tr>
+    <th align="center"> HMI_STATE </th>
+    <th align="center"> AUDIO_STATE </th>
+    <th align="center"> VIDEO_STATE </th>
+    <th align="center"> HMI_STATE </th>
+    <th align="center"> AUDIO_STATE </th>
+    <th align="center"> VIDEO_STATE </th>
+  </tr>
+  <tr>
+    <td align="center"> 1 </td>
+    <td align="center"> OnEventChanged() </td>
+    <td align="center"> PHONE_CALL </td>
+    <td align="center"> TRUE </td>
+    <td align="center"> ALL </td>
+    <td align="center"> FULL/LIMITED </td>
+    <td align="center"> AUDIBLE </td>
+    <td align="center"> STREAMABLE/<br>NOT_STREAMABLE </td>
+    <td align="center"> BACKGROUND </td>
+    <td align="center"> NOT_AUDIBLE </td>
+    <td align="center"> Keep&nbsp;previous&nbsp;status </td>
+    <td align="center"> Audio state is stopped </td>
+  </tr>
+  <tr>
+    <td align="center"> 2 </td>
+    <td align="center"> OnEventChanged() </td>
+    <td align="center"> EMERGENCY_<br>EVENT </td>
+    <td align="center"> TRUE </td>
+    <td align="center"> ALL </td>
+    <td align="center"> FULL/LIMITED </td>
+    <td align="center"> AUDIBLE </td>
+    <td align="center"> STREAMABLE/<br>NOT_STREAMABLE </td>
+    <td align="center"> BACKGROUND </td>
+    <td align="center"> NOT_AUDIBLE </td>
+    <td align="center"> Keep previous status </td>
+    <td align="center"> Audio state is stopped </td>
+  </tr>
+  <tr>
+    <td align="center"> 3 </td>
+    <td align="center"> OnEventChanged() </td>
+    <td align="center"> DEACTIVATE_HMI </td>
+    <td align="center"> TRUE </td>
+    <td align="center"> ALL </td>
+    <td align="center"> FULL/LIMITED </td>
+    <td align="center"> AUDIBLE </td>
+    <td align="center"> STREAMABLE/<br>NOT_STREAMABLE </td>
+    <td align="center"> BACKGROUND </td>
+    <td align="center"> NOT_AUDIBLE </td>
+    <td align="center"> Keep previous status </td>
+    <td align="center"> Audio state is stopped </td>
+  </tr>
+  <tr>
+    <td align="center"> 4 </td>
+    <td align="center"> OnEventChanged() </td>
+    <td align="center"> AUDIO_SOURCE </td>
+    <td align="center"> TRUE </td>
+    <td align="center"> Media </td>
+    <td align="center"> FULL/LIMITED </td>
+    <td align="center"> AUDIBLE </td>
+    <td align="center"> STREAMABLE/<br>NOT_STREAMABLE </td>
+    <td align="center"> BACKGROUND </td>
+    <td align="center"> NOT_AUDIBLE </td>
+    <td align="center"> Keep previous status </td>
+    <td align="center"> Audio state is stopped </td>
+  </tr>
+  <tr>
+    <td align="center"> 5 </td>
+    <td align="center"> OnEventChanged() </td>
+    <td align="center"> AUDIO_SOURCE </td>
+    <td align="center"> TRUE </td>
+    <td align="center"> Navigation </td>
+    <td align="center"> FULL/LIMITED </td>
+    <td align="center"> AUDIBLE </td>
+    <td align="center"> STREAMABLE/<br>NOT_STREAMABLE </td>
+    <td align="center"> LIMITED </td>
+    <td align="center"> AUDIBLE </td>
+    <td align="center"> Keep previous status </td>
+    <td align="center"> Guidance voice is not impacted </td>
+  </tr>
+  <tr>
+    <td align="center"> 6 </td>
+    <td align="center"> OnEventChanged() </td>
+    <td align="center"> AUDIO_SOURCE </td>
+    <td align="center"> TRUE </td>
+    <td align="center"> Non-media </td>
+    <td align="center"> FULL/LIMITED </td>
+    <td align="center"> AUDIBLE </td>
+    <td align="center"> STREAMABLE/<br>NOT_STREAMABLE </td>
+    <td align="center"> BACKGROUND </td>
+    <td align="center"> NOT_AUDIBLE </td>
+    <td align="center"> Keep previous status </td>
+    <td align="center"> Audio state is stopped </td>
+  </tr>
+  <tr>
+    <td align="center"> 7 </td>
+    <td align="center"> OnEventChanged() </td>
+    <td align="center"> EMBEDDED_NAVI </td>
+    <td align="center"> TRUE </td>
+    <td align="center"> Media </td>
+    <td align="center"> FULL/LIMITED </td>
+    <td align="center"> AUDIBLE </td>
+    <td align="center"> STREAMABLE/<br>NOT_STREAMABLE </td>
+    <td align="center"> LIMITED </td>
+    <td align="center"> AUDIBLE </td>
+    <td align="center"> Keep previous status </td>
+    <td align="center"> Media Audio is not impacted </td>
+  </tr>
+  <tr>
+    <td align="center"> 8 </td>
+    <td align="center"> OnEventChanged() </td>
+    <td align="center"> EMBEDDED_NAVI </td>
+    <td align="center"> TRUE </td>
+    <td align="center"> Navigation </td>
+    <td align="center"> FULL/LIMITED </td>
+    <td align="center"> AUDIBLE </td>
+    <td align="center"> STREAMABLE/<br>NOT_STREAMABLE </td>
+    <td align="center"> BACKGROUND </td>
+    <td align="center"> NOT_AUDIBLE </td>
+    <td align="center"> Keep previous status </td>
+    <td align="center"> Audio state is stopped </td>
+  </tr>
+  <tr>
+    <td align="center"> 9 </td>
+    <td align="center"> OnEventChanged() </td>
+    <td align="center"> EMBEDDED_NAVI </td>
+    <td align="center"> TRUE </td>
+    <td align="center"> Non-media </td>
+    <td align="center"> FULL/LIMITED </td>
+    <td align="center"> AUDIBLE </td>
+    <td align="center"> STREAMABLE/<br>NOT_STREAMABLE </td>
+    <td align="center"> BACKGROUND </td>
+    <td align="center"> NOT_AUDIBLE </td>
+    <td align="center"> Keep previous status </td>
+    <td align="center"> Audio state is stopped </td>
+  </tr>
+  <tr>
+    <td align="center"> 10 </td>
+    <td align="center"> OnExitApplication() </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> reason = DRIVER_DISTRACTION_VIOLATION </td>
+    <td align="center"> ALL </td>
+    <td align="center"> FULL/LIMITED/<br>BACKGROUND </td>
+    <td align="center"> AUDIBLE/<br>NOT_AUDIBLE </td>
+    <td align="center"> STREAMABLE/<br>NOT_STREAMABLE </td>
+    <td align="center"> NONE </td>
+    <td align="center"> NOT_AUDIBLE </td>
+    <td align="center"> NOT_STREAMABLE </td>
+    <td align="center"> Audio voice and Video streaming are stopped </td>
+  </tr>
+  <tr>
+    <td align="center"> 11 </td>
+    <td align="center"> OnExitApplication() </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> reason = USER_EXIT </td>
+    <td align="center"> ALL </td>
+    <td align="center"> FULL/LIMITED/<br>BACKGROUND </td>
+    <td align="center"> AUDIBLE/<br>NOT_AUDIBLE </td>
+    <td align="center"> STREAMABLE/<br>NOT_STREAMABLE </td>
+    <td align="center"> NONE </td>
+    <td align="center"> NOT_AUDIBLE </td>
+    <td align="center"> NOT_STREAMABLE </td>
+    <td align="center"> Audio voice and Video streaming are stopped </td>
+  </tr>
+  <tr>
+    <td align="center"> 12 </td>
+    <td align="center"> OnExitApplication() </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> reason = CLOSE_CLOUD_CONNECTION </td>
+    <td align="center"> ALL </td>
+    <td align="center"> FULL/LIMITED/<br>BACKGROUND </td>
+    <td align="center"> AUDIBLE/<br>NOT_AUDIBLE </td>
+    <td align="center"> STREAMABLE/<br>NOT_STREAMABLE </td>
+    <td align="center"> NONE </td>
+    <td align="center"> NOT_AUDIBLE </td>
+    <td align="center"> NOT_STREAMABLE </td>
+    <td align="center"> Audio voice and Video streaming are stopped </td>
+  </tr>
+  <tr>
+    <td align="center"> 13 </td>
+    <td align="center"> SDL.ActivateApp </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> ALL </td>
+    <td align="center"> FULL/LIMITED/<br>BACKGROUND </td>
+    <td align="center"> AUDIBLE/<br>NOT_AUDIBLE </td>
+    <td align="center"> STREAMABLE/<br>NOT_STREAMABLE </td>
+    <td align="center"> FULL </td>
+    <td align="center" colspan="2"> Audio and Video Status<br>(Set by specific App type) </td>
+    <td align="left"> Audio&nbsp;voice&nbsp;and&nbsp;Video&nbsp;streaming&nbsp;are&nbsp;depended&nbsp;on&nbsp;AppHMIType&nbsp;parameter<br> - Media App status : AUDIBLE, NOT_STREAMABLE<br> - NAVIGATION App status : AUDIBLE, STREAMABLE </td>
+  </tr>
+  <tr>
+    <td align="center"> 14 </td>
+    <td align="center"> RegisterAppInterface </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> ALL </td>
+    <td align="center"> No status<br>before&nbsp;Register </td>
+    <td align="center"> No status<br>before&nbsp;Register </td>
+    <td align="center"> No status<br>before&nbsp;Register </td>
+    <td align="center"> NONE </td>
+    <td align="center"> NOT_AUDIBLE </td>
+    <td align="center"> NOT_STREAMABLE </td>
+    <td align="center"> Audio voice and Video streaming are stopped </td>
+  </tr>
+  <tr>
+    <td align="center"> 15 </td>
+    <td align="center"> OnAppDeactivated </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> Navigation </td>
+    <td align="center"> FULL </td>
+    <td align="center"> AUDIBLE </td>
+    <td align="center"> STREAMABLE </td>
+    <td align="center"> LIMITED </td>
+    <td align="center"> AUDIBLE </td>
+    <td align="center"> STREAMABLE </td>
+    <td align="center"> Audio voice and Video streaming are not impacted </td>
+  </tr>
+  <tr>
+    <td align="center"> 16 </td>
+    <td align="center"> OnAppDeactivated </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> PROJECTION &<br>isMedia = false </td>
+    <td align="center"> FULL </td>
+    <td align="center"> NOT_AUDIBLE </td>
+    <td align="center"> STREAMABLE </td>
+    <td align="center"> LIMITED </td>
+    <td align="center"> NOT_AUDIBLE </td>
+    <td align="center"> STREAMABLE </td>
+    <td align="center"> Audio voice is stopped, however Video streaming is not impacted </td>
+  </tr>
+  <tr>
+    <td align="center"> 17 </td>
+    <td align="center"> OnAppDeactivated </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> Non-media &<br>Non-navi </td>
+    <td align="center"> FULL/LIMITED/<br>BACKGROUND </td>
+    <td align="center"> AUDIBLE/<br>NOT_AUDIBLE </td>
+    <td align="center"> STREAMABLE/<br>NOT_STREAMABLE </td>
+    <td align="center"> BACKGROUND </td>
+    <td align="center"> NOT_AUDIBLE </td>
+    <td align="center"> NOT_STREAMABLE </td>
+    <td align="center"> Audio voice and Video streaming are stopped </td>
+  </tr>
+  <tr>
+    <td align="center"> 18 </td>
+    <td align="center"> SDL.ActivateApp(app1)<br>->SDL.ActivateApp(app2) </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> App1&nbsp;and&nbsp;App2&nbsp;are<br>same type </td>
+    <td align="center"> App1_FULL </td>
+    <td align="center"> AUDIBLE </td>
+    <td align="center"> STREAMABLE </td>
+    <td align="center"> App1_BACKGROUND </td>
+    <td align="center"> NOT_AUDIBLE </td>
+    <td align="center"> NOT_STREAMABLE </td>
+    <td align="center"> Audio voice and Video streaming are stopped </td>
+  </tr>
+  <tr>
+    <td align="center"> 19 </td>
+    <td align="center"> SDL.ActivateApp(app1)<br>->SDL.ActivateApp(app2) </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> App1 and App2 are<br>different type </td>
+    <td align="center"> App1_FULL </td>
+    <td align="center"> AUDIBLE </td>
+    <td align="center"> STREAMABLE </td>
+    <td align="center"> App1_LIMITED </td>
+    <td align="center" colspan="2"> Audio and Video Status<br>(Set by specific App type) </td>
+    <td align="left"> Audio voice and Video streaming are depended on AppHMIType parameter<br> - Media App status : AUDIBLE, NOT_STREAMABLE<br> - NAVIGATION App status : AUDIBLE, STREAMABLE </td>
+  </tr>
+  <tr>
+    <td align="center"> 20 </td>
+    <td align="left"> SDL.ActivateApp(VideoApp1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>->SDL.ActivateApp(MediaApp2)<br>->SDL.ActivateApp(VideoApp3) </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> VideoApp1,<br>MeidaApp2,<br>VideoApp3 </td>
+    <td align="center"> VideoApp1_LIMITED </td>
+    <td align="center"> VideoApp1_<br>AUDIBLE </td>
+    <td align="center"> VideoApp1_<br>STREAMABLE </td>
+    <td align="center"> VideoApp1_BACKGROUND </td>
+    <td align="center"> VideoApp1_<br>NOT_AUDIBLE </td>
+    <td align="center"> VideoApp1_<br>NOT_STREAMABLE </td>
+    <td align="center"> Audio voice and Video streaming are stopped </td>
+  </tr>
+  <tr>
+    <td align="center"> 21 </td>
+    <td align="left"> SDL.ActivateApp(MediaApp1)<br>->SDL.ActivateApp(VideoApp2)<br>->SDL.ActivateApp(MediaApp3) </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> No Parameter </td>
+    <td align="center"> MediaApp1,<br>VideoApp2,<br>MediaApp3 </td>
+    <td align="center"> MediaApp1_LIMITED </td>
+    <td align="center"> MediaApp1_<br>AUDIBLE </td>
+    <td align="center"> MediaApp1_<br>NOT_STREAMABLE </td>
+    <td align="center"> MediaApp1_BACKGROUND </td>
+    <td align="center"> MediaApp1_<br>NOT_AUDIBLE </td>
+    <td align="center"> MediaApp1_<br>NOT_STREAMABLE </td>
+    <td align="center"> Audio voice and Video streaming are stopped </td>
+  </tr>
+</table>
 
 ###  3.3. Competition of Video Streaming/Audio Streaming
 Other than the HMI level status, SDL has also a status for VideoStreaming/AudioStreaming which can be controlled.
@@ -63,21 +375,21 @@ The following tables below show the rules of status change, when the user switch
   <tr>
     <td align="left" rowspan="3"><b> 1st <br>launched </b></td>
     <td align="center"><b> NAVIGATION </b></td>
-    <td align="left"> 1stNAVIGATION:NS<br>2ndNAVIGATION:S </td>
-    <td align="left"> 1stNAVIGATION:NS<br>2ndPROJECTION:S </td>
-    <td align="left"> 1stNAVIGATION:S<br>2ndOther:NS </td>
+    <td align="left"> 1st&nbsp;NAVIGATION&nbsp;:&nbsp;NS<br>2nd NAVIGATION : S </td>
+    <td align="left"> 1st&nbsp;NAVIGATION&nbsp;:&nbsp;NS<br>2nd PROJECTION : S </td>
+    <td align="left"> 1st&nbsp;NAVIGATION&nbsp;:&nbsp;S<br>2nd Other :NS </td>
   </tr>
   <tr>
     <td align="center"><b> PROJECTION </b></td>
-    <td align="left"> 1stPROJECTION:NS<br>2ndNAVIGATION:S </td>
-    <td align="left"> 1stPROJECTION:NS<br>2ndPROJECTION:S </td>
-    <td align="left"> 1stPROJECTION:S<br>2ndOther:NS </td>
+    <td align="left"> 1st PROJECTION : NS<br>2nd NAVIGATION : S </td>
+    <td align="left"> 1st PROJECTION : NS<br>2nd PROJECTION : S </td>
+    <td align="left"> 1st PROJECTION : S<br>2nd Other : NS </td>
   </tr>
   <tr>
     <td align="center"><b> Other </b></td>
-    <td align="left"> 1stOther:NS<br>2ndNAVIGATION:S </td>
-    <td align="left"> 1stOther:NS<br>2ndPROJECTION:S </td>
-    <td align="left"> 1stOther:NS<br>2ndOther:S </td>
+    <td align="left"> 1st Other : NS<br>2nd NAVIGATION : S </td>
+    <td align="left"> 1st Other : NS<br>2nd PROJECTION : S </td>
+    <td align="left"> 1st Other : NS<br>2nd Other : S </td>
   </tr>
 </table>
 * S : STREAMABLE, NS : NOT_STREAMABLE<br><br>
@@ -98,31 +410,31 @@ The following tables below show the rules of status change, when the user switch
   <tr>
     <td align="left" rowspan="4"><b> 1st <br>launched </b></td>
     <td align="center"><b> NAVIGATION </b></td>
-    <td align="left"> 1stNAVIGATION:NA<br>2ndNAVIGATION:A </td>
-    <td align="left"> 1stNAVIGATION:A<br>2ndPROJECTION:NA </td>
-    <td align="left"> 1stNAVIGATION:A<br>2ndIsMediaApp:NA </td>
-    <td align="left"> 1stNAVIGATION:A<br>2ndOther:NA </td>
+    <td align="left"> 1st NAVIGATION : NA<br>2nd NAVIGATION : A </td>
+    <td align="left"> 1st NAVIGATION : A<br>2nd&nbsp;PROJECTION&nbsp;:&nbsp;NA </td>
+    <td align="left"> 1st NAVIGATION : A<br>2nd&nbsp;IsMediaApp&nbsp;:&nbsp;NA </td>
+    <td align="left"> 1st&nbsp;NAVIGATION&nbsp;:&nbsp;A<br>2nd Other : NA </td>
   </tr>
   <tr>
     <td align="center"><b> PROJECTION </b></td>
-    <td align="left"> 1stPROJECTION:A<br>2ndNAVIGATION:NA </td>
-    <td align="left"> 1stPROJECTION:NA<br>2ndPROJECTION:A </td>
-    <td align="left"> 1stPROJECTION:A<br>2ndIsMediaApp:NA </td>
-    <td align="left"> 1stPROJECTION:A<br>2ndOther:NA </td>
+    <td align="left"> 1st PROJECTION : A<br>2nd&nbsp;NAVIGATION&nbsp;:&nbsp;NA </td>
+    <td align="left"> 1st PROJECTION : NA<br>2nd PROJECTION : A </td>
+    <td align="left"> 1st PROJECTION : A<br>2nd IsMediaApp : NA </td>
+    <td align="left"> 1st PROJECTION : A<br>2nd Other : NA </td>
   </tr>
   <tr>
     <td align="center"><b> IsMediaApp </b></td>
-    <td align="left"> 1stIsMediaApp:A<br>2ndNAVIGATION:NA </td>
-    <td align="left"> 1stIsMediaApp:A<br>2ndPROJECTION:NA </td>
-    <td align="left"> 1stIsMediaApp:NA<br>2ndIsMediaApp:A </td>
-    <td align="left"> 1stIsMediaApp:A<br>2ndOther:NA </td>
+    <td align="left"> 1st IsMediaApp : A<br>2nd NAVIGATION : NA </td>
+    <td align="left"> 1st IsMediaApp : A<br>2nd PROJECTION : NA </td>
+    <td align="left"> 1st IsMediaApp : NA<br>2nd IsMediaApp : A </td>
+    <td align="left"> 1st IsMediaApp : A<br>2nd Other : NA </td>
   </tr>
   <tr>
     <td align="center"><b> Other </b></td>
-    <td align="left"> 1stOther:NA<br>2ndNAVIGATION:A </td>
-    <td align="left"> 1stOther:NA<br>2ndPROJECTION:A </td>
-    <td align="left"> 1stOther:NA<br>2ndIsMediaApp:A </td>
-    <td align="left"> 1stOther:NA<br>2ndOther:A </td>
+    <td align="left"> 1st Other : NA<br>2nd NAVIGATION : A </td>
+    <td align="left"> 1st Other : NA<br>2nd PROJECTION : A </td>
+    <td align="left"> 1st Other : NA<br>2nd IsMediaApp : A </td>
+    <td align="left"> 1st Other : NA<br>2nd Other : A </td>
   </tr>
 </table>
 * A : AUDIBLE, NA : NOT_AUDIBLE
