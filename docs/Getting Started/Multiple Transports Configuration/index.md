@@ -1,13 +1,13 @@
 
 # Setting Up Multiple Transports
 
-The Multiple Transports feature allows apps connected to Core to start another connection over a different transport for certain services (for example, an app connected over bluetooth can use WiFi as a secondary transport for video streaming). This guide will walk you through how to configure the multiple transports feature using the `smartDeviceLink.ini` file.
+The Multiple Transports feature allows apps connected to SDL Core to start another connection over a different transport for certain services. For example, an app connected over Bluetooth can use WiFi as a Secondary Transport for video streaming. This guide will walk you through how to configure the Multiple Transports feature using the `smartDeviceLink.ini` file.
 
 ## Initial Setup
 
-Modify the following lines to `smartDeviceLink.ini`
+Modify the following lines in `smartDeviceLink.ini`.
 
-- To enable multiple transports in Core
+- To enable Multiple Transports in Core:
 
 ```
 [MultipleTransports]
@@ -15,7 +15,7 @@ Modify the following lines to `smartDeviceLink.ini`
 MultipleTransportsEnabled = true
 ```
 
-- To set the available Secondary Transport types for a given Primary transport
+- To set the available Secondary Transport types for a given Primary Transport:
 
 ```
 [MultipleTransports]
@@ -30,7 +30,7 @@ The values which can be used in the `SecondaryTransportFor` configuration are `W
 !!!
 
 
-## Audio and Video streaming
+## Audio and Video Streaming
 
 Modify the services map in `smartdeviceLink.ini` to restrict video and audio streaming services to specific transport types.
 
@@ -42,7 +42,7 @@ VideoServiceTransports = TCP_WIFI, AOA_USB
 ```
 - Transports are listed in preferred order
 - If a transport is not listed, then the service is not allowed to run on that transport
-- If the `AudioServiceTransports`/`VideoServiceTransports` line is omitted, the corresponding service will be allowed to run on the primary transport
+- If the `AudioServiceTransports`/`VideoServiceTransports` line is omitted, the corresponding service will be allowed to run on the Primary Transport
 
 ### Secondary Transport Types
 
@@ -59,4 +59,4 @@ VideoServiceTransports = TCP_WIFI, AOA_USB
 
 ## Resources
 
-For more information on how the Multiple Transports feature works, see the [Feature Documentation](../../feature-documentation/multiple-transports)
+For more information on how the Multiple Transports feature works, see the [Feature Documentation](../../feature-documentation/multiple-transports).

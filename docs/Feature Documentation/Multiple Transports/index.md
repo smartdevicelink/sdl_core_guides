@@ -1,6 +1,6 @@
 # General Description
 
-The Multiple Transports feature allows apps connected to Core to start another connection over a different transport for certain services (for example, an app connected over bluetooth using WiFi as a secondary transport for video streaming). This guide will give an overview of the process which is used to establish a secondary transport connection. See [SDL-0141](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0141-multiple-transports.md) for more details on the original feature proposal.
+The Multiple Transports feature allows apps connected to SDL Core to start another connection over a different transport for certain services. For example, an app connected over Bluetooth can use WiFi as a Secondary Transport for video streaming. This guide will give an overview of the process which is used to establish a Secondary Transport connection. See [SDL-0141 - Supporting Simultaneous Multiple Transports](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0141-multiple-transports.md) for more details on the original feature proposal.
 
 ## Implementation
 - After the proxy is connected to Core, it initiates another connection over a different transport.
@@ -9,29 +9,34 @@ The Multiple Transports feature allows apps connected to Core to start another c
 
 !!! Note
 
-RPC and Hybrid services only run on the Primary transport
+RPC and Hybrid services only run on the Primary Transport
 
 !!!
 
-There are three protocol control frames which are used in the implementation of multiple transports
+There are three protocol control frames which are used in the implementation of Multiple Transports
 
 ### StartService ACK
+
+Payload Example:
 ```
 {
+	...
     "audioServiceTransports" : [1, 2],
     "videoServiceTransports" : [1, 2],
     "secondaryTransports" : ["TCP_WIFI"]
 }
 ```
 
-Core responds to the proxy's `StartService` request with additional parameters audioServiceTransports, videoServiceTransports and secondaryTransports.   
+Core responds to the proxy's `StartService` request with additional parameters `audioServiceTransports`, `videoServiceTransports` and `secondaryTransports`.   
 
-- The `secondaryTransports` contains an array of the allowed secondary transports for the current Primary transport. 
+- The `secondaryTransports` parameter contains an array of the allowed Secondary Transports for the current Primary Transport. 
 - `audioServiceTransports` and `videoServiceTransports` describe which services are allowed to run on which transports (Primary=1, Secondary=2, or both). The proxy uses this information and starts services only on allowed transports.
 - This response is constructed by Core using the configurations defined in the SDL INI file, described in [this guide](../../getting-started/multiple-transports-configuration).
-- Since RPC and Hybrid services always run on Primary transport, only Video and Audio services are configurable.
+- Since RPC and Hybrid services always run on Primary Transport, only Video and Audio services are configurable.
 
 ### TransportEventUpdate
+
+Payload Example:
 ```
 {
     "tcpIpAddress" : "192.168.1.1",
@@ -39,25 +44,25 @@ Core responds to the proxy's `StartService` request with additional parameters a
 }
 ```
 
-Core sends a TransportEventUpdate to the proxy to provide additional information required to connect over the TCP transport when it is available.
+Core sends a `TransportEventUpdate` notification to the proxy to provide additional information required to connect over the TCP transport when it is available.
 
-- If the `tcpIpAddress` field is empty, the secondary transport is unavailable and the proxy will not send a RegisterSecondaryTransport request 
+- If the `tcpIpAddress` field is empty, the Secondary Transport is unavailable and the proxy will not send a `RegisterSecondaryTransport` request.
 
 ### RegisterSecondaryTransport
 
-Using the information in the StartService ACK and TransportEventUpdate frames, the proxy sends a RegisterSecondaryTransport request over the secondary transport with the same session ID as the Primary transport.  
+Using the information in the `StartService ACK` and `TransportEventUpdate` frames, the proxy sends a `RegisterSecondaryTransport` request over the Secondary Transport with the same session ID as the Primary Transport.  
 
-- If Core sends back a RegisterSecondaryTransport ACK, the proxy can start services over the secondary transport
+- If Core sends back a `RegisterSecondaryTransport ACK`, the proxy can start services over the Secondary Transport.
 
 ## Operation Examples
 
 |||
-Start Service (WiFi as secondary transport)
+Start Service (WiFi as Secondary Transport)
 ![StartService](./assets/StartService.png)
 |||
 
 |||
-Start Video/Audio service (Over secondary transport)
+Start Video/Audio service (Over Secondary Transport)
 ![StartServiceVideo](./assets/StartServiceVideo.png)
 |||
   
