@@ -26,6 +26,9 @@
                     "name": "Developing the HMI UI"
                 },
                 {
+                    "name": "Encryption Setup"
+                },
+                {
                     "name": "Vehicle Data"
                 }
             ]
@@ -49,9 +52,6 @@
                     "name": "Remote Control Guide"
                 }
             ]
-        },
-        {
-            "name": "Encryption Setup"
         },
         {
             "name": "Doxygen Inline Documentation"
