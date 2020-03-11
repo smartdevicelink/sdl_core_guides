@@ -1,66 +1,39 @@
 ## Initial Configuration
 
-### Install Packages
+### SDL Core Setup
+
+If you don't already have Core built, you can follow the [Install and Run Guide](../../getting-started/install-and-run/).
+
+### SDL HMI Setup
+
+If you don't already have the SDL HMI, download it via the following command
 
 ```
-sudo apt-get install git cmake build-essential libavahi-client-dev libsqlite3-dev chromium-browser libssl-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools gstreamer1.0* libpulse-dev
+git clone -b master https://github.com/smartdevicelink/sdl_hmi.git
 ```
 
-```
-sudo apt-get update
-sudo apt-get upgrade
-sudo ldconfig
-```
+### HMI Modifications
+Using either pipe or socket streaming may require a modification to the SDL HMI.
 
-### Clone the SDL Core Repository
-
-Clone the SDL Core [repository](https://github.com/smartdevicelink/sdl_core)
-
+#### VIDEO
+Comment out the following line in `app/model/sdl/Abstract/Model.js`:
 ```
-git clone https://github.com/smartdevicelink/sdl_core.git
+//  SDL.SDLModel.playVideo(appID);
 ```
 
-CD into sdl_core/ and checkout the [master branch](https://github.com/smartdevicelink/sdl_core/tree/master)
-
+#### AUDIO
+Comment out the following lines in `app/model/sdl/Abstract/Model.js`:
 ```
-git checkout origin/master
-```
-
-### Clone the SDL HMI Repository
-
-Clone the Web HMI [repository](https://github.com/smartdevicelink/sdl_hmi)
-
-```
-git clone https://github.com/smartdevicelink/sdl_hmi.git
-```
-
-CD into sdl_hmi/ and checkout the [master branch](https://github.com/smartdevicelink/sdl_hmi/tree/master)
-
-```
-git checkout origin/master
-```
-
-### Setup the Build Environment
-
-Create build folder outside of sdl_core/ directory
-
-```
-mkdir build
-cd build
-```
-
-Run CMAKE and install application
-```
-cmake ../sdl_core
-make
-make install
+//  SDL.StreamAudio.play(
+//      SDL.SDLController.getApplicationModel(appID).navigationAudioStream
+//  );
 ```
 
 ### GSTREAMER Setup
 
 First, we must determine what gstreamer command works in your environment
 
-Start by finding a raw h.264 file ([Example](https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/HT1425/sample_iPod.m4v.zip)) and determine which of the these gstreamer commands sucessfully plays the example video
+Start by finding a raw h.264 file ([Example](https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/HT1425/sample_iPod.m4v.zip)) and determine which of the these gstreamer commands successfully plays the example video
 
 - Ubuntu 14.04+
 ```
@@ -71,7 +44,7 @@ or
 gst-launch-1.0 filesrc location=/path/to/h264/file ! decodebin ! videoconvert ! ximagesink sync=false
 ```
 
-If you're using tcp, you can connect the stream directly with your phones ip address using
+If you're using tcp, you can connect the stream directly with your phone's IP address using
 ```
 gst-launch-1.0 tcpclientsrc host=<Device IP Address> port=3000 ! decodebin ! videoconvert ! ximagesink sync=false
 ```
@@ -79,7 +52,7 @@ gst-launch-1.0 tcpclientsrc host=<Device IP Address> port=3000 ! decodebin ! vid
 ## Pipe Streaming
 
 ### Configuration (smartDeviceLink.ini)
-In the build folder directory, open bin/smartDeviceLink.ini in a text editor and the make the following changes:
+In the Core build folder, open `bin/smartDeviceLink.ini` and the make the following changes:
 ```
 ;VideoStreamConsumer = socket
 ;AudioStreamConsumer = socket
@@ -88,11 +61,6 @@ In the build folder directory, open bin/smartDeviceLink.ini in a text editor and
 VideoStreamConsumer = pipe
 AudioStreamConsumer = pipe
 ```
-
-### HMI Modifications
-Using pipe streaming may require a modification to the SDL HMI.
-
-#### VIDEO
 
 ### Video Stream Pipe
 
@@ -119,7 +87,7 @@ gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/audio_stream_pipe ! 
 ## Socket Streaming
 
 ### Configuration (smartDeviceLink.ini)
-In the build folder directory, open `bin/smartDeviceLink.ini` in a text editor and the make the following changes:
+In the Core build folder, open `bin/smartDeviceLink.ini` and the make the following changes:
 ```
 ; Socket ports for video and audio streaming
 VideoStreamingPort = 5050
@@ -131,23 +99,6 @@ AudioStreamConsumer = socket
 ;AudioStreamConsumer = file
 ;VideoStreamConsumer = pipe
 ;AudioStreamConsumer = pipe
-```
-
-### HMI Modifications
-Using socket streaming may require a modification to the SDL HMI.
-
-#### VIDEO
-Comment out the following lines in `app/model/sdl/Abstract/Model.js`:
-```
-//  SDL.SDLModel.playVideo(appID);
-```
-
-#### AUDIO
-Comment out the following lines in `app/model/sdl/Abstract/Model.js`:
-```
-//  SDL.StreamAudio.play(
-//      SDL.SDLController.getApplicationModel(appID).navigationAudioStream
-//  );
 ```
 
 ### Video Stream Socket
@@ -170,33 +121,33 @@ gst-launch-1.0 souphttpsrc location=http://127.0.0.1:5050 ! "application/x-rtp-s
 gst-launch-1.0 souphttpsrc location=http://127.0.0.1:5080 ! audio/x-raw,format=S16LE,rate=16000,channels=1 ! pulsesink
 ```
 
-# Start SDL Core
-In the build folder
+## Video Streaming States
 
-```
-cd bin
-./start.sh
-```
-!!! NOTE
-If you want to use a USB connection, you must run
-```
-sudo ./start.sh
-```
-!!!
+This section describes how Core manages the streaming states of mobile applications. Only one application may stream video at a time, but audio applications may stream while in the LIMITED state with other applications.
 
-### Start the web HMI
+When an app is moved to HMI level `FULL`:
+* All non-streaming applications go to HMI level `BACKGROUND`
+* All apps with the same App HMI Type go to `BACKGROUND`
+* Streaming apps with a different App HMI Type that were in `FULL` go to `LIMITED`
+
+When an app is moved to HMI level `LIMITED`:
+* All non-streaming applications keep their HMI level
+* All applications with a different App HMI Type keep their HMI level
+* Applications with the same App HMI Type go to `BACKGROUND`
+
+### Start the Web HMI
 
 CD into the HMI repository and run
 ```
 chromium-browser index.html
 ```
 
-### Start Video or Audio Stream
+### Additional Resources
 
 !!! NOTE
-No open source mobile application currently implements video streaming.
+Livio provides an [example video streaming android application](https://github.com/livio/sdl_video_streaming_android_sample).
 !!!
 
-[iOS Video Streaming Guide](../../iOS/mobile-navigation/video-streaming/)
+[iOS Video Streaming Guide](https://smartdevicelink.com/en/guides/iOS/video-streaming-for-navigation-apps/video-streaming/)
 
-[Android Video Streaming Guide](../../Android/mobile-navigation/video-streaming/)
+[Android Video Streaming Guide](https://smartdevicelink.com/en/guides/android/video-streaming-for-navigation-apps/video-streaming/)

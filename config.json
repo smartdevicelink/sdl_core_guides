@@ -26,6 +26,9 @@
                     "name": "Developing the HMI UI"
                 },
                 {
+                    "name": "Encryption Setup"
+                },
+                {
                     "name": "Vehicle Data"
                 }
             ]
@@ -34,19 +37,21 @@
             "name": "Transport Manager Programming"
         },
         {
-            "name": "Audio and Video Streaming Setup"
-        },
-        {
-            "name": "App Service Provider Guide"
-        },
-        {
-            "name": "Multiple Transports Configuration"
-        },
-        {
-            "name": "Remote Control Guide"
-        },
-        {
-            "name": "Encryption Setup"
+            "name": "Feature Documentation",
+            "navigation": [
+                {
+                    "name": "Audio and Video Streaming Setup"
+                },
+                {
+                    "name": "App Service Provider Guide"
+                },
+                {
+                    "name": "Multiple Transports Configuration"
+                },
+                {
+                    "name": "Remote Control Guide"
+                }
+            ]
         },
         {
             "name": "Doxygen Inline Documentation"
