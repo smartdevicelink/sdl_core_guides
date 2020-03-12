@@ -13,7 +13,7 @@ RPC and Hybrid services only run on the Primary Transport
 
 !!!
 
-There are three protocol control frames which are used in the implementation of Multiple Transports
+There are three protocol control frames which are used in the implementation of Multiple Transports.
 
 ### StartService ACK
 
