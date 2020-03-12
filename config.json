@@ -13,6 +13,9 @@
                 },
                 {
                     "name": "INI Configuration"
+                },
+                {
+                    "name": "Multiple Transports Configuration"
                 }
             ]
         },
@@ -46,7 +49,7 @@
                     "name": "App Service Provider Guide"
                 },
                 {
-                    "name": "Multiple Transports Configuration"
+                    "name": "Multiple Transports"
                 },
                 {
                     "name": "Remote Control Guide"
