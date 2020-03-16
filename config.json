@@ -37,9 +37,6 @@
             ]
         },
         {
-            "name": "Transport Manager Programming"
-        },
-        {
             "name": "Feature Documentation",
             "navigation": [
                 {
@@ -53,6 +50,17 @@
                 },
                 {
                     "name": "Remote Control Guide"
+                }
+            ]
+        },
+        {
+            "name": "Developer Documentation",
+            "navigation": [
+                {
+                    "name": "Web Engine Support"
+                },
+                {
+                    "name": "Transport Manager Programming"
                 }
             ]
         },
