@@ -8,30 +8,30 @@
 A web engine app is a web application that runs within the vehicle. This is made possible by an OEM hosted "app store" which distributes approved "app bundles." The HMI will decompress these app bundles and launch the entrypoint which will use the SDL JavaScript library to interact with SDL Core.
 
 App bundles are zip compressed archives containing
-- manifest.js
+#### manifest.js
     - a javascript file exporting properties about the application
-        - entrypoint
+        - `entrypoint`
             - a relative path within the bundle to the html file that will be launched by the HMI
             - this HTML file must include the manifest.js file as a script
-        - appIcon
+        - `appIcon`
             - a relative path to the app icon within the app bundle
-        - appId
+        - `appId`
             - the `policyAppId` of this application
-        - appName
+        - `appName`
             - the app name that should be displayed in the app store or in the app list
-        - category
+        - `category`
             - the primary `appHMIType` of the web engine application
-        - additionalCategories
+        - `additionalCategories`
             - additional `appHMIType`s of the web engine application
-        - locales
+        - `locales`
             - a map of other languages to alternate names and icons
-        - appVersion
+        - `appVersion`
             - the current version of the application
-        - minRpcVersion
+        - `minRpcVersion`
             - the minimum supported RPC spec version
-        - minProtocolVersion
+        - `minProtocolVersion`
             - the minimum supported protocol spec version
-- sdl.js
+#### sdl.js
     - the SDL JS library used to interact with SDL Core
 - Any HTML / JS files used to run the application
 
