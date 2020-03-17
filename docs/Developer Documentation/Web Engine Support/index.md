@@ -59,6 +59,7 @@ If the users activated a Web Engine application, the HMI will use information fr
 In order to support the Webengine feature, a websocket server transport was added to SDL Core. This contrasts to the websocket client transport in SDL Core that is used by Java Cloud applications. When the HMI launches a web engine application, it will provide Core's hostname and port as query parameters to the entrypoint of the web engine application. This transport supports both secure and non-secure websocket communication; which is also determined by a query parameter passed to the entrypoint html file of the web engine application.
 
 These are the accepted values for the sdl-transport-role parameter:
+
 - ws-server
 - ws-client
 - wss-server
@@ -71,6 +72,7 @@ Example URL with query parameters: file://somewhere/HelloSDL/index.html?sdl-host
 #### Secured Websocket Connections
 
 Websocket server transport will only run if either all three of these are valid or if none are provided:
+
 - WSServerCertificatePath (path to websocket server certificate)
 - WSServerKeyPath (path to websocket server private key path)
 - WSServerCACertificatePath (path to CA certificate)
