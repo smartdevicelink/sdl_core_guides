@@ -209,6 +209,16 @@ Example SendLocation RPC Passing
 ![OnAppServiceData](https://raw.githubusercontent.com/smartdevicelink/sdl_evolution/master/assets/proposals/0167-app-services/rpc_passthrough.png)
 |||
 
+#### Embedded Navigation Best Practice
+
+The embedded navigation system on the IVI can be configured to be a navigation service provider. This feature is not limited to mobile applications.
+
+It is recommended that an OEM integrates App Services with their embedded navigation system to allow for a better SDL navigation experience with 3rd party applications. 
+
+If a 3rd party navigation app and the embedded navigation system are registered as navigation app services, SDL Core will be able to notify the different navigation solutions which system is activated by the user. This will prevent the possibility of two or more navigation solutions from giving the driver instructions at the same time. 
+
+A navigation service provider should stop an "in-progress" trip if the provider is notified by SDL Core that their navigation service is no longer active.
+
 
 
 
