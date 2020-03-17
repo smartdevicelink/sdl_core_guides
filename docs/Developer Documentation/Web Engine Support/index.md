@@ -52,7 +52,7 @@ In order for a Web Engine application to appear on the SDL app list, the HMI mus
 Not all parameters in the `AppProperties` struct apply to Web Engine Apps. Web Engine Apps should omit `endpoint` and `authToken`.
 !!!
 
-If the users activated a Web Engine application, the HMI will use information from the manifest.js to launch the entrypoint HTML (our development HMIs' do this by creating an invisible iframe). Here, the app will begin execution on the head unit and eventually call `RegisterAppInterface`. When the HMI receives an `OnAppRegistered` notification signalling that the web engine app has successfully registered, the HMI should then send Core an `ActivateApp` request.
+When the user activates a Web Engine application, the HMI will use information from the manifest.js to launch the entrypoint HTML (our development HMIs' do this by creating an invisible iframe). Here, the app will begin execution on the head unit and eventually call `RegisterAppInterface`. When the HMI receives an `OnAppRegistered` notification signalling that the web engine app has successfully registered, the HMI should then send Core an `ActivateApp` request.
 
 ## WebSocket Server Transport
 
@@ -67,7 +67,7 @@ These are the accepted values for the sdl-transport-role parameter:
 - tcp-server
 - tcp-client
 
-Example URL with query parameters: file://somewhere/HelloSDL/index.html?sdl-host=localhost&sdl-port=12345&sdl-transport-role=wss-server
+Example URL with query parameters: `file://somewhere/HelloSDL/index.html?sdl-host=localhost&sdl-port=12345&sdl-transport-role=wss-server`
 
 #### Secured Websocket Connections
 
@@ -96,7 +96,6 @@ Please refer to the following diagram that describes the initialization sequence
 Websocket Server Connection Sequence
 ![TM](./assets/WES_sequence.png)
 |||
-
 
 
 
