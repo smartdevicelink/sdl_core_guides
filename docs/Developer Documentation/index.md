@@ -6,3 +6,4 @@ Table of Contents:
 
 - [Web Engine Support](./web-engine-support/)
 - [Transport Manager Programmers Guide](./transport-manager-programming/)
+- [Security Manager Design](./security-manager-design/)
