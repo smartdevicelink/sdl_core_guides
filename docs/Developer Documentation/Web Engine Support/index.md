@@ -5,7 +5,7 @@
 
 ## Web Engine Apps
 
-A web engine app is a web application that runs within the vehicle. This is made possible by an OEM hosted "app store" which distributes approved "app bundles." The HMI will decompress these app bundles and launch the entrypoint which will use the SDL JavaScript library to interact with SDL Core.
+A web engine app is a web application that runs within the vehicle. This is made possible by an OEM hosted "app store" which distributes approved "app bundles." The HMI will decompress these app bundles and launch the entrypoint which will use the SDL JavaScript (JS) library to interact with SDL Core.
 
 App bundles are zip compressed archives containing the following files:
 
@@ -13,7 +13,7 @@ App bundles are zip compressed archives containing the following files:
 manifest.js is a javascript file that exports the following application properties:
 
 - `entrypoint`
-    - A relative path within the bundle to the html file that will be launched by the HMI
+    - A relative path within the bundle to the HTML file that will be launched by the HMI
     - This HTML file must include the manifest.js file as a script
 - `appIcon`
     - A relative path to the app icon within the app bundle
@@ -28,7 +28,7 @@ manifest.js is a javascript file that exports the following application properti
 - `locales`
     - A map of other languages to alternate names and icons
 - `appVersion`
-    - Ahe current version of the application
+    - The current version of the application
 - `minRpcVersion`
     - The minimum supported RPC spec version
 - `minProtocolVersion`
@@ -52,11 +52,11 @@ In order for a Web Engine application to appear on the SDL app list, the HMI mus
 Not all parameters in the `AppProperties` struct apply to Web Engine Apps. Web Engine Apps should omit `endpoint` and `authToken`.
 !!!
 
-When the user activates a Web Engine application, the HMI will use information from the manifest.js to launch the entrypoint HTML (our development HMIs' do this by creating an invisible iframe). Here, the app will begin execution on the head unit and eventually call `RegisterAppInterface`. When the HMI receives an `OnAppRegistered` notification signalling that the web engine app has successfully registered, the HMI should then send Core an `ActivateApp` request.
+When the user activates a Web Engine application, the HMI will use information from the manifest.js to launch the entrypoint HTML (our development HMIs do this by creating an invisible iframe). Here, the app will begin execution on the head unit and eventually call `RegisterAppInterface`. When the HMI receives an `OnAppRegistered` notification signalling that the web engine app has successfully registered, the HMI should then send Core an `ActivateApp` request.
 
 ## WebSocket Server Transport
 
-In order to support the Webengine feature, a websocket server transport was added to SDL Core. This contrasts to the websocket client transport in SDL Core that is used by Java Cloud applications. When the HMI launches a web engine application, it will provide Core's hostname and port as query parameters to the entrypoint of the web engine application. This transport supports both secure and non-secure websocket communication; which is also determined by a query parameter passed to the entrypoint html file of the web engine application.
+In order to support the Webengine feature, a websocket server transport was added to SDL Core. This contrasts to the websocket client transport in SDL Core that is used by Java Cloud applications. When the HMI launches a web engine application, it will provide Core's hostname and port as query parameters to the entrypoint of the web engine application. This transport supports both secure and non-secure websocket communication, which is also determined by a query parameter passed to the entrypoint HTML file of the web engine application.
 
 These are the accepted values for the sdl-transport-role parameter:
 
@@ -96,6 +96,5 @@ Please refer to the following diagram that describes the initialization sequence
 Websocket Server Connection Sequence
 ![TM](./assets/WES_sequence.png)
 |||
-
 
 
