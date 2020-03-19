@@ -209,6 +209,26 @@ Example SendLocation RPC Passing
 ![OnAppServiceData](https://raw.githubusercontent.com/smartdevicelink/sdl_evolution/master/assets/proposals/0167-app-services/rpc_passthrough.png)
 |||
 
+## IVI App Services
 
+The App Services feature was designed to offer the same capabilities to the embedded IVI systems that are available to mobile devices. For example, the IVI's built-in radio could publish a `MEDIA` type App Service, and the embedded navigation system could publish a `NAVIGATION` type App Service. 
 
+The HMI may also act as an App Service Consumer. For example, the HMI could create a "weather widget" that subscribes to the published `WEATHER` App Service. The "weather widget" could then display weather information from the user's preferred weather service.
 
+Configuring the IVI as an App Service Consumer or Provider is accomplished through a set of RPCs in the HMI API's `AppService` interface (which mirror the APIs used for mobile app services):
+
+- `AppService.PublishAppService`
+- `AppService.UnpublishAppService`
+- `AppService.GetAppServiceData`
+- `AppService.OnAppServiceData`
+- `AppService.PerformAppServiceInteraction`
+- `AppService.GetAppServiceRecords`
+- `AppService.AppServiceActivation`
+
+#### Embedded Navigation Best Practice
+
+It is recommended that an OEM integrates App Services with their embedded navigation system to allow for a better SDL navigation experience with 3rd party applications. 
+
+If a 3rd party navigation app and the embedded navigation system are registered as navigation app services, SDL Core will be able to notify the different navigation solutions which system is activated by the user. This will prevent the possibility of two or more navigation solutions from giving the driver instructions at the same time. 
+
+A navigation service provider should stop an "in-progress" trip if the provider is notified by SDL Core that their navigation service is no longer active.
