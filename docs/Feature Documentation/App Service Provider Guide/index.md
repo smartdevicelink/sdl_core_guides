@@ -211,11 +211,11 @@ Example SendLocation RPC Passing
 
 ## IVI App Services
 
-App Services was designed to offer the same feature capabilities to the embedded IVI systems that mobile devices have. For example, the built in radio could publish a `MEDIA` type App Service, and the embedded navigation could publish a `NAVIGATION` type App Service. 
+The App Services feature was designed to offer the same capabilities to the embedded IVI systems that are available to mobile devices. For example, the IVI's built-in radio could publish a `MEDIA` type App Service, and the embedded navigation system could publish a `NAVIGATION` type App Service. 
 
 The HMI may also act as an App Service Consumer. For example, the HMI could create a "weather widget" that subscribes to the published `WEATHER` App Service. The "weather widget" could then display weather information from the user's preferred weather service.
 
-The IVI as an App Service Consumer or Provider is accomplished through a set of RPCs in the HMI API's `AppService` interface:
+Configuring the IVI as an App Service Consumer or Provider is accomplished through a set of RPCs in the HMI API's `AppService` interface (which mirror the APIs used for mobile app services):
 
 - `AppService.PublishAppService`
 - `AppService.UnpublishAppService`
@@ -224,7 +224,6 @@ The IVI as an App Service Consumer or Provider is accomplished through a set of 
 - `AppService.PerformAppServiceInteraction`
 - `AppService.GetAppServiceRecords`
 - `AppService.AppServiceActivation`
-- `AppService.GetActiveServiceConsent`
 
 #### Embedded Navigation Best Practice
 
