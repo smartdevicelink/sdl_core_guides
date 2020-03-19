@@ -7,7 +7,7 @@ Table of Contents:
 - [Getting Started](../getting-started/install-and-run/)
 - [Integrating Vehicle Data](../integrating-your-hmi/vehicle-data/)
 - [Encryption Setup](../integrating-your-hmi/encryption-setup/)
-- [Transport Manager Programmers Guide](../transport-manager-programming/)
+- [Developer Documentation](../developer-documentation/)
 - [Feature Documentation](../feature-documentation/)
 - [Frequently Asked Questions](../faq/)
 - [Doxygen Inline Documentation](../doxygen-inline-documentation/)
