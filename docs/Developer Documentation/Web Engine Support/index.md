@@ -1,3 +1,4 @@
+
 # WebEngine Application Guide
 
 - What is a WebEngine app?
@@ -96,5 +97,3 @@ Please refer to the following diagram that describes the initialization sequence
 WebSocket Server Connection Sequence
 ![TM](./assets/WES_sequence.png)
 |||
-
-
