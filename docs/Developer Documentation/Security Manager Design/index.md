@@ -54,7 +54,7 @@ To understand what the security manager does to start an encrypted service after
 
 |||
 Security Manager Add Encrypted Service
-![TM](./assets/securitymanager_init2.png)
+![TM](./assets/securitymanager_second_init.png)
 |||
 
 #### Security Manager Decrypt
