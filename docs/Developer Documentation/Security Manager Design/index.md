@@ -10,7 +10,7 @@ Under the hood the Security Manager uses OpenSSL to complete handshakes and encr
 
 #### OnHandshakeDone
 
-When a handshake has been completed, the `OnHandshakeDone` is called on each registered `SecurityManagerListener`. This function is called with two parameters: the connection key, and a `HandshakeResult` enum value (one of Fail, Success, or CertExpired)
+When a handshake has been completed, the `OnHandshakeDone` is called on each registered `SecurityManagerListener`. This function is called with two parameters: the connection key, and a [HandshakeResult](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/include/security_manager/ssl_context.h#L68) enum value (one of Fail, Success, or CertExpired)
 
 #### OnCertificateUpdateRequired
 
