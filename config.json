@@ -21,6 +21,65 @@
             "name" : "Encryption Setup"
         },
         {
+            "name": "Best Practice Documents",
+            "navigation": [
+                {
+                    "name": "1.1.Establish_Session"
+                },
+                {
+                    "name": "1.2.SDL_App_Icon_Display"
+                },
+                {
+                    "name": "1.3.SDL_App_Icon_Caching"
+                },
+                {
+                    "name": "1.4.Capabilities_Definition_with_TOYOTA_Settings"
+                },
+                {
+                    "name": "1.5.Definitions_when_the_HU_returns_RPC_Error"
+                },
+                {
+                    "name": "1.6.Behavior_when_the_HU_returns_RPC_Error"
+                },
+                {
+                    "name": "2.1.Press_the_App_Icon_on_the_SDL_menu_screen"
+                },
+                {
+                    "name": "2.2.Launch_by_Voice_Recognition"
+                },
+                {
+                    "name": "2.3.Launch_by_choosing_the_Audio_source_on_the_Audio_screen"
+                },
+                {
+                    "name": "2.4.Launch_by_Hard_SW"
+                },
+                {
+                    "name": "2.5.Behavior_after_ACC_OFFON(Resume_of_Last_Launched_SDL_App)"
+                },
+                {
+                    "name": "2.6.Change_Screen_to_SDL_App_from_Other_Smartphone_Linkage_Functions"
+                },
+                {
+                    "name": "3.Switching_SDL_Apps"
+                },
+                {
+                    "name": "4.1.Switching_Communication_Paths"
+                },
+                {
+                    "name": "4.2.WiFi_Connection"
+                },
+                {
+                    "name": "5.SDL_App_Interruption"
+                },
+                {
+                    "name": "6.Behavior_of_each_HMI_Status"
+                },
+                {
+                    "name": "Appendix.Terminologies_and_Definitions"
+                }
+            ]
+        },
+        {
             "name": "FAQ"
         }
     ]
