@@ -21,7 +21,7 @@
             "name" : "Encryption Setup"
         },
         {
-            "name": "Best Practice Documents",
+            "name": "best_practice",
             "navigation": [
                 {
                     "name": "1.1.Establish_Session"
