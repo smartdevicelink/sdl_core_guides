@@ -24,9 +24,11 @@ obj[3] = 3.14;
 
 int i = obj[0].asInt();
 
-char c = obj[1].asChar();
+bool b = obj[1].asBool();
 
-double d = obj[2].asDouble();
+char c = obj[2].asChar();
+
+double d = obj[3].asDouble();
 ```
 
 ## Validation
