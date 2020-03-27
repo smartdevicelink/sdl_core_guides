@@ -22,7 +22,7 @@
         },
         {
             "name": "FAQ"
-        }
+        },
         {
             "name": "Best Practice Documents",
             "navigation": [
@@ -81,6 +81,6 @@
                     "name": "Appendix. Terminologies and Definitions"
                 }
             ]
-        },
+        }
     ]
 }
