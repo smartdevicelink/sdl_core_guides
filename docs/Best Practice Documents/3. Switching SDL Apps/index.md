@@ -24,101 +24,12 @@ Hence, the purpose of this document is to standardize such cases/issues using th
 Table 1 shows the 9 patterns for switching SDL Apps.
 
 **Table1.** Sequence pattern of switching SDL Apps
-<table>
-  <tr>
-    <th align="center"> No. </th>
-    <th align="center"> 1st Launched App	</th>
-    <th align="center"> 2nd launched App </th>
-  </tr>
-  <tr>
-    <td align="center"> 1 </td>
-    <td align="left" rowspan="3"> "MEDIA" type SDL App </td>
-    <td align="left"> "MEDIA" type SDL App </td>
-  </tr>
-  <tr>
-    <td align="center"> 2 </td>
-    <td align="left"> "NAVIGATION"/"PROJECTION" type SDL App </td>
-  </tr>
-  <tr>
-    <td align="center"> 3 </td>
-    <td align="left"> Normal type SDL App </td>
-  </tr>
-  <tr>
-    <td align="center"> 4 </td>
-    <td align="left" rowspan="3"> "NAVIGATION"/"PROJECTION" type SDL App </td>
-    <td align="left"> "MEDIA" type SDL App </td>
-  </tr>
-  <tr>
-    <td align="center"> 5 </td>
-    <td align="left"> "NAVIGATION"/"PROJECTION" type SDL App </td>
-  </tr>
-  <tr>
-    <td align="center"> 6 </td>
-    <td align="left"> Normal type SDL App </td>
-  </tr>
-  <tr>
-    <td align="center"> 7 </td>
-    <td align="left" rowspan="3"> Normal type SDL App </td>
-    <td align="left"> "MEDIA" type SDL App </td>
-  </tr>
-  <tr>
-    <td align="center"> 8 </td>
-    <td align="left"> "NAVIGATION"/"PROJECTION" type SDL App </td>
-  </tr>
-  <tr>
-    <td align="center"> 9 </td>
-    <td align="left"> Normal type SDL App </td>
-  </tr>
-</table>
+<table><tr><th><div align="center"> No. </div></th><th><div align="center"> 1st Launched App </div></th><th><div align="center"> 2nd launched App </div></th></tr><tr><td><div align="center"> 1 </div></td><td rowspan="3"><div align="left"> "MEDIA" type SDL App </div></td><td><div align="left"> "MEDIA" type SDL App </div></td></tr><tr><td><div align="center"> 2 </div></td><td><div align="left"> "NAVIGATION"/"PROJECTION" type SDL App </div></td></tr><tr><td><div align="center"> 3 </div></td><td><div align="left"> Normal type SDL App </div></td></tr><tr><td><div align="center"> 4 </div></td><td rowspan="3"><div align="left"> "NAVIGATION"/"PROJECTION" type SDL App </div></td><td><div align="left"> "MEDIA" type SDL App </div></td></tr><tr><td><div align="center"> 5 </div></td><td><div align="left"> "NAVIGATION"/"PROJECTION" type SDL App </div></td></tr><tr><td><div align="center"> 6 </div></td><td><div align="left"> Normal type SDL App </div></td></tr><tr><td><div align="center"> 7 </div></td><td rowspan="3"><div align="left"> Normal type SDL App </div></td><td><div align="left"> "MEDIA" type SDL App </div></td></tr><tr><td><div align="center"> 8 </div></td><td><div align="left"> "NAVIGATION"/"PROJECTION" type SDL App </div></td></tr><tr><td><div align="center"> 9 </div></td><td><div align="left"> Normal type SDL App </div></td></tr></table>
 
-App types are determined by 'AppHMIType' in Table2 :
+App types are determined by `AppHMIType` in Table2 :
 
 **Table2.** AppType Categorized by each AppHMIType
-<table>
-  <tr>
-    <th align="center"> App Type </th>
-    <th align="center"> AppHMIType </th>
-  </tr>
-  <tr>
-     <td align="left" rowspan="9"> Normal type App </td>
-     <td align="left"> DEFAULT </td></tr>
-  </tr>
-  <tr>
-     <td align="left"> COMMUNICATION </td></tr>
-  </tr>
-  <tr>
-     <td align="left"> MESSAGING </td></tr>
-  </tr>
-  <tr>
-     <td align="left"> INFORMATION </td></tr>
-  </tr>
-  <tr>
-     <td align="left"> SOCIAL </td></tr>
-  </tr>
-  <tr>
-     <td align="left"> BACKGROUND_PROCESS </td></tr>
-  </tr>
-  <tr>
-     <td align="left"> TESTING </td></tr>
-  </tr>
-  <tr>
-     <td align="left"> SYSTEM </td></tr>
-  </tr>
-  <tr>
-     <td align="left"> REMOTE_CONTROL </td></tr>
-  </tr>
-  <tr>
-     <td align="left"> MEDIA type App </td>
-     <td align="left"> MEDIA </td></tr>
-  </tr>
-  <tr>
-     <td align="left" rowspan = "2"> NAVIGATION / PROJECTION type App </td>
-     <td align="left"> NAVIGATION </td></tr>
-  </tr>
-  <tr>
-     <td align="left"> PROJECTION </td></tr>
-  </tr>
-</table>
+<table><tr><th><div align="center"> App Type </div></th><th><div align="center"> AppHMIType </div></th></tr><tr><td rowspan="9"><div align="left"> Normal type App </div></td><td><div align="left"> DEFAULT </div></td></tr><tr><td><div align="left"> COMMUNICATION </div></td></tr><tr><td><div align="left"> MESSAGING </div></td></tr><tr><td><div align="left"> INFORMATION </div></td></tr><tr><td><div align="left"> SOCIAL </div></td></tr><tr><td><div align="left"> BACKGROUND_PROCESS </div></td></tr><tr><td><div align="left"> TESTING </div></td></tr><tr><td><div align="left"> SYSTEM </div></td></tr><tr><td><div align="left"> REMOTE_CONTROL </div></td></tr><tr><td><div align="left"> MEDIA type App </div></td><td><div align="left"> MEDIA </div></td></tr><tr><td rowspan = "2"><div align="left"> NAVIGATION / PROJECTION type App </div></td><td><div align="left"> NAVIGATION </div></td></tr><tr><td><div align="left"> PROJECTION </div></td></tr></table>
 
 ## 4. Differences from SDL standard specification
 There is no provided description about the sequences of switching between the SDL Apps in the SDL official documents.
@@ -127,84 +38,65 @@ Therefore, all of the following sequences  describe in "5. Sequence Diagrams" di
 ## 5. Sequence Diagrams
 ### 5.1. Switching from "MEDIA" type SDL App to "MEDIA" type SDL App
 
-<div align="center">
-
-![figure1.from_media_sdl_app_to_media_sdl_app.png](./assets/figure1.from_media_sdl_app_to_media_sdl_app.png)<br>
+|||
 **Figure1.** Sequence of switching from "MEDIA" type SDL App to "MEDIA" type SDL App
-
-</div>
+![figure1.from_media_sdl_app_to_media_sdl_app.png](./assets/figure1.from_media_sdl_app_to_media_sdl_app.png)
+|||
 
 ### 5.2. Switching from "MEDIA" type SDL App to "NAVIGATION"/"PROJECTION" type SDL App
 
-<div align="center">
-
-![figure2.from_media_sdl_app_to_navipro_sdl_app.png](./assets/figure2.from_media_sdl_app_to_navipro_sdl_app.png)<br>
+|||
 **Figure2.** Sequence of switching from "MEDIA" type SDL App to "NAVIGATION/PROJECTION" type SDL App
-
-</div>
+![figure2.from_media_sdl_app_to_navipro_sdl_app.png](./assets/figure2.from_media_sdl_app_to_navipro_sdl_app.png)
+|||
 
 ### 5.3. Switching from "MEDIA" type SDL App to Normal type SDL App
 
-<div align="center">
-
-![figure3.from_media_sdl_app_to_other_sdl_app.png](./assets/figure3.from_media_sdl_app_to_other_sdl_app.png)<br>
+|||
 **Figure3.** Sequence of switching from "MEDIA" type SDL App to Normal type SDL App
-
-</div>
+![figure3.from_media_sdl_app_to_other_sdl_app.png](./assets/figure3.from_media_sdl_app_to_other_sdl_app.png)
+|||
 
 ### 5.4. Switching from "NAVIGATION"/"PROJECTION" type SDL App to "MEDIA" type SDL App
 
-<div align="center">
-
-![figure4.from_navipro_sdl_app_to_media_sdl_app.png](./assets/figure4.from_navipro_sdl_app_to_media_sdl_app.png)<br>
+|||
 **Figure4.** Sequence of switching from "NAVIGATION/PROJECTION" type SDL App to "MEDIA" type SDL App
-
-</div>
+![figure4.from_navipro_sdl_app_to_media_sdl_app.png](./assets/figure4.from_navipro_sdl_app_to_media_sdl_app.png)
+|||
 
 ### 5.5. Switching from "NAVIGATION"/"PROJECTION" type SDL App to "NAVIGATION"/"PROJECTION" type SDL App
 
-<div align="center">
-
-![figure5.from_navipro_sdl_app_to_navipro_sdl_app.png](./assets/figure5.from_navipro_sdl_app_to_navipro_sdl_app.png)<br>
+|||
 **Figure5.** Sequence of switching from "NAVIGATION/PROJECTION" type SDL App to "NAVIGATION/PROJECTION" type SDL App
-
-</div>
+![figure5.from_navipro_sdl_app_to_navipro_sdl_app.png](./assets/figure5.from_navipro_sdl_app_to_navipro_sdl_app.png)
 
 ### 5.6. Switching from "NAVIGATION"/"PROJECTION" type SDL App to Normal type SDL App
 
-<div align="center">
-
-![figure6.from_navipro_sdl_app_to_other_sdl_app.png](./assets/figure6.from_navipro_sdl_app_to_other_sdl_app.png)<br>
+|||
 **Figure6.** Sequence of switching from "NAVIGATION/PROJECTION" type SDL App to Normal type SDL App
-
-</div>
+![figure6.from_navipro_sdl_app_to_other_sdl_app.png](./assets/figure6.from_navipro_sdl_app_to_other_sdl_app.png)
+|||
 
 ### 5.7. Switching from Normal type SDL App to "MEDIA" type SDL App
 
-<div align="center">
-
-![figure7.from_other_sdl_app_to_media_sdl_app.png](./assets/figure7.from_other_sdl_app_to_media_sdl_app.png)<br>
+|||
 **Figure7.** Sequence of switching from Normal type SDL App to "MEDIA" type SDL App
-
-</div>
+![figure7.from_other_sdl_app_to_media_sdl_app.png](./assets/figure7.from_other_sdl_app_to_media_sdl_app.png)
+|||
 
 ### 5.8. Switching from Normal SDL App to "NAVIGATION"/"PROJECTION" type SDL App
 
-<div align="center">
-
-![figure8.from_other_sdl_app_to_navipro_sdl_app.png](./assets/figure8.from_other_sdl_app_to_navipro_sdl_app.png)<br>
+|||
 **Figure8.** Sequence of switching from Normal type SDL App to "NAVIGATION/PROJECTION" type SDL App
-
-</div>
+![figure8.from_other_sdl_app_to_navipro_sdl_app.png](./assets/figure8.from_other_sdl_app_to_navipro_sdl_app.png)
+|||
 
 ### 5.9. Switching from Normal type SDL App to Normal type SDL App
 
-<div align="center">
-
-![figure9.from_other_sdl_app_to_other_sdl_app.png](./assets/figure9.from_other_sdl_app_to_other_sdl_app.png)<br>
+|||
 **Figure9.** Sequence of switching from Normal type SDL App to Normal type SDL App
-
-</div>
+![figure9.from_other_sdl_app_to_other_sdl_app.png](./assets/figure9.from_other_sdl_app_to_other_sdl_app.png)<br>
+|||
 
 ## 6. Impacted Platforms
 Changes impact the following platform/s:
