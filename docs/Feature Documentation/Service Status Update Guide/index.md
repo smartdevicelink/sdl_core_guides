@@ -2,7 +2,7 @@
 
 ## General Description
 
-This guide will explain how the `OnServiceUpdate` RPC is used within SDL Core. At a high level, this RPC is used by SDL Core to inform the HMI of the status of the system or what steps to take in case of an error. For example, when a mobile navigation application is activated and sends a request for the Video Service, a series of steps is taken: getting the system time, performing a policy table update, and finally decrypting and validating certificates. SDL Core sends OnServiceUpdate notifications to the HMI throughout these steps to provide feedback on the status of the system. These notifications may cause the HMI to display a popup providing feedback on the status of the system to the user, or informing the user of what steps to take in case of an error.
+This guide will explain how the `BasicCommunication.OnServiceUpdate` RPC is used within SDL Core. At a high level, this RPC is used by SDL Core to inform the HMI of the status of the system or what steps to take in case of an error. For example, when a mobile navigation application is activated and sends a request to start a Video Service, a series of steps are taken: getting the system time, performing a policy table update, and finally decrypting and validating certificates. SDL Core sends `BC.OnServiceUpdate` notifications to the HMI throughout each of these steps to provide information on the status of the system. These notifications may cause the HMI to display a popup providing this status information in a readable format to the user, or inform the user of what steps to take in case of an error.
 
 ## Parameters
 
@@ -10,7 +10,7 @@ The `OnServiceUpdate` notification has three parameters:
 
 ### serviceType
 
-This parameter is mandatory and will be a value from the `ServiceType` enum:
+This parameter is mandatory and will contain a value from the `ServiceType` enum, indicating the type of service that this update is for:
 
 - VIDEO
 - AUDIO
@@ -18,7 +18,7 @@ This parameter is mandatory and will be a value from the `ServiceType` enum:
 
 ### serviceEvent
 
-This parameter is not mandatory and will be a value from the `ServiceEvent` enum:
+This parameter is not mandatory and will be a value from the `ServiceEvent` enum, indicating the status of the StartService request:
 
 - REQUEST_RECEIVED
 - REQUEST_ACCEPTED
@@ -26,7 +26,7 @@ This parameter is not mandatory and will be a value from the `ServiceEvent` enum
 
 ### reason
 
-This parameter is not mandatory and will be a member of the `ServiceStatusUpdateReason` enum:
+This parameter is not mandatory and will be a member of the `ServiceStatusUpdateReason` enum, indicating the type of error that occurred while attempting to start the service:
 
 - PTU_FAILED
     - the system was unable to get a required Policy Table Update
@@ -41,7 +41,7 @@ This parameter is not mandatory and will be a member of the `ServiceStatusUpdate
 
 ### appID
 
-This parameter is not mandatory but will be included with each request after `RegisterAppInterface` has completed.
+This parameter is not mandatory but will be included with each request after the `RegisterAppInterface` message for this application has been received.
 
 ## Flow Diagrams
 
