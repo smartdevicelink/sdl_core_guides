@@ -32,13 +32,11 @@ Note(*)
 ### 3.2. Logic for switching communication paths in iOS
 The process of switching communication path from BT to USB
 <br>
-1. When the switching of transport occurs, the SDL Core starts the timer by setting in timeout value in the configuration file.
-
-2. The HMI caches the HMI Level of current running SDL App. After the SDL App has switched the device, the HMI will perform the following process:<br><br>
+1. When the switching of transport occurs, the SDL Core starts the timer by setting in timeout value in the configuration file.<br>
+2. The HMI caches the HMI Level of current running SDL App. After the SDL App has switched the device, the HMI will perform the following process:<br>
       (1) Create the list of SDL Apps which is waitting for re-registering
       (2) Terminate the current BT Transport
-      (3) Copy the current BT status to the USB device<br>
-
+      (3) Copy the current BT status to the USB device<br><br>
 3. (3-a) If the timer for switching transport expires, the HMI clears the list of SDL Apps which are waiting for the re-registering. Then, the SDL Core calls `Unregistered()` on the SDL Apps which are not registered within the switching time. Afterwards, the result is notified to the HMI from the SDL Core.<br>
 (3-b) If the HMI has received the RegisterApp notification and SDL App is included in the list of re-registering before the process for switching transport times out, the HMI returns to the previous HMI Level of that SDL App. And then, the HMI notifies to the mobile that the SDL App was launched succesfully.
 

@@ -35,6 +35,7 @@ The trigger that launches the SDL App is not explicitly defined in the SDL stand
 |||
 **Figure1.** The launch of SDL App by choosing the Audio source on the Audio screen
 ![Figure1_launch_of_SDLApp_by_choosing_the_AudioSource.png](./assets/Figure1_launch_of_SDLApp_by_choosing_the_AudioSource.png)
+|||
 
 ## 5. Sequence Diagrams
 Changes impact the following platform/s:

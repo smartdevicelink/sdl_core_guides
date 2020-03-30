@@ -42,7 +42,7 @@ The SDL App launch sequence in the SDL Standard Specification is below Figure1.
 
 |||
 **Figure1.** Sequence of SDL App launch provided in the SDL Standard specification
-![Figure1_Sequence_of_SDL_App_launch.png](./assets/Figure1_Sequence_of_SDL_App_launch.png)<br>
+![Figure1_Sequence_of_SDL_App_launch.png](./assets/Figure1_Sequence_of_SDL_App_launch.png)
 |||
 
 To launch SDL App, additional communication is needed in the red frame of Figure1. However, currently that additional communication is not discribed. For details about "Connect to Device", please refer to the "Establishing a Transport" chapter of SDL Overview Guides on the SDLC official website. And since there is no lack of information (on the topics mentioned) , these topic will be omitted in this chapter.
@@ -78,12 +78,15 @@ The three types of launch sequence are described based on the SDL App launch seq
 Additional sequence is added in the red frame of Figure1 for each App type. Parts other than the red frame are common to/shared by all App type, and there are no lack in the sequences. The sequence described in the red part refers to the RPC communication sequence; it is not described in the SDL standard specification.
 
 |||
-**Figure2.** Normal type App launch sequence![Figure2_Normal_type_App_launch_sequence.png](./assets/Figure2_Normal_type_App_launch_sequence.png)<br>
+**Figure2.** Normal type App launch sequence
+![Figure2_Normal_type_App_launch_sequence.png](./assets/Figure2_Normal_type_App_launch_sequence.png)
 |||
+
 |||
 **Figure3.** MEDIA type App launch sequence
 ![Figure3_MEDIA_type_App_launch_sequence.png](./assets/Figure3_MEDIA_type_App_launch_sequence.png)
 |||
+
 |||
 **Figure4.** NAVIGATION / PROJECTION type App launch sequence
 ![Figure4_NAVIGATION-PROJECTION_type_App_launch_sequence.png](./assets/Figure4_NAVIGATION-PROJECTION_type_App_launch_sequence.png)

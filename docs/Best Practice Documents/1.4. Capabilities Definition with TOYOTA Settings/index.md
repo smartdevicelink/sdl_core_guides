@@ -47,6 +47,7 @@ The definition of `pcmStreamCapabilities` and a setting example of TOYOTA are de
 | No | Name       | Type     | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:        | :-:      | :-:       | :-:        |---------------------|-------------|
 |1   |undefined   |undefined |undefined  |undefined   |"samplingRate": "16KHZ",<br>"bitsPerSample": "RATE_16_BIT",<br>"audioType": "PCM" | - |
+
 *Although it is not defined in the SDL standard specifications, it is only defined in TOYOTA specification.
 
 ### 2.5. SoftButtonCapabilities
