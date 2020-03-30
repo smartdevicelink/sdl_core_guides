@@ -8,3 +8,4 @@ Table of Contents:
 - [Multiple Transports Configuration](./multiple-transports-configuration/)
 - [App Service Provider Guide](./app-service-provider-guide/)
 - [Remote Control Guide](./remote-control-guide/)
+- [Service Status Update Guide](./service-status-update-guide/)
