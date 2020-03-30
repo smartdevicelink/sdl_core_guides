@@ -1,13 +1,13 @@
 # 1.4. Capabilities Definition with TOYOTA Settings
 ## 1. Overview
 This chapter describes about the capability, a function setting information that is notified from the HMI to the SDL Core.
-The Specification of Capability is defined by the OEMs, however, as a reference information, this chapter discribes Capability setting as TOYOTA specification.
+The Specification of Capability is defined by the OEMs, however, as a reference information, this chapter describes Capability setting as TOYOTA specification.
 
 ## 2. SDL standard specification definition and TOYOTA setting example
 Below is the definition of the existing SDL standard specifications and the setting example of TOYOTA.
 
 ### 2.1. DisplayCapabilities
-The definition of "DisplayCapabilities" and the setting example of TOYOTA are described below.
+The definition of `DisplayCapabilities` and the setting example of TOYOTA are described below.
 
 | No | Name               | Type                   | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:                | :-:                    | :-:       | :-:        |---------------------|-------------|
@@ -15,47 +15,42 @@ The definition of "DisplayCapabilities" and the setting example of TOYOTA are de
 |2   |displayName         |String                  |TRUE       |-           |GENERIC_DISPLAY      |The&nbsp;name&nbsp;of&nbsp;the&nbsp;display&nbsp;the&nbsp;app&nbsp;is&nbsp;connected&nbsp;to.|
 |3   |textFields          |Common.TextField        |TRUE       |array: true<br>minsize: 0<br>maxsize: 100 |{"name": "mainField1",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "mainField2",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "mainField3",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "mainField4",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "statusBar",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "mediaClock",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "mediaTrack",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "alertText1",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "alertText2",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "alertText3",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "scrollableMessageBody",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "initialInteractionText",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "navigationText1",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "navigationText2",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "ETA",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "totalDistance",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "navigationText",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "audioPassThruDisplayText1", "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "audioPassThruDisplayText2", "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "sliderHeader",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "sliderFooter",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "notificationText",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "menuName",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "secondaryText",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "tertiaryText",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "timeToDestination",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "turnText",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "menuTitle",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "phoneNumber",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "addressLines",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "locationDescription",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1},<br>{"name": "locationName",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "characterSet":  "TYPE2SET",  "width": 500,  "rows": 1}| - |
 |4   |imageFields         |Common.ImageField       |FALSE      |array: true<br>minsize: 1<br>maxsize: 100 |{"name": "softButtonImage",<br> "imageTypeSupported": ["GRAPHIC_BMP", "GRAPHIC_JPEG", "GRAPHIC_PNG"],<br> "imageResolution"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: { "resolutionWidth": 56, "resolutionHeight": 56 }},<br>{"name": "choiceImage",<br> "imageTypeSupported": ["GRAPHIC_BMP", "GRAPHIC_JPEG", "GRAPHIC_PNG"],<br> "imageResolution"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: { "resolutionWidth": 75, "resolutionHeight": 75 }},<br>{"name": "choiceSecondaryImage",<br> "imageTypeSupported": ["GRAPHIC_BMP", "GRAPHIC_JPEG", "GRAPHIC_PNG"],<br> "imageResolution"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: { "resolutionWidth": 75, "resolutionHeight": 75 }},<br>{"name": "menuIcon",<br> "imageTypeSupported": ["GRAPHIC_BMP", "GRAPHIC_JPEG", "GRAPHIC_PNG"],<br> "imageResolution"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: { "resolutionWidth": 75, "resolutionHeight": 75 }},<br>{"name": "cmdIcon",<br> "imageTypeSupported": ["GRAPHIC_BMP", "GRAPHIC_JPEG", "GRAPHIC_PNG"],<br> "imageResolution"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: { "resolutionWidth": 75, "resolutionHeight": 75 }},<br>{"name": "appIcon",<br> "imageTypeSupported": ["GRAPHIC_BMP", "GRAPHIC_JPEG", "GRAPHIC_PNG"],<br> "imageResolution"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: { "resolutionWidth": 70, "resolutionHeight": 70 }},<br>{"name": "graphic",<br> "imageTypeSupported": ["GRAPHIC_BMP", "GRAPHIC_JPEG", "GRAPHIC_PNG"],<br> "imageResolution"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: { "resolutionWidth": 373, "resolutionHeight": 373 }},<br>{"name": "secondaryGraphic",<br> "imageTypeSupported": ["GRAPHIC_BMP", "GRAPHIC_JPEG", "GRAPHIC_PNG"],<br> "imageResolution"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: { "resolutionWidth": 373, "resolutionHeight": 373 }}| - |
-|5   |mediaClockFormats   |Common.MediaClockFormat |TRUE       |array: true<br>minsize: 0<br>maxsize: 100 |"CLOCK1", "CLOCK2", "CLOCK3", "CLOCKTEXT1", "CLOCKTEXT2", "CLOCKTEXT3", "CLOCKTEXT4"| - | 
+|5   |mediaClockFormats   |Common.MediaClockFormat |TRUE       |array: true<br>minsize: 0<br>maxsize: 100 |"CLOCK1", "CLOCK2", "CLOCK3", "CLOCKTEXT1", "CLOCKTEXT2", "CLOCKTEXT3", "CLOCKTEXT4"| - |
 |6   |imageCapabilities   |Common.ImageType        |FALSE      |array: true<br>minsize: 0<br>maxsize: 2   |DYNAMIC                                                                             | - |
 |7   |graphicSupported    |Boolean                 |TRUE       |-           |TRUE                 | - |
 |8   |templatesAvailable  |String                  |TRUE       |array: true<br>minsize: 0<br>maxsize: 100<br>maxlength:&nbsp;100|"DEFAULT", "MEDIA", "NON-MEDIA", "ONSCREEN_PRESETS", "GRAPHIC_WITH_TEXT", "TEXT_WITH_GRAPHIC", "TILES_ONLY", "TEXTBUTTONS_ONLY", "GRAPHIC_WITH_TILES", "TILES_WITH_GRAPHIC", "GRAPHIC_WITH_TEXT_AND_SOFTBUTTONS","TEXT_AND_SOFTBUTTONS_WITH_GRAPHIC", "GRAPHIC_WITH_TEXTBUTTONS", "TEXTBUTTONS_WITH_GRAPHIC", "LARGE_GRAPHIC_WITH_SOFTBUTTONS", "DOUBLE_GRAPHIC_WITH_SOFTBUTTONS", "LARGE_GRAPHIC_ONLY"| - |
 |9   |screenParams        |Common.ScreenParams     |FALSE      |-           |"resolution": {<br>    "resolutionWidth": 1163,<br>    "resolutionHeight": 720<br>},<br>"touchEventAvailable": {<br>    "pressAvailable": true,<br>    "multiTouchAvailable": false,<br>    "doublePressAvailable": false<br>}| - |
 |10  |numCustomPresetsAvailable |Integer           |FALSE      |minvalue: 1<br>maxvalue: 100 | 10 | - |
-<br>
 
 ### 2.2. TouchEventCapabilities
-The definition of "TouchEventCapabilities" and the setting example of TOYOTA are described below.
-In case of TOYOTA setting, TouchEventCapability is set in "touchEventAvailable" in "screenParam" of "2.1 DisplayCapability".
+The definition of `TouchEventCapabilities` and the setting example of TOYOTA are described below.
+In case of TOYOTA setting, TouchEventCapability is set in `touchEventAvailable` in `screenParam` of "2.1 DisplayCapability".
 
 | No | Name               | Type  | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:                | :-:   | :-:       | :-:        |---------------------|-------------|
 |1   |pressAvailable      |Boolean|TRUE       |-           |TRUE                 | - |
 |2   |multiTouchAvailable |Boolean|TRUE       |-           |FALSE                | - |
 |3   |doublePressAvailable|Boolean|TRUE       |-           |FALSE                | - |
-<br>
 
 ### 2.3. AudioPassThruCapabilities
-The definition of "AudioPassThruCapabilities" and the setting example of TOYOTA are described below.
+The definition of `AudioPassThruCapabilities` and the setting example of TOYOTA are described below.
 
 | No | Name         | Type               | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:          | :-:                | :-:       | :-:        |---------------------|-------------|
 |1   |samplingRate  |Common.SamplingRate |TRUE       |-           |16KHZ                | - |
 |2   |bitsPerSample |Common.BitsPerSample|TRUE       |-           |RATE_16_BIT          | - |
 |3   |audioType     |Common.AudioType    |TRUE       |-           |PCM                  | - |
-<br>
 
 ### 2.4. pcmStreamCapabilities
-The definition of "pcmStreamCapabilities" and a setting example of TOYOTA are described below.
+The definition of `pcmStreamCapabilities` and a setting example of TOYOTA are described below.
 
 | No | Name       | Type     | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:        | :-:      | :-:       | :-:        |---------------------|-------------|
 |1   |undefined   |undefined |undefined  |undefined   |"samplingRate": "16KHZ",<br>"bitsPerSample": "RATE_16_BIT",<br>"audioType": "PCM" | - |
-
-*Although it is not defined in the SDL standard specifications, it is only defined in TOYOTA specification.|
-<br>
+*Although it is not defined in the SDL standard specifications, it is only defined in TOYOTA specification.
 
 ### 2.5. SoftButtonCapabilities
-The definition of "SoftButtonCapabilities" and the setting example of TOYOTA are described below.
+The definition of `SoftButtonCapabilities` and the setting example of TOYOTA are described below.
 
 | No | Name              | Type   | Mandatory | Additional | TOYOTA&nbsp;Setting |Description |
 |:-: | :-:               | :-:    | :-:       | :-:        |---------------------|------------|
@@ -66,7 +61,7 @@ The definition of "SoftButtonCapabilities" and the setting example of TOYOTA are
 |5   |textSupported      |Boolean |FALSE      | -          |N/A                  |The button supports the use of text.<br>If not included, the default value should be considered true that the button will support text.|
 
 ### 2.6. SystemCapabilities
-The definition of "SystemCapabilities" and the setting example of TOYOTA are described below.
+The definition of `SystemCapabilities` and the setting example of TOYOTA are described below.
 The Capability existing in the setting is described in (1) to (4) of this chapter.
 
 | No | Name                              | Type                           | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
@@ -75,24 +70,21 @@ The Capability existing in the setting is described in (1) to (4) of this chapte
 |2   |phoneCapability                    |[Common.PhoneCapability](#2-phonecapability-in-the-systemcapability-setting-is-described-below)                  |FALSE      | -          |[Refer to (2) "phoneCapability" in section 2.6.](#2-phonecapability-in-the-systemcapability-setting-is-described-below)                  | - |
 |3   |videoStreamingCapability           |[Common.VideoStreamingCapability](#3-videostreamingcapability-in-the-systemcapability-setting-is-described-below)|FALSE      | -          |[Refer&nbsp;to&nbsp;(3)&nbsp;"videoStreamingCapability"&nbsp;in&nbsp;section&nbsp;2.6.](#3-videostreamingcapability-in-the-systemcapability-setting-is-described-below)| - |
 |4   |remoteControlCapability (undefined)|undefined                       |undefined  | undefined  |[Refer to (4) "remoteControlCapability" in section 2.6.](#4-remotecontrolcapability-in-the-systemcapability-setting-is-described-below)  | - |
-<br>
 
-##### (1) "navigationCapability" in the "SystemCapability" setting is described below.
+##### (1) `navigationCapability` in the `SystemCapability` setting is described below.
 
 | No | Name               | Type     | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:                | :-:      | :-:       | :-:        |---------------------|-------------|
 |1   |sendLocationEnabled |Boolean   |FALSE      | -          |TRUE                 |If the module has the ability to add locations to the onboard nav.|
 |2   |getWayPointsEnabled |Boolean   |FALSE      | -          |TRUE                 |If&nbsp;the&nbsp;module&nbsp;has&nbsp;the&nbsp;ability&nbsp;to&nbsp;return&nbsp;way&nbsp;points from onboard nav.|
-<br>
 
-##### (2) "phoneCapability" in the "SystemCapability" setting is described below.
+##### (2) `phoneCapability` in the `SystemCapability` setting is described below.
 
 | No | Name             | Type     | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:              | :-:      | :-:       | :-:        |---------------------|-------------|
 |1   |dialNumberEnabled |Boolean   |FALSE      | -          |TRUE                 |If&nbsp;the&nbsp;module&nbsp;has&nbsp;the&nbsp;ability&nbsp;to&nbsp;perform&nbsp;dial&nbsp;number.|
-<br>
 
-##### (3) "videoStreamingCapability" in the "SystemCapability" setting is described below.
+##### (3) `videoStreamingCapability` in the `SystemCapability` setting is described below.
 
 | No | Name                      | Type                       | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:                       | :-:                        | :-:       | :-:        |---------------------|-------------|
@@ -103,9 +95,8 @@ The Capability existing in the setting is described in (1) to (4) of this chapte
 |5   |diagonalScreenSize         |Float                       |FALSE      |minvalue: 0 |N/A                  |The diagonal screen size in inches.|
 |6   |pixelPerInch               |Float                       |FALSE      |minvalue: 0 |N/A                  |PPI is the diagonal resolution in pixels divided by the diagonal screen size in inches.|
 |7   |scale                      |Float                       |FALSE      |minvalue: 1<br>maxvalue: 10 |N/A  |The scaling factor the app should use to change the size of the projecting view.|
-<br>
 
-##### (4) "remoteControlCapability" in the "SystemCapability" setting is described below.
+##### (4) `remoteControlCapability` in the `SystemCapability` setting is described below.
 The TOYOTA setting of Capability existing in the setting is described in (4) -1 to (4) -5 of this chapter.
 
 | No | Name                          | Type                                  | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
@@ -117,9 +108,8 @@ The TOYOTA setting of Capability existing in the setting is described in (4) -1 
 |5   |audioControlCapabilities       |[Common.AudioControlCapabilities](#4-4-the-audiocontrolcapabilities-in-the-remotecontrolcapabilities-setting-is-described-below)            |FALSE      |array: true<br>minsize: 1<br>maxsize: 100|[Refer to (4)-4 "audioControlCapabilities" in section 2.6.](#4-4-the-audiocontrolcapabilities-in-the-remotecontrolcapabilities-setting-is-described-below)                 |If included, the platform supports audio controls.|
 |6   |hmiSettingsControlCapabilities |[Common.HMISettingsControlCapabilities](#4-5-the-hmisettingscontrolcapabilities-in-the-remotecontrolcapabilities-setting-is-described-below)|FALSE      | -                                       |[Refer&nbsp;to&nbsp;(4)-5&nbsp;"hmiSettingsControlCapabilities"&nbsp;in&nbsp;section&nbsp;2.6.](#4-5-the-hmisettingscontrolcapabilities-in-the-remotecontrolcapabilities-setting-is-described-below)|If included, the platform supports hmi setting controls.|
 |7   |lightControlCapabilities       |[Common.LightControlCapabilities](#29-lightcontrolcapabilities)                                                                             |FALSE      | -                                       | N/A                                                                                                                                                                       |If included, the platform supports light controls.|
-<br>
 
-###### (4)-1 The following describes "climateControlCapabilities" in the "RemoteControlCapabilities" setting.
+<b> (4)-1 The following describes `climateControlCapabilities` in the `RemoteControlCapabilities` setting.</b>
 
 | No | Name                        | Type             | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:                         | :-:              | :-:       | :-:        |---------------------|-------------|
@@ -142,9 +132,8 @@ The TOYOTA setting of Capability existing in the setting is described in (4) -1 
 |17  |heatedRearWindowAvailable    |Boolean           |FALSE      | -          |FALSE                |Availability of the control (enable/disable) of heated Rear Window.<br>True: Available, False: Not Available, Not present: Not Available.|
 |18  |heatedMirrorsAvailable       |Boolean           |FALSE      | -          |FALSE                |Availability of the control (enable/disable) of heated Mirrors.<br>True: Available, False: Not Available, Not present: Not Available.|
 |19  |climateEnableAvailable       |Boolean           |FALSE      | -          |N/A                  |Availability of the control of enable/disable climate control.<br>True: Available, False: Not Available, Not present: Not Available.|
-<br>
 
-###### (4)-2 The "radioControlCapabilities" in the "RemoteControlCapabilities" setting is described below.
+<b> (4)-2 The `radioControlCapabilities` in the `RemoteControlCapabilities` setting is described below.</b>
 
 | No | Name                           | Type             | Mandatory | Additional    | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:                            | :-:              | :-:       | :-:           |---------------------|-------------|
@@ -163,9 +152,8 @@ The TOYOTA setting of Capability existing in the setting is described in (4) -1 
 |13  |hdRadioEnableAvailable          |Boolean           |FALSE      | -             |FALSE                |Availability of the control of enable/disable HD radio.<br>True: Available, False: Not Available, Not present: Not Available.|
 |14  |siriusxmRadioAvailable          |Boolean           |FALSE      | -             |FALSE                |Availability of sirius XM radio.<br>True: Available, False: Not Available, Not present: Not Available.|
 |15  |availableHdChannelsAvailable    |Boolean           |FALSE      | -             |N/A                  |Availability of the list of available HD sub-channel indexes.<br>True: Available, False: Not Available, Not present: Not Available.|
-<br>
 
-###### (4)-3 The "seatControlCapabilities" in the "RemoteControlCapabilities" setting is described below.
+<b> (4)-3 The `seatControlCapabilities` in the `RemoteControlCapabilities` setting is described below.</b>
 
 | No | Name                                  | Type             | Mandatory | Additional     | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:                                   | :-:              | :-:       | :-:            |---------------------|-------------|
@@ -186,9 +174,8 @@ The TOYOTA setting of Capability existing in the setting is described in (4) -1 
 |15  |massageModeAvailable                   |Boolean           |FALSE      | -              |FALSE                | - |
 |16  |massageCushionFirmnessAvailable        |Boolean           |FALSE      | -              |FALSE                | - |
 |17  |memoryAvailable                        |Boolean           |FALSE      | -              |FALSE                | - |
-<br>
 
-###### (4)-4 The "audioControlCapabilities" in the "RemoteControlCapabilities" setting is described below.
+<b> (4)-4 The `audioControlCapabilities` in the `RemoteControlCapabilities` setting is described below.</b>
 
 | No | Name                 | Type             | Mandatory | Additional     | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:                  | :-:              | :-:       | :-:            |---------------------|-------------|
@@ -199,9 +186,8 @@ The TOYOTA setting of Capability existing in the setting is described in (4) -1 
 |5   |volumeAvailable       |Boolean           |FALSE      |                |FALSE                |Availability of the control of audio volume.|
 |6   |equalizerAvailable    |Boolean           |FALSE      |                |FALSE                |Availability of the control of Equalizer Settings.|
 |7   |equalizerMaxChannelId |Integer           |FALSE      |minvalue: 1<br> maxvalue: 100 | 1     |Must be included if equalizerAvailable=true, and assume all IDs starting from 1 to this value are valid.|
-<br>
 
-###### (4)-5 The "hmiSettingsControlCapabilities" in the "RemoteControlCapabilities" setting is described below.
+<b> (4)-5 The `hmiSettingsControlCapabilities` in the `RemoteControlCapabilities` setting is described below.</b>
 
 | No | Name                    | Type             | Mandatory | Additional      | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:                     | :-:              | :-:       | :-:             |---------------------|-------------|
@@ -210,99 +196,36 @@ The TOYOTA setting of Capability existing in the setting is described in (4) -1 
 |3   |distanceUnitAvailable    |Boolean           |FALSE      |                 |FALSE                |Availability of the control of distance unit.|
 |4   |temperatureUnitAvailable |Boolean           |FALSE      |                 |FALSE                |Availability of the control of temperature unit.|
 |5   |displayModeUnitAvailable |Boolean           |FALSE      |                 |FALSE                |Availability of the control of HMI display mode.|
-<br>
 
 ### 2.7. ButtonCapabilities
-The definition of "ButtonCapabilities" and the setting example of TOYOTA are described below.
+The definition of `ButtonCapabilities` and the setting example of TOYOTA are described below.
 
-<table>
-  <tr>
-    <th> No </th>
-    <th> Name </th>
-    <th> Type </th>
-    <th> Mandatory </th>
-    <th> Additional </th>
-    <th> TOYOTA&nbsp;Setting </th>
-    <th> Description </th>
-  </tr>
-  <tr align="center">
-    <td>1</td>
-    <td>name</td>
-    <td>Common.ButtonName</td>
-    <td>TRUE</td>
-    <td>-</td>
-    <td align="left" rowspan="4">
-       {"name":&nbsp;"PRESET_0",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>
-       {"name":&nbsp;"PRESET_1",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>
-       {"name":&nbsp;"PRESET_2",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>
-       {"name":&nbsp;"PRESET_3",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>
-       {"name":&nbsp;"PRESET_4",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>
-       {"name":&nbsp;"PRESET_5",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>
-       {"name":&nbsp;"PRESET_6",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>
-       {"name":&nbsp;"PRESET_7",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>
-       {"name":&nbsp;"PRESET_8",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>
-       {"name":&nbsp;"PRESET_9",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>
-       {"name":&nbsp;"PLAY_PAUSE",          "shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>
-       {"name":&nbsp;"SEEKLEFT",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>
-       {"name":&nbsp;"SEEKRIGHT"&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false}
-    </td>
-    <td align="left">-</td>
-  </tr>
-  <tr align="center">
-    <td> 2 </td>
-    <td>shortPressAvailable</td>
-    <td>Boolean</td><td>TRUE</td>
-    <td> - </td>
-    <td align="left"> - </td>
-  </tr>
-  <tr align="center">
-    <td> 3 </td>
-    <td>longPressAvailable </td>
-    <td>Boolean</td>
-    <td>TRUE</td>
-    <td>-</td>
-    <td align="left"> -</td>
-  </tr>
-  <tr align="center">
-    <td> 4 </td>
-    <td>upDownAvailable</td>
-    <td>Boolean</td>
-    <td>TRUE</td>
-    <td>-</td>
-    <td align="left"> - </td>
-  </tr>
-  <tr align="center">
-    <td> 5 </td>
-    <td>moduleInfo</td>
-    <td>Common.ModuleInfo</td>
-    <td>FALSE</td>
-    <td> - </td>
-    <td align="left"> N/A </td>
-    <td align="left">Information&nbsp;about&nbsp;a&nbsp;RC&nbsp;module, including its id.</td>
-  </tr>
-</table>
-<br>
+| No | Name                    | Type             | Mandatory | Additional      | TOYOTA&nbsp;Setting | Description |
+|:-: | :-:                     | :-:              | :-:       | :-:             |---------------------|-------------|
+|1   |name                     |Common.ButtonName |TRUE       | -               |{"name":&nbsp;"PRESET_0",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>       {"name":&nbsp;"PRESET_1",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>       {"name":&nbsp;"PRESET_2",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>       {"name":&nbsp;"PRESET_3",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>       {"name":&nbsp;"PRESET_4",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>       {"name":&nbsp;"PRESET_5",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>       {"name":&nbsp;"PRESET_6",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>       {"name":&nbsp;"PRESET_7",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>       {"name":&nbsp;"PRESET_8",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>       {"name":&nbsp;"PRESET_9",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>{"name":&nbsp;"PLAY_PAUSE","shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>       {"name":&nbsp;"SEEKLEFT",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false},<br>       {"name":&nbsp;"SEEKRIGHT"&nbsp;&nbsp;&nbsp;&nbsp;"shortPressAvailable":&nbsp;true,&nbsp;"longPressAvailable":&nbsp;true,&nbsp;"upDownAvailable":&nbsp;false}       |-|
+|2   |shortPressAvailable      |Boolean           |TRUE       | -               |Same as above        |-|
+|3   |longPressAvailable       |Boolean           |TRUE       | -               |Same as above        |-|
+|4   |upDownAvailable          |Boolean           |TRUE       | -               |Same as above        |-|
+|5   |moduleInfo               |Common.ModuleInfo |FALSE      | -               |N/A                  |Information&nbsp;about&nbsp;a&nbsp;RC&nbsp;module, including its id.|
 
 ### 2.8. PresetBankCapabilities
-The definition of "PresetBankCapabilities" and the setting example of TOYOTA are described below.
+The definition of `PresetBankCapabilities` and the setting example of TOYOTA are described below.
 
 | No | Name                    | Type   | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:                     | :-:    | :-:       | :-:        |---------------------|-------------|
 |1   |onScreenPresetsAvailable |Boolean |TRUE       | -          |TRUE            | - |
-<br>
 
 ### 2.9. LightControlCapabilities
-The definition of "LightControlCapabilities" and the setting example of TOYOTA are described below.
+The definition of `LightControlCapabilities` and the setting example of TOYOTA are described below.
 
 | No | Name           | Type                    | Mandatory | Additional     | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:            | :-:                     | :-:       | :-:            |---------------------|-------------|
 |1   |moduleName      | String                  |TRUE       |maxlength:&nbsp;100  |N/A             | The short friendly name of the light control module.<br>It&nbsp;should&nbsp;not&nbsp;be&nbsp;used&nbsp;to&nbsp;identify&nbsp;a&nbsp;module&nbsp;by&nbsp;mobile&nbsp;application.|
 |2   |moduleInfo      |Common.ModuleInfo        |FALSE      | -              |N/A                  | Information about a RC module, including its id.|
 |3   |supportedLights |[Common.LightCapabilities](#210-lightcapabilities) |TRUE |array: true<br>minsize: 1<br>maxsize: 100|N/A |An array of available LightCapabilities that are controllable. |
-<br>
 
 ### 2.10. LightCapabilities
-The definition of "LightCapabilities" and the setting example of TOYOTA are described below.
+The definition of `LightCapabilities` and the setting example of TOYOTA are described below.
 
 | No | Name                  | Type            | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:                   | :-:             | :-:       | :-:        |---------------------|-------------|
@@ -310,20 +233,18 @@ The definition of "LightCapabilities" and the setting example of TOYOTA are desc
 |2   |statusAvailable        |Boolean          |FALSE      | -          |N/A                  |Indicates if the status (ON/OFF) can be set remotely. App shall not use read-only values (RAMP_UP/RAMP_DOWN/UNKNOWN/INVALID) in a setInteriorVehicleData request.|
 |3   |densityAvailable       |Boolean          |FALSE      | -          |N/A                  |Indicates if the light's density can be set remotely (similar to a dimmer).|
 |4   |rgbColorSpaceAvailable |Boolean          |FALSE      | -          |N/A                  |Indicates if the light's color can be set remotely by using the sRGB color space.|
-<br>
 
 ### 2.11. HMICapabilities
-The definition of "HMICapabilities" and the setting example of TOYOTA are described below.
+The definition of `HMICapabilities` and the setting example of TOYOTA are described below.
 
 | No | Name          | Type   | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:           | :-:    | :-:       | :-:        |---------------------|-------------|
 |1   |navigation     |Boolean |FALSE      | -          |N/A                  |Availability of build in Nav. <br>True:&nbsp;Available,&nbsp;False:&nbsp;Not&nbsp;Available.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 |2   |phoneCall      |Boolean |FALSE      | -          |N/A                  |Availability of build in phone. <br>True: Available, False: Not Available.|
 |3   |videoStreaming |Boolean |FALSE      | -          |N/A                  |Availability&nbsp;of&nbsp;built-in&nbsp;video&nbsp;streaming. <br>True: Available, False: Not Available.|
-<br>
 
 ### 2.12. DisplayCapability
-The definition of "DisplayCapability" and the setting example of TOYOTA are described below.
+The definition of `DisplayCapability` and the setting example of TOYOTA are described below.
 
 | No | Name               | Type                         | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:                | :-:                          | :-:       | :-:        |---------------------|-------------|
@@ -332,16 +253,15 @@ The definition of "DisplayCapability" and the setting example of TOYOTA are desc
 |3   |windowCapabilities  |[Common.WindowCapability](#214-windowcapability)             |FALSE |array: true<br>minsize: 1<br>maxsize:&nbsp;1000|N/A |Contains&nbsp;a&nbsp;list&nbsp;of&nbsp;capabilities&nbsp;of&nbsp;all&nbsp;windows&nbsp;related&nbsp;to&nbsp;the&nbsp;app.<br>Once the app has registered the capabilities of all windows are provided.<br>GetSystemCapability still allows requesting window capabilities of all windows.|
 
 ### 2.13. WindowTypeCapabilities
-The definition of "WindowTypeCapabilitiess" and the setting example of TOYOTA are described below.
+The definition of `WindowTypeCapabilitiess` and the setting example of TOYOTA are described below.
 
 | No | Name                  | Type             | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:                   | :-:              | :-:       | :-:        |---------------------|-------------|
 |1   |type                   |Common.WindowType |TRUE       | -          |N/A                  | - |
 |2   |maximumNumberOfWindows |Integer           |TRUE       | -          |N/A                  | - |
-<br>
 
 ### 2.14. WindowCapability
-The definition of "WindowCapability" and the setting example of TOYOTA are described below.
+The definition of `WindowCapability` and the setting example of TOYOTA are described below.
 
 | No | Name                     | Type                         | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:                      | :-:                          | :-:       | :-:        |---------------------|-------------|
@@ -354,27 +274,24 @@ The definition of "WindowCapability" and the setting example of TOYOTA are descr
 |7   |buttonCapabilities        |Common.ButtonCapabilities     |FALSE      |array: true<br>minsize: 1<br>maxsize: 100                  |N/A |The number of buttons and the capabilities of each on-window button.|
 |8   |softButtonCapabilities    |Common.SoftButtonCapabilities |FALSE      |array: true<br>minsize: 1<br>maxsize: 100                  |N/A |The&nbsp;number&nbsp;of&nbsp;soft&nbsp;buttons&nbsp;available&nbsp;on-window&nbsp;and&nbsp;the&nbsp;capabilities&nbsp;for&nbsp;each&nbsp;button.|
 |9   |menuLayoutsAvailable      |Common.MenuLayout             |FALSE      |array: true<br>minsize: 1<br>maxsize: 1000                 |N/A |An array of available menu layouts. If this parameter is not provided, only the LIST layout is assumed to be available.|
-<br>
 
 ### 2.15. AppServicesCapabilities
-The definition of "AppServicesCapabilities" and the setting example of TOYOTA are described below.
+The definition of `AppServicesCapabilities` and the setting example of TOYOTA are described below.
 
 | No | Name       | Type                      | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:        | :-:                       | :-:       | :-:        |---------------------|-------------|
 |1   |appServices |[Common.AppServiceCapability](#216-appservicecapability)|FALSE |array: true |N/A |An&nbsp;array&nbsp;of&nbsp;currently&nbsp;available&nbsp;services. If this is an update to the capability the affected services will include an update reason in that item.|
-<br>
 
 ### 2.16. AppServiceCapability
-The definition of "AppServiceCapability" and the setting example of TOYOTA are described below.
+The definition of `AppServiceCapability` and the setting example of TOYOTA are described below.
 
 | No | Name                   | Type                      | Mandatory | Additional | TOYOTA&nbsp;Setting | Description |
 |:-: | :-:                    | :-:                       | :-:       | :-:        |---------------------|-------------|
 |1   |updateReason            |Common.ServiceUpdateReason |FALSE      | -          |N/A                  |Only included in OnSystemCapabilityUpdated. Update reason for service record.|
 |2   |updatedAppServiceRecord |Common.AppServiceRecord    |TRUE       | -          |N/A                  |Service&nbsp;record&nbsp;for&nbsp;a&nbsp;specific&nbsp;app&nbsp;service&nbsp;provider.|
-<br>
 
 ### 2.17. SeatLocationCapability
-The definition of "SeatLocationCapability" and the setting example of TOYOTA are described below.
+The definition of `SeatLocationCapability` and the setting example of TOYOTA are described below.
 
 
 | No | Name   | Type               | Mandatory | Additional |  TOYOTA&nbsp;Setting | Description |

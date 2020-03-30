@@ -12,7 +12,7 @@ If an SDL App which AppHMIType is other than "MEDIA" is running when ACC OFF, ev
 When the system is shut down by ACC OFF, if the last launched SDL App is Media (The AppHMIType is "MEDIA"), the HMI stores the SDL App infromation to memory.
 The information that is needed to re-start playing on the SDL App, for example the SDL App name(App ID), the current playing music information (title, playtime, etc) should be stored.
 The HU must finish to store the information until the shutdown sequence is complete. During the next ACC ON, the HMI must confirm whether there is an existing last launched SDL App.
-And if it exists, the HMI launches the targeted SDL App and plays the music.Then, the HMI Level should be set to "FULL".
+And if it exists, the HMI launches the targeted SDL App and plays the music. Then, the HMI Level should be set to "FULL".
 
 ## 3. Differences from the SDL standard specification
 The behavior of SDL App during ACC OFF/ON is not explicitly defined in the SDL standard specification, because it is processed in the HMI.

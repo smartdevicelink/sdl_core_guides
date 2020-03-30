@@ -8,7 +8,7 @@ Listed below are three cases considered as kinds of interruption.
 - Interruption from Native while SDL App is running
 
 ## 2. Background/Purpose/Reason for Standardization
-Currently, there are various types of popup screen appearance, such as the RPC`Alert`, the RPC`PerformInteraction`, etc, in the SDL.
+Currently, there are various types of popup screen appearance, such as the `Alert`, the `PerformInteraction`, etc, in the SDL.
 However, all of the interruptions are notified to the Native side in the SDL standard specification. Therefore, it is necessary for the OEMs to manage the interruptions by themselves.
 Hence, the purpose of this document is to standardize such cases/issues using the TOYOTA specification, in order to be able to contribute to the SDL Ecosystem.
 
@@ -55,7 +55,7 @@ For the following cases, please refer to the SDL standard specification in the U
 <br>
 Case of `OnEventChange` :
 <https://www.smartdevicelink.com/en/guides/hmi/basiccommunication/oneventchanged/>
-<br>
+
 Case of `OnAppDeactivated` :
 <https://www.smartdevicelink.com/en/guides/hmi/basiccommunication/onappdeactivated/>
 

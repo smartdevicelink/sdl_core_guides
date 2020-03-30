@@ -35,13 +35,6 @@ Therefore, the definition of behavior and state of transition of each HMI level 
 In Figure1 below shows the diagram of status transition based on the current status transition rule.
 Also, Table3 below shows the various status transition and the expected behavior related to various triggers.
 
-<div align="center">
-
-**Figuer1.** Status Transition Diagram
-![figuer1_status_transition_diagram.png](./assets/figuer1_status_transition_diagram.png)
-
-</div>
-
 |||
 **Figuer1.** Status Transition Diagram
 ![figuer1_status_transition_diagram.png](./assets/figuer1_status_transition_diagram.png)
@@ -55,78 +48,9 @@ Other than the HMI level status, SDL has also a status for VideoStreaming/AudioS
 The following tables below show the rules of status change, when the user switches SDL App; VideoStreaming in Table4 and AudioStreaming in Table5.
 
 **Table4.** Matrix table of Video Stream status
-<table>
-  <tr>
-    <th colspan="2" rowspan="2">  </th>
-    <th colspan="3"><div align="center"> 2nd launched </div></th>
-  </tr>
-  <tr>
-    <th><div align="center"> NAVIGATION </div></th>
-    <th><div align="center"> PROJECTION </div></th>
-    <th><div align="center"> Other </div></th>
-  </tr>
-  <tr>
-    <td rowspan="3"><div align="left"><b> 1st <br>launched </b></div></td>
-    <td><div align="center"><b> NAVIGATION </b></div></td>
-    <td><div align="left"> 1st&nbsp;NAVIGATION&nbsp;:&nbsp;NS<br>2nd NAVIGATION : S </div></td>
-    <td><div align="left"> 1st&nbsp;NAVIGATION&nbsp;:&nbsp;NS<br>2nd PROJECTION : S </div></td>
-    <td><div align="left"> 1st&nbsp;NAVIGATION&nbsp;:&nbsp;S<br>2nd Other :NS </div></td>
-  </tr>
-  <tr>
-    <td><div align="center"><b> PROJECTION </b></div></td>
-    <td><div align="left"> 1st PROJECTION : NS<br>2nd NAVIGATION : S </div></td>
-    <td><div align="left"> 1st PROJECTION : NS<br>2nd PROJECTION : S </div></td>
-    <td><div align="left"> 1st PROJECTION : S<br>2nd Other : NS </div></td>
-  </tr>
-  <tr>
-    <td><div align="center"><b> Other </b></div></td>
-    <td><div align="left"> 1st Other : NS<br>2nd NAVIGATION : S </div></td>
-    <td><div align="left"> 1st Other : NS<br>2nd PROJECTION : S </div></td>
-    <td><div align="left"> 1st Other : NS<br>2nd Other : S </div></td>
-  </tr>
-</table>
+![table4_matrix_table_of_video_stream.png](./assets/table4_matrix_table_of_video_stream.png)
 *S : STREAMABLE, NS : NOT_STREAMABLE<br><br>
 
 **Table5.** Matrix table for Audio Streaming status
-<table>
-  <tr>
-    <th colspan="2" rowspan="2">  </th>
-    <th colspan="4"><div align="center"> 2nd launched </div></th>
-  </tr>
-  <tr>
-    <th><div align="center"> NAVIGATION </div></th>
-    <th><div align="center"> PROJECTION </div></th>
-    <th><div align="center"> IsMediaApp </div></th>
-    <th><div align="center"> Other </div></th>
-  </tr>
-  <tr>
-    <td rowspan="4"><div align="left"><b> 1st <br>launched </b></div></td>
-    <td><div align="center"><b> NAVIGATION </b></div></td>
-    <td><div align="left"> 1st NAVIGATION : NA<br>2nd NAVIGATION : A </div></td>
-    <td><div align="left"> 1st NAVIGATION : A<br>2nd&nbsp;PROJECTION&nbsp;:&nbsp;NA </div></td>
-    <td><div align="left"> 1st NAVIGATION : A<br>2nd&nbsp;IsMediaApp&nbsp;:&nbsp;NA </div></td>
-    <td><div align="left"> 1st&nbsp;NAVIGATION&nbsp;:&nbsp;A<br>2nd Other : NA </div></td>
-  </tr>
-  <tr>
-    <td><div align="center"><b> PROJECTION </b></div></td>
-    <td><div align="left"> 1st PROJECTION : A<br>2nd&nbsp;NAVIGATION&nbsp;:&nbsp;NA </div></td>
-    <td><div align="left"> 1st PROJECTION : NA<br>2nd PROJECTION : A </div></td>
-    <td><div align="left"> 1st PROJECTION : A<br>2nd IsMediaApp : NA </div></td>
-    <td><div align="left"> 1st PROJECTION : A<br>2nd Other : NA </div></td>
-  </tr>
-  <tr>
-    <td><div align="center"><b> IsMediaApp </b></div></td>
-    <td><div align="left"> 1st IsMediaApp : A<br>2nd NAVIGATION : NA </div></td>
-    <td><div align="left"> 1st IsMediaApp : A<br>2nd PROJECTION : NA </div></td>
-    <td><div align="left"> 1st IsMediaApp : NA<br>2nd IsMediaApp : A </div></td>
-    <td><div align="left"> 1st IsMediaApp : A<br>2nd Other : NA </div></td>
-  </tr>
-  <tr>
-    <td><div align="center"><b> Other </b></div></td>
-    <td><div align="left"> 1st Other : NA<br>2nd NAVIGATION : A </div></td>
-    <td><div align="left"> 1st Other : NA<br>2nd PROJECTION : A </div></td>
-    <td><div align="left"> 1st Other : NA<br>2nd IsMediaApp : A </div></td>
-    <td><div align="left"> 1st Other : NA<br>2nd Other : A </div></td>
-  </tr>
-</table>
+![table5_matrix_table_of_audio_stream.png](./assets/table5_matrix_table_of_audio_stream.png)
 *A : AUDIBLE, NA : NOT_AUDIBLE

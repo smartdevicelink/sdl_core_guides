@@ -21,15 +21,38 @@ Hence, the purpose of this document is to standardize such cases/issues using th
 
 ## 3. Function Details
 ### 3.1. Function overview
-Table 1 shows the 9 patterns for switching SDL Apps.
+The conbination of launched Apps show the 9patterns below.
 
-**Table1.** Sequence pattern of switching SDL Apps
-<table><tr><th><div align="center"> No. </div></th><th><div align="center"> 1st Launched App </div></th><th><div align="center"> 2nd launched App </div></th></tr><tr><td><div align="center"> 1 </div></td><td rowspan="3"><div align="left"> "MEDIA" type SDL App </div></td><td><div align="left"> "MEDIA" type SDL App </div></td></tr><tr><td><div align="center"> 2 </div></td><td><div align="left"> "NAVIGATION"/"PROJECTION" type SDL App </div></td></tr><tr><td><div align="center"> 3 </div></td><td><div align="left"> Normal type SDL App </div></td></tr><tr><td><div align="center"> 4 </div></td><td rowspan="3"><div align="left"> "NAVIGATION"/"PROJECTION" type SDL App </div></td><td><div align="left"> "MEDIA" type SDL App </div></td></tr><tr><td><div align="center"> 5 </div></td><td><div align="left"> "NAVIGATION"/"PROJECTION" type SDL App </div></td></tr><tr><td><div align="center"> 6 </div></td><td><div align="left"> Normal type SDL App </div></td></tr><tr><td><div align="center"> 7 </div></td><td rowspan="3"><div align="left"> Normal type SDL App </div></td><td><div align="left"> "MEDIA" type SDL App </div></td></tr><tr><td><div align="center"> 8 </div></td><td><div align="left"> "NAVIGATION"/"PROJECTION" type SDL App </div></td></tr><tr><td><div align="center"> 9 </div></td><td><div align="left"> Normal type SDL App </div></td></tr></table>
+1. 1st launched App : "MEDIA" type SDL App
+ - "MEDIA" type SDL App
+ - "NAVIGATION / PROJECTION" type SDL App
+ - Normal type SDL App
+2.  1st launched App : "NAVIGATION / PROJECTION" type SDL App
+ - "MEDIA" type SDL App
+ - "NAVIGATION / PROJECTION" type SDL App
+ - Normal type SDL App
+3.  1st launched App : Normal type SDL App
+ - "MEDIA" type SDL App
+ - "NAVIGATION / PROJECTION" type SDL App
+ - Normal type SDL App
 
-App types are determined by `AppHMIType` in Table2 :
+AppTypes are determined by `AppHMIType`. AppHMIType for each AppType is shown below.
 
-**Table2.** AppType Categorized by each AppHMIType
-<table><tr><th><div align="center"> App Type </div></th><th><div align="center"> AppHMIType </div></th></tr><tr><td rowspan="9"><div align="left"> Normal type App </div></td><td><div align="left"> DEFAULT </div></td></tr><tr><td><div align="left"> COMMUNICATION </div></td></tr><tr><td><div align="left"> MESSAGING </div></td></tr><tr><td><div align="left"> INFORMATION </div></td></tr><tr><td><div align="left"> SOCIAL </div></td></tr><tr><td><div align="left"> BACKGROUND_PROCESS </div></td></tr><tr><td><div align="left"> TESTING </div></td></tr><tr><td><div align="left"> SYSTEM </div></td></tr><tr><td><div align="left"> REMOTE_CONTROL </div></td></tr><tr><td><div align="left"> MEDIA type App </div></td><td><div align="left"> MEDIA </div></td></tr><tr><td rowspan = "2"><div align="left"> NAVIGATION / PROJECTION type App </div></td><td><div align="left"> NAVIGATION </div></td></tr><tr><td><div align="left"> PROJECTION </div></td></tr></table>
+1. Normal type App
+ - DEFAULT
+ - COMMUNICATION
+ - MESSAGING
+ - INFORMATION
+ - SOCIAL
+ - BACKGROUND_PROCESS
+ - TESTING
+ - SYSTEM
+ - REMOTE_CONTROL
+2. Media type App
+ - MEDIA
+3. NAVIGATION / PROJECTION type App
+ - NAVIGATION
+ - PROJECTION
 
 ## 4. Differences from SDL standard specification
 There is no provided description about the sequences of switching between the SDL Apps in the SDL official documents.
@@ -69,6 +92,7 @@ Therefore, all of the following sequences  describe in "5. Sequence Diagrams" di
 |||
 **Figure5.** Sequence of switching from "NAVIGATION/PROJECTION" type SDL App to "NAVIGATION/PROJECTION" type SDL App
 ![figure5.from_navipro_sdl_app_to_navipro_sdl_app.png](./assets/figure5.from_navipro_sdl_app_to_navipro_sdl_app.png)
+|||
 
 ### 5.6. Switching from "NAVIGATION"/"PROJECTION" type SDL App to Normal type SDL App
 
@@ -95,7 +119,7 @@ Therefore, all of the following sequences  describe in "5. Sequence Diagrams" di
 
 |||
 **Figure9.** Sequence of switching from Normal type SDL App to Normal type SDL App
-![figure9.from_other_sdl_app_to_other_sdl_app.png](./assets/figure9.from_other_sdl_app_to_other_sdl_app.png)<br>
+![figure9.from_other_sdl_app_to_other_sdl_app.png](./assets/figure9.from_other_sdl_app_to_other_sdl_app.png)
 |||
 
 ## 6. Impacted Platforms

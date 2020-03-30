@@ -38,13 +38,14 @@ When the Hard SW, the HU will launch either the SDL Navigation App or the Native
       (1) If there is an existing SDL Navigation App launched, display the launched SDL Navigation App.<br><br>
       (2) If there is no running SDL Navigation App, launch and display the SDL Navigation App in the first order as the AppHMIType is "NAVIGATION" in sort(However, there is no problem if the OEM specifies it by themselves).<br><br>
       (3) If there is already a launched SDL Navigation App displayed, keep all status.<br>
+
   3. If both the Native Navigation and the SDL Navgiation App do NOT exist, keep the state before the Hard SW is pressed. In addition, if the Software SW is used as a hard SW, there is no problem even if the OEMs specify not to display the Hard SW.
 
 ### 3.3. Pressing the ModeSW on the steering wheel
 When a user pressses the ModeSW on the steering wheel, the HU can launch and change the SDL Media App due to change in the Audio source.
 The ModeSW is a toggle function that changes the Audio source such as the Native Audio source, the SDL Media App, etc, in order.
 After all the Audio source are selected and the ModeSW is pressed, the HU goes back to the first Audio source.
-The SDL Media App that is available to choose, is the AppHMIType "MEDIA" and is registered in the RPC`RegisterAppInterface`.
+The SDL Media App that is available to choose, is the AppHMIType "MEDIA" and is registered in the `RegisterAppInterface`.
 
 The following table below shows the SDL Media App state when the ModeSW on the steering wheel is pressed.
 
@@ -68,7 +69,7 @@ Therefore, all of the contents describe in "3. Function Details" differ from the
 ## 5. Sequence Diagrams
 Figure1 describes the following sequence:<br>
 
-  (1) The launch of SDL App after pressing SW<br>
+  (1) The launch of SDL App after pressing SW
   (2) The change of SDL Apps
 
 |||
