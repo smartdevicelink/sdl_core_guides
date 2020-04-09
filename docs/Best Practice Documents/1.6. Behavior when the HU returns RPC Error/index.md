@@ -16,7 +16,7 @@ If the SDL App that is running on mobile is terminated unexpectedly, the App Con
 |||
 
 ### 3.2 For Android
-(1) If the SDL App that running on mobile has been terminated unexpectedly, but the RouterService has not, RouterService detects the interruption of SDL App session. And SDLCore Receives `UnregisterAppInterface`,and sends `OnAppUnregistered` to the HMI. The HMI receives the notification and displays an error message.
+(1) If the SDL App that running on mobile has been terminated unexpectedly, but the RouterService has not, RouterService detects the interruption of SDL App session. And SDLCore receives `UnregisterAppInterface`,and sends `OnAppUnregistered` to the HMI. The HMI receives the notification and displays an error message.
 |||
 **Figure2.** When a running SDL App on mobile terminates unexpectedly and the RouterService is running.
 ![Figure2_sequence_of_SDLApp_for_Android_terminates_unexpectedly_01.png](./assets/Figure2_sequence_of_SDLApp_for_Android_terminates_unexpectedly_01.png)
