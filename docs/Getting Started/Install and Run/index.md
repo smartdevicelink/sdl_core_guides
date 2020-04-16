@@ -1,8 +1,6 @@
 # Installation
 A quick guide to installing, configuring, and running an instance of the SDL Core on a linux OS (default environment is Ubuntu 18.04 LTS).
 
-First, clone [SDL Core](https://github.com/smartdevicelink/sdl_core), then create a folder for your build outside of the source folder.
-
 ## Dependencies
 The dependencies for SDL Core vary based on the configuration. You can change SDL Core's build configuration in the top level CMakeLists.txt. We have defaulted this file to a configuration which we believe is common for people who are interested in getting up and running quickly, generally on a Linux VM.
 
@@ -12,7 +10,13 @@ The default dependencies for SDL Core can be installed with the following comman
 sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl1.0-dev libssl1.0.0 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools
 ```
 
-### Initialize Submodules
+### Clone SDL Core and Submodules
+
+To get the source code of SDL Core, clone the [git repository](https://github.com/smartdevicelink/sdl_core) like so:
+
+```bash
+git clone https://github.com/smartdevicelink/sdl_core
+```
 
 Before building for the first time, there are a few commands that need to be run in the source folder to initialize the project:
 
