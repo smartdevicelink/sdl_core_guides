@@ -59,7 +59,7 @@ You'll use the CMake configuration to set up SDL before you compile, and enable 
 
 After installing the appropriate dependencies for your build configuration, you can run cmake with your chosen configuration. 
 
-First, create a build folder separate from your source folder, for example:
+Begin by creating a build folder outside of SDL Core source folder, for example:
 
 ```bash
 mkdir ../sdl_build
