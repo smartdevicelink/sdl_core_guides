@@ -7,9 +7,9 @@ WebSocket is the primary means of communicating with the SDL Core component from
 The HMI Adapter must:
 
 !!! must
-  * Be installed on the same vehicle HU OS where SDL is installed, or the HMI must be able to be networked to SDL and address it via a static IP address.
-  * Create and initialize components which are defined in the HMI_API specification for the version of SDL which is running on the vehicle HU. (For example: BasicCommunication, UI, Buttons, VR, TTS, Navigation, VehicleInfo, RC, AppService)
-  * Establish a separate WebSocket connection with SDL for each of components defined in the HMI_API specification.
+  * Be installed on the same vehicle HU OS where SDL Core is installed, or the HMI must be able to be networked to SDL Core and address it via a static IP address.
+  * Create and initialize components which are defined in the HMI_API specification for the version of SDL Core which is running on the vehicle HU. (For example: BasicCommunication, UI, Buttons, VR, TTS, Navigation, VehicleInfo, RC, AppService)
+  * Establish a separate WebSocket connection with SDL Core for each of components defined in the HMI_API specification.
   * Use the appropriate corresponding connection when sending responses and notifications to any connected component.
 
 !!!
