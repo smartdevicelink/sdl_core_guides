@@ -1,4 +1,4 @@
-## SDL Core Guides
+## Overview
 
 Here you will find guides on how to use different features of the SDL Core application.
 
