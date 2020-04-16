@@ -1,5 +1,6 @@
 
-# smartDeviceLink.ini
+# INI Configuration
+
 The ini file, located at `build/src/appMain/smartDeviceLink.ini` after you compile and install SDL, is where runtime options can be configured for your instance of SDL Core. Descriptions for each of these configurations are found in [the file itself](https://github.com/smartdevicelink/sdl_core/blob/master/src/appMain/smartDeviceLink.ini).
 
 ## Sections
