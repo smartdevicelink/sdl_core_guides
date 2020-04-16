@@ -86,7 +86,7 @@ make -j `nproc` install
 ```
 
 ## Start SDL Core
-Once SDL Core is compiled and installed you can start it from the executable in the bin folder
+Once SDL Core is compiled and installed you can start it from the executable in the newly created bin folder under your build folder directory
 
 ```bash
 cd bin/
