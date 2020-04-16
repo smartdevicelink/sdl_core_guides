@@ -1,7 +1,5 @@
 # Creating the HMI UI
 
-## First Steps 
-
 Before starting the development of the SDL HMI user interface, there are a few RPC prerequisites that are required.
 
 The minimum prerequisites to connect your SDL compatible user interface are:
