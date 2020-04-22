@@ -1,4 +1,4 @@
-# Creating the HMI UI
+# Creating the HMI UI Component
 
 Before starting the development of the SDL HMI user interface, there are a few RPC prerequisites that are required.
 
@@ -30,6 +30,8 @@ If an app is disconnected or unregistered, Core will send an `UpdateAppList` req
 
 When the user selects an application from the app list, a request should be made to bring this app to the foreground (this is called "activating" the application). The first step required by the HMI when an application is selected is to send a `SDL.ActivateApp` request to Core. When Core responds with a successful `SDL.ActivateApp` response, the HMI can switch views from the app list to the app's default template.
 
+![App Selection](./assets/activate_deactivate.gif)
+
 !!! NOTE
 The default template for an app should be used if the app has not requested to use a specific template via the `UI.Show.templateConfiguration` parameter or `UI.SetDisplayLayout` RPC (deprecated).
 
@@ -54,6 +56,13 @@ Permissions are managed by SDL Core's policy table. Refer to the [SDL Overview P
 
 If an app is disconnected from SDL Core and reconnects within a specified time limit, Core will try to resume the app into the same HMI state the app was in before it was disconnected. The HMI should be prepared to handle a `BasicCommunication.ActivateApp` request from SDL Core, in which case the HMI should return the app into the requested state (or respond with an error if unable to). For example, if the requested HMI level is `FULL`, the HMI should activate the app and put that app's template into view.
 
+Refer to the following resumption sequence diagram
+
+|||
+Resumption after ignition cycle
+![Resumption after ignition cycle](./assets/ActivateAppSuccessfulResume.png)
+|||
+
 !!! NOTE
 `BasicCommunication.ActivateApp` is used differently than the previously described `SDL.ActivateApp`, but the two can be easily confused.
 
@@ -65,6 +74,8 @@ If an app is disconnected from SDL Core and reconnects within a specified time l
 ## Displaying Information
 
 When an app wants to display information on the head unit, the HMI will receive a `UI.Show` request. The `UI.Show` request provides the HMI with the text, soft button information, and images an app has requested to display. The HMI should store the information in these requests for when an app is activated and put into full. `UI.Show` requests are not always sent when an app is activated and in view.
+
+//todo add show updating info on the same template
 
 !!! NOTE
 
@@ -96,6 +107,8 @@ Not all HMIs support the ability to detect a button press duration, or different
 
 ## Switching Templates
 
+//todo add gif of cycling through templates
+
 SDL Core can request the HMI to change an app's template using a `UI.Show` request, or the deprecated RPC `UI.SetDisplayLayout`.
 
 In order to specify the template to be displayed, the `UI.Show` request uses the `templateConfiguration` parameter, which includes a string for the requested layout.
@@ -112,7 +125,7 @@ An SDL app should only request to view templates that are supported in the HMI C
 
 A reference list for all supported template views can be found [here](https://smartdevicelink.com/en/guides/sdl-overview-guides/user-interface/supported-templates/). This list shows screenshots of the 15 supported template views and how their text, graphic, and soft button components are arranged.
 
-The defined strings for each template can be found in the `PredefinedLayout` struct in the Mobile API RPC Specification. 
+The defined strings for each template can be found in the [`PredefinedLayout` struct](https://smartdevicelink.com/en/guides/sdl-overview-guides/rpc-spec/#predefinedlayout) in the Mobile API RPC Specification. 
 
 ## Creating the App Menu
 
@@ -146,9 +159,13 @@ There are several RPCs which are used to display a popup or an overlay to the us
 
 ![Alert](./assets/alert.png)
 
+//todo add gif of alert
+
 ### UI.PerformInteraction
 
 `PerformInteraction` is used to display a popup with contents which are displayed in a similar way to the app menu.
+
+//todo add pi gif
 
 ![Perform Interaction](./assets/perform_interaction.png)
 
@@ -156,9 +173,13 @@ There are several RPCs which are used to display a popup or an overlay to the us
 
 `Slider` is used to display a popup that allows the user to enter a value via a slider input.
 
+//todo add slider gif
+
 ![Slider](./assets/slider.png)
 
 ### UI.ScrollableMessage
+
+//todo add scrollable message gif
 
 `ScrollableMessage` is used to display a popup which shows a long message to the user that requires scrolling.
 
@@ -177,6 +198,17 @@ It is common for an SDL UI to be integrated into an existing OEM's UI. In order 
 For example, if an SDL media application is active and is playing audio, then the user switches the audio source to the embedded radio, the HMI should send SDL Core a `BasicCommunication.OnEventChanged` notification with `eventName = AUDIO_SOURCE` and `isActive = true`. This HMI notification will let the media application know that it no longer has control of the audio source.
 
 If the user selects the media app as the audio source again, the HMI should send the same `BasicCommunication.OnEventChanged` notification, but with `isActive = false`. This will indicate to SDL Core that the application has regained control of the audio.
+
+The following gif and sequence diagram demonstrate the behavior of switching between an SDL media app and the embedded ivi audio.
+
+//todo make gif of switching between app and embedded audio source and back 
+
+|||
+OnEventChanged Sequence Diagram
+![OnEventChanged Sequence Diagram](./assets/App_activation_during_active_audio_source.png)
+|||
+
+
 
 ## Defining the UI Capabilities
 
