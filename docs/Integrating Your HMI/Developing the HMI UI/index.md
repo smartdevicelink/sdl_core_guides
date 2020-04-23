@@ -75,7 +75,9 @@ Resumption after ignition cycle
 
 When an app wants to display information on the head unit, the HMI will receive a `UI.Show` request. The `UI.Show` request provides the HMI with the text, soft button information, and images an app has requested to display. The HMI should store the information in these requests for when an app is activated and put into full. `UI.Show` requests are not always sent when an app is activated and in view.
 
-//todo add show updating info on the same template
+The following graphic shows what should happen when the HMI receives new text field and graphic information:
+
+![Update from Show Request](./assets/show_update.gif)
 
 !!! NOTE
 
@@ -90,6 +92,10 @@ If an app wants to clear a text field that it sent in a previous `UI.Show` reque
 ## Implementing Soft Buttons
 
 A `Softbutton` received from a `UI.Show` request should be displayed when the app is displaying a template. A template can have a max of 8 `Softbuttons`. These buttons can be of type `TEXT`, `IMAGE`, or `BOTH`.
+
+The following graphic displays how `Softbuttons` in a `UI.Show` request can be displayed:
+
+![Update from Show Request](./assets/cycling_soft_buttons.gif)
 
 The HMI should keep an internal state of `SoftButtons` received by `UI.Show` requests, similar to how text fields and graphics are stored. Each `SoftButton` has a unique ID which must be saved by the HMI. These IDs are used in any messages sent to SDL Core when a user interacts with a `SoftButton`.
 
@@ -107,9 +113,11 @@ Not all HMIs support the ability to detect a button press duration, or different
 
 ## Switching Templates
 
-//todo add gif of cycling through templates
-
 SDL Core can request the HMI to change an app's template using a `UI.Show` request, or the deprecated RPC `UI.SetDisplayLayout`.
+
+The following graphic demonstrates switching templates while maintaining the text, buttons, and graphic:
+
+![Cycle template layouts](./assets/cycling_templates.gif)
 
 In order to specify the template to be displayed, the `UI.Show` request uses the `templateConfiguration` parameter, which includes a string for the requested layout.
 
@@ -159,13 +167,9 @@ There are several RPCs which are used to display a popup or an overlay to the us
 
 ![Alert](./assets/alert.png)
 
-//todo add gif of alert
-
 ### UI.PerformInteraction
 
 `PerformInteraction` is used to display a popup with contents which are displayed in a similar way to the app menu.
-
-//todo add pi gif
 
 ![Perform Interaction](./assets/perform_interaction.png)
 
@@ -173,13 +177,9 @@ There are several RPCs which are used to display a popup or an overlay to the us
 
 `Slider` is used to display a popup that allows the user to enter a value via a slider input.
 
-//todo add slider gif
-
 ![Slider](./assets/slider.png)
 
 ### UI.ScrollableMessage
-
-//todo add scrollable message gif
 
 `ScrollableMessage` is used to display a popup which shows a long message to the user that requires scrolling.
 
@@ -200,8 +200,6 @@ For example, if an SDL media application is active and is playing audio, then th
 If the user selects the media app as the audio source again, the HMI should send the same `BasicCommunication.OnEventChanged` notification, but with `isActive = false`. This will indicate to SDL Core that the application has regained control of the audio.
 
 The following gif and sequence diagram demonstrate the behavior of switching between an SDL media app and the embedded ivi audio.
-
-//todo make gif of switching between app and embedded audio source and back 
 
 |||
 OnEventChanged Sequence Diagram
