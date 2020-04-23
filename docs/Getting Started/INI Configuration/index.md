@@ -1,9 +1,35 @@
 
 # INI Configuration
 
-The ini file, located at `build/src/appMain/smartDeviceLink.ini` after you compile and install SDL, is where runtime options can be configured for your instance of SDL Core. Descriptions for each of these configurations are found in [the file itself](https://github.com/smartdevicelink/sdl_core/blob/master/src/appMain/smartDeviceLink.ini).
+The INI file, located at `build/src/appMain/smartDeviceLink.ini` after you compile and install SDL, is where runtime options can be configured for your instance of SDL Core. Descriptions for each of these configurations are found in [the file itself](https://github.com/smartdevicelink/sdl_core/blob/master/src/appMain/smartDeviceLink.ini).
+
+The INI file is structured as follows:
+
+```ini
+[section1_name]
+
+; property1 description
+property1_name = property1_value
+; property2 description
+property2_name = property2_value
+...
+
+[section2_name]
+
+; property1 description
+property1_name = property1_value
+; property2 description
+property2_name = property2_value
+...
+
+...
+```
 
 ## Sections
+
+!!! NOTE
+As the guides progress, some of these sections will be discussed in greater detail.
+!!!
 
 * `HMI` - Settings relating to the HMI connection, including server and port information.
 * `MEDIA MANAGER` - Settings related to media features (audio/video streaming and audio pass thru). Several of these options are described in more detail in the [Audio/Video Streaming Guide](../../feature-documentation/audio-and-video-streaming-guide/).
@@ -24,3 +50,14 @@ The ini file, located at `build/src/appMain/smartDeviceLink.ini` after you compi
 * `ServicesMap` - Settings for restricting Audio and Video services by transport, to be used in conjunction with the `MultipleTransports` section (defined in [SDL-0141](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0141-multiple-transports.md)).
 * `AppServices` - Configuration options related to the app services feature (defined in [SDL-0167](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0167-app-services.md)).
 * `RCModuleConsent` - Settings regarding storage of RC module consent records.
+
+## Modifying the configuration
+
+!!! NOTE
+SDL must be started/re-started after the `smartDeviceLink.ini` file is modified for changes to take effect.
+!!!
+
+The modify the runtime configurations for your instance of core:
+
+1. Modify the `build/src/appMain/smartDeviceLink.ini` file
+2. Re-run `make install` in the `build` directory
