@@ -196,7 +196,7 @@ Through RPC Passing, a `SendLocation` RPC request can be handled by a navigation
             ],
             "RequestType": [],
             "RequestSubType": [],
-            "app_services:": {
+            "app_services": {
                 "NAVIGATION": {
                     "handled_rpcs": [{"function_id": 39}]
                 }
