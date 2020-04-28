@@ -34,7 +34,7 @@ gst-launch-1.0 filesrc location=/path/to/h264/file ! decodebin ! videoconvert ! 
 
 If you're streaming video over TCP, you can point gstreamer directly to your phone's stream using
 ```
-gst-launch-1.0 tcpclientsrc host=<Device IP Address> port=3000 ! decodebin ! videoconvert ! ximagesink sync=false
+gst-launch-1.0 tcpclientsrc host=<Device IP Address> port=3000 ! decodebin ! videoconvert ! <sink> sync=false
 ```
 
 ## Pipe Streaming
