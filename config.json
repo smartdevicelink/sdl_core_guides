@@ -29,10 +29,10 @@
                     "name": "Developing the HMI UI"
                 },
                 {
-                    "name": "Encryption Setup"
+                    "name": "Vehicle Data"
                 },
                 {
-                    "name": "Vehicle Data"
+                    "name": "Encryption Setup"
                 }
             ]
         },
@@ -40,7 +40,7 @@
             "name": "Feature Documentation",
             "navigation": [
                 {
-                    "name": "Audio and Video Streaming Setup"
+                    "name": "Audio and Video Streaming"
                 },
                 {
                     "name": "App Service Guidelines"
@@ -49,10 +49,13 @@
                     "name": "Multiple Transports"
                 },
                 {
-                    "name": "Remote Control Guide"
+                    "name": "Remote Control"
                 },
                 {
-                    "name": "Service Status Update Guide"
+                    "name": "Service Status Update"
+                },
+                {
+                    "name": "Smart Objects"
                 }
             ]
         },
@@ -60,13 +63,13 @@
             "name": "Developer Documentation",
             "navigation": [
                 {
-                    "name": "Web Engine Support"
+                    "name": "Web Engine App Support"
                 },
                 {
-                    "name": "Transport Manager Programming"
+                    "name": "Transport Manager"
                 },
                 {
-                    "name": "Security Manager Design"
+                    "name": "Security Manager"
                 }
             ]
         },

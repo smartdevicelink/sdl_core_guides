@@ -59,4 +59,4 @@ VideoServiceTransports = TCP_WIFI, AOA_USB
 
 ## Resources
 
-For more information on how the Multiple Transports feature works, see the [Feature Documentation](../../feature-documentation/multiple-transports-guide).
+For more information on how the Multiple Transports feature works, see the [Feature Documentation](../../feature-documentation/multiple-transports).
