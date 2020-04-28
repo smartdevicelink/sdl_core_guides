@@ -1,9 +1,14 @@
 ## Initial Configuration
 
-### HMI Modifications
+### SDL Core Setup
 
-Using either pipe or socket streaming may require the following modifications to the [SDL HMI](https://github.com/smartdevicelink/sdl_hmi).
+Before continuing, follow the [Install and Run Guide](../../getting-started/install-and-run/) for SDL Core if you have not already done so.
+
+### HMI Setup
+
 The Generic HMI does not currently support streaming.
+
+If using the [SDL HMI](https://github.com/smartdevicelink/sdl_hmi), you may need to make the following modifications when using socket streaming.
 
 #### VIDEO
 In order to stream video, comment out the following line in `app/model/sdl/Abstract/Model.js`:
