@@ -69,7 +69,7 @@ gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/audio_stream_pipe ! 
 ## Socket Streaming
 
 ### Configuration (smartDeviceLink.ini)
-In the Core build folder, open `bin/smartDeviceLink.ini` and the make the following changes:
+In the Core build folder, open `bin/smartDeviceLink.ini` and ensure the following values are set:
 ```
 ; Socket ports for video and audio streaming
 VideoStreamingPort = 5050
