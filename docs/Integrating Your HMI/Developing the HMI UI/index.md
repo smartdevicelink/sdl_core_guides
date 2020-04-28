@@ -115,7 +115,7 @@ Not all HMIs support the ability to detect a button press duration, or different
 
 SDL Core can request the HMI to change an app's template using a `UI.Show` request, or the deprecated RPC `UI.SetDisplayLayout`.
 
-The following graphic demonstrates switching templates while maintaining the text, buttons, and graphic:
+The following graphic demonstrates switching templates while maintaining the same text, buttons, and graphic:
 
 ![Cycle template layouts](./assets/cycling_templates.gif)
 
@@ -133,7 +133,7 @@ An SDL app should only request to view templates that are supported in the HMI C
 
 A reference list for all supported template views can be found [here](https://smartdevicelink.com/en/guides/sdl-overview-guides/user-interface/supported-templates/). This list shows screenshots of the 15 supported template views and how their text, graphic, and soft button components are arranged.
 
-The defined strings for each template can be found in the [`PredefinedLayout` struct](https://smartdevicelink.com/en/guides/sdl-overview-guides/rpc-spec/#predefinedlayout) in the Mobile API RPC Specification. 
+The defined strings for each template can be found in the [PredefinedLayout enum](https://smartdevicelink.com/en/guides/sdl-overview-guides/rpc-spec/#predefinedlayout) in the Mobile API RPC Specification. 
 
 ## Creating the App Menu
 
@@ -205,8 +205,6 @@ The following gif and sequence diagram demonstrate the behavior of switching bet
 OnEventChanged Sequence Diagram
 ![OnEventChanged Sequence Diagram](./assets/App_activation_during_active_audio_source.png)
 |||
-
-
 
 ## Defining the UI Capabilities
 
