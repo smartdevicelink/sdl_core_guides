@@ -4,7 +4,11 @@ Here you will find guides on how to set up the SDL Core application, integrate a
 
 ## Table of Contents
 
-[Getting Started](../getting-started/install-and-run/)
+### Getting Started
+
+- [Install and Run SDL Core](../getting-started/install-and-run/)
+- [INI Configuration](../getting-started/ini-configuration/)
+- [Multiple Transports Configuration](../getting-started/multiple-transports-configuration/)
 
 ### Integrating Your HMI
 
@@ -28,6 +32,10 @@ Here you will find guides on how to set up the SDL Core application, integrate a
 - [Service Status Update](../feature-documentation/service-status-update/)
 - [Smart Objects Guide](../feature-documentation/smart-objects/)
 
-[Frequently Asked Questions](../faq/)
+### FAQ
 
-[Doxygen Inline Documentation](../doxygen-inline-documentation/)
+- [Frequently Asked Questions](../faq/)
+
+### Doxygen
+
+- [Doxygen Inline Documentation](../doxygen-inline-documentation/)
