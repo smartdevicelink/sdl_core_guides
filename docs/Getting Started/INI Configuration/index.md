@@ -32,7 +32,7 @@ As the guides progress, some of these sections will be discussed in greater deta
 !!!
 
 * `HMI` - Settings relating to the HMI connection, including server and port information.
-* `MEDIA MANAGER` - Settings related to media features (audio/video streaming and audio pass thru). Several of these options are described in more detail in the [Audio/Video Streaming Guide](../../feature-documentation/audio-and-video-streaming-guide/).
+* `MEDIA MANAGER` - Settings related to media features (audio/video streaming and audio pass thru). Several of these options are described in more detail in the [Audio/Video Streaming Guide](../../feature-documentation/audio-and-video-streaming/).
 * `GLOBAL PROPERTIES` - Settings to define default values to set when `ResetGlobalProperties` is sent by a mobile application.
 * `FILESYSTEM RESTRICTIONS` - Settings to define limits for file operations by applications in the `NONE` HMI Level.
 * `AppInfo` - Settings for where to store application info for resumption purposes.
