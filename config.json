@@ -30,9 +30,6 @@
                 },
                 {
                     "name": "Vehicle Data"
-                },
-                {
-                    "name": "Encryption Setup"
                 }
             ]
         },
@@ -50,6 +47,9 @@
                 },
                 {
                     "name": "Remote Control"
+                }, 
+                {
+                    "name": "Encryption Setup"
                 },
                 {
                     "name": "Service Status Update"
