@@ -45,46 +45,51 @@ VerifyPeer  = false
 ### Policy table modifications
 
 - Add `"encryption_required": true` to a functional group in `sdl_preloaded_pt.json`(or via a [PTU](https://smartdevicelink.com/en/guides/sdl-overview-guides/policies/overview/#policy-table-updates))
+
 ```json
-"functional_groupings": {
-    ...
-    "EncryptedRPCs": {
-        "encryption_required" : true,
-        "rpcs":{
-            "AddCommand": {
-                "hmi_levels": ["BACKGROUND",
-                "FULL",
-                "LIMITED"]
-            },
-            "Alert": {
-                "hmi_levels": ["BACKGROUND", 
-                    "FULL", 
+...
+    "functional_groupings": {
+        ...
+        "EncryptedRPCs": {
+            "encryption_required" : true,
+            "rpcs":{
+                "AddCommand": {
+                    "hmi_levels": ["BACKGROUND",
+                    "FULL",
                     "LIMITED"]
-            },
-            ...
-        }
-    },
-    ...
-}
+                },
+                "Alert": {
+                    "hmi_levels": ["BACKGROUND", 
+                        "FULL", 
+                        "LIMITED"]
+                },
+                ...
+            }
+        },
+        ...
+    }
+...
 ``` 
 
 - Add `"encryption_required": true` to the app_policies in `sdl_preloaded_pt.json`(or via a [PTU](https://smartdevicelink.com/en/guides/sdl-overview-guides/policies/overview/#policy-table-updates))
 
 ```json
-"app_policies": {
-    ...
-    "appId": {
-        "keep_context": false,
-        "steal_focus": false,
-        "priority": "NONE",
-        "default_hmi": "NONE",
-        "groups": ["Base-4", "EncryptedRPCs"],
-        "RequestType": [],
-        "RequestSubType": [],
-        "encryption_required": true
-    },
-    ...
-}
+...
+    "app_policies": {
+        ...
+        "appId": {
+            "keep_context": false,
+            "steal_focus": false,
+            "priority": "NONE",
+            "default_hmi": "NONE",
+            "groups": ["Base-4", "EncryptedRPCs"],
+            "RequestType": [],
+            "RequestSubType": [],
+            "encryption_required": true
+        },
+        ...
+    }
+...
 ```
 
 #### JSON Example

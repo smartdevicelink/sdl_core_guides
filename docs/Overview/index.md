@@ -15,7 +15,6 @@ Here you will find guides on how to set up the SDL Core application, integrate a
 - [SDL Core and HMI Communication](../integrating-your-hmi/sdl-core-and-hmi-communication/)
 - [Developing The HMI UI](../integrating-your-hmi/encryption-setup/)
 - [Integrating Vehicle Data](../integrating-your-hmi/vehicle-data/)
-- [Encryption Setup](../integrating-your-hmi/encryption-setup/)
 
 ### Developer Documentation
 
@@ -29,6 +28,7 @@ Here you will find guides on how to set up the SDL Core application, integrate a
 - [Multiple Transports](../feature-documentation/multiple-transports/)
 - [App Service Guidelines](../feature-documentation/app-service-guidelines/)
 - [Remote Control](../feature-documentation/remote-control/)
+- [Encryption Setup](../feature-documentation/encryption-setup/)
 - [Service Status Update](../feature-documentation/service-status-update/)
 - [Smart Objects Guide](../feature-documentation/smart-objects/)
 
