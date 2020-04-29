@@ -1,6 +1,15 @@
-# Encryption Setup
+# Encryption Guide
 
-## Generate Self Signed Certificate
+#### Relevant Evolution Proposals
+- [0207: RPC Message Protection](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0207-rpc-message-protection.md)
+
+## Introduction
+
+This guide will cover the basic setup required to enable and utilize RPC encryption within SDL Core. For more information about the feature, please take a look at the [Encryption Overview Guide](https://smartdevicelink.com/en/guides/sdl-overview-guides/encryption-guide).
+
+## Encryption Setup
+
+### Generate Self Signed Certificate
 
 - Create private key:
 ```bash
@@ -17,13 +26,13 @@ openssl req -new -key client.key -out client.req -subj '/C=US/ST=MI/L=Detroit/O=
 openssl x509 -hash -req -in client.req -signkey client.key -out client.cert -days 10000
 ```
 
-## Configure SDL Core
+### Configure SDL Core
 
-### INI file modifications
+#### INI file modifications
 
 - Copy client.key and client.cert into your SDL Core `build/bin` directory. Delete any existing key, cert/crt, or pem files.
 
-In your build/bin directory run:
+In your `build/bin` directory run:
 ```bash
 c_rehash .
 ```
@@ -42,9 +51,9 @@ KeyPath         = client.key
 VerifyPeer  = false
 ```
 
-### Policy table modifications
+#### Policy table modifications
 
-These modifications can be made in your `sdl_preloaded_pt.json` before launching Core or by updating the policy table while Core is running via a [PTU](https://smartdevicelink.com/en/guides/sdl-overview-guides/policies/overview/#policy-table-updates)
+The policy table can be modified to enforce encryption on certain RPCs. These modifications can be made in your `sdl_preloaded_pt.json` before launching Core or by updating the policy table while Core is running via a [PTU](https://smartdevicelink.com/en/guides/sdl-overview-guides/policies/overview/#policy-table-updates)
 
 - Add `"encryption_required": true` to a functional group in the `functional_groupings` section
 
@@ -94,7 +103,7 @@ These modifications can be made in your `sdl_preloaded_pt.json` before launching
 ...
 ```
 
-#### JSON Example
+##### JSON Example
 
 Below is a possible policy table configuration requiring an app to use encryption for a specific functional group.
 
