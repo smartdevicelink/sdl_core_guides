@@ -2,27 +2,22 @@
 
 ### SDL Core Setup
 
-If you don't already have Core built, you can follow the [Install and Run Guide](../../getting-started/install-and-run/).
+Before continuing, follow the [Install and Run Guide](../../getting-started/install-and-run/) for SDL Core if you have not already done so.
 
-### SDL HMI Setup
+### HMI Setup
 
-If you don't already have the SDL HMI, download it via the following command
+The Generic HMI does not currently support streaming.
 
-```
-git clone -b master https://github.com/smartdevicelink/sdl_hmi.git
-```
-
-### HMI Modifications
-Using either pipe or socket streaming may require a modification to the SDL HMI.
+If using the [SDL HMI](https://github.com/smartdevicelink/sdl_hmi), you may need to make the following modifications when using socket streaming.
 
 #### VIDEO
-Comment out the following line in `app/model/sdl/Abstract/Model.js`:
+In order to stream video, comment out the following line in `app/model/sdl/Abstract/Model.js`:
 ```
 //  SDL.SDLModel.playVideo(appID);
 ```
 
 #### AUDIO
-Comment out the following lines in `app/model/sdl/Abstract/Model.js`:
+In order to stream audio, comment out the following lines in `app/model/sdl/Abstract/Model.js`:
 ```
 //  SDL.StreamAudio.play(
 //      SDL.SDLController.getApplicationModel(appID).navigationAudioStream
@@ -31,54 +26,46 @@ Comment out the following lines in `app/model/sdl/Abstract/Model.js`:
 
 ### GSTREAMER Setup
 
-First, we must determine what gstreamer command works in your environment
+It is easier to determine which gstreamer video sink will work in your environment by testing with a static file. This can be done by downloading [this file](https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/HT1425/sample_iPod.m4v.zip) and trying the following command.
 
-Start by finding a raw h.264 file ([Example](https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/HT1425/sample_iPod.m4v.zip)) and determine which of the these gstreamer commands successfully plays the example video
+Common values for sink:
+- ximagesink (x visual environment sink)
+- xvimagesink (xv visual environment sink)
+- cacasink (ascii art sink)
 
-- Ubuntu 14.04+
 ```
-gst-launch-1.0 filesrc location=/path/to/h264/file ! decodebin ! videoconvert ! xvimagesink sync=false
-```
-or
-```
-gst-launch-1.0 filesrc location=/path/to/h264/file ! decodebin ! videoconvert ! ximagesink sync=false
+gst-launch-1.0 filesrc location=/path/to/h264/file ! decodebin ! videoconvert ! <sink> sync=false
 ```
 
-If you're using tcp, you can connect the stream directly with your phone's IP address using
+If you're streaming video over TCP, you can point gstreamer directly to your phone's stream using
 ```
-gst-launch-1.0 tcpclientsrc host=<Device IP Address> port=3000 ! decodebin ! videoconvert ! ximagesink sync=false
+gst-launch-1.0 tcpclientsrc host=<Device IP Address> port=3000 ! decodebin ! videoconvert ! <sink> sync=false
 ```
 
 ## Pipe Streaming
 
 ### Configuration (smartDeviceLink.ini)
-In the Core build folder, open `bin/smartDeviceLink.ini` and the make the following changes:
+In the Core build folder, open `bin/smartDeviceLink.ini` and ensure the following values are set:
 ```
-;VideoStreamConsumer = socket
-;AudioStreamConsumer = socket
-;VideoStreamConsumer = file
-;AudioStreamConsumer = file
 VideoStreamConsumer = pipe
 AudioStreamConsumer = pipe
 ```
 
-### Video Stream Pipe
+### GStreamer Commands
 
 After you start SDL Core, cd into the bin/storage directory and there should be a file named "video_stream_pipe". Use the gst-launch command that worked for your environment and set file source to the video_stream_pipe file. You should see “setting pipeline to PAUSED” and “Pipeline is PREROLLING”.
 
-#### Raw H.264
+#### Raw H.264 Video
 ```
 gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/video_stream_pipe ! decodebin ! videoconvert ! xvimagesink sync=false
 ```
 
-#### H.264 over RTP (Ubuntu 16.04+, GStreamer 1.4+)
+#### H.264 Video over RTP
 ```
 gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/video_stream_pipe ! "application/x-rtp-stream" ! rtpstreamdepay ! "application/x-rtp,media=(string)video,clock-rate=90000,encoding-name=(string)H264" ! rtph264depay ! "video/x-h264, stream-format=(string)avc, alignment=(string)au" ! avdec_h264 ! videoconvert ! ximagesink sync=false
 ```
 
-### Audio Stream Pipe
-
-#### RAW PCM
+#### RAW PCM Audio
 
 ```
 gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/audio_stream_pipe ! audio/x-raw,format=S16LE,rate=16000,channels=1 ! pulsesink
@@ -87,7 +74,7 @@ gst-launch-1.0 filesrc location=$SDL_BUILD_PATH/bin/storage/audio_stream_pipe ! 
 ## Socket Streaming
 
 ### Configuration (smartDeviceLink.ini)
-In the Core build folder, open `bin/smartDeviceLink.ini` and the make the following changes:
+In the Core build folder, open `bin/smartDeviceLink.ini` and ensure the following values are set:
 ```
 ; Socket ports for video and audio streaming
 VideoStreamingPort = 5050
@@ -95,27 +82,21 @@ AudioStreamingPort = 5080
 ...
 VideoStreamConsumer = socket
 AudioStreamConsumer = socket
-;VideoStreamConsumer = file
-;AudioStreamConsumer = file
-;VideoStreamConsumer = pipe
-;AudioStreamConsumer = pipe
 ```
 
-### Video Stream Socket
+### GStreamer Commands
 
-#### Raw H.264
+#### Raw H.264 Video
 ```
 gst-launch-1.0 souphttpsrc location=http://127.0.0.1:5050 ! decodebin ! videoconvert ! xvimagesink sync=false
 ```
 
-#### H.264 over RTP (Ubuntu 16.04+, GStreamer 1.4+)
+#### H.264 Video over RTP
 ```
 gst-launch-1.0 souphttpsrc location=http://127.0.0.1:5050 ! "application/x-rtp-stream" ! rtpstreamdepay ! "application/x-rtp,media=(string)video,clock-rate=90000,encoding-name=(string)H264" ! rtph264depay ! "video/x-h264, stream-format=(string)avc, alignment=(string)au" ! avdec_h264 ! videoconvert ! ximagesink sync=false
 ```
 
-### Audio Stream Socket
-
-#### RAW PCM
+#### RAW PCM Audio
 
 ```
 gst-launch-1.0 souphttpsrc location=http://127.0.0.1:5080 ! audio/x-raw,format=S16LE,rate=16000,channels=1 ! pulsesink
@@ -134,13 +115,6 @@ When an app is moved to HMI level `LIMITED`:
 * All non-streaming applications keep their HMI level
 * All applications with a different App HMI Type keep their HMI level
 * Applications with the same App HMI Type go to `BACKGROUND`
-
-### Start the Web HMI
-
-CD into the HMI repository and run
-```
-chromium-browser index.html
-```
 
 ### Additional Resources
 

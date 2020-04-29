@@ -1,7 +1,5 @@
 # Installation
-A quick guide to installing, configuring, and running an instance of the SDL Core on a linux OS (default environment is Ubuntu 18.04 LTS).
-
-First, clone [SDL Core](https://github.com/smartdevicelink/sdl_core), then create a folder for your build outside of the source folder.
+A quick guide to installing, configuring, and running an instance of SDL Core on a Linux OS (default environment is Ubuntu 18.04 LTS).
 
 ## Dependencies
 The dependencies for SDL Core vary based on the configuration. You can change SDL Core's build configuration in the top level CMakeLists.txt. We have defaulted this file to a configuration which we believe is common for people who are interested in getting up and running quickly, generally on a Linux VM.
@@ -12,7 +10,13 @@ The default dependencies for SDL Core can be installed with the following comman
 sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl1.0-dev libssl1.0.0 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools
 ```
 
-### Initialize Submodules
+### Clone SDL Core and Submodules
+
+To get the source code of SDL Core, clone the [git repository](https://github.com/smartdevicelink/sdl_core) like so:
+
+```bash
+git clone https://github.com/smartdevicelink/sdl_core
+```
 
 Before building for the first time, there are a few commands that need to be run in the source folder to initialize the project:
 
@@ -23,7 +27,7 @@ git submodule update
 ``` 
 
 ### CMake Build Configuration
-You'll use the CMake configuration to set up SDL before you compile, and enable or disable features like logging. The latest list of CMake configurations can be found in the root CMake file of the project, located at [sdl_core/CMakeLists.txt](https://github.com/smartdevicelink/sdl_core/blob/master/CMakeLists.txt). Listed below are the possible configurations, default values are bolded.
+CMake is used to configure your SDL Core build before you compile the project, this is where you can enable or disable certain features such as logging. The latest list of CMake configuration options can be found in the root CMake file of the project, located at [sdl_core/CMakeLists.txt](https://github.com/smartdevicelink/sdl_core/blob/master/CMakeLists.txt). Listed below are the possible configurations for these options, default values are bolded.
 
 #### Transport Options
 |Option|Value(s)|Dependencies|Description|
@@ -53,9 +57,9 @@ You'll use the CMake configuration to set up SDL before you compile, and enable 
 
 ## Building
 
-After installing the appropriate dependencies for your build configuration, you can run cmake with your chosen configuration. 
+After installing the appropriate dependencies for your build configuration, you can run `cmake` with your chosen options. 
 
-First, create a build folder separate from your source folder, for example:
+Begin by creating a build folder outside of SDL Core source folder, for example:
 
 ```bash
 mkdir ../sdl_build
@@ -82,7 +86,7 @@ make -j `nproc` install
 ```
 
 ## Start SDL Core
-Once SDL Core is compiled and installed you can start it from the executable in the bin folder
+Once SDL Core is compiled and installed you can start it from the executable in the newly created bin folder under your build folder directory
 
 ```bash
 cd bin/
