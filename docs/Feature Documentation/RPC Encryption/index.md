@@ -1,4 +1,4 @@
-# Encryption Guide
+# RPC Encryption
 
 #### Relevant Evolution Proposals
 - [0207: RPC Message Protection](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0207-rpc-message-protection.md)

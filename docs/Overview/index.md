@@ -28,7 +28,7 @@ Here you will find guides on how to set up SDL Core, integrate an HMI, and how t
 - [Multiple Transports](../feature-documentation/multiple-transports/)
 - [App Service Guidelines](../feature-documentation/app-service-guidelines/)
 - [Remote Control](../feature-documentation/remote-control/)
-- [Encryption Setup](../feature-documentation/encryption-setup/)
+- [RPC Encryption](../feature-documentation/rpc-encryption/)
 - [Service Status Update](../feature-documentation/service-status-update/)
 - [Smart Objects Guide](../feature-documentation/smart-objects/)
 
