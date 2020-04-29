@@ -138,7 +138,7 @@ The HMI must also register for notifications individually using the following RP
   "id": -1,
   "method": "MB.subscribeTo",
   "params": {
-    "propertyName": notificationName
+    "propertyName": <NotificationName>
   }
 }
 ```
