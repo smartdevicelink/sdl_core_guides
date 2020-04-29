@@ -6,19 +6,75 @@
             "name": "Overview"
         },
         {
-            "name": "Transport Manager Programming"
+            "name": "Getting Started",
+            "navigation": [
+                {
+                    "name": "Install and Run"
+                },
+                {
+                    "name": "INI Configuration"
+                },
+                {
+                    "name": "Multiple Transports Configuration"
+                }
+            ]
         },
         {
-            "name": "Audio and Video Streaming Setup"
+            "name": "Integrating Your HMI",
+            "navigation": [
+                {
+                    "name": "SDL Core and HMI Communication"                    
+                },
+                {
+                    "name": "Developing the HMI UI"
+                },
+                {
+                    "name": "Vehicle Data"
+                }
+            ]
         },
         {
-            "name": "App Service Provider Guide"
+            "name": "Feature Documentation",
+            "navigation": [
+                {
+                    "name": "Audio and Video Streaming"
+                },
+                {
+                    "name": "App Service Guidelines"
+                },
+                {
+                    "name": "Multiple Transports"
+                },
+                {
+                    "name": "Remote Control"
+                }, 
+                {
+                    "name": "RPC Encryption"
+                },
+                {
+                    "name": "Service Status Update"
+                },
+                {
+                    "name": "Smart Objects"
+                }
+            ]
         },
         {
-            "name": "Multiple Transports Configuration"
+            "name": "Developer Documentation",
+            "navigation": [
+                {
+                    "name": "Web Engine App Support"
+                },
+                {
+                    "name": "Transport Manager"
+                },
+                {
+                    "name": "Security Manager"
+                }
+            ]
         },
         {
-            "name" : "Encryption Setup"
+            "name": "Doxygen Inline Documentation"
         },
         {
             "name": "FAQ"
