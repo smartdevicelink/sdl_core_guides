@@ -1,6 +1,6 @@
 # Overview
 
-Here you will find guides on how to set up the SDL Core application, integrate an HMI, and how to use various features in the project.
+Here you will find guides on how to set up SDL Core, integrate an HMI, and how to use various features in the project.
 
 ## Table of Contents
 

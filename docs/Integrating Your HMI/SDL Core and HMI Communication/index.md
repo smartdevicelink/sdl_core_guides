@@ -71,14 +71,14 @@ Example Request:
 The possible componentNames are:  
 
   * `BasicCommunication` - Generic interface containing RPCs related to HMI management. Functionality includes managing the app and device lists, opening and closing apps, SDL life cycle updates, getting system info, and system requests. This interface also contains some other one off RPCs like `DialNumber` and `GetSystemTime`.
-  * `UI` - Interface responsible for RPC events and information made visible to the user. Functionality includes getting the display capabilities, changing the app template, managing the in app menus, popups, touch events and changing the language. It also includes the `PerformAudioPassThru` RPC used to capture user's speech.
+  * `UI` - Interface responsible for RPC events and information made visible to the user. Functionality includes getting the display capabilities, changing the app template, managing the in app menus, popups, touch events, and changing the language. It also includes the `PerformAudioPassThru` RPC used to capture user's speech.
   * `Buttons` - Interface responsible for RPC events and information related to hard and soft buttons in the vehicle. Includes `OnButtonPress` and `OnButtonEvent`.
   * `VR` - Interface responsible for RPC events and information related to voice recognition. Functionality includes managing voice commands, creating a `PerformInteraction` with voice commands, and notifying SDL Core when a voice recognition session begins and ends.
-  * `TTS` - Interface responsible for RPC events and information related to text to speech capabilities. Functionality includes speaking text to users, cancelling spoken text and notifying SDL Core when a text to speech session begins and ends.
+  * `TTS` - Interface responsible for RPC events and information related to text to speech capabilities. Functionality includes speaking text to users, cancelling spoken text, and notifying SDL Core when a text to speech session begins and ends.
   * `Navigation` - Interface responsible for RPC events and information related to navigation, such as audio and video streaming or interacting with the embedded navigation system by updating way points and the turn list. Includes `StartStream` and `GetWayPoints`.
   * `VehicleInfo` - Interface responsible for RPC events and information related to vehicle data. Functionality includes retrieving the current diagnostic codes and messages and reading vehicle type and data.
   * `RC` - Interface responsible for RPC events and information related to the [Remote Control Feature](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0065-remote-control.md). This includes interacting with interior vehicle data such as seat, light, or radio settings within the vehicle.
-  * `AppService` - Interface responsible for RPC events and information related to the [App Services Feature](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0167-app-services.md). This includes publishing and activating an app service, getting app service data, performing an app service interaction and getting app service consent or records.
+  * `AppService` - Interface responsible for RPC events and information related to the [App Services Feature](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0167-app-services.md). This includes publishing and activating an app service, getting app service data, performing an app service interaction, and getting app service consent or records.
 
 ### Response
 

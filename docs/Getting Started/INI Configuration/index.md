@@ -57,7 +57,7 @@ As the guides progress, some of these sections will be discussed in greater deta
 SDL must be started/re-started after the `smartDeviceLink.ini` file is modified for changes to take effect.
 !!!
 
-The modify the runtime configurations for your instance of core:
+To modify the runtime configurations for your instance of SDL Core:
 
 1. Modify the `build/src/appMain/smartDeviceLink.ini` file
 2. Re-run `make install` in the `build` directory

@@ -1,5 +1,5 @@
 # Installation
-A quick guide to installing, configuring, and running an instance of the SDL Core on a Linux OS (default environment is Ubuntu 18.04 LTS).
+A quick guide to installing, configuring, and running an instance of SDL Core on a Linux OS (default environment is Ubuntu 18.04 LTS).
 
 ## Dependencies
 The dependencies for SDL Core vary based on the configuration. You can change SDL Core's build configuration in the top level CMakeLists.txt. We have defaulted this file to a configuration which we believe is common for people who are interested in getting up and running quickly, generally on a Linux VM.

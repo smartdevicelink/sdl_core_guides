@@ -199,7 +199,7 @@ For example, if an SDL media application is active and is playing audio, then th
 
 If the user selects the media app as the audio source again, the HMI should send the same `BasicCommunication.OnEventChanged` notification, but with `isActive = false`. This will indicate to SDL Core that the application has regained control of the audio.
 
-The following gif and sequence diagram demonstrate the behavior of switching between an SDL media app and the embedded ivi audio.
+The following gif and sequence diagram demonstrate the behavior of switching between an SDL media app and the embedded IVI audio.
 
 |||
 OnEventChanged Sequence Diagram
