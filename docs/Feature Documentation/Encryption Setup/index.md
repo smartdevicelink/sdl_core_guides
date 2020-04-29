@@ -121,6 +121,7 @@ Below is a possible policy table configuration for requiring a functional group 
                 "RequestSubType": [],
                 "encryption_required": true
             }
+...
 ```
 
 ## Additional Resources
