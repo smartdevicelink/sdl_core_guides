@@ -5,7 +5,7 @@
 
 ## Introduction
 
-This guide will cover the basic setup required to enable and utilize RPC encryption within SDL Core. For more information about the feature, please take a look at the [Encryption Overview Guide](https://smartdevicelink.com/en/guides/sdl-overview-guides/encryption-guide).
+This guide will cover the basic setup required to enable and utilize RPC Encryption within SDL Core. For more information about the feature, please take a look at the [Encryption Overview Guide](https://smartdevicelink.com/en/guides/sdl-overview-guides/encryption-guide).
 
 ## Encryption Setup
 
