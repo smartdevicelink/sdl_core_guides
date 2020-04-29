@@ -1,5 +1,5 @@
 # Installation
-A quick guide to installing, configuring, and running an instance of the SDL Core on a linux OS (default environment is Ubuntu 18.04 LTS).
+A quick guide to installing, configuring, and running an instance of the SDL Core on a Linux OS (default environment is Ubuntu 18.04 LTS).
 
 ## Dependencies
 The dependencies for SDL Core vary based on the configuration. You can change SDL Core's build configuration in the top level CMakeLists.txt. We have defaulted this file to a configuration which we believe is common for people who are interested in getting up and running quickly, generally on a Linux VM.
@@ -27,7 +27,7 @@ git submodule update
 ``` 
 
 ### CMake Build Configuration
-You'll use the CMake configuration to set up SDL before you compile, and enable or disable features like logging. The latest list of CMake configurations can be found in the root CMake file of the project, located at [sdl_core/CMakeLists.txt](https://github.com/smartdevicelink/sdl_core/blob/master/CMakeLists.txt). Listed below are the possible configurations, default values are bolded.
+CMake is used to configure your SDL Core build before you compile the project, this is where you can enable or disable certain features such as logging. The latest list of CMake configuration options can be found in the root CMake file of the project, located at [sdl_core/CMakeLists.txt](https://github.com/smartdevicelink/sdl_core/blob/master/CMakeLists.txt). Listed below are the possible configurations for these options, default values are bolded.
 
 #### Transport Options
 |Option|Value(s)|Dependencies|Description|
@@ -57,7 +57,7 @@ You'll use the CMake configuration to set up SDL before you compile, and enable 
 
 ## Building
 
-After installing the appropriate dependencies for your build configuration, you can run cmake with your chosen configuration. 
+After installing the appropriate dependencies for your build configuration, you can run `cmake` with your chosen options. 
 
 Begin by creating a build folder outside of SDL Core source folder, for example:
 
