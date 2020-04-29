@@ -21,7 +21,7 @@ openssl x509 -hash -req -in client.req -signkey client.key -out client.cert -day
 
 ### INI file modifications
 
-- Copy client.key and client.cert into your SDL Core `build/bin` directory. Delete any existing key, crt, or pem files.
+- Copy client.key and client.cert into your SDL Core `build/bin` directory. Delete any existing key, cert/crt, or pem files.
 
 In your build/bin directory run:
 ```bash
@@ -44,7 +44,9 @@ VerifyPeer  = false
 
 ### Policy table modifications
 
-- Add `"encryption_required": true` to a functional group in `sdl_preloaded_pt.json`(or via a [PTU](https://smartdevicelink.com/en/guides/sdl-overview-guides/policies/overview/#policy-table-updates))
+These modifications can be made in your `sdl_preloaded_pt.json` before launching Core or by updating the policy table while Core is running via a [PTU](https://smartdevicelink.com/en/guides/sdl-overview-guides/policies/overview/#policy-table-updates)
+
+- Add `"encryption_required": true` to a functional group in the `functional_groupings` section
 
 ```json
 ...
@@ -71,7 +73,7 @@ VerifyPeer  = false
 ...
 ``` 
 
-- Add `"encryption_required": true` to the app_policies in `sdl_preloaded_pt.json`(or via a [PTU](https://smartdevicelink.com/en/guides/sdl-overview-guides/policies/overview/#policy-table-updates))
+- Add `"encryption_required": true` to an application in the `app_policies` section
 
 ```json
 ...
@@ -94,10 +96,9 @@ VerifyPeer  = false
 
 #### JSON Example
 
-Below is a possible policy table configuration for requiring a functional group of RPCs to require encryption.
+Below is a possible policy table configuration requiring an app to use encryption for a specific functional group.
 
 ```json
-...
         "functional_groupings": {
             "EncryptedAddCommand": {
                 "encryption_required" : true,
@@ -109,7 +110,9 @@ Below is a possible policy table configuration for requiring a functional group 
                     }
                 }
             },
-...
+            ...
+        },
+        ...
         "app_policies": {
             "<PUT_APP_ID_HERE>": {
                 "keep_context": false,
@@ -120,8 +123,9 @@ Below is a possible policy table configuration for requiring a functional group 
                 "RequestType": [],
                 "RequestSubType": [],
                 "encryption_required": true
-            }
-...
+            },
+            ...
+        }
 ```
 
 ## Additional Resources
