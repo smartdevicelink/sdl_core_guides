@@ -30,7 +30,7 @@ Here you will find guides on how to set up SDL Core, integrate an HMI, and how t
 - [Remote Control](../feature-documentation/remote-control/)
 - [RPC Encryption](../feature-documentation/rpc-encryption/)
 - [Service Status Update](../feature-documentation/service-status-update/)
-- [Smart Objects Guide](../feature-documentation/smart-objects/)
+- [Smart Objects](../feature-documentation/smart-objects/)
 
 ### FAQ
 
