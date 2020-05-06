@@ -13,7 +13,7 @@ Here you will find guides on how to set up SDL Core, integrate an HMI, and how t
 ### Integrating Your HMI
 
 - [SDL Core and HMI Communication](../integrating-your-hmi/sdl-core-and-hmi-communication/)
-- [Developing The HMI UI](../integrating-your-hmi/encryption-setup/)
+- [Developing The HMI UI](../integrating-your-hmi/develping-the-hmi-ui/)
 - [Integrating Vehicle Data](../integrating-your-hmi/vehicle-data/)
 
 ### Developer Documentation
