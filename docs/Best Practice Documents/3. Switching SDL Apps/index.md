@@ -39,20 +39,20 @@ The conbination of launched Apps show the 9patterns below.
 AppTypes are determined by `AppHMIType`. AppHMIType for each AppType is shown below.
 
 1. Normal type App
- - DEFAULT
- - COMMUNICATION
- - MESSAGING
- - INFORMATION
- - SOCIAL
- - BACKGROUND_PROCESS
- - TESTING
- - SYSTEM
- - REMOTE_CONTROL
+    - DEFAULT
+    - COMMUNICATION
+    - MESSAGING
+    - INFORMATION
+    - SOCIAL
+    - BACKGROUND_PROCESS
+    - TESTING
+    - SYSTEM
+    - REMOTE_CONTROL
 2. Media type App
- - MEDIA
+    - MEDIA
 3. NAVIGATION / PROJECTION type App
- - NAVIGATION
- - PROJECTION
+    - NAVIGATION
+    - PROJECTION
 
 ## 4. Differences from SDL standard specification
 There is no provided description about the sequences of switching between the SDL Apps in the SDL official documents.
