@@ -26,7 +26,7 @@ Therefore, all of the sequences in this chapter differ from the existing SDL Sta
 
 ## 5. Sequence Diagrams
 ### 5.1. Interruption from SDL App while SDL App is running
-Ex) The sequence below shows if an APT interruption occurs when ScrollableMessage is displayed on the screen.
+Ex) The sequence below shows if an AudioPassThru (APT) interruption occurs when ScrollableMessage is displayed on the screen.
 In the TOYOTA specification, the HU closes the displayed ScrollableMessage screen and displays the APT screen.
 
 |||
