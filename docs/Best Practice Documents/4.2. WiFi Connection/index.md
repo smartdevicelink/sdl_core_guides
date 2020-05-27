@@ -110,7 +110,8 @@ Refer to Figure1 for the sequence of SecondaryTransport connection establishment
 |||
 
 ## 5. Impacted Platforms
-Changes impact the following platform/s:
+Changes impact the following platforms:
+
  - Proxy
  - SDL Core
  - HMI
