@@ -30,7 +30,7 @@ Ex) The sequence below shows if an AudioPassThru (APT) interruption occurs when 
 In the TOYOTA specification, the HU closes the displayed ScrollableMessage screen and displays the APT screen.
 
 |||
-**Figure1.** Sequence of ATP interruption while the scrollableMessage screen is being displayed
+**Figure1.** Sequence of APT interruption while the ScrollableMessage screen is being displayed
 ![figure1.atp_interruption.png](./assets/figure1.atp_interruption.png)
 |||
 
