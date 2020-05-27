@@ -18,10 +18,10 @@ Therefore, the definition of behavior and state of transition of each HMI level 
 
 |<div align="center"> HMI Level </div>|<div align="center"> Definition </div>|
 |:---:|:---|
-|<div align="center"> FULL </div>|<div align="left"> The SDL App state is "FULL".<br>An SDL App with this state is displayed on full screen.<br>The SDL App can also operate interactively with other HMI modules(such as UI, VR, TT, Audio system, etc). </div>|
-|<div align="center"> LIMITED </div>|<div align="left">  The SDL App state is "LIMITED".<br>A part of the function or display is limited (Currently, the "Limited" state is only applied to Navigation and Media Apps, for example, SDL App which AppHMIType is "NAVIGATION", "PROJECTION" and "MEDIA". </div>|
-|<div align="center"> BACKGROUND </div>|<div align="left"> The SDL App state is "BACKGROUND".<br>The user has launched the SDL App once, but it is not currently displayed.<br>SDL App in this state can send a part of RPC to the HMI that follows the Policy Table rule. </div>|
-|<div align="center"> NONE </div>|<div align="left"> The SDL App state is "NONE".<br>The user has not launched the SDL App before, or the user has quit the SDL App.<br>SDL App in this state cannot communicate with the HMI. </div>|
+|<div align="center"> FULL </div>|<div align="left">An SDL App with this state is displayed on full screen.<br>The SDL App can also operate interactively with other HMI modules(such as UI, VR, TT, Audio system, etc). </div>|
+|<div align="center"> LIMITED </div>|<div align="left">A part of the function or display is limited (Currently, the "Limited" state is only applied to Navigation and Media Apps, for example, SDL App which AppHMIType is "NAVIGATION", "PROJECTION" and "MEDIA". </div>|
+|<div align="center"> BACKGROUND </div>|<div align="left">The user has launched the SDL App once, but it is not currently displayed.<br>SDL App in this state can send a part of RPC to the HMI that follows the Policy Table rule. </div>|
+|<div align="center"> NONE </div>|<div align="left">The user has not launched the SDL App before, or the user has quit the SDL App.<br>SDL App in this state cannot communicate with the HMI. </div>|
 
 **Table2.** Status Transition Rule of HMI Level
 
