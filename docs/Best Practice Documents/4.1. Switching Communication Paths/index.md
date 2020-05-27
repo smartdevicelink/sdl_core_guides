@@ -43,8 +43,9 @@ The process of switching communication path from BT to USB
       (a) Create the list of SDL Apps which is waiting for re-registering
       (b) Terminate the current BT Transport
       (c) Copy the current BT status to the USB device<br><br>
-3. (3-a) If the timer for switching transport expires, the HMI clears the list of SDL Apps which are waiting for the re-registering. Then, the SDL Core calls `Unregistered()` on the SDL Apps which are not registered within the switching time. Afterwards, the result is notified to the HMI from the SDL Core.<br>
-(3-b) If the HMI has received the RegisterApp notification and SDL App is included in the list of re-registering before the process for switching transport times out, the HMI returns to the previous HMI Level of that SDL App. And then, the HMI notifies to the mobile that the SDL App was launched succesfully.
+3. 
+  (a) If the timer for switching transport expires, the HMI clears the list of SDL Apps which are waiting for the re-registering. Then, the SDL Core calls `Unregistered()` on the SDL Apps which are not registered within the switching time. Afterwards, the result is notified to the HMI from the SDL Core.
+  (b) If the HMI has received the RegisterApp notification and SDL App is included in the list of re-registering before the process for switching transport times out, the HMI returns to the previous HMI Level of that SDL App. And then, the HMI notifies to the mobile that the SDL App was launched successfully.
 
 ## 4. Differences from SDL standard specification
 The specification for switching communication paths is not explicitly defined in the SDLC Official documents.
