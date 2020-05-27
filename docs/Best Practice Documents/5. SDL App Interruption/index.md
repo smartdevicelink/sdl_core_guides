@@ -36,9 +36,7 @@ In the TOYOTA specification, the HU closes the displayed ScrollableMessage scree
 
 ### 5.2.  Interruption from SDL App while Native is running
 <b>5.2.1. When the interruption of SDL App screen occurs while Native screen is being displayed</b><br>
-In this case, you can refer to case of `Alert` in the SDL standard specification in the URL below:
-<br>
-<https://www.smartdevicelink.com/en/guides/hmi/ui/alert/>
+In this case, you can refer to [Alert` in the SDL standard specification](https://www.smartdevicelink.com/en/guides/hmi/ui/alert/).
 
 <b>5.2.2. When the SDL app requests for (a) TTS playback while the Native voice is playing</b><br>
 When the SDL App requests for (a) TTS playback while the Native voice is playing, the SDL App notifies that request to the Native.
