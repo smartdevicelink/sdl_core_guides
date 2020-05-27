@@ -6,7 +6,7 @@ The HU controls the status of display and playback audio by notifying the HMI Le
 
 ## 2. Background/Purpose/Reason for Standardization
 It is difficult to grasp an overall understanding regarding the HMI Level, since the description of it is included in the related RPC description in the SDL official documents.
-Therefore, there is a possibilty that differences may occur depending on the behavior of each HU.
+Therefore, there is a possibility that differences may occur depending on the behavior of each HU.
 Hence, the purpose of this document is to share information cultivated through the development of SDL compatible HU in Toyota, in order to be able to contribute to the SDL Ecosystem.
 
 ## 3. Function Details
