@@ -51,11 +51,8 @@ Then, the Native decides whether it can play the TTS (or not) on the Native side
 <b>5.3.1. When interruption of Native screen occurs while SDL App screen is being displayed</b><br>
 For the following cases, please refer to the SDL standard specification in the URL provided below:
 <br>
-Case of `OnEventChange` :
-<https://www.smartdevicelink.com/en/guides/hmi/basiccommunication/oneventchanged/>
-
-Case of `OnAppDeactivated` :
-<https://www.smartdevicelink.com/en/guides/hmi/basiccommunication/onappdeactivated/>
+[OnEventChange](https://www.smartdevicelink.com/en/guides/hmi/basiccommunication/oneventchanged/)
+[OnAppDeactivated](https://www.smartdevicelink.com/en/guides/hmi/basiccommunication/onappdeactivated/)
 
 <b>5.3.2. When interruption of Native SubAudio(TTS or voice guide) occurs while SDL App TTS is playing</b><br>
 The Native decides whether (a) playback (on the Native side) is possible or not, and notifies the result to the SDL App.
