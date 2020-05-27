@@ -21,7 +21,7 @@ Hence, the purpose of this document is to standardize such cases/issues using th
 
 ## 3. Function Details
 ### 3.1. Function overview
-The conbination of launched Apps show the 9patterns below.
+The combination of launched Apps show the 9 patterns below.
 
 1. 1st launched App : "MEDIA" type SDL App
     - "MEDIA" type SDL App
