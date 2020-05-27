@@ -27,5 +27,6 @@ Figure1 below shows the behavior of SDL App when ACC OFF/ON (The last launched S
 |||
 
 ## 5. Impacted Platforms
-Changes impact the following platform/s:
+Changes impact the following platform:
+
  - HMI
