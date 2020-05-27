@@ -24,17 +24,17 @@ Hence, the purpose of this document is to standardize such cases/issues using th
 The conbination of launched Apps show the 9patterns below.
 
 1. 1st launched App : "MEDIA" type SDL App
- - "MEDIA" type SDL App
- - "NAVIGATION / PROJECTION" type SDL App
- - Normal type SDL App
+    - "MEDIA" type SDL App
+    - "NAVIGATION / PROJECTION" type SDL App
+    - Normal type SDL App
 2.  1st launched App : "NAVIGATION / PROJECTION" type SDL App
- - "MEDIA" type SDL App
- - "NAVIGATION / PROJECTION" type SDL App
- - Normal type SDL App
+    - "MEDIA" type SDL App
+    - "NAVIGATION / PROJECTION" type SDL App
+    - Normal type SDL App
 3.  1st launched App : Normal type SDL App
- - "MEDIA" type SDL App
- - "NAVIGATION / PROJECTION" type SDL App
- - Normal type SDL App
+    - "MEDIA" type SDL App
+    - "NAVIGATION / PROJECTION" type SDL App
+    - Normal type SDL App
 
 AppTypes are determined by `AppHMIType`. AppHMIType for each AppType is shown below.
 
