@@ -13,9 +13,13 @@ Hence, the purpose of this document is to standardize such cases/issues using th
 ### 3.1. Specification for Switching Communication Paths
 These are the basic rules for specification of switching communication paths:
 - The priority of communication methods: USB > BT
-Note that WiFi cannot communicate alone by itself, therefore WiFi is excepted from the priority.
 - If the SDL connects multiple terminals (mobiles), then the device that is already connected to the SDL is prioritized.
-<br>
+
+!!! NOTE
+
+WiFi cannot communicate alone by itself, therefore WiFi is excepted from the priority.
+
+!!!
 
 Table 1 shows the specifications on how SDL connection path is switched when new comunication path is added during SDL connection.
 
