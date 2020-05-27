@@ -36,7 +36,7 @@ In Figure1 below shows the diagram of status transition based on the current sta
 Also, Table3 below shows the various status transition and the expected behavior related to various triggers.
 
 |||
-**Figuer1.** Status Transition Diagram
+**Figure1.** Status Transition Diagram
 ![figuer1_status_transition_diagram.png](./assets/figuer1_status_transition_diagram.png)
 |||
 
