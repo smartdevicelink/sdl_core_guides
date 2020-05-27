@@ -25,7 +25,7 @@ The SDL App can be launched by Voice Recognition with Wakeup Word without pressi
 
 
 ### 3.3. pronunciationdata of App name (ttsName)
-The ttsName is a pronunciationdata of SDL App name and it is used for specifying the SDL App. The ttsName has multiple pronunciationdata as candidates to identify SDL App name, and the format is in text. The maximum number of pronounciations data that can be registered for one SDL App is up to 100. And, the maximum length of pronunciationdata is 500 characters. SDL App name, pronunciation data, and other App information are obtained from SDL App when the SDL App is registed by `RegisterAppInterface`, then the Voice Recognition command is registered.
+The ttsName is a pronunciationdata of SDL App name and it is used for specifying the SDL App. The ttsName has multiple pronunciationdata as candidates to identify SDL App name, and the format is in text. The maximum number of pronounciations data that can be registered for one SDL App is up to 100. And, the maximum length of pronunciationdata is 500 characters. SDL App name, pronunciation data, and other App information are obtained from SDL App when the SDL App is registered by `RegisterAppInterface`, then the Voice Recognition command is registered.
 
 
 #### 3.3.1. Registration of ttsName
