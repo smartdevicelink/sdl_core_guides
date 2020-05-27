@@ -21,7 +21,7 @@ WiFi cannot communicate alone by itself, therefore WiFi is excepted from the pri
 
 !!!
 
-Table 1 shows the specifications on how SDL connection path is switched when new comunication path is added during SDL connection.
+Table 1 shows the specifications on how SDL connection path is switched when new communication path is added during SDL connection.
 
 **Table1.** Table for switching multiple Transport
 ![table1_switching_multiple_transport.png](./assets/table1_switching_multiple_transport.png)
