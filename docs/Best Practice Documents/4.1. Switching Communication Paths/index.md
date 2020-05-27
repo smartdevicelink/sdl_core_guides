@@ -26,11 +26,14 @@ Table 1 shows the specifications on how SDL connection path is switched when new
 **Table1.** Table for switching multiple Transport
 ![table1_switching_multiple_transport.png](./assets/table1_switching_multiple_transport.png)
 
-Note(*)
- 1 : If the HMI recognized that current BT and new USB are connected to same device, SDL transport should be switched to USB.
- 2 : The SDL App that uses VPM detects WiFi transport when it is launched. If the WiFi transport that is connected to same device as BT connection is found, the SDL App will start VPM via WiFi.
- 3 : The USB connection path is prioritized, even if both paths are connected to the same device.
- 4 : If the SDL App recognized that current BT and new USB are connected to same device, SDL transport should be switched to USB.
+!!! NOTE
+
+ * 1 If the HMI recognized that current BT and new USB are connected to same device, SDL transport should be switched to USB.
+ * 2 The SDL App that uses VPM detects WiFi transport when it is launched. If the WiFi transport that is connected to same device as BT connection is found, the SDL App will start VPM via WiFi.
+ * 3 The USB connection path is prioritized, even if both paths are connected to the same device.
+ * 4 If the SDL App recognized that current BT and new USB are connected to same device, SDL transport should be switched to USB.
+
+!!!
 
 ### 3.2. Logic for switching communication paths in iOS
 The process of switching communication path from BT to USB
