@@ -12,8 +12,8 @@ Therefore, the purpose of this document is to summarize the proposal and standar
 WiFi connection does not communicate using PrimaryTransport, rather it is registered as one of the communication method of SecondaryTransport.
 If both Primary and Secondary connection were enabled, each will have the following roles.
 
- -PrimaryTransport : It will be used for the communication of RPC.
- -SecondaryTransport : It will be used for the communication of Data service such as Video streaming/Audio streaming.
+- PrimaryTransport : It will be used for the communication of RPC.
+- SecondaryTransport : It will be used for the communication of Data service such as Video streaming/Audio streaming.
 
 WiFi connection will be established between the SDL App and the HU by following the SmartDeviceLink protocol specification (<https://www.smartdevicelink.com/en/guides/sdl-overview-guides/protocol-spec/>). Then, it will be registered as SecondaryTransport.
 
