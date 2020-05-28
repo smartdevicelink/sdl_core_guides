@@ -42,7 +42,7 @@
                     "name": "1.5. Definitions when the HU returns RPC Error"
                 },
                 {
-                    "name": "1.6. Behavior when the HU returns RPC Error"
+                    "name": "1.6. Behavior when Apps terminate unexpectedly"
                 },
                 {
                     "name": "2.1. Press the App Icon on the SDL menu screen"

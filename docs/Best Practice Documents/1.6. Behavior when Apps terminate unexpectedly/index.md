@@ -1,5 +1,4 @@
-# 1.6. Behavior when the HU returns RPC Error
-
+# 1.6. Behavior when Apps terminate unexpectedly
 ## 1. Overview
 This chapter describes the behavior when the SDL App terminates unexpectedly.
 
