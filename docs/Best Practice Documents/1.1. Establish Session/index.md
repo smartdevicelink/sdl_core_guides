@@ -5,6 +5,7 @@ This chapter describes the launch sequence of normal type, MEDIA type and the NA
 The application type (AppType) is determined by AppHMIType. AppHMIType for each AppType is shown below.
 
 (1) Normal type App
+
 - DEFAULT
 - COMMUNICATION
 - MESSAGING
@@ -16,26 +17,28 @@ The application type (AppType) is determined by AppHMIType. AppHMIType for each 
 - REMOTE_CONTROL
 
 (2) MEDIA type App
+
 - MEDIA
 
 (3) NAVIGATION / PROJECTION type App
+
 - NAVIGATION
 - PROJECTION
 
 ## 2. Background/Purpose/Reason for Standardization
 Currently, the launch of SDL App is an SDL standard behavior.However, the SDL Standard Specification lacks definition for the following points:
 
-&nbsp;(1) SDL App launching sequence of App side (especially RPC communication sequence) is not defined.
-&nbsp;(2) The launch sequence for normal type SDL App is defined, while the launch sequence for MEDIA Type and NAVIGATION/PROJECTION Type are not.</ol>
+(1) SDL App launching sequence of App side (especially RPC communication sequence) is not defined.
+(2) The launch sequence for normal type SDL App is defined, while the launch sequence for MEDIA Type and NAVIGATION/PROJECTION Type are not.
 
 Therefore, a misunderstanding might occur between App developers and HMI developers. The purpose of this document is to clarify the launch sequence of SDL Apps in order to be able to contribute to the SDL Ecosystem.
 
 ## 3. Function Details
 ### 3.1. Function Overview
 The following startup sequences are to be clarified.
-&nbsp;(1) Normal type App
-&nbsp;(2) MEDIA type App
-&nbsp;(3) NAVIGATION / PROJECTION type App
+(1) Normal type App
+(2) MEDIA type App
+(3) NAVIGATION / PROJECTION type App
 
 ### 3.2 SDL App launch sequence in the SDL standard specification
 The SDL App launch sequence in the SDL Standard Specification is below Figure1.
@@ -84,6 +87,7 @@ Additional sequence is added in the red frame of Figure1 for each App type. Part
 
 |||
 **Figure3.** MEDIA type App launch sequence
+* This music app is immediately starts playing music after activation.
 ![Figure3_MEDIA_type_App_launch_sequence.png](./assets/Figure3_MEDIA_type_App_launch_sequence.png)
 |||
 
