@@ -23,6 +23,7 @@ The following (2)-(5) mentioned above, already each has of their own documents. 
 The launch of SDL App by pressing the SDL App Icon is not explicitly defined in the SDL standard specification, because it is processed in the HMI. Therefore, all of the contents describe in "5. Sequence Diagrams" differ from the existing SDL standard specification.
 
 ## 5. Sequence Diagrams
+
 1. The user presses the SDL App Icon.
 2. Then, the HMI will start the SDL App launch sequence.
  *Refer to "1.1. Establish Session" for the SDL App launch sequence.
@@ -34,6 +35,7 @@ The launch of SDL App by pressing the SDL App Icon is not explicitly defined in 
 
 ## 6. Impacted Platforms
 Changes impact the following platform/s:
+
 - HMI
 
 
