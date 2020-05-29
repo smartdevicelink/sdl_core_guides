@@ -32,4 +32,5 @@ Table1 shows the behavior when each smartphone linkage functions are switched.
 
 ## 6. Impacted Platforms
 Changes impact the following platform/s:
+
 - HMI
