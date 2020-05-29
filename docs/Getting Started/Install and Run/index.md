@@ -8,6 +8,7 @@ The default dependencies for SDL Core can be installed with the following comman
 
 ```bash
 sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl1.0-dev libssl1.0.0 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools
+sudo python3 -m pip install elementpath xmlschema lazy-object-proxy six wrapt typed-ast astroid mccabe isort toml pylint coverage
 ```
 
 ### Clone SDL Core and Submodules
