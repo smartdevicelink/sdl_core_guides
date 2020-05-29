@@ -7,9 +7,9 @@ In addition, regarding the behavior of "Pressing other SDL App Icon on the HU sc
 
 <ol>
 "2.1. Press the SDL App Icon on the SDL Menu screen"<br>
-"2.2. Launch by  Voice Recognition"<br>
+"2.2. Launch by Voice Recognition"<br>
 "2.3. Launch by choosing the Audio source on the Audio screen"<br>
-"2.4. Launch by HardSW"<br>
+"2.4. Launch by Hardware button"<br>
 </ol>
 
 In this chapter, the overall sequence of switching SDL Apps for each type is described.
@@ -124,4 +124,5 @@ Therefore, all of the following sequences  describe in "5. Sequence Diagrams" di
 
 ## 6. Impacted Platforms
 Changes impact the following platform/s:
+
 - HMI
