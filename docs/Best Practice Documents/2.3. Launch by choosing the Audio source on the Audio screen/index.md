@@ -39,4 +39,5 @@ The trigger that launches the SDL App is not explicitly defined in the SDL stand
 
 ## 5. Sequence Diagrams
 Changes impact the following platform/s:
+
 - HMI
