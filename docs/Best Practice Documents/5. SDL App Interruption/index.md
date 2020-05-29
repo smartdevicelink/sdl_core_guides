@@ -3,6 +3,7 @@
 ## 1. Overview
 This chapter describes the interruption of SDL App.
 Listed below are three cases considered as kinds of interruption.
+
 - Interruption from SDL App while SDL App is running
 - Interruption from SDL App while Native is running
 - Interruption from Native while SDL App is running
@@ -72,4 +73,5 @@ The Native decides whether (a) playback (on the Native side) is possible or not,
 
 ## 6. Impacted Platforms
 Changes impact the following platform/s:
+
 - HMI
