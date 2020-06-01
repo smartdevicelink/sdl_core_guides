@@ -10,11 +10,11 @@ Currently, the launch of the SDL App is an SDL standard behavior. However, since
 ### 3.1. Function Overview
 The user operations that trigger the launch of SDL App are listed below:
 
-&ensp;(1) By pressing the SDL App Icon
-&ensp;(2) By launching Voice Recognition
-&ensp;(3) By choosing the Audio source on the Audio screen
-&ensp;(4) By pressing the Hard SW
-&ensp;(5) By pressing the ModeSW on the Steering Wheel
+(1) By pressing the SDL App Icon
+(2) By launching Voice Recognition
+(3) By choosing the Audio source on the Audio screen
+(4) By pressing the Hardware button
+(5) By pressing the ModeSW on the Steering Wheel
 
 The following (1), (2), (4), (5) mentioned above, already each has of their own documents. Thus, this chapter provides information about (3).
 
