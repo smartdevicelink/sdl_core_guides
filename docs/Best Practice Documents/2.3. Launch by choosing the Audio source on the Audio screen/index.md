@@ -10,14 +10,16 @@ Currently, the launch of the SDL App is an SDL standard behavior. However, since
 ### 3.1. Function Overview
 The user operations that trigger the launch of SDL App are listed below:
 
-(1) By pressing the SDL App Icon
-(2) By launching Voice Recognition
-(3) By choosing the Audio source on the Audio screen
-(4) By pressing the Hardware button
+<ol>
+ (1) By pressing the SDL App Icon<br>
+ (2) By launching Voice Recognition<br>
+ (3) By choosing the Audio source on the Audio screen<br>
+ (4) By pressing the Hardware button<br>
  (5) By pressing the ModeSwitch(ModeSW*) on the Steering Wheel
+</ol>
 
 !!! NOTE
-*ModeSW is the button set in the Steering Wheel to switch the Audio Source.
+*ModeSW is the button set in the Steering Wheel to toggle the Audio Source.
 !!!
 
 The following (1), (2), (4), (5) mentioned above, already each has of their own documents. Thus, this chapter provides information about (3).
