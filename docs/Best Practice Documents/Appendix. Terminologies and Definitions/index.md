@@ -18,6 +18,7 @@
 | HMI Level     |Operating status for each App by HMI.<br>It indicates the status for each App operated by the HMI.|
 | HU            |Abbreviation for Head Unit.|
 | Mobile        |It refers to Mobile device terminals such as smartphones connected to the HU.|
+| ModeSW        |the button set in the Steering Wheel to toggle the Audio Source.|
 | Native        |Implementation parts by Tier1.<br>For example Embedded Navi, Embedded Audio, etc.|
 | PolicyTable   |A Json format file consisting of rules and permissions defined by OEM.|
 | Policy Server |It manages the SDL PolicyTable and state.|
@@ -32,6 +33,8 @@
 | SDL Ecosystem |A structure composed of benefits created by sharing various information on devices through SDL.|
 | SPP           |Abbreviation for Serial Port Profile.<br>One of the Bluetooth profiles.|
 | Steering      |It refers to the steering wheel of a car.|
+| Toneup Icon   |An image icon that is provided by the App.|
+| Tonedown Icon |An image icon that is provided by the App, and is generated in grayscale by the HU.|
 | TTS           |Abbreviation for Text To Speech.<br>A voice synthesis function.|
 | UTC           |Abbreviation for Universal Time Coordinate.<br>It refers to the world standard time using atomic clock.|
 | VPM           |Abbreviation for Video Projection Mode.<br>A mode that projects the screen created by the app (on the screen) without using a template.|
@@ -42,8 +45,7 @@
 | WiFi          |Wireless communication standards.|
 | WPA           |Abbreviation for WiFi Protected Access.<br>One of the methods to encrypt communication such as wireless LAN.|
 | WPA2          |Abbreviation for WiFi Protected Access2.<br>One of the methods to encrypt communication such as wireless LAN.|
-| Toneup Icon   |An image icon that is provided by the App.|
-| Tonedown Icon |An image icon that is provided by the App, and is generated in grayscale by the HU.|
+
 
 
 
