@@ -1,9 +1,9 @@
-# 2.4. Launch by Hard SW
+# 2.4. Launch by Hardware button
 
 ## 1. Overview
-This chapter describes the launch of SDL App by pressing the Hard SW.
-Some systems do not have the Hard SW, and set it as the Software SW in a fixed area on the screen.
-In this chapter, all mentioned above will be treated synonymously as the Hard SW.
+This chapter describes the launch of SDL App by pressing the Hardware button.
+Some systems do not have the Hardware button, and set it as the Software button in a fixed area on the screen.
+In this chapter, all mentioned above will be treated synonymously as the Hardware button.
 
 ## 2. Background/Purpose/Reason for Standardization
 Currently, the launch of SDL App is an SDL standard behavior.
@@ -18,19 +18,23 @@ The user operations that trigger the launch of SDL App are listed below:
  (1) By pressing the SDL App Icon<br>
  (2) By launching Voice Recognition<br>
  (3) By choosing the Audio source on the Audio screen<br>
- (4) By pressing the Hard SW<br>
- (5) By pressing the ModeSW on the Steering Wheel
+ (4) By pressing the Hardware button<br>
+ (5) By pressing the ModeSwitch(ModeSW*) on the Steering Wheel
 </ol>
+
+!!! NOTE
+*ModeSW is the button set in the Steering Wheel to switch the Audio Source.
+!!!
 
 The following (1), (2), (3) mentioned above, already each has of their own documents. Thus, this chapter provides information about (4) and (5).
 
-### 3.2. Pressing the Hard SW
-The SDL Navigation App can be launched, when the user presses a Hard SW.
-Although, some systems may have separated the Software SW to call the Native Navigation and the SDL Navigation App.
-The means to select the Software SW to call the Native Navigation and the SDL Navigation App depends on the OEM's specification.
-This chapter will provide information regarding the Hard SW to call the SDL Navigation App.
+### 3.2. Pressing the Hardware button
+The SDL Navigation App can be launched, when the user presses a Hardware button.
+Although, some systems may have separated the Software button to call the Native Navigation and the SDL Navigation App.
+The means to select the Software button to call the Native Navigation and the SDL Navigation App depends on the OEM's specification.
+This chapter will provide information regarding the Hardware button to call the SDL Navigation App.
 
-When the Hard SW, the HU will launch either the SDL Navigation App or the Native Navigation in accordance with the following status listed below:
+When the Hardware button, the HU will launch either the SDL Navigation App or the Native Navigation in accordance with the following status listed below:
 
   1. If the Native Navigation exists, display the Native Navigation screen.<br>
 
@@ -39,7 +43,7 @@ When the Hard SW, the HU will launch either the SDL Navigation App or the Native
       (2) If there is no running SDL Navigation App, launch and display the SDL Navigation App in the first order as the AppHMIType is "NAVIGATION" in sort(However, there is no problem if the OEM specifies it by themselves).<br><br>
       (3) If there is already a launched SDL Navigation App displayed, keep all status.<br>
 
-  3. If both the Native Navigation and the SDL Navgiation App do NOT exist, keep the state before the Hard SW is pressed. In addition, if the Software SW is used as a hard SW, there is no problem even if the OEMs specify not to display the Hard SW.
+  3. If both the Native Navigation and the SDL Navgiation App do NOT exist, keep the state before the Hardware button is pressed. In addition, if the Software button is used as a Hardware button, there is no problem even if the OEMs specify not to display the Hardware button.
 
 ### 3.3. Pressing the ModeSW on the steering wheel
 When a user pressses the ModeSW on the steering wheel, the HU can launch and change the SDL Media App due to change in the Audio source.
@@ -69,14 +73,15 @@ Therefore, all of the contents describe in "3. Function Details" differ from the
 ## 5. Sequence Diagrams
 Figure1 describes the following sequence:<br>
 
-  (1) The launch of SDL App after pressing SW
+  (1) The launch of SDL App after pressing button
   (2) The change of SDL Apps
 
 |||
-**Figure1.** Launch of SDL App after pressing SW sequence
-![figure1_launch_of_sdl_app_after_pressing_sw.png](./assets/figure1_launch_of_sdl_app_after_pressing_sw.png)
+**Figure1.** Launch of SDL App after pressing button sequence
+![figure1_launch_of_sdl_app_after_pressing_button.png](./assets/figure1_launch_of_sdl_app_after_pressing_button.png)
 |||
 
 ## 6. Impacted Platforms
 Changes impact the following platform/s:
+
  - HMI
