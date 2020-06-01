@@ -45,15 +45,20 @@ The table below shows the status for each SDL App Icon display.
 
 **Table1.** Status in each SDL App Icon status
 
-|<div align="center"> Icon Display </div>|<div align="center"> Sample Image </div>|<div align="center"> Description </div>|<div align="center"> Icon Status </div>|
+|<div align="center"> Icon Display </div>|<div align="center"> Description </div>|<div align="center"> Icon Status </div>|
 |:---|:---|:---:|
-|<div align="left"> Not displayed </div>|<div align="center"> - </div>|<div align="left"> If there is no SDL App Icon data in the cache. </div>|<div align="center"> - </div>|
-|<div align="left"> Tonedown Icon*1 <br>is displayed </div>|<div align="center"> ![tonedown_icon](./assets/tonedown_icon.png) </div>|<div align="left"> There is SDL App Icon data in the cache.<br>If the `RegisterAppInterface` is not received or the `UnregisterAppInterface` is received during Toneup SDL App Icon display. </div>|<div align="center"> Inactive </div>|
-|<div align="left"> Toneup Icon*2 <br>is displayed </div>|<div align="center"> ![toneup_icon](./assets/toneup_icon.png) </div>|<div align="left"> If the `RegisterAppInterface` is received. </div>|<div align="center"> Active </div>|
+|<div align="left"> Not displayed </div>|<div align="left"> If there is no SDL App Icon data in the cache. </div>|<div align="center"> - </div>|
+|<div align="left"> Tonedown Icon*1 <br>is displayed </div>|<div align="left"> There is SDL App Icon data in the cache.<br>If the `RegisterAppInterface` is not received or the `UnregisterAppInterface` is received during Toneup SDL App Icon display. </div>|<div align="center"> Inactive </div>|
+|<div align="left"> Toneup Icon*2 <br>is displayed </div>|<div align="left"> If the `RegisterAppInterface` is received. </div>|<div align="center"> Active </div>|
 
 !!! NOTE
  *1 Tone Down Icon: Grayout Icon. App Icon created in Grayscale.
+    Sample icon image:
+    ![tonedown_icon](./assets/tonedown_icon.png)
+    
  *2 Tone up Icon: Icon with normal color.
+    Sample icon image:
+    ![toneup_icon](./assets/toneup_icon.png)
 !!!
 
 ### 3.5. SDL App Icon name
