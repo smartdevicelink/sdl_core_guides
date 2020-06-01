@@ -8,7 +8,7 @@ Currently, the SDL App Icon display is an SDL standard behavior, however there a
 
 - The position of SDL App Icon display changes every time it connects the Mobile.
 - It takes time to display the SDL App Icon every time the system launches, because there is no internal memory to cache the SDL App information such as the SDL App Icon in the HU.
-- The user can not recognize the SDL App state (the progress of launching app) because the SDL App Icon only has two display (SDL App Icon display ON/OFF).
+- The user can not recognize the SDL App state (the progress of launching app) because the SDL App Icon only has two display (SDL App Icon Is displayed/Not displayed).
 
 Hence, the purpose of this document is to standardize such cases/issues using the TOYOTA specification, in order to be able to contribute to the SDL Ecosystem.
 
@@ -45,11 +45,16 @@ The table below shows the status for each SDL App Icon display.
 
 **Table1.** Status in each SDL App Icon status
 
-|<div align="center"> Icon Display </div>|<div align="center"> Description </div>|<div align="center"> Icon Status </div>|
+|<div align="center"> Icon Display </div>|<div align="center"> Sample Image </div>|<div align="center"> Description </div>|<div align="center"> Icon Status </div>|
 |:---|:---|:---:|
-|<div align="left"> Not displayed </div>|<div align="left"> If there is no SDL App Icon data in the cache. </div>|<div align="center"> - </div>|
-|<div align="left"> Tonedown Icon <br>is displayed </div>|<div align="left"> There is SDL App Icon data in the cache.<br>If the `RegisterAppInterface` is not received or the `UnregisterAppInterface` is received during Toneup SDL App Icon display. </div>|<div align="center"> Inactive </div>|
-|<div align="left"> Toneup Icon <br>is displayed </div>|<div align="left"> If the `RegisterAppInterface` is received. </div>|<div align="center"> Active </div>|
+|<div align="left"> Not displayed </div>|<div align="center"> - </div>|<div align="left"> If there is no SDL App Icon data in the cache. </div>|<div align="center"> - </div>|
+|<div align="left"> Tonedown Icon*1 <br>is displayed </div>|<div align="center"> ![tonedown_icon](./assets/tonedown_icon.png) </div>|<div align="left"> There is SDL App Icon data in the cache.<br>If the `RegisterAppInterface` is not received or the `UnregisterAppInterface` is received during Toneup SDL App Icon display. </div>|<div align="center"> Inactive </div>|
+|<div align="left"> Toneup Icon*2 <br>is displayed </div>|<div align="center"> ![toneup_icon](./assets/toneup_icon.png) </div>|<div align="left"> If the `RegisterAppInterface` is received. </div>|<div align="center"> Active </div>|
+
+!!! NOTE
+ *1 Tone Down Icon: Grayout Icon. App Icon created in Grayscale.
+ *2 Tone up Icon: Icon with normal color.
+!!!
 
 ### 3.5. SDL App Icon name
 The SDL App Icons are given with the SDL App name.
@@ -61,13 +66,11 @@ The HMI will keep the SDL App name, until it is updated again by the SDL App.
 ## 4. Differences from the SDL standard specification
 The items 1-3 listed below differ from the existing SDL Standard Specification.
 
-1. The parameters which defines the sort by priority<br>Both are defined by OEM's own specification.
-
-    (1) Priority of the AppHMIType<br>
-    (2) The order list in the PolicyTable (corresponding to Policy server )<br>
+1. The display order of SDL App Icon on the selection screen of HU is not explicitly defined in the SDL Standard Specification.
+Thus, we have used TOYOTA Specifications as a reference information to define it.
 
 2. The display status of SDL App Icon
-Two of the SDL App Icon display mode (ON/OFF) are already defined in the SDL Standard Specification.
+Two of the SDL App Icon display mode (Is displayed/Not displayed) are already defined in the SDL Standard Specification.
 However, the change of display SDL App Icon such as Tonedown display is not explicitly defined in the SDL Standard Specification.<br>
 
 3. The details in the HMI process defined in the sequence diagrams of SDL App Icon display status below, is not explicitly specified in the SDL Standard Specifcation.
@@ -114,4 +117,5 @@ The Sequence Diagrams of change in the SDL App Icon display status is below:
 
 ## 6. Impacted Platforms
 Changes impact the following platform/s:
+
 - HMI
