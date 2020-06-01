@@ -23,7 +23,7 @@ The user operations that trigger the launch of SDL App are listed below:
 </ol>
 
 !!! NOTE
-*ModeSW is the button set in the Steering Wheel to switch the Audio Source.
+*ModeSW is the button set in the Steering Wheel to toggle the Audio Source.
 !!!
 
 The following (1), (2), (3) mentioned above, already each has of their own documents. Thus, this chapter provides information about (4) and (5).
