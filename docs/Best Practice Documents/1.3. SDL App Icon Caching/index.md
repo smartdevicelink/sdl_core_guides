@@ -53,4 +53,5 @@ The following sequence diagrams show the sequence for conditions 1 to 5 mentione
 
 ## 6. Impacted Platforms
 Changes impact the following platform/s:
+
 - HMI
