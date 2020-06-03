@@ -5,6 +5,7 @@
 | AA            |Abbreviation for Android Auto.<br>An in-vehicle equipment and smartphone linkage system provided by Google.|
 | ACC           |Abbreviation for Accessory power supply.<br>When ACC set on, user can use the audio etc. in the vehicle without starting the engine.|
 | AOA           |Abbreviation for Android Open Accessory.|
+| APT           |Abbreviation for Audio Pass Thru.<br>It indicates to output the input voice from microphone to the mobile as it is.|
 | appHMIType    |Type of SDL App.<br>App type such as "MEDIA" or "NAVIGATION" is set.|
 | AppID         |An ID for managing App by Software.|
 | Audio source  |It refers to Audio types( music, radio, etc )|
