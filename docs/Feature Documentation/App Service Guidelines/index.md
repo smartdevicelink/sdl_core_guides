@@ -100,7 +100,7 @@ A navigation ASP must stop its "in-progress" trip (if applicable) when it is not
 
 ### IVI-Specific RPC Messages
 
-There are a few additional RPCs in the `AppService` interface which are needed to integrate an IVI system with the App Services feature, regardless of whether the system acts as an ASP or ASC (more information available in the [HMI Integration Guidelines](https://smartdevicelink.com/en/guides/hmi/appservice/getactiveserviceconsent/)):
+There are a few additional RPCs in the `AppService` interface which are needed to integrate an IVI system with the App Services feature, regardless of whether the system acts as an ASP or ASC (more information available in the [HMI Integration Guidelines](https://smartdevicelink.com/en/docs/hmi/master/appservice/getactiveserviceconsent/)):
 
 - `AppService.GetAppServiceRecords`
     - This message can be sent by the embedded IVI system to retrieve the App Service records for all published services, similar to the `GetSystemCapability(APP_SERVICES)` message available in the Mobile API. The system is expected to use this information for populating any menus within the HMI relating to App Services.
