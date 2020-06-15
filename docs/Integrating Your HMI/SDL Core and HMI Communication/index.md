@@ -100,7 +100,7 @@ Example Response:
 
 ## Component Readiness Requests 
 
-Once the components are registered, the HMI must notify SDL Core that it is ready to begin further communication using the [BasicCommunication.OnReady](https://smartdevicelink.com/en/guides/hmi/basiccommunication/onready/) notification.
+Once the components are registered, the HMI must notify SDL Core that it is ready to begin further communication using the [BasicCommunication.OnReady](https://smartdevicelink.com/en/docs/hmi/master/basiccommunication/onready/) notification.
 
 Upon receipt of the OnReady notification, SDL Core will begin checking the availability of the different HMI components via a chain of requests:
 
@@ -263,7 +263,7 @@ On receipt of a request message, the server must reply with a Response. The Resp
 | :------------- | :------------- |
 | id      | Required property which must be the same as the value of the associated request object. If there was an error in detecting the id in the request object, this value must be null.  |
 | jsonrpc | Must be exactly **"2.0"**|
-| result | Required on success or warning. Must not exist if there was an error invoking the method. The result property must contain a `method` field which is the same as the corresponding request and a corresponding [result code](https://smartdevicelink.com/en/guides/hmi/common/enums/#result) should be sent in the result property. The result property may also include additional properties as defined in the [HMI API](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/HMI_API.xml).|
+| result | Required on success or warning. Must not exist if there was an error invoking the method. The result property must contain a `method` field which is the same as the corresponding request and a corresponding [result code](https://smartdevicelink.com/en/docs/hmi/master/common/enums/#result) should be sent in the result property. The result property may also include additional properties as defined in the [HMI API](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/HMI_API.xml).|
 
 ### Example Responses
 #### Response with no Parameters
@@ -320,7 +320,7 @@ The error object has the following members:
 | :------------- | :------------- |
 | id       | Required to be the same as the value of "id" in the corresponding Request object. If there was an error in detecting the id of the request object, then this property must be null.   |
 | jsonrpc| Must be exactly "2.0"|
-| error | Required on error. Must not exist if there was no error triggered during invocation. The error field must contain a `code` field with the [result code](https://smartdevicelink.com/en/guides/hmi/common/enums/#result) value that indicates the error type that occurred, a `message` field containing the string that provides a short description of the error, and a `data` field that must contain the `method` from the original request.|
+| error | Required on error. Must not exist if there was no error triggered during invocation. The error field must contain a `code` field with the [result code](https://smartdevicelink.com/en/docs/hmi/master/common/enums/#result) value that indicates the error type that occurred, a `message` field containing the string that provides a short description of the error, and a `data` field that must contain the `method` from the original request.|
 
 ### Examples
 #### Response with Error
