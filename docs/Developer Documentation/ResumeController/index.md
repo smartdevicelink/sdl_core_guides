@@ -44,7 +44,7 @@ Figure 2: Resumption data seauence Overview
 
 |||
 Figure 2: Resumption data classes
-![Resumption data classes](./assets/data_resumption.png)
+![Resumption data classes](./assets/resumption_data_class.png)
 |||
 
 There are 2 implementations of resumption data : 
