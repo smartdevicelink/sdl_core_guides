@@ -68,6 +68,9 @@
                 {
                     "name": "Transport Manager"
                 },
+		{
+		    "name": "ResumeController"
+		},
                 {
                     "name": "Security Manager"
                 }
