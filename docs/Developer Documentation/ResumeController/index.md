@@ -142,9 +142,9 @@ Application extension contains follwowing methods for resumption :
 ```
 
 Only app extension have an access to active data, data send and data revert process. 
-Each app extension use own plugin to manipulate with functionality. 
+Each application extension uses its own plugin to manipulate with functionality. 
 
-`SaveResumptionData` will fill passwd resumption_data for saving to `ResumptionData`. 
+`SaveResumptionData` will fill passed `resumption_data` for saving to `ResumptionData`. 
 
 |||
 Example from VehicleInfoAppExtension: 
@@ -186,7 +186,7 @@ void SDLAppExtension::ProcessResumption(
 `RevertResumption` will send appropriate hmi requests to revert provided `subscriptions`.
 
 
-`ResumptionDataProcessor` go throw all `application->Extensions` to track responses and setup itself as `subscriber` : 
+`ResumptionDataProcessor` goes through all `application->Extensions` to track responses and setups itself as `subscriber` : 
 
 ```cpp
 void ResumptionDataProcessor::AddPluginsSubscriptions(
