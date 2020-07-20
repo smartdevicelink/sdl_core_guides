@@ -141,7 +141,7 @@ Application extension contains follwowing methods for resumption :
       const smart_objects::SmartObject& subscriptions) = 0;
 ```
 
-Only app extension have an access to active data, data send and data revert process. 
+Only an application's extension have an access to active data, data send and data revert process. 
 Each application extension uses its own plugin to manipulate with functionality. 
 
 `SaveResumptionData` will fill passed `resumption_data` for saving to `ResumptionData`. 

@@ -1,6 +1,6 @@
 @startuml
 
-title ResumeCOntroller Big Picture
+title ResumeController Big Picture
 
 interface ApplicationManager {
   + application(app_id);
