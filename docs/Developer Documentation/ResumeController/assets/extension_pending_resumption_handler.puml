@@ -1,0 +1,30 @@
+@startuml
+
+title ExtensionPendingResumptionHandler
+
+
+interface EventObserver {
+   + on_event(event)
+}
+ 
+interface ExtensionPendingResumptionHandler {
+  + HandleResumptionSubscriptionRequest()
+  + on_event(event)
+}
+
+EventObserver <|-down-ExtensionPendingResumptionHandler
+
+class SDLPendingResumptionHandler
+class VehicleInfoPendingResumptionHandler
+
+SDLPendingResumptionHandler <|-up-ExtensionPendingResumptionHandler
+VehicleInfoPendingResumptionHandler <|-up-ExtensionPendingResumptionHandler
+
+class SDLPlugin
+SDLPlugin *-right-> SDLPendingResumptionHandler
+
+class VehicleInfoPlugin
+VehicleInfoPlugin *-left-> VehicleInfoPendingResumptionHandler
+
+@enduml
+

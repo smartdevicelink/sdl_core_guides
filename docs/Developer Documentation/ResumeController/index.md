@@ -10,6 +10,7 @@ Figure 1: ResumeController Overview
 !!! NOTE
 Classes named like *Impl only _represent_ implementations of the abstract sub classes and may not be named the same in the SDL Core project.
 UML Refresher
+
 * Aggregation: Solid line with open diamond
 * Composition: Solid line with filled diamond
 * Inheritance: Dotted line with open arrow
@@ -18,16 +19,15 @@ UML Refresher
 
 ## Resume Controller
 
-
 Resume controller responcibiity is to cover Resumption requirenments of SDL.
-There are 2 resumption types : 
+There are 2 resumption types :
+
  * HMI state resumption
- * Data Resumption 
+ * Data Resumption
 
 Resume controller do both.  
 
-
-### HMI state resumption 
+### HMI state resumption
 
 In case of unexpected disconnect SDL should store application hmi state next 3 ignition cycles.
 On next application registration SDL should restore last saved application hmi_state.
@@ -42,7 +42,6 @@ On App registration `ResumeCtrl::StartResumptionOnlyHMILevel` or `ResumeCtrlImpl
 Internal timer in ResumeCtrlImpl will restore application hmi_state in several seconds (configured by `ApplicationManagerSettings::app_resuming_timeout`)
 In case if any  other application already registered, StateController will take care about hmi_states conflicts resolving. 
 
-
 ### Data resumption
 
 SDL restores application data if application sends appropriate `hash` in the RAI. Hash updates after each data change. 
@@ -56,7 +55,6 @@ ResumeControllerImpl requests app data from `ResumptionData` class and provides 
 Figure 2: Resumption data seauence Overview
 ![Resumption data seauence](./assets/data_resumption.png)
 |||
-
 
 ### ResumptionData
 
@@ -203,3 +201,19 @@ void ResumptionDataProcessor::AddPluginsSubscriptions(
   }
 }
 ```
+
+## Resumption of subscriptions
+
+If multiple applications are trying to restore the same subscription, SDL should send the only first subscription to HMI. If the first subscription was failed and application received `RESUME_FAILED` result code, for the second application SDL should also try to restore the subscription.
+
+For waiting subscription result SDL use `ExtensionPendingResumptionHandler` class.
+Each plugin contains own ExtensionPendingResumptionHandler for subscriptions resumption.
+
+For subscriptions resumption plugin calls `ExtensionPendingResumptionHandler::HandleResumptionSubscriptionRequest(app_extension,
+subscriber, application)`
+
+`subscriber` here is `ResumptionDataProcessor::WaitForResponse` function for `ResumptionDataProcessor` to track list of sen't requests to HMI and track if all requests are proceed.
+
+`ExtensionPendingResumptionHandler` sends requests to HMI for all subscriptions available in `app_extension` ant track responses with `on_event` method inherited from `EventObserver`.
+
+In case if for some subscription request to HMI was already sent but response was not received yet,`ExtensionPendingResumptionHandler` will not send additional request to HMI but store internaly that apropiate subscription resumption is "frezed". On response from HMI SDl will manage both resumptions according to response data.
