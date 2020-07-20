@@ -204,16 +204,21 @@ void ResumptionDataProcessor::AddPluginsSubscriptions(
 
 ## Resumption of subscriptions
 
-If multiple applications are trying to restore the same subscription, SDL should send the only first subscription to HMI. If the first subscription was failed and application received `RESUME_FAILED` result code, for the second application SDL should also try to restore the subscription.
+If multiple applications are trying to restore the same subscription, SDL should send the only first subscription to HMI. If the first subscription was failed and the application received `RESUME_FAILED` result code, for the second application SDL should also try to restore the subscription.
 
-For waiting subscription result SDL use `ExtensionPendingResumptionHandler` class.
-Each plugin contains own ExtensionPendingResumptionHandler for subscriptions resumption.
+For the waiting subscription result, SDL use `ExtensionPendingResumptionHandler` class.
+Each plugin contains its own ExtensionPendingResumptionHandler for subscriptions resumption.
+
+|||
+ExtensionPendingResumptionHandler overview
+![ExtensionPendingResumptionHandler](./assets/extension_pending_resumption_handler.png)
+|||
 
 For subscriptions resumption plugin calls `ExtensionPendingResumptionHandler::HandleResumptionSubscriptionRequest(app_extension,
 subscriber, application)`
 
-`subscriber` here is `ResumptionDataProcessor::WaitForResponse` function for `ResumptionDataProcessor` to track list of sen't requests to HMI and track if all requests are proceed.
+`subscriber` here is `ResumptionDataProcessor::WaitForResponse` function for `ResumptionDataProcessor`  for tracking list of sent requests to HMI and track if all requests have proceeded.
 
 `ExtensionPendingResumptionHandler` sends requests to HMI for all subscriptions available in `app_extension` ant track responses with `on_event` method inherited from `EventObserver`.
 
-In case if for some subscription request to HMI was already sent but response was not received yet,`ExtensionPendingResumptionHandler` will not send additional request to HMI but store internaly that apropiate subscription resumption is "frezed". On response from HMI SDl will manage both resumptions according to response data.
+In case if for some subscription request to HMI was already sent but the response was not received yet,`ExtensionPendingResumptionHandler` will not send an additional request to HMI but store internally that appropriate subscription resumption is "freeze". On the response from HMI SDL will manage both resumptions according to response data.
