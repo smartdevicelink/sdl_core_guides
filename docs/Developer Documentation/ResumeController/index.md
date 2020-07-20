@@ -36,21 +36,21 @@ ResumptionData interface contains responcible for keeping application informatio
 ResumeCtrlImpl is responsible for HMI state restoring. 
 
 ResumeCtrlImpl will remove application hmi_state info from resumption data after 3 ignition cycles. 
-On each shutdown ResumeCtrlImpl will increment ign_off_count value for each application.
+On each shutdown ResumeCtrlImpl will increment `ign_off_count` value for each application.
 
 On App registration `ResumeCtrl::StartResumptionOnlyHMILevel` or `ResumeCtrlImpl::StartResumption` will put aplication in a queue for resumption. 
-Internal timer in ResumeCtrlImpl will restore application hmi_state in several seconds (configured by ApplicationManagerSettings::app_resuming_timeout)
+Internal timer in ResumeCtrlImpl will restore application hmi_state in several seconds (configured by `ApplicationManagerSettings::app_resuming_timeout`)
 In case if any  other application already registered, StateController will take care about hmi_states conflicts resolving. 
 
 
 ### Data resumption
 
-SDL restore application data if application send appropriate `hash` in RAI. Hash updates after each data change. 
+SDL restores application data if application sends appropriate `hash` in the RAI. Hash updates after each data change. 
 SDL stores resumption data either in json or in database, this option is configurable. 
 
-ResumeControllerImpl request app data from `ResumptionData` class and provide it to `ResumptionDataProcessor`
+ResumeControllerImpl requests app data from `ResumptionData` class and provides it to `ResumptionDataProcessor`
 
-`ResumptionDataProcessor` is responcible for restoring application data and provide result to RAI via callback
+`ResumptionDataProcessor` is responsible for restoring application data and provides the result to RAI via callback
 
 |||
 Figure 2: Resumption data seauence Overview
@@ -60,8 +60,8 @@ Figure 2: Resumption data seauence Overview
 
 ### ResumptionData
 
-`ResumptionData` class user to represend resumption data agnostic to data storage. 
-`ResumptionData` provides app resumption data as smart objects. 
+`ResumptionData` class is used to represent resumption data agnostic to data storage. 
+`ResumptionData` provides app resumption data in the Smart Object representation. 
 
 |||
 Figure 2: Resumption data classes
@@ -72,12 +72,12 @@ There are 2 implementations of resumption data :
  * `ResumptionDataJson`
  * `ResumptionDataDB`
 
- `ResumptionData` does not contains and active components : timers, reactions, callbacks, etc ...
+ `ResumptionData` does not contain active components : timers, reactions, callbacks, etc ...
  It behaves like data a storage.
 
 ### ResumptionDataProcessor
 
-ResumptionDataProcessor responcible for restoring resumption data and track it's status. 
+`ResumptionDataProcessor` is responsible for restoring resumption data and tracking its status. 
 
 Main public function for resumptions is `ResumptionDataProcessor::Restore` : 
 ```cpp
@@ -97,19 +97,19 @@ typedef std::function<void(mobile_apis::Result::eType result_code,
                              const std::string& info)> ResumptionCallBack;
 ```
 
-Some resumption data should be restored in `Application` class it self.
-Some resumption data should stored in pligins : ApplicationExtensions. 
+Some resumption data should be restored in the `Application` class itself.
+Some resumption data should be stored in plugins : ApplicationExtensions. 
 Some resumption data requires sending HMI request. 
 
-ResumptionDataProcessor is inherited from EventObserver to track responses. 
+`ResumptionDataProcessor` is inherited from `EventObserver` to track responses. 
 
-If responses are succesfull ResumptionDataProcessor just call `callback(SUCCESS)`
+If responses are successful `ResumptionDataProcessor` just call `callback(SUCCESS)`
 
-If part of the data was failed to restore, ResumptionDataProcessor should revert already restored data and call  `callback(ERROR_CODE, info)`.
+If part of the data was failed to restore, `ResumptionDataProcessor` should revert already restored data and call  `callback(ERROR_CODE, info)`.
 
 Requirenments available in proposal [Handle response from HMI during resumption data](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0190-resumption-data-error-handling.md)
 
-RAI will wait for callback to send response to mobile App.
+RAI will wait for callback to send response to a mobile application.
 
 ### AppExtension
 
