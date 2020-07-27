@@ -19,7 +19,7 @@ UML Refresher
 
 ## Resume Controller
 
-Resume controller responcibiity is to cover Resumption requirenments of SDL.
+Resume controller responsibility is to cover Resumption requirements of SDL.
 There are 2 resumption types :
 
  * HMI state resumption
@@ -32,7 +32,7 @@ Resume controller do both.
 In case of unexpected disconnect SDL should store application hmi state next 3 ignition cycles.
 On next application registration SDL should restore last saved application hmi_state.
 
-ResumptionData interface contains responcible for keeping application information. 
+ResumptionData interface contains responsible for keeping application information. 
 ResumeCtrlImpl is responsible for HMI state restoring. 
 
 ResumeCtrlImpl will remove application hmi_state info from resumption data after 3 ignition cycles. 
@@ -52,7 +52,7 @@ ResumeControllerImpl requests app data from `ResumptionData` class and provides 
 `ResumptionDataProcessor` is responsible for restoring application data and provides the result to RAI via callback
 
 |||
-Figure 2: Resumption data seauence Overview
+Figure 2: Resumption data sequence Overview
 ![Resumption data seauence](./assets/data_resumption.png)
 |||
 
