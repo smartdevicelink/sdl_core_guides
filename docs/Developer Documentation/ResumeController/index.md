@@ -95,9 +95,9 @@ typedef std::function<void(mobile_apis::Result::eType result_code,
                              const std::string& info)> ResumptionCallBack;
 ```
 
-Some resumption data should be restored in the `Application` class itself.
-Some resumption data should be stored in plugins : ApplicationExtensions. 
-Some resumption data requires sending HMI request. 
+ - Some resumption data should be restored in the `Application` class itself.
+ - Some resumption data should be stored in plugins : ApplicationExtensions. 
+ - Some resumption data requires sending HMI request. 
 
 `ResumptionDataProcessor` is inherited from `EventObserver` to track responses. 
 
