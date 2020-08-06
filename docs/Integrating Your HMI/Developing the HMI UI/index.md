@@ -157,6 +157,14 @@ There are some minor customization options available for the app menu. An HMI ca
 
 ![Tiles Menu](./assets/tiles_menu.png)
 
+### Dynamic Menu Updating
+
+SDL enables the ability to dynamically load menu items and icons to improve system performance. In some cases an app may submit a large number of menu commands, sub menus, and icons. Processing these assets can use a large amount of system resources. To help mitigate performance issues, the HMI can choose when to request the app updates SDL Core with the missing menu contents.
+
+`UI.OnUpdateFile` is used to request missing menu icons, and `UI.OnUpdateSubMenu` is used to request missing sub menu contents. These notifications can be sent to SDL Core when the user is in close proximity to the menu items. For example, if the user opens a menu that contains a list of submenus, the HMI may then request those submenus are populated via `AddCommand` requests from mobile. Additionally, if the HMI implements a paginated menu, the HMI may request all icons for the menu items that are on the next page.
+
+The HMI is free to manage these resources and delete them in case of memory issues. If the commands or icons are needed in the future, the HMI can send the appropriate notifications to request the menu contents be updated repeatedly from the SDL application.
+
 ## Implementing Popups
 
 There are several RPCs which are used to display a popup or an overlay to the user.
