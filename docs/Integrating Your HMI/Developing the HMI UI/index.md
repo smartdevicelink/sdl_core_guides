@@ -167,7 +167,7 @@ There are several RPCs which are used to display a popup or an overlay to the us
 
 ![Alert](./assets/alert.png)
 
-### UI.Alert
+### UI.SubtleAlert
 
 `SubtleAlert` is used to display a notification-style popup that can contain an image, text, and buttons.
 
@@ -310,6 +310,12 @@ As an example, if SDL Core requests to change the layout to the `MEDIA` template
               "name":"subtleAlertText2",
               "characterSet":"TYPE2SET",
               "width":500,
+              "rows":1
+            },
+            {
+              "name":"subtleAlertSoftButtonText",
+              "characterSet":"TYPE2SET",
+              "width":50,
               "rows":1
             },
             {
