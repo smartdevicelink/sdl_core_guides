@@ -149,6 +149,16 @@ The contents of the app's menu are populated by the RPC `UI.AddCommand`. Each `U
 
 There are some minor customization options available for the app menu. An HMI can choose to implement the app menu in a tile view, list view, or both. If an app has a preference for a type of menu layout, the HMI will receive a `UI.SetGlobalProperties` request from SDL Core containing this preference in the `menuLayout` field.
 
+SDL also supports nested submenus which can be created using the RPC `UI.AddSubMenu`. If this request does not contain a `parentID` parameter (or `parentID` is 0) then the submenu should be made accessible by the top level menu. If the request contains a `parentID`, the new submenu should be added as an item to the submenu who's `menuID` matches the incoming `parentID`.
+
+Menu commands that are populated by `UI.AddCommand` with a `parentID` value should be added as a menu item to the submenu who's `menuID` matches the incoming `parentID`.
+
+!!! NOTE
+If the HMI is in a driver distraction mode, the HMI should show a maximum of "N" menu items in a given menu, as defined by the value of the `menuLength` driver distraction capability.
+
+If the HMI is in a driver distraction mode, the HMI must restrict the user from accessing nested submenus beyond "N" levels deep, as defined by the value of the `subMenuDepth` driver distraction capability.
+!!!
+
 #### List Menu Example
 
 ![List Menu](./assets/list_menu.png)
