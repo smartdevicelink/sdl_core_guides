@@ -1,0 +1,101 @@
+@startuml
+
+title ResumeController Big Picture
+
+interface ApplicationManager {
+  + application(app_id);
+  + GetUserConsentForDevice(device_mac);
+  + state_controller();
+  + GetRPCService();
+  + GetNextHMICorrelationID();
+  + ResetAllApplicationGlobalProperties();
+}
+class ApplicationManagerImpl
+ApplicationManagerImpl -down-|> ApplicationManager
+
+interface ResumeController {
+  + bool CheckApplicationHash (app, hash);
+  + bool CheckPersistenceFilesForResumption(app);
+  + StartResumption (app, hash, callback);
+  + StartResumptionOnlyHMILevel (app);
+} 
+
+interface ResumptionData {
+  + GetSavedApplication(policy_app_id, device_mac)
+  + RemoveApplicationFromSaved(policy_app_id)
+  + IncrementIgnOffCount()
+  + ResetGlobalIgnOnCount()
+  + Persist()
+  + GetIgnOffTime()
+}
+
+class ResumptionDataJson
+ResumptionDataJson -up-|> ResumptionData
+class ResumptionDataDB
+ResumptionDataDB -up-|> ResumptionData
+
+class ResumeControllerImpl {
+  - save_persistent_data_timer_;
+  - restore_hmi_level_timer_;
+}
+
+interface StateController {
+  SetRegularState(app, hmi_state)
+}
+
+ResumeControllerImpl -right-> StateController
+
+ResumeControllerImpl *--> ResumptionData 
+
+ResumeControllerImpl -up-|> ResumeController
+RegisterAppInterfaceRequest o-left-> ResumeController
+ResumeController --> RegisterAppInterfaceRequest : callback()
+
+ApplicationManagerImpl *- ResumeController  
+ResumeControllerImpl o-left-> ApplicationManager
+
+class RegisterAppInterfaceRequest {
+  Run()
+  SendRespone();
+}
+
+
+
+class ResumptionDataProcessor {
+  + Restore(app, data, callback)
+  + on_event(response)
+  + HandleOnTimeOut(corr_id);
+}
+
+ResumeControllerImpl *-- ResumptionDataProcessor 
+
+interface AppExtension {
+  ProcessResumption(resumption_data, callback)
+}
+
+interface Application {
+  + AddFile(val);
+  + AddSubMenu(val);
+  + AddCommand(val);
+  + AddChoiceSet(val);
+  + SetGlobalProperties(val)
+  + SubscribeToButton(val)
+}
+
+
+ResumptionDataProcessor --> AppExtension
+ResumptionDataProcessor --> Application
+
+interface RPCService {
+  + ManageHMICommand(command)
+}
+
+ResumptionDataProcessor -right-> RPCService
+
+SDLAppExtension -up-|> AppExtension
+VehicleInfoAppExtension -up-|> AppExtension
+RCAppExtension -up-|> AppExtension
+AppServiceAppExtension -up-|> AppExtension
+SystemCapability -up-|> AppExtension
+
+@enduml
