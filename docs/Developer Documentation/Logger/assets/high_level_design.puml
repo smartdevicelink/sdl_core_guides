@@ -1,0 +1,35 @@
+@startuml
+
+
+
+interface Logger
+
+class SDLLogger {
+  loop_thread
+  ExternalLogger* impl_
+}
+
+class ExternalLogger 
+
+
+SDLLogger -up-|> Logger
+ExternalLogger -up-|> Logger
+
+SDLLogger *-left-> ExternalLogger : proxy calls
+
+class SDLComponent
+SDLComponent -left-> Logger : use via macros
+note "Any SDL component" as N1
+SDLComponent .. N1
+
+class Main
+
+Main .up.> SDLLogger  
+Main  .up.> ExternalLogger : create
+note "Main(orTestMain) creates SDLLogger,  \n\
+ExternalLogger Injects ExternalLogger to SDLLogger, \n\
+Takes care about SDLLogger life cycle" as N2
+
+N2 .left. Main
+@enduml
+
