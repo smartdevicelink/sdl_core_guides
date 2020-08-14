@@ -1,10 +1,10 @@
 # SDL Logger
 
-Open source version of SDL is using log4cxx for logging.
-Because of lack of log4cxx stability OEM should have an ability to replace log4cxx logger with any other logging boost or syslog.
+SDL Core uses log4cxx for logging.
+To provide flexibility SDL now provides the capability to replace the log4cxx logger with any other logging package such as boost or syslog.
 
 
-SDL implements Logger abstration for easily replacement of logging library.
+ SDL implements Logger abstraction allowing for easy replacement of the logging library.
 
 |||
 High Level Design
@@ -12,11 +12,11 @@ High Level Design
 |||
 
 
-All components have aceess to `Logger` interface and use it for logging.
+All components have access to the `Logger` interface and use it for logging.
 
 ### Logger interface 
 
-Logger macroses use Logger interface for sending messages to External Logger. 
+Logger macros use the Logger interface for sending messages to the External Logger.
 Logger interface contains only methods required by any SDL component to perform logging : 
 
  * instance() - singleton access
@@ -55,7 +55,8 @@ So SDL components do not have information about neither logger implementation no
 SDL plugins are shared libraries, so `LoggerSingleton` could not be implemented with Mayers singleton. 
 Mayers singleton would create own SDL logger instance for each plugin.
 
-The idea is to pass singleton pointer to Plugin during creation, so that plugin could initialize `Logger::instance` pointer with one received from SDL core. 
+
+The idea is to pass a singleton pointer to each plugin during creation, so that plugins can initialize the Logger::instance pointer with the instance received from SDL core.
 
 
 Singleton Instance implementation : 
@@ -87,12 +88,13 @@ extern "C" PluginType* Create(Logger* logger_singleton_instance) {
 }
 ```
 
-SDL Core part will pass pointer to logger singleton to the plugin so that plugin shared lib could initialize `Logger::instance` with the same pointer as core part. 
+
+SDL Core will pass a pointer to the logger singleton to the plugin so that the plugin shared lib can initialize `Logger::instance` with the same pointer as the core portion.
 
 ## Logger detailed design :
 
 Each source file creates `logger_` variable via macro `SDL_CREATE_LOG_VARIABLE`. 
-This variable is actually a string with component name of the logger.
+This variable is actually a string with the component name of the logger.
 Some logger implementations (like log4cxx) may have separate severity or destination rules for each component. 
 
 
@@ -140,8 +142,10 @@ AnotherOneLoggerImpl : ThirdPartyLoggerInterface {
 }
 ```
 
-Then you should create `AnotherOneLoggerImpl` in main and setup it for `LoggerImpl`.
-Note that `Logger::instance` does not own logger instance. `main` function is reponsible for `sdl_logger_instance_` lifecycle.
+
+Next create `AnotherOneLoggerImpl` in main and setup it for `LoggerImpl`.
+Note that `Logger::instance` does not own logger instance. The `main` function is responsible for the `sdl_logger_instance_` life-cycle.
+
 
 ```cpp
 // main.cpp
