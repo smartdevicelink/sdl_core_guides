@@ -246,85 +246,85 @@ As an example, if SDL Core requests to change the layout to the `MEDIA` template
           "textFields":[
             {
               "name":"mainField1",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"mainField2",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"mainField3",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"statusBar",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"mediaClock",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"mediaTrack",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"templateTitle",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":50,
               "rows":1
             },
             {
               "name":"alertText1",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"alertText2",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"alertText3",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"menuName",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"secondaryText",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"tertiaryText",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"menuTitle",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             }
