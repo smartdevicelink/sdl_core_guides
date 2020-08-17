@@ -1,6 +1,6 @@
 # Resume Controller
 
-This page will descrive internal structure and detailed design of Resume controller 
+This page will describe internal structure and detailed design of Resume controller 
 
 |||
 Figure 1: ResumeController Overview
@@ -23,7 +23,7 @@ Resume controller responsibility is to cover Resumption requirements of SDL.
 There are 2 resumption types :
 
  * HMI state resumption
- * Data Resumption
+ * Data resumption
 
 Resume controller do both.  
 
@@ -32,7 +32,7 @@ Resume controller do both.
 In case of unexpected disconnect SDL should store application hmi state next 3 ignition cycles.
 On next application registration SDL should restore last saved application hmi_state.
 
-ResumptionData interface contains responsible for keeping application information. 
+ResumptionData is responsible for application data restoring.
 ResumeCtrlImpl is responsible for HMI state restoring. 
 
 ResumeCtrlImpl will remove application hmi_state info from resumption data after 3 ignition cycles. 
