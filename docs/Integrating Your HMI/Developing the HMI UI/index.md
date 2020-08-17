@@ -177,6 +177,12 @@ There are several RPCs which are used to display a popup or an overlay to the us
 
 ![Alert](./assets/alert.png)
 
+### UI.SubtleAlert
+
+`SubtleAlert` is used to display a notification-style popup that can contain an image, text, and buttons.
+
+![SubtleAlert](./assets/subtle_alert.png)
+
 ### UI.PerformInteraction
 
 `PerformInteraction` is used to display a popup with contents which are displayed in a similar way to the app menu.
@@ -197,7 +203,7 @@ There are several RPCs which are used to display a popup or an overlay to the us
 
 !!! NOTE
 
-It is important that the HMI sends SDL Core a `UI.OnSystemContext` notification when displaying and closing a popup. A `systemContext` value of `ALERT` is used when `UI.Alert` is active, `HMI_OBSCURED` is used for all other popups.
+It is important that the HMI sends SDL Core a `UI.OnSystemContext` notification when displaying and closing a popup. A `systemContext` value of `ALERT` is used when `UI.Alert` or `UI.SubtleAlert` is active, `HMI_OBSCURED` is used for all other popups.
 
 !!!
 
@@ -305,6 +311,24 @@ As an example, if SDL Core requests to change the layout to the `MEDIA` template
               "rows":1
             },
             {
+              "name":"subtleAlertText1",
+              "characterSet":"TYPE2SET",
+              "width":500,
+              "rows":1
+            },
+            {
+              "name":"subtleAlertText2",
+              "characterSet":"TYPE2SET",
+              "width":500,
+              "rows":1
+            },
+            {
+              "name":"subtleAlertSoftButtonText",
+              "characterSet":"TYPE2SET",
+              "width":50,
+              "rows":1
+            },
+            {
               "name":"menuName",
               "characterSet":"UTF_8",
               "width":500,
@@ -408,6 +432,16 @@ As an example, if SDL Core requests to change the layout to the `MEDIA` template
               "imageResolution":{
                 "resolutionWidth":225,
                 "resolutionHeight":225
+              }
+            },
+            {
+              "name":"subtleAlertIcon",
+              "imageTypeSupported":[
+                "GRAPHIC_PNG"
+              ],
+              "imageResolution":{
+                "resolutionWidth":40,
+                "resolutionHeight":40
               }
             }
           ],
