@@ -224,4 +224,11 @@ subscriber, application)`
 In case if for some subscription request to HMI was already sent but the response was not received yet,`ExtensionPendingResumptionHandler` will not send an additional request to HMI but store internally that appropriate subscription resumption is "freezed". On the response received from HMI SDL will manage both resumptions according to response data.
 For "freezed" resumptions ExtensionPendingResumptionHandler will trigger raize event so that `subscriber` (ResumeDataProcessor) will receive this event and understand it as response from HMI. 
 
+|||
+Subscriptions restore sequence : 
+![ExtensionPendingResumptionHandler](./assets/subscriptoins_restore_sequence.png)
+|||
+
+
+
 OnResumptionRevert is used to trigger next freezed resumption if no requests are currently waiting for response. 
