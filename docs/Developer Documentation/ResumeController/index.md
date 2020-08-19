@@ -179,6 +179,9 @@ void SDLAppExtension::ProcessResumption(
   }
 }
 ```
+
+`resumption::Subscriber` - is the function that will notify ResumptionDataProcessor about request sent to HMI by plugin in scope of resumption.
+ So that ResumptionDataProcessor will know that it should wait for response before finishing resumption and send RAI response to mobile.  
 |||
 
 `RevertResumption` will send appropriate hmi requests to revert provided `subscriptions`.
