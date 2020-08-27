@@ -1,6 +1,6 @@
 # SDL Logger
 
-SDL Core uses log4cxx for logging.
+SDL Core uses [log4cxx](https://logging.apache.org/log4cxx/latest_stable/) for logging.
 To provide flexibility SDL now provides the capability to replace the log4cxx logger with any other logging package such as boost or syslog.
 
 
@@ -45,7 +45,7 @@ If `ThirdPartyLoggerInterface` supports non blocking threaded logging, minor cha
 
 ## Logger singleton 
 
-Logger is the only one singleton class in SDL.
+Logger is the only singleton class in SDL.
 Singleton pattern required to have an access to logger from any component. 
 `Logger::instance()` provides singleton by `Logger` interface.
 So SDL components do not have information about neither logger implementation nor specific external logger. 
