@@ -17,7 +17,7 @@ All components have access to the `Logger` interface and use it for logging.
 ### Logger interface 
 
 Logger macros use the Logger interface for sending messages to the External Logger.
-Logger interface contains only methods required by any SDL component to perform logging : 
+The logger interface contains only methods required by any SDL component to perform logging :
 
  * instance() - singleton access
  * PushLog(LogMessage)
@@ -30,15 +30,15 @@ Logger interface contains only methods required by any SDL component to perform 
 
 `Logger` interface is implemented by `LoggerImpl`. 
 
-`LoggerImpl` use message loop thread to proxy log messages to third party (external) logger.
+`LoggerImpl` uses the message loop thread to proxy log messages to a third party (external) logger.
 `LoggerImpl` owns `ThirdPartyLoggerInterface` and controls it's lifetime. 
 `LoggerImpl` provides implementation of the singleton pattern.
 
 
 ### Message loop thread in SDLLogger
 
-Message loop thread is needed to avoid significant performance degradation in run time as logging calls are blocking calls and might take too much time. 
-`LoggerImpl::PushLog` is non a blocking call. It will put the log message into the queue and returns immediately 
+Message loop thread is needed to avoid significant performance degradation at run time as logging calls are blocking calls and might take a significant amount of time.
+`LoggerImpl::PushLog` is a non-blocking call. It will put the log message into the queue and returns immediately.
 
 
 If `ThirdPartyLoggerInterface` supports non blocking threaded logging, minor changes in `LoggerImpl` can be created with `use_message_loop_thread = false`. 
@@ -48,12 +48,12 @@ If `ThirdPartyLoggerInterface` supports non blocking threaded logging, minor cha
 Logger is the only singleton class in SDL.
 Singleton pattern required to have an access to logger from any component. 
 `Logger::instance()` provides singleton by `Logger` interface.
-So SDL components do not have information about neither logger implementation nor specific external logger. 
+So SDL components do not have information about the logger implementation and the specific external logger.
 
 ## Logger singleton with plugins 
 
-SDL plugins are shared libraries, so `LoggerSingleton` could not be implemented with Mayers singleton. 
-Mayers singleton would create own SDL logger instance for each plugin.
+SDL plugins are shared libraries, so `LoggerSingleton` could not be implemented with a Mayers singleton. 
+A Mayers singleton would create own an SDL logger instance for each plugin.
 
 
 The idea is to pass a singleton pointer to each plugin during creation, so that plugins can initialize the Logger::instance pointer with the instance received from SDL core.
