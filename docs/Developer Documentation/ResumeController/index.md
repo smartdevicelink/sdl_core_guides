@@ -144,7 +144,7 @@ Each application extension uses its own plugin to manipulate with functionality.
 
 `SaveResumptionData` will fill passed `resumption_data` for saving to `ResumptionData`. 
 
-|||
+
 Example from VehicleInfoAppExtension: 
 ```cpp
 SDLRPCPlugin& plugin_;
@@ -159,11 +159,11 @@ void VehicleInfoAppExtension::SaveResumptionData(
   }
 }
 ```
-|||
+
 
 `ProcessResumption` will send appropriate HMI requests, and change internal SDL state according to provided `resumption_data`. All HMI responses will be transferred to `subscriber`.
 
-|||
+
 Example from SDLAppExtension: 
 ```cpp
 SDLRPCPlugin& plugin_;
@@ -182,7 +182,7 @@ void SDLAppExtension::ProcessResumption(
 
 `resumption::Subscriber` is the function that will notify ResumptionDataProcessor about request sent to HMI by plugin in scope of resumption.
 This will inform ResumptionDataProcessor that it should wait for a response before finishing resumption and sending RAI response to mobile.
-|||
+
 
 `RevertResumption` will send the appropriate HMI requests to revert provided `subscriptions`.
 
