@@ -129,7 +129,7 @@ This interface should be inherited by external logger implementations.
 
 To use another (not log4cxx) logger, you should: 
 
-1. Create a class which inherits from the `ThirdPartyLoggerInterface` class 
+ * Create a class which inherits from the `ThirdPartyLoggerInterface` class 
 
 ```cpp
 AnotherOneLoggerImpl : ThirdPartyLoggerInterface {
@@ -143,7 +143,7 @@ AnotherOneLoggerImpl : ThirdPartyLoggerInterface {
 ```
 
 
-2. Create an instance of the third party logger implementation(`AnotherOneLoggerImpl`) in `main()` and set it up for `LoggerImpl`.
+ * Create an instance of the third party logger implementation(`AnotherOneLoggerImpl`) in `main()` and set it up for `LoggerImpl`.
 !!! NOTE
 `Logger::instance` does not own the logger instance. The `main` function is responsible for the `sdl_logger_instance_` life-cycle.
 !!!
