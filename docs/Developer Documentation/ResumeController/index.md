@@ -45,7 +45,7 @@ In the case where another application has already registered, the StateControlle
 ### Data resumption
 
 SDL restores application data if an application sends the appropriate `hashID ` in the RegisterAppInterface request. This hash updates after each data change.
-SDL stores resumption data either in json or in database, this option is configurable. 
+SDL stores resumption data either in json or in database, this option is configurable via INI file  `UseDBForResumption=false` field in `[Resumption]` section.
 
 ResumeControllerImpl requests app data from `ResumptionData` class and provides it to `ResumptionDataProcessor`
 
