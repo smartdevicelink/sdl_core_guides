@@ -19,18 +19,18 @@ UML Refresher
 
 ## Resume Controller
 
-Resume controller responsibility is to cover Resumption requirements of SDL.
+The resume controller's responsibility is to handle the resumption responsibilities of SDL.
 There are 2 resumption types :
 
  * HMI state resumption
  * Data resumption
 
-Resume controller do both.  
+The resume controller does both.
 
 ### HMI state resumption
 
-In case of unexpected disconnect SDL should store application hmi state next 3 ignition cycles.
-On next application registration SDL should restore last saved application hmi_state.
+In the case of unexpected disconnect SDL should store an application's HMI state for the next 3 ignition cycles.
+On next application registration SDL should restore last saved application HMI state.
 
 ResumptionData is responsible for application data restoring.
 ResumeCtrlImpl is responsible for HMI state restoring. 
@@ -40,16 +40,16 @@ On each shutdown ResumeCtrlImpl will increment `ign_off_count` value for each ap
 
 On App registration `ResumeCtrl::StartResumptionOnlyHMILevel` or `ResumeCtrlImpl::StartResumption` will put aplication in a queue for resumption. 
 Internal timer in ResumeCtrlImpl will restore application hmi_state in several seconds (configured by `ApplicationManagerSettings::app_resuming_timeout`)
-In case if any  other application already registered, StateController will take care about hmi_states conflicts resolving. 
+In the case where another application has already registered, the StateController will take care of resolving any HMI state conflicts. 
 
 ### Data resumption
 
-SDL restores application data if application sends appropriate `hash` in the RAI. Hash updates after each data change. 
+SDL restores application data if an application sends the appropriate `hashID ` in the RegisterAppInterface request. This hash updates after each data change.
 SDL stores resumption data either in json or in database, this option is configurable. 
 
 ResumeControllerImpl requests app data from `ResumptionData` class and provides it to `ResumptionDataProcessor`
 
-`ResumptionDataProcessor` is responsible for restoring application data and provides the result to RAI via callback
+`ResumptionDataProcessor` is responsible for restoring application data and provides the result to RegisterAppInterface via a callback.
 
 |||
 Figure 2: Resumption data sequence Overview
@@ -71,7 +71,7 @@ There are 2 implementations of resumption data :
  * `ResumptionDataDB`
 
  `ResumptionData` does not contain active components : timers, reactions, callbacks, etc ...
- It behaves like data a storage.
+ It is responsible fo data storage.
 
 ### ResumptionDataProcessor
 
@@ -97,17 +97,17 @@ typedef std::function<void(mobile_apis::Result::eType result_code,
 
  - Some resumption data should be restored in the `Application` class itself.
  - Some resumption data should be stored in plugins : ApplicationExtensions. 
- - Some resumption data requires sending HMI request. 
+ - Some resumption data requires sending HMI requests.
 
 `ResumptionDataProcessor` is inherited from `EventObserver` to track responses. 
 
-If responses are successful `ResumptionDataProcessor` just call `callback(SUCCESS)`
+If all responses are successful `ResumptionDataProcessor` will call `callback(SUCCESS)`
 
-If part of the data was failed to restore, `ResumptionDataProcessor` should revert already restored data and call  `callback(ERROR_CODE, info)`.
+If some of the data failed to restore, `ResumptionDataProcessor` will revert already restored data and call  `callback(ERROR_CODE, info)`.
 
-Requirenments available in proposal [Handle response from HMI during resumption data](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0190-resumption-data-error-handling.md)
+The requirements are available in proposal 0190: [Handle response from HMI during resumption data](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0190-resumption-data-error-handling.md)
 
-RAI will wait for callback to send response to a mobile application.
+RegisterAppInterface will wait for the callback to send a response to a mobile application.
 
 ### AppExtension
 
@@ -161,7 +161,7 @@ void VehicleInfoAppExtension::SaveResumptionData(
 ```
 |||
 
-`ProcessResumption` will send appropriate hmi requests, and change internal SDL state according to provided `resumption_data`. All HMI responses will be transfered to `subscriber`. 
+`ProcessResumption` will send appropriate HMI requests, and change internal SDL state according to provided `resumption_data`. All HMI responses will be transferred to `subscriber`.
 
 |||
 Example from SDLAppExtension: 
@@ -172,7 +172,7 @@ void SDLAppExtension::ProcessResumption(
     const smart_objects::SmartObject& saved_app,
     resumption::Subscriber subscriber) {
   ...
-  const bool subscribed_for_way_points_so =
+  const bool subscribed_for_way_points =
       saved_app[strings::subscribed_for_way_points].asBool();
   if (subscribed_for_way_points_so) {
     plugin_.ProcessResumptionSubscription(app_, *this, subscriber);
@@ -180,14 +180,14 @@ void SDLAppExtension::ProcessResumption(
 }
 ```
 
-`resumption::Subscriber` - is the function that will notify ResumptionDataProcessor about request sent to HMI by plugin in scope of resumption.
- So that ResumptionDataProcessor will know that it should wait for response before finishing resumption and send RAI response to mobile.  
+`resumption::Subscriber` is the function that will notify ResumptionDataProcessor about request sent to HMI by plugin in scope of resumption.
+This will inform ResumptionDataProcessor that it should wait for a response before finishing resumption and sending RAI response to mobile.
 |||
 
-`RevertResumption` will send appropriate hmi requests to revert provided `subscriptions`.
+`RevertResumption` will send the appropriate HMI requests to revert provided `subscriptions`.
 
 
-`ResumptionDataProcessor` goes through all `application->Extensions` to track responses and setups itself as `subscriber` : 
+`ResumptionDataProcessor` goes through all `application->Extensions` to track responses and sets itself as `subscriber`: 
 
 ```cpp
 void ResumptionDataProcessor::AddPluginsSubscriptions(
@@ -205,11 +205,11 @@ void ResumptionDataProcessor::AddPluginsSubscriptions(
 }
 ```
 
-## Resumption of subscriptions
+## Resumption of Subscriptions
 
 If multiple applications are trying to restore the same subscription, SDL should send the only first subscription to HMI. If the first subscription was failed and the application received `RESUME_FAILED` result code, for the second application SDL should also try to restore the subscription.
 
-For the waiting subscription result, SDL use `ExtensionPendingResumptionHandler` class.
+For the waiting subscription result, SDL uses the `ExtensionPendingResumptionHandler` class.
 Each plugin contains its own ExtensionPendingResumptionHandler for subscriptions resumption.
 
 |||
@@ -220,12 +220,12 @@ ExtensionPendingResumptionHandler overview
 For subscriptions resumption plugin calls `ExtensionPendingResumptionHandler::HandleResumptionSubscriptionRequest(app_extension,
 subscriber, application)`
 
-`subscriber` here is `ResumptionDataProcessor::WaitForResponse` function for `ResumptionDataProcessor`  for tracking list of sent requests to HMI and track if all requests have proceeded.
+`subscriber` here is `ResumptionDataProcessor::WaitForResponse` function for `ResumptionDataProcessor`  for tracking list of sent requests to HMI and track if all requests have been processed before responding to the RegisterAppInterface request.
 
-`ExtensionPendingResumptionHandler` sends requests to HMI for all subscriptions available in `app_extension` ant track responses with `on_event` method inherited from `EventObserver`.
+`ExtensionPendingResumptionHandler` sends requests to HMI for all subscriptions available in `app_extension` and tracks responses with the `on_event` method inherited from `EventObserver`.
 
-In case if for some subscription request to HMI was already sent but the response was not received yet,`ExtensionPendingResumptionHandler` will not send an additional request to HMI but store internally that appropriate subscription resumption is "freezed". On the response received from HMI SDL will manage both resumptions according to response data.
-For "freezed" resumptions ExtensionPendingResumptionHandler will trigger raize event so that `subscriber` (ResumeDataProcessor) will receive this event and understand it as response from HMI. 
+In the case some subscription request to the HMI was already sent but the response was not received yet,`ExtensionPendingResumptionHandler` will not send an additional request to HMI but store internally that appropriate subscription resumption is "frozen". When the response is received from the HMI, SDL will manage both resumptions according to response data.
+For "frozen" resumptions ExtensionPendingResumptionHandler will raise an event so that `subscriber` (ResumeDataProcessor) will receive this event and understand it as response from HMI. 
 
 |||
 Subscriptions restore sequence : 
@@ -234,4 +234,4 @@ Subscriptions restore sequence :
 
 
 
-OnResumptionRevert is used to trigger next freezed resumption if no requests are currently waiting for response. 
+OnResumptionRevert is used to trigger the next frozen resumption if no requests are currently waiting for a response.
