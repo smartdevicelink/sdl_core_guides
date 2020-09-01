@@ -26,10 +26,9 @@ class Main
 
 Main .up.> SDLLogger  
 Main  .up.> ExternalLogger : create
-note "Main(orTestMain) creates SDLLogger,  \n\
-ExternalLogger Injects ExternalLogger to SDLLogger, \n\
-Takes care about SDLLogger life cycle" as N2
+note "Main(or TestMain) creates SDLLogger,  \n\
+ExternalLogger injects ExternalLogger to SDLLogger, \n\
+Takes care of SDLLogger life cycle" as N2
 
 N2 .left. Main
 @enduml
-
