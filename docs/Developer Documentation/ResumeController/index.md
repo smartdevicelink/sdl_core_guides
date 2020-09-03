@@ -207,7 +207,7 @@ For "frozen" resumptions ExtensionPendingResumptionHandler will raise an event s
 
 |||
 Subscriptions restore sequence : 
-![ExtensionPendingResumptionHandler](./assets/subscriptoins_restore_sequence.png)
+![ExtensionPendingResumptionHandler](./assets/subscriptions_restore_sequence.png)
 |||
 
 
