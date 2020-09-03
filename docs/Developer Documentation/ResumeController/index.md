@@ -164,11 +164,11 @@ void VehicleInfoAppExtension::SaveResumptionData(
 `ProcessResumption` will send appropriate HMI requests, and change internal SDL state according to provided `resumption_data`. All HMI responses will be transferred to `subscriber`.
 
 
-Example from SDLAppExtension: 
+Example from SDLWaypointAppExtension: 
 ```cpp
 SDLRPCPlugin& plugin_;
 ...
-void SDLAppExtension::ProcessResumption(
+void SDLWaypointAppExtension::ProcessResumption(
     const smart_objects::SmartObject& saved_app,
     resumption::Subscriber subscriber) {
   ...

@@ -92,7 +92,7 @@ interface RPCService {
 
 ResumptionDataProcessor -right-> RPCService
 
-SDLAppExtension -up-|> AppExtension
+SDLWaypointAppExtension -up-|> AppExtension
 VehicleInfoAppExtension -up-|> AppExtension
 RCAppExtension -up-|> AppExtension
 AppServiceAppExtension -up-|> AppExtension
