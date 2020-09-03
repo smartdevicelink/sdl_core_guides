@@ -125,11 +125,9 @@ Application extension contains following methods for resumption :
   /**
    * @brief ProcessResumption Method called by SDL during resumption.
    * @param resumption_data list of resumption data
-   * @param subscriber callbacks for subscribing
    */
   virtual void ProcessResumption(
-      const smart_objects::SmartObject& resumption_data,
-      resumption::Subscriber subscriber) = 0;
+      const smart_objects::SmartObject& resumption_data) = 0;
 
   /**
    * @brief RevertResumption Method called by SDL during revert resumption.
@@ -161,7 +159,7 @@ void VehicleInfoAppExtension::SaveResumptionData(
 ```
 
 
-`ProcessResumption` will send appropriate HMI requests, and change internal SDL state according to provided `resumption_data`. All HMI responses will be transferred to `subscriber`.
+`ProcessResumption` will send appropriate HMI requests, and change internal SDL state according to provided `resumption_data`. All HMI responses will be transferred to `ResumptionDataProcessor`
 
 
 Example from SDLWaypointAppExtension: 
@@ -169,41 +167,23 @@ Example from SDLWaypointAppExtension:
 SDLRPCPlugin& plugin_;
 ...
 void SDLWaypointAppExtension::ProcessResumption(
-    const smart_objects::SmartObject& saved_app,
-    resumption::Subscriber subscriber) {
+    const smart_objects::SmartObject& saved_app) {
   ...
   const bool subscribed_for_way_points =
       saved_app[strings::subscribed_for_way_points].asBool();
   if (subscribed_for_way_points_so) {
-    plugin_.ProcessResumptionSubscription(app_, *this, subscriber);
+    plugin_.ProcessResumptionSubscription(app_, *this);
   }
 }
 ```
 
-`resumption::Subscriber` is the function that will notify ResumptionDataProcessor about request sent to HMI by plugin in scope of resumption.
+On each request sent to HMI Plugin will call `resumption_data_processor->SubscribeOnResponse`.
 This will inform ResumptionDataProcessor that it should wait for a response before finishing resumption and sending RAI response to mobile.
 
 
 `RevertResumption` will send the appropriate HMI requests to revert provided `subscriptions`.
 
 
-`ResumptionDataProcessor` goes through all `application->Extensions` to track responses and sets itself as `subscriber`: 
-
-```cpp
-void ResumptionDataProcessor::AddPluginsSubscriptions(
-    ApplicationSharedPtr application,
-    const smart_objects::SmartObject& saved_app) {
-  LOG4CXX_AUTO_TRACE(logger_);
-
-  for (auto& extension : application->Extensions()) {
-    extension->ProcessResumption(
-        saved_app,
-        [this](const int32_t app_id, const ResumptionRequest request) {
-          this->WaitForResponse(app_id, request);
-        });
-  }
-}
-```
 
 ## Resumption of Subscriptions
 
@@ -217,15 +197,13 @@ ExtensionPendingResumptionHandler overview
 ![ExtensionPendingResumptionHandler](./assets/extension_pending_resumption_handler.png)
 |||
 
-For subscriptions resumption plugin calls `ExtensionPendingResumptionHandler::HandleResumptionSubscriptionRequest(app_extension,
-subscriber, application)`
+For subscriptions resumption plugin calls `ExtensionPendingResumptionHandler::HandleResumptionSubscriptionRequest(app_extension, application)`
 
-`subscriber` here is `ResumptionDataProcessor::WaitForResponse` function for `ResumptionDataProcessor`  for tracking list of sent requests to HMI and track if all requests have been processed before responding to the RegisterAppInterface request.
 
 `ExtensionPendingResumptionHandler` sends requests to HMI for all subscriptions available in `app_extension` and tracks responses with the `on_event` method inherited from `EventObserver`.
 
 In the case some subscription request to the HMI was already sent but the response was not received yet,`ExtensionPendingResumptionHandler` will not send an additional request to HMI but store internally that appropriate subscription resumption is "frozen". When the response is received from the HMI, SDL will manage both resumptions according to response data.
-For "frozen" resumptions ExtensionPendingResumptionHandler will raise an event so that `subscriber` (ResumeDataProcessor) will receive this event and understand it as response from HMI. 
+For "frozen" resumptions ExtensionPendingResumptionHandler will raise an event so that  `ResumeDataProcessor` will receive this event and understand it as response from HMI. 
 
 |||
 Subscriptions restore sequence : 
