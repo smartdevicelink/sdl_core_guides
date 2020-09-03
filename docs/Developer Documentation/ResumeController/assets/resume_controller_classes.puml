@@ -56,7 +56,7 @@ ResumeControllerImpl o-left-> ApplicationManager
 
 class RegisterAppInterfaceRequest {
   Run()
-  SendRespone();
+  SendResponse();
 }
 
 

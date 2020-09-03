@@ -38,7 +38,7 @@ ResumeCtrlImpl is responsible for HMI state restoring.
 ResumeCtrlImpl will remove application hmi_state info from resumption data after 3 ignition cycles. 
 On each shutdown ResumeCtrlImpl will increment `ign_off_count` value for each application.
 
-On App registration `ResumeCtrl::StartResumptionOnlyHMILevel` or `ResumeCtrlImpl::StartResumption` will put aplication in a queue for resumption. 
+On App registration `ResumeCtrl::StartResumptionOnlyHMILevel` or `ResumeCtrlImpl::StartResumption` will put application in a queue for resumption. 
 Internal timer in ResumeCtrlImpl will restore application hmi_state in several seconds (configured by `ApplicationManagerSettings::app_resuming_timeout`)
 In the case where another application has already registered, the StateController will take care of resolving any HMI state conflicts. 
 
@@ -53,7 +53,7 @@ ResumeControllerImpl requests app data from `ResumptionData` class and provides 
 
 |||
 Figure 2: Resumption data sequence Overview
-![Resumption data seauence](./assets/data_resumption.png)
+![Resumption data sequence](./assets/data_resumption.png)
 |||
 
 ### ResumptionData
@@ -71,7 +71,7 @@ There are 2 implementations of resumption data :
  * `ResumptionDataDB`
 
  `ResumptionData` does not contain active components : timers, reactions, callbacks, etc ...
- It is responsible fo data storage.
+ It is responsible for data storage.
 
 ### ResumptionDataProcessor
 
@@ -111,7 +111,7 @@ RegisterAppInterface will wait for the callback to send a response to a mobile a
 
 ### AppExtension
 
-Application extension contains follwowing methods for resumption : 
+Application extension contains following methods for resumption : 
 ```cpp
   /**
    * @brief SaveResumptionData method called by SDL when it saves resumption
