@@ -23,7 +23,7 @@ end note
 
 note over ResumptionDataProcessor
   Responsible 
-  for sending apropriate
+  for sending appropriate
   RAI response when 
   resumption will be finished
 end note
@@ -31,19 +31,19 @@ end note
 note over ExtensionPendingResumptionHandler
   Responsible for watching if subscription
   request was already sent to HMI,
-  and prevent sending dublicate 
+  and prevent sending duplicate 
 end note
 
 RAI1 -> ResumptionDataProcessor : StartResumption
 note over RAI1, ResumptionDataProcessor
-  Delegation chain cutted to improve redability.  Actual delegation chain:
+  Delegation chain cut to improve readability.  Actual delegation chain:
   
   RegisterAppInterfaceRequest -> ResumeCtrl -> ResumptionDataProcessor
 end note
 
 ResumptionDataProcessor -> ExtensionPendingResumptionHandler : Restore subscriptions data : **sub1**, **sub2** for app1
 note over ResumptionDataProcessor, ExtensionPendingResumptionHandler
-  Delegation chain cutted to improve redability. 
+  Delegation chain cut to improve readability. 
   Actual delegation chain:
   
   ResumptionDataProcessor->AppExtension->
@@ -67,7 +67,7 @@ ExtensionPendingResumptionHandler -> ResumptionDataProcessor :  REQUEST3 success
 ResumptionDataProcessor -> RAI3 : send RAI  response SUCCESS
 end
 
-alt SuccesFlow
+alt SuccessFlow
 HMI -> ExtensionPendingResumptionHandler : REQUEST1 success
 ExtensionPendingResumptionHandler -> ResumptionDataProcessor :  REQUEST1 success
 ResumptionDataProcessor -> RAI1 : send response SUCCESS
@@ -92,4 +92,3 @@ end
 
 
 @enduml
-

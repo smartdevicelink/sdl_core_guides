@@ -56,12 +56,13 @@ ResumeControllerImpl o-left-> ApplicationManager
 
 class RegisterAppInterfaceRequest {
   Run()
-  SendRespone();
+  SendResponse();
 }
 
 
 
 class ResumptionDataProcessor {
+  + SubscribeToRespose(const int32_t app_id, const ResumptionRequest request)
   + Restore(app, data, callback)
   + on_event(response)
   + HandleOnTimeOut(corr_id);
@@ -70,7 +71,7 @@ class ResumptionDataProcessor {
 ResumeControllerImpl *-- ResumptionDataProcessor 
 
 interface AppExtension {
-  ProcessResumption(resumption_data, callback)
+  ProcessResumption(resumption_data, resumption_data_processor);
 }
 
 interface Application {
@@ -92,7 +93,7 @@ interface RPCService {
 
 ResumptionDataProcessor -right-> RPCService
 
-SDLAppExtension -up-|> AppExtension
+SDLWaypointAppExtension -up-|> AppExtension
 VehicleInfoAppExtension -up-|> AppExtension
 RCAppExtension -up-|> AppExtension
 AppServiceAppExtension -up-|> AppExtension

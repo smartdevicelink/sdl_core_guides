@@ -6,12 +6,17 @@ title ExtensionPendingResumptionHandler
 interface EventObserver {
    + on_event(event)
 }
- 
+
+interface ResumptionDataProcessor {
+  void SubscribeToResponse(const int32_t app_id, const ResumptionRequest& request);
+}
+
 interface ExtensionPendingResumptionHandler {
   + HandleResumptionSubscriptionRequest()
   + on_event(event)
   + OnResumptionRevert(event)
 }
+ExtensionPendingResumptionHandler o-left- ResumptionDataProcessor
 
 EventObserver <|-down-ExtensionPendingResumptionHandler
 
