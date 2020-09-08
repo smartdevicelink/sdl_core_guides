@@ -22,15 +22,21 @@ EventObserver <|-down-ExtensionPendingResumptionHandler
 
 class SDLPendingResumptionHandler
 class VehicleInfoPendingResumptionHandler
+class RCPendingResumptionHandler
 
 SDLPendingResumptionHandler <|-up-ExtensionPendingResumptionHandler
 VehicleInfoPendingResumptionHandler <|-up-ExtensionPendingResumptionHandler
+RCPendingResumptionHandler <|-up-ExtensionPendingResumptionHandler
 
 class SDLPlugin
 SDLPlugin *-right-> SDLPendingResumptionHandler
 
 class VehicleInfoPlugin
 VehicleInfoPlugin *-left-> VehicleInfoPendingResumptionHandler
+
+class RCPlugin
+RCPlugin *-up-> RCPendingResumptionHandler
+
 
 @enduml
 
