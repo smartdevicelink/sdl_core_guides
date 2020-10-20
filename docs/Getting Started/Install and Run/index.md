@@ -122,7 +122,7 @@ To kill any lingering instances of SDL Core (including those that were not start
 ```
 
 !!! NOTE
-If Core was built with `EXTENDED_POLICY=EXTERNAL_PROPRIETARY`, the `core.sh` script will automatically start the provided sample policy manager along with Core. To use the script without this, run the daemon script as such:
+If Core was built with `EXTENDED_POLICY=EXTERNAL_PROPRIETARY`, the `core.sh` script will automatically start the provided sample policy manager along with Core. To disable this, run the daemon script as such:
 ```bash
 ./core.sh <command> false
 ``` 
