@@ -43,7 +43,7 @@ CMake is used to configure your SDL Core build before you compile the project, t
 |ENABLE_SECURITY|**ON**/OFF|OpenSSL (packages: libssl1.0-dev)|Enable/Disable support for secured SDL protocol services|
 |EXTENDED_POLICY|HTTP|N/A|HTTP (simplified) Policy flow. `OnSystemRequest` is sent with HTTP RequestType to initiate a policy table update. The HMI is not involved in the PTU process in this mode, meaning that policy table encryption is not supported.|
 |EXTENDED_POLICY|**PROPRIETARY**|N/A|Default Policy flow, PROPRIETARY RequestType. Simplified policy feature set (no user consent, encryption/decryption only available via HMI)|
-|EXTENDED_POLICY|EXTERNAL_PROPRIETARY|packages: python-pip, python-dev (If using the included sample policy manager, which is automatically started by `start.sh` by default)|Full Policy flow, PROPRIETARY RequestType. Full-featured policies, along with support for handling encryption/decryption via external application|
+|EXTENDED_POLICY|EXTERNAL_PROPRIETARY|packages: python-pip, python-dev (If using the included sample policy manager, which is automatically started by `core.sh` by default)|Full Policy flow, PROPRIETARY RequestType. Full-featured policies, along with support for handling encryption/decryption via external application|
 |ENABLE_HMI_PTU_DECRYPTION|**ON**/OFF|N/A|Only applies to PROPRIETARY mode. When enabled, the HMI is expected to decrypt the policy table before sending `SDL.OnReceivedPolicyUpdate`.|
 
 #### Development/Debug Options
@@ -86,7 +86,7 @@ make -j `nproc` install
 ```
 
 ## Start SDL Core
-Once SDL Core is compiled and installed you can start it from the executable in the newly created bin folder under your build folder directory
+Once SDL Core is compiled and installed, you can start it using the provided start script in the newly created bin folder under your build folder directory
 
 ```bash
 cd bin/
@@ -98,3 +98,32 @@ If you get a linking error when running Core, the following command may be neede
 ```bash
 sudo ldconfig
 ```
+
+In addition, you can run SDL Core as a background process using the provided daemon script. This is useful for controlling the lifecycle of Core when creating automated scripts for your system.
+
+To start SDL Core in the background:
+```bash
+./core.sh start
+```
+
+To restart SDL Core while it is running in the background:
+```bash
+./core.sh restart
+```
+
+To stop SDL Core while it is running in the background:
+```bash
+./core.sh stop
+```
+
+To kill any lingering instances of SDL Core (including those that were not started using the script):
+```bash
+./core.sh kill
+```
+
+!!! NOTE
+If Core was built with `EXTENDED_POLICY=EXTERNAL_PROPRIETARY`, the `core.sh` script will automatically start the provided sample policy manager along with Core. To use the script without this, run the daemon script as such:
+```bash
+./core.sh <command> false
+``` 
+!!!
