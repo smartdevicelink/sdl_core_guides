@@ -259,6 +259,12 @@ The receiver should not reply to a notification, i.e. no response object needs t
 ## Response
 On receipt of a request message, the server must reply with a Response. The Response is expressed as a single JSON Object with the following properties.
 
+!!! must
+
+An RPC must be sent in result format for its parameters to be passed to mobile.
+
+!!!
+
 | Property | Description    |
 | :------------- | :------------- |
 | id      | Required property which must be the same as the value of the associated request object. If there was an error in detecting the id in the request object, this value must be null.  |
@@ -307,6 +313,12 @@ On receipt of a request message, the server must reply with a Response. The Resp
 ```
 
 ## Error Response
+
+!!! must
+
+An RPC must be sent in error format for its message to be passed to mobile.
+
+!!!
 
 The error object has the following members:
 
