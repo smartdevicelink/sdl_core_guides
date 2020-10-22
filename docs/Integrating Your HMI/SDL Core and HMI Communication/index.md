@@ -259,11 +259,17 @@ The receiver should not reply to a notification, i.e. no response object needs t
 ## Response
 On receipt of a request message, the server must reply with a Response. The Response is expressed as a single JSON Object with the following properties.
 
+!!! must
+
+An RPC must be sent in result format for its parameters to be passed to mobile.
+
+!!!
+
 | Property | Description    |
 | :------------- | :------------- |
 | id      | Required property which must be the same as the value of the associated request object. If there was an error in detecting the id in the request object, this value must be null.  |
 | jsonrpc | Must be exactly **"2.0"**|
-| result | Required on success or warning. Must not exist if there was an error invoking the method. The result property must contain a `method` field which is the same as the corresponding request and a corresponding [result code](https://smartdevicelink.com/en/guides/hmi/common/enums/#result) should be sent in the result property. The result property may also include additional properties as defined in the [HMI API](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/HMI_API.xml).|
+| result | The result property must contain a `method` field which is the same as the corresponding request and a corresponding [result code](https://smartdevicelink.com/en/guides/hmi/common/enums/#result) should be sent in the result property. The result property may also include additional properties as defined in the [HMI API](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/HMI_API.xml).|
 
 ### Example Responses
 #### Response with no Parameters
@@ -310,7 +316,7 @@ On receipt of a request message, the server must reply with a Response. The Resp
 
 !!! must
 
-When an RPC encounters an error, the response object must contain the `error` property instead of the `result` property.
+An RPC must be sent in error format for its message to be passed to mobile.
 
 !!!
 
@@ -320,7 +326,7 @@ The error object has the following members:
 | :------------- | :------------- |
 | id       | Required to be the same as the value of "id" in the corresponding Request object. If there was an error in detecting the id of the request object, then this property must be null.   |
 | jsonrpc| Must be exactly "2.0"|
-| error | Required on error. Must not exist if there was no error triggered during invocation. The error field must contain a `code` field with the [result code](https://smartdevicelink.com/en/guides/hmi/common/enums/#result) value that indicates the error type that occurred, a `message` field containing the string that provides a short description of the error, and a `data` field that must contain the `method` from the original request.|
+| error | The error field must contain a `code` field with the [result code](https://smartdevicelink.com/en/guides/hmi/common/enums/#result) value that indicates the error type that occurred, a `data` field with the `method` from the original request, and optionally a `message` field containing the string that provides a short description of the error.|
 
 ### Examples
 #### Response with Error
@@ -333,6 +339,21 @@ The error object has the following members:
     "message": "One of the provided IDs is not valid",
     "data": {
       "method": "VehicleInfo.GetDTCs"
+    }
+  }
+}
+```
+
+#### Response with Warnings and Message
+```json
+{
+  "id": 103,
+  "jsonrpc": "2.0",
+  "error": {
+    "code": 21,
+    "message": "Requested image was not found.",
+    "data": {
+      "method": "UI.Alert"
     }
   }
 }
