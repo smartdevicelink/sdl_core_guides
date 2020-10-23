@@ -80,6 +80,14 @@
             ]
         },
         {
+            "name": "Migrating to Newer SDL Versions",
+            "navigation": [
+                {
+                    "name": "Migrating SDL Core 6.1 to 7.0"
+                }
+            ]
+        },
+        {
             "name": "Doxygen Inline Documentation"
         },
         {
