@@ -376,3 +376,28 @@ The error object has the following members:
   }
 }
 ```
+
+## Required Get Capability Responses
+
+As of SDL Core 7.0, SDL Core has the ability to cache certain HMI capabilities and restore them each ignition cycle. On the first time SDL Core is started, or when the HMI's CCPU version changes, SDL Core will request the following messages to the HMI:
+
+- UI.GetLanguage
+- UI.GetSupportedLanguage
+- UI.GetCapabilities
+- RC.GetCapabilities
+- VR.GetLanguage
+- VR.GetSupportedLanguages
+- VR.GetCapabilities
+- TTS.GetLanguage
+- TTS.GetSupportedLanguages
+- TTS.GetCapabilities
+- Buttons.GetCapabilities
+- VehicleInfo.GetVehicleType
+
+!!! NOTE
+
+If your HMI implementation registers a component (UI, RC, VR, etc), the HMI must respond to the applicable capability requests from Core.
+
+!!!
+
+Greater detail about each of these HMI RPCs can be found in the [HMI API Reference Documentation](https://smartdevicelink.com/en/docs/hmi/master/overview/).
