@@ -128,7 +128,25 @@ If the response to any of the component `IsReady` requests contains `{"available
 
 !!!
 
- 
+## Respond to BasicCommunication.GetSystemInfo
+
+Communicating the current version of the HMI integration (CCPU) is needed for SDL Core to know when to request an update to the HMI's capabilities that may have changed since the previous software version. Core will not mark the HMI as cooperating until this response is sent by the HMI.
+
+Example Response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": rpc.id,
+  "result": {
+    "method": "BasicCommunication.GetSystemInfo",
+    "code": 0,
+    "ccpu_version": "0.0.1",
+    "language": "EN-US",
+    "wersCountryCode": "WAEGB",
+  }
+}
+```
 ## Registering for Notifications
 The HMI must also register for notifications individually using the following RPC format.
 
