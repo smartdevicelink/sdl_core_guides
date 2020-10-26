@@ -4,7 +4,7 @@ The 7.0 release had a number of changes and additions to the HMI API that will r
 
 ## Environment Update
 
-The minimum environment requirements have changed for Ubuntu 18. GCC Version 7.5.x is now recommended. The previously recommended GCC Version 7.3.x
+The minimum environment requirements have changed for Ubuntu 18. GCC Version 7.5.x is now recommended over the previously recommended GCC Version 7.3.x
 
 ## Breaking Changes
 
@@ -73,8 +73,8 @@ Vehicle Data parameter `prndl` has been deprecated. Please make updates to use t
 
 ### Vehicle Data
 
-- FuelRange was expanded to replace `fuelLevel` and `fuelLevel_state` parameters.
-- New vehicle data type: GearStatus
+- FuelRange was expanded to replace `fuelLevel` and `fuelLevel_state` parameters
+- New vehicle data type: GearStatus to replace `prndl` parameter
 - New vehicle data type: StabilityControlStatus
 - New vehicle data type: WindowStatus
 - New vehicle data type: HandsOffSteering
@@ -102,7 +102,7 @@ An app can now request to add a submenu to another submenu by specifying a paren
 
 Dynamic Menus:
 
-Two new RPC's were added to HMI API. UI.OnUpdateFile and UI.OnUpdateSubmenu. UI.OnUpdateFile request allows the HMI to request images from an SDL connected app when needed in an effort to reduce the amount of data an app needs to save on the headunit. UI.OnUpdateSubmenu request allows the HMI to dynamically request when submenu information is populated by the app. This functionality helps reduce the system load when an app first connects as the app is not required to load all menu contents onto the head unit.
+Two new RPCs were added to HMI API: UI.OnUpdateFile and UI.OnUpdateSubmenu. UI.OnUpdateFile request allows the HMI to request images from an SDL connected app when needed in an effort to reduce the amount of data an app needs to save on the headunit. UI.OnUpdateSubmenu request allows the HMI to dynamically request when submenu information is populated by the app. This functionality helps reduce the system load when an app first connects as the app is not required to load all menu contents onto the head unit immediately.
 
 ```
 <function name="OnUpdateFile" messagetype="notification">
@@ -132,7 +132,7 @@ Two new RPC's were added to HMI API. UI.OnUpdateFile and UI.OnUpdateSubmenu. UI.
 </function>
 ```
 
-Dynamic menus are optional, and the hmi's ability to support this feature is designated by the `DynamicUpdateCapabilities` struct.
+Dynamic menus are optional, and the HMI's ability to support this feature is designated by the `DynamicUpdateCapabilities` struct.
 
 ```
 <struct name="DynamicUpdateCapabilities">
@@ -166,7 +166,7 @@ Setting these limits does not change the behavior of SDL Core. It is up to the H
 
 #### New UI Component: Subtle Alert
 
-SubtleAlert RPC was added as a less intrusive ui component when compared to the Alert rpc. 
+SubtleAlert RPC was added as a less intrusive UI notification when compared to the Alert RPC. The OnSubtleAlertPressed notification was also added as a way for mobile apps to be aware of and optionally take action when a user clicks on a SubtleAlert notification.
 
 ```
 <function name="SubtleAlert" messagetype="request">
