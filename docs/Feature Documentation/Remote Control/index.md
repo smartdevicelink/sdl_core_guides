@@ -8,6 +8,7 @@ This guide will explain how to use Remote Control within SDL. The guide will cov
 - [Modules and their components](#remote-control-modules)
 - [Consent rules](#consent)
 - [Limiting permissions with policies](#policies)
+- [Resumption](#resumption)
 
 #### Relevant Evolution Proposals
 
@@ -78,6 +79,10 @@ View **GetSystemCapability** in the [RPC Spec](https://github.com/smartdevicelin
 ### GetInteriorVehicleData
 
 GetInteriorVehicleData is used to request information about a specific module. This RPC, provided a module is specified by `moduleType` and `moduleId`, will return the status of the requested remote-control module. This RPC can also be used to subscribe to updates of a module's status via the `subscribe` parameter. If this non-mandatory parameter is set to true, the head unit will register `OnInteriorVehicleData` notifications for the requested module. Conversely, if this parameter is set to false, the head unit will unregister `OnInteriorVehicleData` notifications for the requested module.
+
+!!! NOTE
+If an application sends GetInteriorVehicleData (subscribe=true, moduleType=MODULE1), but the application is already subscribed on MODULE1 module type, SDL will respond with a `WARNINGS` resultCode because of the double subscription.
+!!!
 
 View **GetInteriorVehicleData** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#getinteriorvehicledata) or the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/rc/getinteriorvehicledata)
 
@@ -181,3 +186,13 @@ Resources can only be acquired by apps in HMI level full.
 ## Policies
 
 You can take a look at the [Remote Control section of the policies guide](https://smartdevicelink.com/en/guides/sdl-overview-guides/policies/app-policies/#remote-control-fields) to see how remote control permissions are defined.
+
+## Resumption
+
+### Interior Vehicle Data Subscriptions
+
+During the data resumption process, SDL sends `GetInteriorVehicleData(subscribe=true)` requests to the HMI and stores data received from the HMI in a cache.
+
+If during resumption the HMI responds with error to a `GetInteriorVehicleData` request or responds with SUCCESS to a `GetInteriorVehicleData` but with parameter `isSubscribed=false`, SDL reverts already subscribed data and fails resumption for related application(s), removing information about this subscription.
+
+For more information about how SDL handles resumption, you can take a look at the [Application Data Resumption](https://smartdevicelink.com/en/guides/sdl-overview-guides/resumption) guide.
