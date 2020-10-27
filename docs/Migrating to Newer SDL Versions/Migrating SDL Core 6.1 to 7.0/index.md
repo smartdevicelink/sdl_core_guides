@@ -217,7 +217,7 @@ SubtleAlert RPC was added as a less intrusive ui component when compared to the 
 
 ### Webengine Projection Support
 
-In SDL Core 6.1 Webengine apps was added as a way to connect an SDL Connected app to the head unit using a headless web browser on the head unit. This feature was expanded in SDL Core 7.0 With the addition of a new HMI_TYPE and template layout `WEB_VIEW`. Apps that use this HMI_TYPE and layout can present their own non-templated layout using HTML and javascript.
+A new `WEB_VIEW` appHMIType and template layout was added which will allow apps to render a template independent view in a browser environment with javascript and HTML.
 
 ```
 <enum name="AppHMIType">
@@ -226,6 +226,30 @@ In SDL Core 6.1 Webengine apps was added as a way to connect an SDL Connected ap
    <element name="WEB_VIEW" />
 </enum>
 ```
+
+This appHMIType must be explicitly specified in an app's policy table entry for SDL Core to allow it to be used.
+
+Policy Table Entry:
+
+```
+...
+"app_policies": {
+    "webengine_appID": {
++       "appHMIType: ["WEB_VIEW"],
+        "keep_context": false,
+        "steal_focus": false,
+        "priority": "NONE",
+        "default_hmi": "NONE",
+        "groups": [
+            "Base-4"
+        ],
+        "RequestType": [],
+        "RequestSubType": []
+    },
+...
+```
+
+
 
 ### New UI.GetCapabilities parameter: `pcmStreamCapabilities`
 
