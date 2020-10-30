@@ -1,10 +1,10 @@
-# Updating from 6.1 to 7.0
+# Migrating SDL Core 6.1 to 7.0
 
 The 7.0 release had a number of changes and additions to the HMI API that will require updates to your SDL Core integration in your head unit. 
 
 ## Environment Update
 
-The minimum environment requirements have changed for Ubuntu 18. GCC Version 7.5.x is now recommended over the previously recommended GCC Version 7.3.x
+The minimum environment requirements have changed for Ubuntu 18. GCC Version 7.5.x is now recommended over the previously recommended GCC Version 7.3.x.
 
 ## Breaking Changes
 
@@ -16,7 +16,7 @@ The minimum environment requirements have changed for Ubuntu 18. GCC Version 7.5
 
 ### Deprecated Character Sets
 
-Character sets `TYPE2SET`, `TYPE5SET`, `CID1SET`, and `CID2SET` have been deprecated. These character sets only had proprietary significance and HMI's can now choose from the following character sets:
+Character sets `TYPE2SET`, `TYPE5SET`, `CID1SET`, and `CID2SET` have been deprecated. These character sets only had proprietary significance and HMIs can now choose from the following character sets:
 
 - ASCII
 - ISO_8859_1
@@ -89,7 +89,7 @@ SDL Core 7.0 adds extended capabilities to the app menu. SDL Core now supports n
 
 Nested Submenus:
 
-An app can now request to add a submenu to another submenu by specifying a parentID. This did not require any new parameters on the HMI side. HMI's should be updated to process `parentID` in an AddSubMenu request. This param was previously only reserved for AddCommands. 
+An app can now request to add a submenu to another submenu by specifying a `parentID`. This did not require any new parameters on the HMI side. HMIs should be updated to process `parentID` in an `AddSubMenu` request. This param was previously only reserved for `AddCommands`. 
 
 ```
 <function name="AddSubMenu" messagetype="request">
@@ -102,7 +102,7 @@ An app can now request to add a submenu to another submenu by specifying a paren
 
 Dynamic Menus:
 
-Two new RPCs were added to HMI API: UI.OnUpdateFile and UI.OnUpdateSubmenu. UI.OnUpdateFile request allows the HMI to request images from an SDL connected app when needed in an effort to reduce the amount of data an app needs to save on the headunit. UI.OnUpdateSubmenu request allows the HMI to dynamically request when submenu information is populated by the app. This functionality helps reduce the system load when an app first connects as the app is not required to load all menu contents onto the head unit immediately.
+Two new RPCs were added to HMI API: UI.OnUpdateFile and UI.OnUpdateSubmenu. UI.OnUpdateFile request allows the HMI to request images from an SDL connected app when needed in an effort to reduce the amount of data an app needs to save on the head unit. UI.OnUpdateSubmenu request allows the HMI to dynamically request when submenu information is populated by the app. This functionality helps reduce the system load when an app first connects as the app is not required to load all menu contents onto the head unit immediately.
 
 ```
 <function name="OnUpdateFile" messagetype="notification">
@@ -166,7 +166,7 @@ Setting these limits does not change the behavior of SDL Core. It is up to the H
 
 #### New UI Component: Subtle Alert
 
-SubtleAlert RPC was added as a less intrusive UI notification when compared to the Alert RPC. The OnSubtleAlertPressed notification was also added as a way for mobile apps to be aware of and optionally take action when a user clicks on a SubtleAlert notification.
+`SubtleAlert` RPC was added as a less intrusive UI notification when compared to the `Alert` RPC. The `OnSubtleAlertPressed` notification was also added as a way for mobile apps to be aware of and optionally take action when a user clicks on a `SubtleAlert` notification.
 
 ```
 <function name="SubtleAlert" messagetype="request">
@@ -227,7 +227,7 @@ A new `WEB_VIEW` appHMIType and template layout was added which will allow apps 
 </enum>
 ```
 
-This appHMIType must be explicitly specified in an app's policy table entry for SDL Core to allow it to be used.
+This `appHMIType` must be explicitly specified in an app's policy table entry for SDL Core to allow it to be used.
 
 Policy Table Entry:
 
