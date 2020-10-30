@@ -75,9 +75,9 @@ Vehicle Data parameter `prndl` has been deprecated. Please make updates to use t
 
 - FuelRange was expanded to replace `fuelLevel` and `fuelLevel_state` parameters
 - New vehicle data type: GearStatus to replace `prndl` parameter
-- New vehicle data type: StabilityControlStatus
-- New vehicle data type: WindowStatus
-- New vehicle data type: HandsOffSteering
+- New vehicle data type: `StabilityControlStatus`
+- New vehicle data type: `WindowStatus`
+- New vehicle data type: `HandsOffSteering`
 
 It is not required to implement all vehicle data types. If a type is unsupported by your headunit, please be sure to respond to SDL Core with result `UNSUPPORTED_RESOURCE` if an unsupported request has been made.
 
@@ -251,7 +251,7 @@ Policy Table Entry:
 
 
 
-### New UI.GetCapabilities parameter: `pcmStreamCapabilities`
+### New UI.GetCapabilities parameter: pcmStreamCapabilities
 
 This parameter was added to the HMI API to align better with the Mobile API.
 
