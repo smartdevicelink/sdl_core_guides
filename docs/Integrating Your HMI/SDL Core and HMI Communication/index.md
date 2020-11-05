@@ -174,6 +174,7 @@ Core's MessageBroker will not route notifications to the HMI unless the notifica
 !!! must
 
 The HMI must:
+
   * Register its components
   * Send the OnReady notification
   * Respond to each of the `IsReady` RPCs

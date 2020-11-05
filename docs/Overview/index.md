@@ -20,14 +20,15 @@ Here you will find guides on how to set up SDL Core, integrate an HMI, and how t
 
 - [Web Engine App Support](../developer-documentation/web-engine-app-support/)
 - [Transport Manager](../developer-documentation/transport-manager/)
+- [Resume Controller](../developer-documentation/resumecontroller/)
 - [Security Manager](../developer-documentation/security-manager/)
 - [Logger](../developer-documentation/logger/)
 
 ### Feature Documentation
 
 - [Audio and Video Streaming](../feature-documentation/audio-and-video-streaming/)
-- [Multiple Transports](../feature-documentation/multiple-transports/)
 - [App Service Guidelines](../feature-documentation/app-service-guidelines/)
+- [Multiple Transports](../feature-documentation/multiple-transports/)
 - [Remote Control](../feature-documentation/remote-control/)
 - [RPC Encryption](../feature-documentation/rpc-encryption/)
 - [Service Status Update](../feature-documentation/service-status-update/)

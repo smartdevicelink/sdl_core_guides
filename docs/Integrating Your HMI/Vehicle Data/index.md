@@ -2,7 +2,7 @@
 
 The purpose of this guide is to explain how vehicle data items can be exposed to app developers through the HMI.
 
-Vehicle data can be exposed to app developers by creating a `VehicleInfo` component within your HMI. To communicate with this component, you will first need to register it with the message broker and respond to the `VehicleInfo.IsReady` message from SDL (see [HMI Getting Started](https://smartdevicelink.com/en/docs/hmi/master/getting-started/) for more information).
+Vehicle data can be exposed to app developers by creating a `VehicleInfo` component within your HMI. To communicate with this component, you will first need to register it with the message broker and respond to the `VehicleInfo.IsReady` message from SDL (see the [Component Readiness Requests](https://smartdevicelink.com/en/guides/core/integrating-your-hmi/sdl-core-and-hmi-communication/#component-readiness-requests) section for more information).
 
 ## RPCs
 
@@ -152,7 +152,7 @@ Below is a list of all of the vehicle data items which are available via SDL as 
 
 ## Custom Vehicle Data Items
 
-Starting with [SDL Core version 6.0.0](https://github.com/smartdevicelink/sdl_core/releases/tag/6.0.0), custom vehicle data items can be defined via the policy table. See [SDL-0173](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0173-Read-Generic-Network-Signal-data.md) for the full proposal details. These items are structured in a similar manner to the [MOBILE API](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/MOBILE_API.xml) and contained in the `vehicle_data` section of the policy table.
+Starting with [SDL Core version 6.0.0](https://github.com/smartdevicelink/sdl_core/releases/tag/6.0.0), custom vehicle data items can be defined via the policy table. See [SDL-0173](https://github.com/smartdevicelink/sdl_evolution/blob/master/proposals/0173-Read-Generic-Network-Signal-data.md) for the full proposal details. These items are structured in a similar manner to the [Mobile API](https://github.com/smartdevicelink/rpc_spec/blob/master/MOBILE_API.xml) and contained in the `vehicle_data` section of the policy table.
 
 In addition to custom items, this feature can be used to expose other vehicle data items that were introduced to the project in later versions. This can be useful when the software version on the head unit cannot be updated easily. If a vehicle data item is added into the project, the definition of this item will be included in the policy table by default. Any vehicle data items which are defined in Core's local Mobile API will be ignored from the policy table, but newer items will be interpreted as custom items. This allows apps to use these data items normally if they are exposed by the head unit, even when they were not initially supported.
 
