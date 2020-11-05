@@ -25,35 +25,35 @@ This guide will explain how to use Remote Control within SDL. The guide will cov
 
 ## Relevant Structs
 
-### [**RemoteControlCapabilities**](https://smartdevicelink.com/en/guides/hmi/common/structs/#remotecontrolcapabilities)
+### [**RemoteControlCapabilities**](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#remotecontrolcapabilities)
 The remote control capabilities struct contains a capabilities struct for each different remote control type.
 
 Each capabilities struct is used to inform an app of what is available to be controlled.
 
-* [RadioControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#radiocontrolcapabilities)
-* [ClimateControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#climatecontrolcapabilities)
-* [SeatControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#seatcontrolcapabilities)
-* [AudioControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#audiocontrolcapabilities)
-* [LightControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#lightcontrolcapabilities)
-* [HMISettingsControlCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#hmisettingscontrolcapabilities)
-* [ButtonCapabilities](https://smartdevicelink.com/en/guides/hmi/common/structs/#buttoncapabilities)
+* [RadioControlCapabilities](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#radiocontrolcapabilities)
+* [ClimateControlCapabilities](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#climatecontrolcapabilities)
+* [SeatControlCapabilities](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#seatcontrolcapabilities)
+* [AudioControlCapabilities](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#audiocontrolcapabilities)
+* [LightControlCapabilities](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#lightcontrolcapabilities)
+* [HMISettingsControlCapabilities](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#hmisettingscontrolcapabilities)
+* [ButtonCapabilities](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#buttoncapabilities)
 
-### [**ModuleData**](https://smartdevicelink.com/en/guides/hmi/common/structs/#moduledata)
+### [**ModuleData**](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#moduledata)
 The module data struct contains information used to identify a module type, and the control data associated with that module.
 
 Each control data struct is used to observe or change the attributes of a specific module type.
 
-* [RadioControlData](https://smartdevicelink.com/en/guides/hmi/common/structs/#radiocontroldata)
-* [ClimateControlData](https://smartdevicelink.com/en/guides/hmi/common/structs/#climatecontroldata)
-* [SeatControlData](https://smartdevicelink.com/en/guides/hmi/common/structs/#seatcontroldata)
-* [AudioControlData](https://smartdevicelink.com/en/guides/hmi/common/structs/#audiocontroldata)
-* [LightControlData](https://smartdevicelink.com/en/guides/hmi/common/structs/#lightcontroldata)
-* [HMISettingsControlData](https://smartdevicelink.com/en/guides/hmi/common/structs/#hmisettingscontroldata)
+* [RadioControlData](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#radiocontroldata)
+* [ClimateControlData](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#climatecontroldata)
+* [SeatControlData](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#seatcontroldata)
+* [AudioControlData](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#audiocontroldata)
+* [LightControlData](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#lightcontroldata)
+* [HMISettingsControlData](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#hmisettingscontroldata)
 
-[**ModuleInfo**](https://smartdevicelink.com/en/guides/hmi/common/structs/#moduleinfo)
+[**ModuleInfo**](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#moduleinfo)
 The module information struct is used for identifying the module and for determining who can control it.
 
-[**Grid**](https://smartdevicelink.com/en/guides/hmi/common/structs/#grid)
+[**Grid**](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#grid)
 The grid struct is used to generically describe the space within a vehicle.
 
 ## Relevant RPCs
@@ -62,13 +62,13 @@ The grid struct is used to generically describe the space within a vehicle.
 
 After the `BC.IsReady` notification is received, SDL will send out an `IsReady` request for each interface. The response to this RPC just includes the boolean parameter `available` indicating if the HMI supports that interface and would like to continue to interact with it.
 
-View **IsReady** in the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/rc/isready)
+View **IsReady** in the [HMI Documentation](https://smartdevicelink.com/en/docs/hmi/master/rc/isready)
 
 ### GetCapabilities
 
 Once SDL has received a positive `IsReady` response it will send a `GetCapabilities` request to the HMI. The HMI should respond with a `RemoteControlCapabilities` parameter for SDL to store and use later when a mobile application sends a `GetSystemCapability` request. This will overwrite the capabilities SDL loaded from the `hmi_capabilities.json` configuration file.
 
-View **GetCapabilities** in the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/rc/getcapabilities)
+View **GetCapabilities** in the [HMI Documentation](https://smartdevicelink.com/en/docs/hmi/master/rc/getcapabilities)
 
 ### GetSystemCapability
 
@@ -90,31 +90,31 @@ View **GetInteriorVehicleData** in the [RPC Spec](https://github.com/smartdevice
 
 OnInteriorVehicleData is a notification sent out by the HMI when an update is made to a remote control module. An app can subscribe to these notifications via GetInteriorVehicleData. This RPC will come with a `ModuleData` structure identifying the changed module and containing the control data object with the new state.
 
-View **OnInteriorVehicleData** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#oninteriorvehicledata) or the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/rc/oninteriorvehicledata)
+View **OnInteriorVehicleData** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#oninteriorvehicledata) or the [HMI Documentation](https://smartdevicelink.com/en/docs/hmi/master/rc/oninteriorvehicledata)
 
 ### SetInteriorVehicleData
 
 SetInteriorVehicleData is used to set the values of a remote control module by passing in a `ModuleData` structure. The `moduleType` and `moduleId` fields are used to identify the targeted module, and the changes in the respective control data object are applied to that module.
 
-View **SetInteriorVehicleData** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#setinteriorvehicledata) or the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/rc/setinteriorvehicledata)
+View **SetInteriorVehicleData** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#setinteriorvehicledata) or the [HMI Documentation](https://smartdevicelink.com/en/docs/hmi/master/rc/setinteriorvehicledata)
 
 ### OnRemoteControlSettings
 
 OnRemoteControlSettings is used to notify SDL when passengers of a vehicle change the remote control settings via the HMI. This includes allowing or disallowing Remote Control or changing the access mode that will be used for resource allocation.
 
-View **OnRemoteControlSettings** in the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/rc/onremotecontrolsettings)
+View **OnRemoteControlSettings** in the [HMI Documentation](https://smartdevicelink.com/en/docs/hmi/master/rc/onremotecontrolsettings)
 
 ### OnRCStatus
 
 OnRCStatus is a notification sent out by SDL when an update is made to a remote control module's availability. When SDL either allocates a module to an app, or deallocates it from an app, SDL will send OnRCStatus to both the application and the HMI. This notification contains two lists, one describing the modules that are allocated to the application and the other describing the free modules that can be accessed by the application. This notification also contains an `allowed` parameter, which indicates to apps whether or not Remote Control is currently allowed. If `allowed` is false, both module lists will be empty.
 
-View **OnRCStatus** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#onrcstatus) or the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/rc/onrcstatus)
+View **OnRCStatus** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#onrcstatus) or the [HMI Documentation](https://smartdevicelink.com/en/docs/hmi/master/rc/onrcstatus)
 
 ### GetInteriorVehicleDataConsent
 
 GetInteriorVehicleDataConsent is a request used to reserve remote control modules. If a module does not allow multiple access, only the application that requested consent first will be able to interact with that module. Otherwise, if the module does allow multiple access, the rules specified in the [Consent section](#consent)) apply. This request requires a `moduleType` and an array of `moduleId`s to identify the target modules. Core will reply with an array of booleans indicating the consent for each requested `moduleId` where true signals allowed and vice versa.
 
-View **GetInteriorVehicleDataConsent** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#getinteriorvehicledataconsent) or the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/rc/getinteriorvehicledataconsent)
+View **GetInteriorVehicleDataConsent** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#getinteriorvehicledataconsent) or the [HMI Documentation](https://smartdevicelink.com/en/docs/hmi/master/rc/getinteriorvehicledataconsent)
 
 ### ReleaseInteriorVehicleDataModule
 
@@ -126,7 +126,7 @@ View **ReleaseInteriorVehicleDataModule** in the [RPC Spec](https://github.com/s
 
 SetGlobalProperties is a request sent by a mobile app to inform SDL of a user's location within the vehicle. The request includes a `userLocation` parameter which contains a grid. The location of a user is important for SDL to know so it can determine whether or not a user is within a module's service area.
 
-View **SetGlobalProperties** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#setglobalproperties) or the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/rc/setglobalproperties)
+View **SetGlobalProperties** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#setglobalproperties) or the [HMI Documentation](https://smartdevicelink.com/en/docs/hmi/master/rc/setglobalproperties)
 
 ## Remote Control Modules
 
