@@ -24,7 +24,7 @@ This diagram describing how data is transferred within the Transport Layer can h
 
 |||
 Figure 3: Transport Layer Data Transfer
-![ProtocolLayerDataTransfer](./assets/transport_layer_data_transfer.png)
+![TransportLayerDataTransfer](./assets/transport_layer_data_transfer.png)
 |||
 
 #### Transport Manager Inheritance Structure
