@@ -45,7 +45,7 @@ This parameter is not mandatory but will be included with each request after the
 
 ## Flow Diagrams
 
-More documentation on the message flow for `BC.OnServiceUpdate` and its parameters can be found in the [HMI Integration Guidelines](https://smartdevicelink.com/en/guides/hmi/basiccommunication/onserviceupdate/).
+More documentation on the message flow for `BC.OnServiceUpdate` and its parameters can be found in the [HMI Integration Guidelines](https://smartdevicelink.com/en/docs/hmi/master/basiccommunication/onserviceupdate/).
 To better understand how the `OnServiceUpdate` notification is propagated within SDL Core, please take a look at the following Sequence Diagrams:
 
 |||
