@@ -29,9 +29,10 @@ In order to stream audio, comment out the following lines in `app/model/sdl/Abst
 It is easier to determine which gstreamer video sink will work in your environment by testing with a static file. This can be done by downloading [this file](https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/HT1425/sample_iPod.m4v.zip) and trying the following command.
 
 Common values for sink:
-- ximagesink (x visual environment sink)
-- xvimagesink (xv visual environment sink)
-- cacasink (ascii art sink)
+
+* ximagesink (x visual environment sink)
+* xvimagesink (xv visual environment sink)
+* cacasink (ascii art sink)
 
 ```
 gst-launch-1.0 filesrc location=/path/to/h264/file ! decodebin ! videoconvert ! <sink> sync=false
