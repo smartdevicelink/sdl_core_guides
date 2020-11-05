@@ -21,6 +21,7 @@ Here you will find guides on how to set up SDL Core, integrate an HMI, and how t
 - [Web Engine App Support](../developer-documentation/web-engine-app-support/)
 - [Transport Manager](../developer-documentation/transport-manager/)
 - [Security Manager](../developer-documentation/security-manager/)
+- [Logger](../developer-documentation/logger/)
 
 ### Feature Documentation
 

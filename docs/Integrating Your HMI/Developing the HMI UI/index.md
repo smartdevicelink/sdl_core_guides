@@ -149,6 +149,16 @@ The contents of the app's menu are populated by the RPC `UI.AddCommand`. Each `U
 
 There are some minor customization options available for the app menu. An HMI can choose to implement the app menu in a tile view, list view, or both. If an app has a preference for a type of menu layout, the HMI will receive a `UI.SetGlobalProperties` request from SDL Core containing this preference in the `menuLayout` field.
 
+SDL also supports nested submenus which can be created using the RPC `UI.AddSubMenu`. If this request does not contain a `parentID` parameter (or `parentID` is 0) then the submenu should be made accessible by the top level menu. If the request contains a `parentID`, the new submenu should be added as an item to the submenu who's `menuID` matches the incoming `parentID`.
+
+Menu commands that are populated by `UI.AddCommand` with a `parentID` value should be added as a menu item to the submenu who's `menuID` matches the incoming `parentID`.
+
+!!! NOTE
+If the HMI is in a driver distraction mode, the HMI should show a maximum of "N" menu items in a given menu, as defined by the value of the `menuLength` driver distraction capability.
+
+If the HMI is in a driver distraction mode, the HMI must restrict the user from accessing nested submenus beyond "N" levels deep, as defined by the value of the `subMenuDepth` driver distraction capability.
+!!!
+
 #### List Menu Example
 
 ![List Menu](./assets/list_menu.png)
@@ -156,6 +166,14 @@ There are some minor customization options available for the app menu. An HMI ca
 #### Tiles Menu Example
 
 ![Tiles Menu](./assets/tiles_menu.png)
+
+### Dynamic Menu Updating
+
+SDL enables the ability to dynamically load menu items and icons to improve system performance. In some cases an app may submit a large number of menu commands, sub menus, and icons. Processing these assets can use a large amount of system resources. To help mitigate performance issues, the HMI can choose when to request resources, at which time the app can update SDL Core with the missing menu contents.
+
+`UI.OnUpdateFile` is used to request missing menu icons, and `UI.OnUpdateSubMenu` is used to request missing sub menu contents. These notifications can be sent to SDL Core when the user is in close proximity to the menu items. For example, if the user opens a menu that contains a list of submenus, the HMI may then request those submenus are populated via `AddCommand` requests from mobile. Additionally, if the HMI implements a paginated menu, the HMI may request all icons for the menu items that are on the next page.
+
+The HMI is free to manage these resources and delete them in case of memory issues. If the commands or icons are needed in the future, the HMI can send the appropriate notifications to request the menu contents be updated repeatedly from the SDL application.
 
 ## Implementing Popups
 
@@ -166,6 +184,12 @@ There are several RPCs which are used to display a popup or an overlay to the us
 `Alert` is used to display a simple popup that can contain an image, text, and buttons.
 
 ![Alert](./assets/alert.png)
+
+### UI.SubtleAlert
+
+`SubtleAlert` is used to display a notification-style popup that can contain an image, text, and buttons.
+
+![SubtleAlert](./assets/subtle_alert.png)
 
 ### UI.PerformInteraction
 
@@ -187,7 +211,7 @@ There are several RPCs which are used to display a popup or an overlay to the us
 
 !!! NOTE
 
-It is important that the HMI sends SDL Core a `UI.OnSystemContext` notification when displaying and closing a popup. A `systemContext` value of `ALERT` is used when `UI.Alert` is active, `HMI_OBSCURED` is used for all other popups.
+It is important that the HMI sends SDL Core a `UI.OnSystemContext` notification when displaying and closing a popup. A `systemContext` value of `ALERT` is used when `UI.Alert` or `UI.SubtleAlert` is active, `HMI_OBSCURED` is used for all other popups.
 
 !!!
 
@@ -236,85 +260,103 @@ As an example, if SDL Core requests to change the layout to the `MEDIA` template
           "textFields":[
             {
               "name":"mainField1",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"mainField2",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"mainField3",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"statusBar",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"mediaClock",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"mediaTrack",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"templateTitle",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":50,
               "rows":1
             },
             {
               "name":"alertText1",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"alertText2",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"alertText3",
+              "characterSet":"UTF_8",
+              "width":500,
+              "rows":1
+            },
+            {
+              "name":"subtleAlertText1",
               "characterSet":"TYPE2SET",
               "width":500,
               "rows":1
             },
             {
-              "name":"menuName",
+              "name":"subtleAlertText2",
               "characterSet":"TYPE2SET",
+              "width":500,
+              "rows":1
+            },
+            {
+              "name":"subtleAlertSoftButtonText",
+              "characterSet":"TYPE2SET",
+              "width":50,
+              "rows":1
+            },
+            {
+              "name":"menuName",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"secondaryText",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"tertiaryText",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             },
             {
               "name":"menuTitle",
-              "characterSet":"TYPE2SET",
+              "characterSet":"UTF_8",
               "width":500,
               "rows":1
             }
@@ -398,6 +440,16 @@ As an example, if SDL Core requests to change the layout to the `MEDIA` template
               "imageResolution":{
                 "resolutionWidth":225,
                 "resolutionHeight":225
+              }
+            },
+            {
+              "name":"subtleAlertIcon",
+              "imageTypeSupported":[
+                "GRAPHIC_PNG"
+              ],
+              "imageResolution":{
+                "resolutionWidth":40,
+                "resolutionHeight":40
               }
             }
           ],
