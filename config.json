@@ -69,7 +69,21 @@
                     "name": "Transport Manager"
                 },
                 {
+                    "name": "ResumeController"
+                },
+                {
                     "name": "Security Manager"
+                },
+                {
+                    "name": "Logger"
+                }
+            ]
+        },
+        {
+            "name": "Migrating to Newer SDL Versions",
+            "navigation": [
+                {
+                    "name": "Migrating SDL Core 6.1 to 7.0"
                 }
             ]
         },

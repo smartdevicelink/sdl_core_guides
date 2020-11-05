@@ -1,0 +1,40 @@
+@startuml
+
+title ResumptionData class
+
+interface ResumptionData {
+ + Init()
+ + Persist()
+ + GetDataForLoadResumeData()
+ -----
+ + SaveApplication(app)
+ + GetSavedApplication(policy_app_id, device_id)
+ + RemoveApplicationFromSaved(policy_app_id, device_id)
+ -----
+ + UpdateHmiLevel(app, hmi_level);
+ -----
+ + IncrementIgnOffCount()
+ + DecrementIgnOffCount()
+ + IncrementGlobalIgnOnCounter()
+ + int GetGlobalIgnOnCounter()
+ + ResetGlobalIgnOnCount()
+ -----
+ + GetIgnOffTime()
+}
+
+class ResumptionDataJson {
+    LastState& last_state_;
+}
+
+ResumptionDataJson o-- LastState
+
+class ResumptionDataDB {
+    utils::dbms::SQLDatabase* db_;
+}
+
+ResumptionDataDB o-- SQLDatabase
+
+
+ResumptionDataJson -up-|> ResumptionData
+ResumptionDataDB -up-|> ResumptionData
+@enduml

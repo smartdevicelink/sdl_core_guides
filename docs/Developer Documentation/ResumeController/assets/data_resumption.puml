@@ -1,0 +1,31 @@
+@startuml
+
+title Resumption data flow
+
+RAI -> ResumeController : StartResumption 
+ResumeController -> ResumptionData : GetAppData(app_id)
+
+ResumeController -> ResumptionDataProcessor : Restore(app_data)
+
+
+ResumptionDataProcessor -> ApplicationManager : restore data
+ResumptionDataProcessor -> RPCService : SendMessageToHMI
+ResumptionDataProcessor -> AppExtension : restore data
+alt Successful resumption
+ApplicationManager -> ResumptionDataProcessor : restore result OK 
+RPCService -> ResumptionDataProcessor : on_event(restore result = OK)
+AppExtension -> ResumptionDataProcessor : on_event(restore result = OK)
+ResumptionDataProcessor -> RAI : Resumption data result = OK
+RAI -> RAI: Response To Mobile
+end
+
+alt UnSuccessful resumption
+ApplicationManager -> ResumptionDataProcessor : restore result OK 
+RPCService -> ResumptionDataProcessor : on_event(restore result = ERROR)
+AppExtension -> ResumptionDataProcessor : on_event(restore result = OK)
+ResumptionDataProcessor -> ApplicationManager : Revert resumption data
+ResumptionDataProcessor -> AppExtension : Revert resumption data
+ResumptionDataProcessor -> RAI : Resumption data result = ERROR
+RAI -> RAI: Response To Mobile : RESUMPTION_FAILED
+end
+@enduml

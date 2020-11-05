@@ -1,0 +1,94 @@
+@startuml
+title Preventing double subscriptions to HMI during resumption 
+
+actor RAI1
+actor RAI2
+actor RAI3
+actor ResumptionDataProcessor
+actor ExtensionPendingResumptionHandler
+actor HMI
+
+note over RAI1
+  Register app interface
+  request command 
+  for app 1
+end note
+
+
+note over RAI2
+  Register app interface
+  request command 
+  for app 2
+end note
+
+note over ResumptionDataProcessor
+  Responsible 
+  for sending appropriate
+  RAI response when 
+  resumption will be finished
+end note
+
+note over ExtensionPendingResumptionHandler
+  Responsible for watching if subscription
+  request was already sent to HMI,
+  and prevent sending duplicate 
+end note
+
+RAI1 -> ResumptionDataProcessor : StartResumption
+note over RAI1, ResumptionDataProcessor
+  Delegation chain cut to improve readability.  Actual delegation chain:
+  
+  RegisterAppInterfaceRequest -> ResumeCtrl -> ResumptionDataProcessor
+end note
+
+ResumptionDataProcessor -> ExtensionPendingResumptionHandler : Restore subscriptions data : **sub1**, **sub2** for app1
+note over ResumptionDataProcessor, ExtensionPendingResumptionHandler
+  Delegation chain cut to improve readability. 
+  Actual delegation chain:
+  
+  ResumptionDataProcessor->AppExtension->
+        RPCPlugin->ExtensionPendingResumptionHandler
+end note
+ExtensionPendingResumptionHandler -> HMI : REQUEST1 restore **sub1**, **sub2** 
+ExtensionPendingResumptionHandler -> ResumptionDataProcessor : Notify that resumption is waiting to REQUEST1 
+ResumptionDataProcessor -> ResumptionDataProcessor : prevent RAI response until response to REQUEST1  
+RAI2 -> ResumptionDataProcessor : StartResumption
+ResumptionDataProcessor -> ExtensionPendingResumptionHandler : Restore subscriptions data : **sub2** for app2
+ExtensionPendingResumptionHandler -> ExtensionPendingResumptionHandler : Create REQUEST2  **sub2**. \n Freeze REQUEST2 until response to REQUEST1  will not be received
+ExtensionPendingResumptionHandler -> ResumptionDataProcessor : Notify that resumption is waiting to REQUEST2 
+
+alt 3rd app with separate data
+RAI3 -> ResumptionDataProcessor : StartResumption
+ResumptionDataProcessor -> ExtensionPendingResumptionHandler : Restore subscriptions data : **sub3** for app3
+ExtensionPendingResumptionHandler -> HMI : REQUEST3 restore **sub3**
+ExtensionPendingResumptionHandler -> ResumptionDataProcessor : Notify that resumption is waiting to REQUEST3
+HMI -> ExtensionPendingResumptionHandler : REQUEST3 success
+ExtensionPendingResumptionHandler -> ResumptionDataProcessor :  REQUEST3 success
+ResumptionDataProcessor -> RAI3 : send RAI  response SUCCESS
+end
+
+alt SuccessFlow
+HMI -> ExtensionPendingResumptionHandler : REQUEST1 success
+ExtensionPendingResumptionHandler -> ResumptionDataProcessor :  REQUEST1 success
+ResumptionDataProcessor -> RAI1 : send response SUCCESS
+ExtensionPendingResumptionHandler -> ExtensionPendingResumptionHandler : check tat REQUEST1 satisfies freezed REQUEST2 data
+ExtensionPendingResumptionHandler -> ExtensionPendingResumptionHandler : generate "fake" response from HMI for REQUEST2
+ExtensionPendingResumptionHandler -> ResumptionDataProcessor : REQUEST2 success
+ResumptionDataProcessor -> RAI2 : RAI SUCCESS
+end
+
+alt RetryFlow
+HMI -> ExtensionPendingResumptionHandler : REQUEST1 error
+ExtensionPendingResumptionHandler -> ResumptionDataProcessor :  REQUEST1 error
+ResumptionDataProcessor -> RAI1 : send RAI response RESUME_FAILED
+ResumptionDataProcessor -> ResumptionDataProcessor : Start resumption revert
+ExtensionPendingResumptionHandler -> ExtensionPendingResumptionHandler : take next "freezed" request: REQUEST2
+
+ExtensionPendingResumptionHandler -> HMI :  REQUEST2 restore **sub2** 
+HMI -> ExtensionPendingResumptionHandler : REQUEST2 success
+ExtensionPendingResumptionHandler -> ResumptionDataProcessor : REQUEST2 success
+ResumptionDataProcessor -> RAI2 : RAI response SUCCESS
+end
+
+
+@enduml
