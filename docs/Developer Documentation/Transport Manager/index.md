@@ -11,26 +11,10 @@ Figure 1: Transport Overview
 
 The Transport Manager is responsible for routing commands and messages between the transport adapters and other major components in SDL Core. A Transport Manager can contain any number of Transport Adapters, each of which is responsible for handling communication via one type of transport, such as TCP or Bluetooth. The Transport Manager also contains data necessary to handle its responsibilities, such as a mapping of each device to the Transport Adapter it uses to communicate. Other components within SDL Core are also able to register a Transport Manager Listener with the manager, which will receive events from the Transport Manager. The default Transport Manager follows the singleton pattern, but this is not necessary if you would like to use a custom solution.
 
-#### Transport Manager Responsibilities
-
-This diagram describing how data is transferred within the Protocol Layer can help you understand the responsibilities of the Transport Manager.
-
-|||
-Figure 2: Protocol Layer Data Transfer
-![ProtocolLayerDataTransfer](./assets/protocol_layer_data_transfer.png)
-|||
-
-This diagram describing how data is transferred within the Transport Layer can help you understand the responsibilities of the Transport Manager.
-
-|||
-Figure 3: Transport Layer Data Transfer
-![TransportLayerDataTransfer](./assets/transport_layer_data_transfer.png)
-|||
-
 #### Transport Manager Inheritance Structure
 
 |||
-Figure 4: Transport Manager UML Diagram
+Figure 2: Transport Manager UML Diagram
 ![TM](./assets/tm.png)
 |||
 
@@ -88,7 +72,7 @@ void TcpTransportAdapter::Store() const {
 #### Transport Adapter Inheritance Structure
 
 |||
-Figure 5: Transport Adapter UML Diagram
+Figure 3: Transport Adapter UML Diagram
 ![TA](./assets/ta.png)
 |||
 

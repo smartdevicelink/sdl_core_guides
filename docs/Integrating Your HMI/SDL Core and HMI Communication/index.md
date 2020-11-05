@@ -100,7 +100,7 @@ Example Response:
 
 ## Component Readiness Requests 
 
-Once the components are registered, the HMI must notify SDL Core that it is ready to begin further communication using the [BasicCommunication.OnReady](https://smartdevicelink.com/en/docs/hmi/master/basiccommunication/onready/) notification.
+Once the components are registered, the HMI must notify SDL Core that it is ready to begin further communication using the [BasicCommunication.OnReady](https://smartdevicelink.com/en/guides/hmi/basiccommunication/onready/) notification.
 
 Upon receipt of the OnReady notification, SDL Core will begin checking the availability of the different HMI components via a chain of requests:
 
