@@ -89,6 +89,33 @@ If an app wants to clear a text field that it sent in a previous `UI.Show` reque
 
 !!!
 
+### Media Layout Elements
+
+Apps which use the `MEDIA` template have access to a few specific UI elements that are not available to non-media apps. 
+
+The following buttons can only be subscribed to by media apps and and are generally only available in the `MEDIA` template layout:
+  - `PLAY_PAUSE`
+  - `SEEKLEFT`
+  - `SEEKRIGHT`
+  - `TUNEUP`
+  - `TUNEDOWN`
+
+!!! NOTE
+Prior to RPC Spec version 5.0, the `OK` button name, which is available to all apps, was used for the purpose of play/pause toggling for media apps.
+With the release of version 5.0, the `PLAY_PAUSE` button name was introduced, allowing the HMI to have a separate `OK` and `PLAY_PAUSE` button for media apps.
+!!!
+
+Media apps have access to the media timer UI element via the `UI.SetMediaClockTimer` request. Similar to the `UI.Show` request, the HMI should keep track of the timer state for each app separately and display the appropriate state of the timer when the app is brought to the foreground. The HMI should react to the `UI.SetMediaClockTimer` depending on the value of the `updateMode` parameter:
+  - `COUNTUP`: Begin counting up from `startTime` at the specified `countRate`, stopping at `endTime` if provided
+  - `COUNTDOWN`: Begin counting down from `startTime` at the specified `countRate`, stopping at `endTime` if provided
+  - `PAUSE`: Pause the existing timer at the current state, if running
+  - `RESUME`: Resume the previously paused timer starting from its paused state, counting at the specified `countRate`
+  - `CLEAR`: Clear the existing timer state, displaying the element as it was before the media timer was first set
+
+The following graphic shows what should happen when the HMI receives a `UI.SetMediaClockTimer` request with each of these `updateMode` values:
+
+![Update from SetMediaClockTimer Request](./assets/set_media_clock_timer.gif)
+
 ## Implementing Soft Buttons
 
 A `Softbutton` received from a `UI.Show` request should be displayed when the app is displaying a template. A template can have a max of 8 `Softbuttons`. These buttons can be of type `TEXT`, `IMAGE`, or `BOTH`.
