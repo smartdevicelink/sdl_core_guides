@@ -94,6 +94,7 @@ If an app wants to clear a text field that it sent in a previous `UI.Show` reque
 Apps which use the `MEDIA` template have access to a few specific UI elements that are not available to non-media apps. 
 
 The following buttons can only be subscribed to by media apps and and are generally only available in the `MEDIA` template layout:
+
   - `PLAY_PAUSE`
   - `SEEKLEFT`
   - `SEEKRIGHT`
@@ -106,6 +107,7 @@ With the release of version 5.0, the `PLAY_PAUSE` button name was introduced, al
 !!!
 
 Media apps have access to the media timer UI element via the `UI.SetMediaClockTimer` request. Similar to the `UI.Show` request, the HMI should keep track of the timer state for each app separately and display the appropriate state of the timer when the app is brought to the foreground. The HMI should react to the `UI.SetMediaClockTimer` depending on the value of the `updateMode` parameter:
+
   - `COUNTUP`: Begin counting up from `startTime` at the specified `countRate`, stopping at `endTime` if provided
   - `COUNTDOWN`: Begin counting down from `startTime` at the specified `countRate`, stopping at `endTime` if provided
   - `PAUSE`: Pause the existing timer at the current state, if running
