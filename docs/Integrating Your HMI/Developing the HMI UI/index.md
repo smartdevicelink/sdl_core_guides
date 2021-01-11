@@ -102,7 +102,7 @@ The following buttons can only be subscribed to by media apps and and are genera
   - `TUNEDOWN`
 
 !!! NOTE
-Prior to RPC Spec version 5.0, the `OK` button name, which is available to all apps, was used for the purpose of play/pause toggling for media apps.
+Prior to RPC Spec version 5.0, the `OK` button name (which is available to all apps) was used by media apps for play/pause toggling.
 With the release of version 5.0, the `PLAY_PAUSE` button name was introduced, allowing the HMI to have a separate `OK` and `PLAY_PAUSE` button for media apps.
 !!!
 
