@@ -3,7 +3,7 @@
 Here are a few of the most common questions new developers have around the SDL Core project. 
 
 ## What OS should I use to get started?
-Currently the SDL Core repo is built for Ubuntu 18.04 as our default environment.
+Currently the SDL Core repo is built for Ubuntu 20.04 as our default environment.
 
 ## I'm getting a lot of compilation errors, how do I get past them?
 The most common errors come from dependencies issues. Ensure your system has all the required packages to compile the project. Try running the commands in the [dependencies section](../getting-started/install-and-run/#dependencies) of the Getting Started guide.
