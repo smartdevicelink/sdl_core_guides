@@ -176,6 +176,10 @@ If the user chooses to open the menu, the HMI must send a `UI.OnSystemContext` n
 
 The contents of the app's menu are populated by the RPC `UI.AddCommand`. Each `UI.AddCommand` received corresponds to an individual menu item. When the user selects a menu item via the UI, the HMI should send a `UI.OnCommand` notification. It is best practice to exit the menu after a user makes a selection from the list of commands.
 
+!!! NOTE
+Several menu items can have the same menuName. It is the app developer's responsibility to make commands clear to the user and not confusing in the case that several commands are given the same name. 
+!!!
+
 There are some minor customization options available for the app menu. An HMI can choose to implement the app menu in a tile view, list view, or both. If an app has a preference for a type of menu layout, the HMI will receive a `UI.SetGlobalProperties` request from SDL Core containing this preference in the `menuLayout` field.
 
 SDL also supports nested submenus which can be created using the RPC `UI.AddSubMenu`. If this request does not contain a `parentID` parameter (or `parentID` is 0) then the submenu should be made accessible by the top level menu. If the request contains a `parentID`, the new submenu should be added as an item to the submenu who's `menuID` matches the incoming `parentID`.
