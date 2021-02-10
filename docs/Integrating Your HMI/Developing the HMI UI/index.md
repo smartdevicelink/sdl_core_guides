@@ -558,10 +558,7 @@ As an example, if SDL Core requests to change the layout to the `MEDIA` template
           ],
           "keyboardCapabilities": {
             "maskInputCharactersSupported": true,
-            "supportedKeyboardLayouts": [
-              "QWERTY","QWERTZ","AZERTY","NUMERIC"
-            ],
-            "configurableKeys": [
+            "supportedKeyboards": [
               {
                 "keyboardLayout": "QWERTY",
                 "numConfigurableKeys": 10
