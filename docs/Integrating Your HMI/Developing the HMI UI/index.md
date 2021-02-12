@@ -230,6 +230,17 @@ There are several RPCs which are used to display a popup or an overlay to the us
 
 ![Perform Interaction](./assets/perform_interaction.png)
 
+`PerformInteraction` has multiple layout types, including an on screen keyboard. SDL currently supports the following keyboard layouts: 
+
+- QWERTY
+- QWERTZ
+- AZERTY
+- NUMERIC
+
+The on screen keyboard may be configured by the app to allow masking inputs and allow an app to configure special characters. These keyboard capabilities are optional and the HMI should communicate its capabilities to SDL Core via the `KeyboardCapabilities` Struct.
+
+![Keyboard Layouts](./assets/keyboard_layouts.gif)
+
 ### UI.Slider
 
 `Slider` is used to display a popup that allows the user to enter a value via a slider input.
@@ -548,7 +559,28 @@ As an example, if SDL Core requests to change the layout to the `MEDIA` template
           "menuLayoutsAvailable":[
             "LIST",
             "TILES"
-          ]
+          ],
+          "keyboardCapabilities": {
+            "maskInputCharactersSupported": true,
+            "supportedKeyboards": [
+              {
+                "keyboardLayout": "QWERTY",
+                "numConfigurableKeys": 10
+              },
+              {
+                "keyboardLayout": "QWERTZ",
+                "numConfigurableKeys": 10
+              },
+              {
+                "keyboardLayout": "AZERTY",
+                "numConfigurableKeys": 10
+              },
+              {
+                "keyboardLayout": "NUMERIC",
+                "numConfigurableKeys": 0
+              }
+            ]
+          }
         }
       ]
     }
