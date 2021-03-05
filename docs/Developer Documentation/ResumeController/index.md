@@ -81,7 +81,7 @@ Main public function for resumptions is `ResumptionDataProcessor::Restore` :
 ```cpp
   /**
   * @brief Running resumption data process from saved_app to application.
-  * @param application application which will be resumed
+  * @param application which will be resumed
   * @param saved_app application specific section from backup file
   */
   void Restore(app_mngr::ApplicationSharedPtr application,

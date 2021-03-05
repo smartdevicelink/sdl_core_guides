@@ -47,7 +47,7 @@ UML Refresher
 
 ## Transport Adapter
 
-Each Transport Adapter is responsible for one specific type of connection, such as TCP or Bluetooth. Similar to Transport Managers, other components in Core are able to register a Transport Adapter Listener with a Transport Adapter to later receive events from the Adapter such as `OnConnectDone`. The Transport Adapter will contain the code to connect and disconnect devices, as well as send and receive data. Depending on the transport type, a transport adapter may implement sub-components, called workers, such as a Device Scanner, a Client Connection Listener, or a Server Connection Factory. Currently, Transport Adapters are registered with the Transport Manager within the [TransportManagerDefault::Init](https://github.com/smartdevicelink/sdl_core/blob/develop/src/components/transport_manager/src/transport_manager_default.cc#105) method; you can add code here to include your custom Transport Adapter. Depending on your implementation, most of the functionality of the Transport Adapter will likely live in the workers. Two big functions that will for sure need to be implemented in a Transport Adapter are Store() and Restore() which are used to save and resume the state of the Adapter when there is an unexpected disconnect or SDL Core is restarted. In the case of the [TCP Transport Adapter](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/transport_manager/src/tcp/tcp_transport_adapter.cc), the Store() function will save a list of devices' names and addresses, along with the applications each device was running and their corresponding port number. When resuming, Restore() will reconnect to the devices saved in the last state and resumes communication with the the applications on each device.
+Each Transport Adapter is responsible for one specific type of connection, such as TCP or Bluetooth. Similar to Transport Managers, other components in Core are able to register a Transport Adapter Listener with a Transport Adapter to later receive events from the Adapter such as `OnConnectDone`. The Transport Adapter will contain the code to connect and disconnect devices, as well as send and receive data. Depending on the transport type, a transport adapter may implement sub-components, called workers, such as a Device Scanner, a Client Connection Listener, or a Server Connection Factory. Currently, Transport Adapters are registered with the Transport Manager within the [TransportManagerDefault::Init](https://github.com/smartdevicelink/sdl_core/blob/develop/src/components/transport_manager/src/transport_manager_default.cc#105) method; you can add code here to include your custom Transport Adapter. Depending on your implementation, most of the functionality of the Transport Adapter will likely live in the workers. Two big functions that will for sure need to be implemented in a Transport Adapter are Store() and Restore() which are used to save and resume the state of the Adapter when there is an unexpected disconnect or SDL Core is restarted. In the case of the [TCP Transport Adapter](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/transport_manager/src/tcp/tcp_transport_adapter.cc), the Store() function will save a list of devices' names and addresses, along with the applications each device was running and their corresponding port number. When resuming, Restore() will reconnect to the devices saved in the last state and resumes communication with the applications on each device.
 
 ```
 // tcp_transport_adapter.cc
@@ -323,7 +323,7 @@ Connection Close Command
 
 ### Core as the Server
 
-Creating a connection with Core acting as the server means that the connection is initiated by a device trying to connect to Core. In the case of the TCP Transport Adapter, this all begins with a device connecting to Core on port 12345. The TCP Connection Listener's loop waits for a new connection to it's socket before adding that device to the device list (if it doesn't already exist) and adding the new application to the app list. Once the application has registered and the HMI has received the updated app list, selecting the TCP application in the HMI shall prompt it to activate.
+Creating a connection with Core acting as the server means that the connection is initiated by a device trying to connect to Core. In the case of the TCP Transport Adapter, this all begins with a device connecting to Core on port 12345. The TCP Connection Listener's loop waits for a new connection to its socket before adding that device to the device list (if it doesn't already exist) and adding the new application to the app list. Once the application has registered and the HMI has received the updated app list, selecting the TCP application in the HMI shall prompt it to activate.
 
 ### Core as the Client
 
@@ -337,7 +337,7 @@ Sending data to a device is initiated by the `SendMessageToMobile` method on the
 
 ### Receiving
 
-The code to receive data will vary depending on the method of transport; in the case of the TCP Transport Adapter, the Socket Connection thread loops checking if data bas been sent to it's socket before calling `recv` and converting the read buffer to a raw message. When a Transport Adapter finishes receiving incoming message(s) it will emit the event OnReceivedDone. This event will be propagated to the Transport Manager Listeners including the Protocol Handler who will add the message(s) to the _messages from mobile_ queue which is processed by another thread within the Protocol Handler.
+The code to receive data will vary depending on the method of transport; in the case of the TCP Transport Adapter, the Socket Connection thread loops checking if data bas been sent to its socket before calling `recv` and converting the read buffer to a raw message. When a Transport Adapter finishes receiving incoming message(s) it will emit the event OnReceivedDone. This event will be propagated to the Transport Manager Listeners including the Protocol Handler who will add the message(s) to the _messages from mobile_ queue which is processed by another thread within the Protocol Handler.
 
 ## Events
 
@@ -371,7 +371,7 @@ Indicates that disconnecting from an application has completed and prompts the T
 
 **OnSendDone**
 
-Indicates that a Transport Adapter has finished sending the messages in it's queue. Upon receipt of this event the Transport Manager will check if the connection is slated for shutdown and disconnect it if so.
+Indicates that a Transport Adapter has finished sending the messages in its queue. Upon receipt of this event the Transport Manager will check if the connection is slated for shutdown and disconnect it if so.
 
 **OnSendFail**
 
