@@ -49,7 +49,7 @@ In order to create a new Schema (a new object of class `ns_smart_device_link::ns
 
 Schema Items are represented as class hierarchy. The base class for all Schema Items is the `ns_smart_device_link::ns_smart_objects::ISchemaItem` class. This base class defines a generic validation interface for all Schema Items.
 
-- To define special elements which always fail or suceed the validation step, there are two special Schema Items: `ns_smart_device_link::ns_smart_objects::CAlwaysTrueSchemaItem` or `ns_smart_device_link::ns_smart_objects::CAlwaysFalseSchemaItem`.
+- To define special elements which always fail or succeed the validation step, there are two special Schema Items: `ns_smart_device_link::ns_smart_objects::CAlwaysTrueSchemaItem` or `ns_smart_device_link::ns_smart_objects::CAlwaysFalseSchemaItem`.
 
 - `ns_smart_device_link::ns_smart_objects::CBoolSchemaItem` is used for boolean values and has no parameters, meaning that it only verifies that the Smart Object contains an actual boolean value.
 
