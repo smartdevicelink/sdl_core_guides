@@ -106,7 +106,7 @@ Prior to RPC Spec version 5.0, the `OK` button name (which is available to all a
 With the release of version 5.0, the `PLAY_PAUSE` button name was introduced, allowing the HMI to have a separate `OK` and `PLAY_PAUSE` button for media apps.
 !!!
 
-Media apps have access to the media timer UI element via the `UI.SetMediaClockTimer` request. Similar to the `UI.Show` request, the HMI should keep track of the timer state for each app separately and display the appropriate state of the timer when the app is brought to the foreground. The HMI should react to the `UI.SetMediaClockTimer` depending on the value of the `updateMode` parameter:
+Media apps have access to the media timer UI element via the `UI.SetMediaClockTimer` request. Similar to the `UI.Show` request, the HMI should keep track of the timer state for each app separately and display the appropriate state of the timer when the app is brought to the foreground. The HMI should react to the `UI.SetMediaClockTimer` request depending on the value of the `updateMode` parameter:
 
   - `COUNTUP`: Begin counting up from `startTime` at the specified `countRate`, stopping at `endTime` if provided
   - `COUNTDOWN`: Begin counting down from `startTime` at the specified `countRate`, stopping at `endTime` if provided
