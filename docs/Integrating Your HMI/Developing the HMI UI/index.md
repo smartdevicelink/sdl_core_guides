@@ -89,6 +89,35 @@ If an app wants to clear a text field that it sent in a previous `UI.Show` reque
 
 !!!
 
+### Media Layout Elements
+
+Apps which use the `MEDIA` template have access to a few specific UI elements that are not available to non-media apps. 
+
+The following buttons can only be subscribed to by media apps and and are generally only available in the `MEDIA` template layout:
+
+  - `PLAY_PAUSE`
+  - `SEEKLEFT`
+  - `SEEKRIGHT`
+  - `TUNEUP`
+  - `TUNEDOWN`
+
+!!! NOTE
+Prior to RPC Spec version 5.0, the `OK` button name (which is available to all apps) was used by media apps for play/pause toggling.
+With the release of version 5.0, the `PLAY_PAUSE` button name was introduced, allowing the HMI to have a separate `OK` and `PLAY_PAUSE` button for media apps.
+!!!
+
+Media apps have access to the media timer UI element via the `UI.SetMediaClockTimer` request. Similar to the `UI.Show` request, the HMI should keep track of the timer state for each app separately and display the appropriate state of the timer when the app is brought to the foreground. The HMI should react to the `UI.SetMediaClockTimer` depending on the value of the `updateMode` parameter:
+
+  - `COUNTUP`: Begin counting up from `startTime` at the specified `countRate`, stopping at `endTime` if provided
+  - `COUNTDOWN`: Begin counting down from `startTime` at the specified `countRate`, stopping at `endTime` if provided
+  - `PAUSE`: Pause the existing timer at the current state, if running
+  - `RESUME`: Resume the previously paused timer starting from its paused state, counting at the specified `countRate`
+  - `CLEAR`: Clear the existing timer state, displaying the element as it was before the media timer was first set
+
+The following graphic shows what should happen when the HMI receives a `UI.SetMediaClockTimer` request with each of these `updateMode` values:
+
+![Update from SetMediaClockTimer Request](./assets/set_media_clock_timer.gif)
+
 ## Implementing Soft Buttons
 
 A `Softbutton` received from a `UI.Show` request should be displayed when the app is displaying a template. A template can have a max of 8 `Softbuttons`. These buttons can be of type `TEXT`, `IMAGE`, or `BOTH`.
@@ -147,6 +176,10 @@ If the user chooses to open the menu, the HMI must send a `UI.OnSystemContext` n
 
 The contents of the app's menu are populated by the RPC `UI.AddCommand`. Each `UI.AddCommand` received corresponds to an individual menu item. When the user selects a menu item via the UI, the HMI should send a `UI.OnCommand` notification. It is best practice to exit the menu after a user makes a selection from the list of commands.
 
+!!! NOTE
+Several menu items can have the same menuName. It is the app developer's responsibility to make commands clear to the user and not confusing in the case that several commands are given the same name. 
+!!!
+
 There are some minor customization options available for the app menu. An HMI can choose to implement the app menu in a tile view, list view, or both. If an app has a preference for a type of menu layout, the HMI will receive a `UI.SetGlobalProperties` request from SDL Core containing this preference in the `menuLayout` field.
 
 SDL also supports nested submenus which can be created using the RPC `UI.AddSubMenu`. If this request does not contain a `parentID` parameter (or `parentID` is 0) then the submenu should be made accessible by the top level menu. If the request contains a `parentID`, the new submenu should be added as an item to the submenu who's `menuID` matches the incoming `parentID`.
@@ -196,6 +229,17 @@ There are several RPCs which are used to display a popup or an overlay to the us
 `PerformInteraction` is used to display a popup with contents which are displayed in a similar way to the app menu.
 
 ![Perform Interaction](./assets/perform_interaction.png)
+
+`PerformInteraction` has multiple layout types, including an on screen keyboard. SDL currently supports the following keyboard layouts: 
+
+- QWERTY
+- QWERTZ
+- AZERTY
+- NUMERIC
+
+The on screen keyboard may be configured by the app to allow masking inputs and allow an app to configure special characters. These keyboard capabilities are optional and the HMI should communicate its capabilities to SDL Core via the `KeyboardCapabilities` Struct.
+
+![Keyboard Layouts](./assets/keyboard_layouts.gif)
 
 ### UI.Slider
 
@@ -515,7 +559,28 @@ As an example, if SDL Core requests to change the layout to the `MEDIA` template
           "menuLayoutsAvailable":[
             "LIST",
             "TILES"
-          ]
+          ],
+          "keyboardCapabilities": {
+            "maskInputCharactersSupported": true,
+            "supportedKeyboards": [
+              {
+                "keyboardLayout": "QWERTY",
+                "numConfigurableKeys": 10
+              },
+              {
+                "keyboardLayout": "QWERTZ",
+                "numConfigurableKeys": 10
+              },
+              {
+                "keyboardLayout": "AZERTY",
+                "numConfigurableKeys": 10
+              },
+              {
+                "keyboardLayout": "NUMERIC",
+                "numConfigurableKeys": 0
+              }
+            ]
+          }
         }
       ]
     }
