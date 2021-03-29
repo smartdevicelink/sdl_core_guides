@@ -337,7 +337,7 @@ Sending data to a device is initiated by the `SendMessageToMobile` method on the
 
 ### Receiving
 
-The code to receive data will vary depending on the method of transport; in the case of the TCP Transport Adapter, the Socket Connection thread loops checking if data bas been sent to its socket before calling `recv` and converting the read buffer to a raw message. When a Transport Adapter finishes receiving incoming message(s) it will emit the event OnReceivedDone. This event will be propagated to the Transport Manager Listeners including the Protocol Handler who will add the message(s) to the _messages from mobile_ queue which is processed by another thread within the Protocol Handler.
+The code to receive data will vary depending on the method of transport; in the case of the TCP Transport Adapter, the Socket Connection thread loops checking if data has been sent to its socket before calling `recv` and converting the read buffer to a raw message. When a Transport Adapter finishes receiving incoming message(s) it will emit the event OnReceivedDone. This event will be propagated to the Transport Manager Listeners including the Protocol Handler who will add the message(s) to the _messages from mobile_ queue which is processed by another thread within the Protocol Handler.
 
 ## Events
 
