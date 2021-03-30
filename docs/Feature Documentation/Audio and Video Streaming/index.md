@@ -6,23 +6,9 @@ Before continuing, follow the [Install and Run Guide](../../getting-started/inst
 
 ### HMI Setup
 
-The Generic HMI does not currently support streaming.
+The [Generic HMI](https://github.com/smartdevicelink/generic_hmi) and [SDL HMI](https://github.com/smartdevicelink/sdl_hmi) both support streaming audio and some video formats in the browser using ffmpeg to transcode the video to VP8 WEBM. Instructions to install the required dependencies can be found in the HMI README, and you will need to run the backend server component (`./deploy_server.sh`) which handles the transcoding. Once you start a video stream it will take a few seconds for the transcoding session to begin and your video stream should appear in the browser within about 10 seconds.
 
-If using the [SDL HMI](https://github.com/smartdevicelink/sdl_hmi), you may need to make the following modifications when using socket streaming.
-
-#### VIDEO
-In order to stream video, comment out the following line in `app/model/sdl/Abstract/Model.js`:
-```
-//  SDL.SDLModel.playVideo(appID);
-```
-
-#### AUDIO
-In order to stream audio, comment out the following lines in `app/model/sdl/Abstract/Model.js`:
-```
-//  SDL.StreamAudio.play(
-//      SDL.SDLController.getApplicationModel(appID).navigationAudioStream
-//  );
-```
+To stream without ffmpeg transcoding or to stream a format that ffmpeg does not support you can forgo starting the backend server and use gstreamer to consume your video stream.
 
 ### GSTREAMER Setup
 
