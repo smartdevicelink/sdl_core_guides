@@ -103,11 +103,13 @@ gst-launch-1.0 souphttpsrc location=http://127.0.0.1:5080 ! audio/x-raw,format=S
 This section describes how Core manages the streaming states of mobile applications. Only one application may stream video at a time, but audio applications may stream while in the LIMITED state with other applications.
 
 When an app is moved to HMI level `FULL`:
+
 * All non-streaming applications go to HMI level `BACKGROUND`
 * All apps with the same App HMI Type go to `BACKGROUND`
 * Streaming apps with a different App HMI Type that were in `FULL` go to `LIMITED`
 
 When an app is moved to HMI level `LIMITED`:
+
 * All non-streaming applications keep their HMI level
 * All applications with a different App HMI Type keep their HMI level
 * Applications with the same App HMI Type go to `BACKGROUND`
