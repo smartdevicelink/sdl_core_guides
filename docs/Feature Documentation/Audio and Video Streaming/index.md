@@ -6,7 +6,7 @@ Before continuing, follow the [Install and Run Guide](../../getting-started/inst
 
 ### HMI Setup
 
-The [Generic HMI](https://github.com/smartdevicelink/generic_hmi) and [SDL HMI](https://github.com/smartdevicelink/sdl_hmi) both support streaming audio and some video formats in the browser using ffmpeg to transcode the video to VP8 WEBM. Instructions to install the required dependencies can be found in the HMI README
+The [Generic HMI](https://github.com/smartdevicelink/generic_hmi) and [SDL HMI](https://github.com/smartdevicelink/sdl_hmi) both support streaming audio and some video formats in the browser using ffmpeg to transcode the video to VP8 WEBM. Instructions to install the required dependencies can be found in the HMI README:
 
 - [SDL HMI Dependencies](https://github.com/smartdevicelink/sdl_hmi/tree/master#dependencies)
 - [Generic HMI Dependencies](https://github.com/smartdevicelink/generic_hmi/tree/master#dependencies)
