@@ -6,7 +6,7 @@ Before continuing, follow the [Install and Run Guide](../../getting-started/inst
 
 ### HMI Setup
 
-The [Generic HMI](https://github.com/smartdevicelink/generic_hmi) and [SDL HMI](https://github.com/smartdevicelink/sdl_hmi) both support streaming audio and some video formats in the browser using ffmpeg to transcode the video to VP8 WEBM. Instructions to install the required dependencies can be found in the HMI README:
+The [Generic HMI](https://github.com/smartdevicelink/generic_hmi) and [SDL HMI](https://github.com/smartdevicelink/sdl_hmi) both support streaming audio and some video formats in the browser using ffmpeg to transcode the video to VP8 WEBM or audio to WAV. Instructions to install the required dependencies can be found in the HMI README:
 
 - [SDL HMI Dependencies](https://github.com/smartdevicelink/sdl_hmi/tree/master#dependencies)
 - [Generic HMI Dependencies](https://github.com/smartdevicelink/generic_hmi/tree/master#dependencies)
@@ -14,10 +14,10 @@ The [Generic HMI](https://github.com/smartdevicelink/generic_hmi) and [SDL HMI](
 In the HMI directory, you will need to run the backend server component (`./deploy_server.sh`) which handles the transcoding. 
 
 !!! NOTE
-Once you start a video stream it will take a few seconds for the transcoding session to begin and your video stream should appear in the browser within about 10 seconds.
+Once you start a video stream it will take a few seconds for the transcoding session to begin. Your video stream should appear in the browser within about 10 seconds.
 !!!
 
-To stream without ffmpeg transcoding or to stream a format that ffmpeg does not support you can forgo starting the backend server and use gstreamer to consume your video stream.
+To stream without ffmpeg transcoding, or to stream a format that ffmpeg does not support, you can forgo starting the backend server and use gstreamer to consume your audio/video stream.
 
 ### GSTREAMER Setup
 
