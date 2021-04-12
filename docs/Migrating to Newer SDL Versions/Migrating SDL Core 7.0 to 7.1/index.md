@@ -16,7 +16,7 @@ The default supported version was changed to Ubuntu 20. Recommended GCC Version 
 ### Deprecated UI params
 
 - `TextFieldName` element `mediaClock` has been marked as deprecated.
-- `Show` RPC param `mediaClock`has been marked as deprecated.
+- `Show` RPC param `mediaClock` has been marked as deprecated.
 - `RegisterAppInterface` parameters `vehicleType` and `systemSoftwareVersion` has been marked as deprecated. Please make updates to use the parameters from the `StartService ACK` protocol message.
 
 ### Deprecated Functions
@@ -41,24 +41,24 @@ The default supported version was changed to Ubuntu 20. Recommended GCC Version 
 
 - `BodyInformation` was expanded to replace `driverDoorAjar`, `passengerDoorAjar`, `rearLeftDoorAjar` and `rearRightDoorAjar` parameters.
 - New vehicle data type: `climateData` to replace `externalTemperature` parameter.
-- New vehicle data type: `SeatOccupancy`.
+- New vehicle data type: `seatOccupancy`.
 
 It is not required to implement all vehicle data types. If a type is unsupported by your headunit, please be sure to respond to SDL Core with result `UNSUPPORTED_RESOURCE` if an unsupported request has been made.
 
 ### HMI UI Additions
 
-#### Custom Plkayback rates for SetMediaClockTimer
+#### Custom Playback rates for SetMediaClockTimer
 
-A media app now has the ability to set the media playback timer and bar to advance at a custom rate (like 125% speed).
+A media app now has the ability when setting the media playback timer and progress bar to specify a custom playback rate (ex. 125% speed).
 
-Added new parameter `countRate` to the `SetMediaClockTimer RPC`
+Added new parameter `countRate` to the `SetMediaClockTimer` RPC
 
 ```xml
 <function name="SetMediaClockTimer" functionID="SetMediaClockTimerID" messagetype="request" since="1.0">
     <description>Sets the initial media clock value and automatic update method.</description>
         
     <!-- New Parameter -->
-    <param name="countRate" type="Float" minValue="0.1" maxValue="100.0" defvalue="1.0" mandatory="false">
+    <param name="countRate" type="Float" minvalue="0.1" maxvalue="100.0" defvalue="1.0" mandatory="false">
         <description>
         The value of this parameter is the amount that the media clock timer will advance per 1.0 seconds of real time.
         
@@ -74,7 +74,7 @@ Added new parameter `countRate` to the `SetMediaClockTimer RPC`
 
 A media app now has the ability to change the indicators for the `SEEKLEFT` and `SEEKRIGHT` buttons to show either time skip buttons or track skip buttons.
 
-- Added new parameters `forwardSeekIndicator` and `backSeekIndicator` to the `SetMediaClockTimer RPC`.
+- Added new parameters `forwardSeekIndicator` and `backSeekIndicator` to the `SetMediaClockTimer` RPC.
 
 ```xml
 <enum name="SeekIndicatorType">
@@ -88,7 +88,7 @@ A media app now has the ability to change the indicators for the `SEEKLEFT` and 
     </description> 
 
     <param name="type" type="SeekIndicatorType" mandatory="true" />
-    <param name="seekTime" type="Int" minValue="1" maxValue="99" mandatory="false">
+    <param name="seekTime" type="Integer" minvalue="1" maxvalue="99" mandatory="false">
         <description>If the type is TIME, this number of seconds may be present alongside the skip indicator. It will indicate the number of seconds that the currently playing media will skip forward or backward.</description>
     </param>
 </struct>
@@ -151,13 +151,13 @@ AddCommand:
 
 #### Broadening choice uniqueness
 
-Prior to SDL Core 7.1, choice set choices and menu commands were required to have unique primary text. SDL Core 7.1 removes this restirction 
+Prior to SDL Core 7.1, choice set choices and menu commands were required to have unique primary text. SDL Core 7.1 removes this restriction.
 
 #### Keyboard Enhancements
 
 SDL Core 7.1 adds a new `NUMERIC` keyboard layout and new enhancements to allow apps to mask entered characters and change special characters shown on the keyboard layout.
 
-### OEM exlcusive apps support
+### OEM exclusive apps support
 
 SDL Core 7.1 adds the ability to share vehicle type information before sending the Register App interface request. This will enable SDL adopters to provide exclusive apps to their users depending on vehicle type
 
@@ -167,17 +167,18 @@ The vehicle type information parameters have been added to the BSON payload of t
 |--------|----|-----------|
 |make|String|Vehicle make|
 |model|String|Vehicle model|
-|model year|String|Vehicle model year|
+|modelYear|String|Vehicle model year|
 |trim|String|Vehicle trim|
 |systemSoftwareVersion|String|Vehicle system software version|
 |systemHardwareVersion|String|Vehicle system hardware version|
 
-The vehicle type information parameters (`vehicleType` and `systemSoftwareVersion`) in `RegisterAppInterface` have been deprecated
+The vehicle type information parameters (`vehicleType` and `systemSoftwareVersion`) in `RegisterAppInterface` have been deprecated in favor of these additions
+
 ### Video streaming capability updates
 
-#### Preffered FPS
+#### Preferred FPS
 
-- Added new parameter `prefferedFPS` to the `VideoStreamingCapability` struct.
+- Added new parameter `preferredFPS` to the `VideoStreamingCapability` struct.
 
 ```xml
 <struct name="VideoStreamingCapability" since="4.5">
@@ -192,9 +193,9 @@ The vehicle type information parameters (`vehicleType` and `systemSoftwareVersio
 
 #### Updating video streaming capabilites during ignition cycle
 
-SDL Core 7.1 adds the ability to update video streaming capabilities during the ignition cycle. This will allow uses cases which require dynamic resolution switching (Picture-in-Picture, preview, split screen, etc.)
+SDL Core 7.1 adds the ability for an application to update its video streaming capabilities during the ignition cycle. This will allow SDL to handle uses cases which require dynamic resolution switching (Picture-in-Picture, preview, split screen, etc.)
 
-- Added new parameter `additionalVideoStreamingCapabilites` to the `VideoStreamingCapabilitity` struct.
+- Added new parameter `additionalVideoStreamingCapabilities` to the `VideoStreamingCapability` struct.
 
 ```xml
 <struct name="VideoStreamingCapability" since="4.5">
@@ -204,7 +205,7 @@ SDL Core 7.1 adds the ability to update video streaming capabilities during the 
 </struct>
 ```
 
-- Added new RPC notification `OnAppCapabilityUpdated` and related structs `AppCapability` and `AppCapabilityType`.
+- Added new RPC notification `OnAppCapabilityUpdated` which can be sent by an app, as well as related structs `AppCapability` and `AppCapabilityType`.
 
 ```xml
 <function name="OnAppCapabilityUpdated" functionID="OnAppCapabilityUpdatedID" messagetype="notification" since="7.1">
@@ -228,4 +229,3 @@ SDL Core 7.1 adds the ability to update video streaming capabilities during the 
     <element name="VIDEO_STREAMING"/>
 </enum>
 ```
-
