@@ -403,6 +403,30 @@ As an example, if SDL Core requests to change the layout to the `MEDIA` template
               "characterSet":"UTF_8",
               "width":500,
               "rows":1
+            },
+            {
+              "name": "menuCommandSecondaryText",
+              "characterSet": "UTF_8",
+              "width": 500,
+              "rows": 1
+            },
+            {
+              "name": "menuCommandTertiaryText",
+              "characterSet": "UTF_8",
+              "width": 500,
+              "rows": 1
+            },
+            {
+              "name": "menuSubMenuSecondaryText",
+              "characterSet": "UTF_8",
+              "width": 500,
+              "rows": 1
+            },
+            {
+              "name": "menuSubMenuTertiaryText",
+              "characterSet": "UTF_8",
+              "width": 500,
+              "rows": 1
             }
           ],
           "imageFields":[
@@ -494,6 +518,30 @@ As an example, if SDL Core requests to change the layout to the `MEDIA` template
               "imageResolution":{
                 "resolutionWidth":40,
                 "resolutionHeight":40
+              }
+            }
+            {
+              "name": "menuCommandSecondaryImage",
+              "imageTypeSupported": [
+                "GRAPHIC_BMP",
+                "GRAPHIC_JPEG",
+                "GRAPHIC_PNG"
+              ],
+              "imageResolution": {
+                "resolutionWidth": 65,
+                "resolutionHeight": 65
+              }
+            },
+            {
+              "name": "menuSubMenuSecondaryImage",
+              "imageTypeSupported": [
+                "GRAPHIC_BMP",
+                "GRAPHIC_JPEG",
+                "GRAPHIC_PNG"
+              ],
+              "imageResolution": {
+                "resolutionWidth": 65,
+                "resolutionHeight": 65
               }
             }
           ],
