@@ -17,8 +17,8 @@ Here you will find guides on how to set up SDL Core, integrate an HMI, and how t
 - [Integrating Vehicle Data](../integrating-your-hmi/vehicle-data/)
 
 ### Migrating to Newer SDL Versions
-- [Migrating SDL Core 6.1 to 7.0](../migrating-to-newer-sdl-versions/migrating-sdl-core-6.1-to-7.0/)
-- [Migrating SDL Core 7.0 to 7.0](../migrating-to-newer-sdl-versions/migrating-sdl-core-7.0-to-7.1/)
+- [Migrating SDL Core 6.1 to 7.0](../migrating-to-newer-sdl-versions/migrating-sdl-core-61-to-70/)
+- [Migrating SDL Core 7.0 to 7.0](../migrating-to-newer-sdl-versions/migrating-sdl-core-70-to-71/)
 
 ### Developer Documentation
 
