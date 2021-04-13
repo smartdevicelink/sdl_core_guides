@@ -106,7 +106,7 @@ Prior to RPC Spec version 5.0, the `OK` button name (which is available to all a
 With the release of version 5.0, the `PLAY_PAUSE` button name was introduced, allowing the HMI to have a separate `OK` and `PLAY_PAUSE` button for media apps.
 !!!
 
-Media apps have access to the media timer UI element via the `UI.SetMediaClockTimer` request. Similar to the `UI.Show` request, the HMI should keep track of the timer state for each app separately and display the appropriate state of the timer when the app is brought to the foreground. The HMI should react to the `UI.SetMediaClockTimer` depending on the value of the `updateMode` parameter:
+Media apps have access to the media timer UI element via the `UI.SetMediaClockTimer` request. Similar to the `UI.Show` request, the HMI should keep track of the timer state for each app separately and display the appropriate state of the timer when the app is brought to the foreground. The HMI should react to the `UI.SetMediaClockTimer` request depending on the value of the `updateMode` parameter:
 
   - `COUNTUP`: Begin counting up from `startTime` at the specified `countRate`, stopping at `endTime` if provided
   - `COUNTDOWN`: Begin counting down from `startTime` at the specified `countRate`, stopping at `endTime` if provided
@@ -162,7 +162,7 @@ An SDL app should only request to view templates that are supported in the HMI C
 
 A reference list for all supported template views can be found [here](https://smartdevicelink.com/en/guides/sdl-overview-guides/user-interface/supported-templates/). This list shows screenshots of the 15 supported template views and how their text, graphic, and soft button components are arranged.
 
-The defined strings for each template can be found in the [PredefinedLayout enum](https://smartdevicelink.com/en/guides/sdl-overview-guides/rpc-spec/#predefinedlayout) in the Mobile API RPC Specification. 
+The defined strings for each template can be found in the [PredefinedLayout enum](https://smartdevicelink.com/en/guides/sdl-overview-guides/rpc-spec/#predefinedlayout) in the Mobile API RPC Specification.
 
 ## Creating the App Menu
 
@@ -403,6 +403,30 @@ As an example, if SDL Core requests to change the layout to the `MEDIA` template
               "characterSet":"UTF_8",
               "width":500,
               "rows":1
+            },
+            {
+              "name": "menuCommandSecondaryText",
+              "characterSet": "UTF_8",
+              "width": 500,
+              "rows": 1
+            },
+            {
+              "name": "menuCommandTertiaryText",
+              "characterSet": "UTF_8",
+              "width": 500,
+              "rows": 1
+            },
+            {
+              "name": "menuSubMenuSecondaryText",
+              "characterSet": "UTF_8",
+              "width": 500,
+              "rows": 1
+            },
+            {
+              "name": "menuSubMenuTertiaryText",
+              "characterSet": "UTF_8",
+              "width": 500,
+              "rows": 1
             }
           ],
           "imageFields":[
@@ -494,6 +518,30 @@ As an example, if SDL Core requests to change the layout to the `MEDIA` template
               "imageResolution":{
                 "resolutionWidth":40,
                 "resolutionHeight":40
+              }
+            }
+            {
+              "name": "menuCommandSecondaryImage",
+              "imageTypeSupported": [
+                "GRAPHIC_BMP",
+                "GRAPHIC_JPEG",
+                "GRAPHIC_PNG"
+              ],
+              "imageResolution": {
+                "resolutionWidth": 65,
+                "resolutionHeight": 65
+              }
+            },
+            {
+              "name": "menuSubMenuSecondaryImage",
+              "imageTypeSupported": [
+                "GRAPHIC_BMP",
+                "GRAPHIC_JPEG",
+                "GRAPHIC_PNG"
+              ],
+              "imageResolution": {
+                "resolutionWidth": 65,
+                "resolutionHeight": 65
               }
             }
           ],
