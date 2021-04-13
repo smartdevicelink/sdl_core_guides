@@ -52,7 +52,7 @@ It is not required to implement all vehicle data types. If a type is unsupported
 
 #### Custom Playback rates for SetMediaClockTimer
 
-A media app now has the ability when setting the media playback timer and progress bar to specify a custom playback rate (ex. 125% speed).
+A media app now has the ability to specify a custom playback rate (ex. 125% speed) when setting the media playback timer and progress bar.
 
 Added new parameter `countRate` to the `SetMediaClockTimer` RPC
 
