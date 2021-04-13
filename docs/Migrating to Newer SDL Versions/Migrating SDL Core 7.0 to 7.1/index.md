@@ -46,7 +46,7 @@ Along with support for OpenSSL 1.1, a configurable `SecurityLevel` field was add
 - New vehicle data type: `climateData` to replace `externalTemperature` parameter.
 - New vehicle data type: `seatOccupancy`.
 
-It is not required to implement all vehicle data types. If a type is unsupported by your headunit, please be sure to respond to SDL Core with result `UNSUPPORTED_RESOURCE` if an unsupported request has been made.
+It is not required to implement all vehicle data types. If a type is unsupported by your headunit, please be sure to respond to SDL Core with the result `UNSUPPORTED_RESOURCE` if an unsupported request has been made.
 
 ### HMI UI Additions
 
@@ -194,9 +194,9 @@ The vehicle type information parameters (`vehicleType` and `systemSoftwareVersio
 </struct>
 ```
 
-#### Updating video streaming capabilites during ignition cycle
+#### Updating video streaming capabilities during ignition cycle
 
-SDL Core 7.1 adds the ability for an application to update its video streaming capabilities during the ignition cycle. This will allow SDL to handle uses cases which require dynamic resolution switching (Picture-in-Picture, preview, split screen, etc.)
+SDL Core 7.1 adds the ability for an application to update its video streaming capabilities during the ignition cycle. This will allow SDL to handle uses cases that require dynamic resolution switching (Picture-in-Picture, preview, split-screen, etc.)
 
 - Added new parameter `additionalVideoStreamingCapabilities` to the `VideoStreamingCapability` struct.
 
