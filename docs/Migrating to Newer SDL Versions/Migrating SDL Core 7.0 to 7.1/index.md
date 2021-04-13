@@ -6,6 +6,9 @@ The 7.1 release had a number of changes and additions to the HMI API that will r
 
 The default supported version was changed to Ubuntu 20. Recommended GCC Version 9.3.x.
 
+Support was added for OpenSSL 1.1, we recommend updating your version of the library accordingly.
+Along with support for OpenSSL 1.1, a configurable `SecurityLevel` field was added to the INI file. This value can be customized depending on the security requirements of your system (see the [OpenSSL documentation](https://www.openssl.org/docs/man1.1.0/man3/SSL_CTX_get_security_level.html) for a description of each security level)
+
 ## Newly Deprecated
 
 ### Deprecated SyncPData RPCs
