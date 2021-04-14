@@ -152,7 +152,7 @@ The light module does not contain any sub-modules but instead has an array of `L
 
 ### HMI Settings
 
-The HMI settings module does not contain any sub-modules and is represented by an `HMISettingsControlCapabilities` object. This module exposes the the ability to set the desired temperature and distance units as well as toggle the display mode of the HMI between night and day.
+The HMI settings module does not contain any sub-modules and is represented by an `HMISettingsControlCapabilities` object. This module exposes the ability to set the desired temperature and distance units as well as toggle the display mode of the HMI between night and day.
 
 ### Button
 

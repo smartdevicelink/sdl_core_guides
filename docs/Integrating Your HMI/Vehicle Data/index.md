@@ -127,6 +127,7 @@ Below is a list of all of the vehicle data items which are available via SDL as 
 |accPedalPosition|Float|Accelerator pedal position (as a number from 0 to 100 representing percentage depressed)|
 |beltStatus|[Common.BeltStatus](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#beltstatus)|The status of each of the seat belts in the vehicle|
 |bodyInformation|[Common.BodyInformation](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#bodyinformation)|The body information for the vehicle, including information such as ignition status and door status|
+|climateData|[Common.ClimateData](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#climatedata)|Describes the climate status within the vehicle.|
 |cloudAppVehicleID|String|Parameter used by cloud apps to identify a head unit|
 |deviceStatus|[Common.DeviceStatus](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#devicestatus)|The device status, including information such as signal and battery strength|
 |driverBraking|[Common.VehicleDataEventStatus](https://smartdevicelink.com/en/docs/hmi/master/common/enums/#vehicledataeventstatus)|The status of the brake pedal|
@@ -134,20 +135,25 @@ Below is a list of all of the vehicle data items which are available via SDL as 
 |engineOilLife|Float|The estimated percentage of remaining oil life of the engine|
 |engineTorque|Float|Torque value for the engine (in N*m) on non-diesel variants|
 |externalTemperature|Float|The external temperature in degrees celsius|
-|fuelLevel|Float|The fuel level in the tank (as a percentage value)|
 |fuelLevel_State|[Common.ComponentVolumeStatus](https://smartdevicelink.com/en/docs/hmi/master/common/enums/#componentvolumestatus)|The status value corresponding to the general fuel level in the tank|
-|fuelRange|[Common.FuelRange](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#fuelrange)|The estimate range in KM the vehicle can travel based on fuel level and consumption. Contains information on all fuel sources available to the vehicle (eg. GASOLINE and BATTERY for hybrid vehicles).|
+|fuelLevel|Float|The fuel level in the tank (as a percentage value)|
+|fuelRange|[Common.FuelRange](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#fuelrange) Array|The estimate range in KM the vehicle can travel based on fuel level and consumption. Contains information on all fuel sources available to the vehicle (eg. GASOLINE and BATTERY for hybrid vehicles).|
+|gearStatus|[Common.GearStatus](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#gearstatus)|The current status of the gear shifter.|
 |gps|[Common.GPSData](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#gpsdata)|Location data from the onboard GPS in the vehicle|
+|handsOffSteering|Boolean|Indicates whether the driver's hands are off the steering wheel.|
 |headLampStatus|[Common.HeadLampStatus](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#headlampstatus)|The current status of each of the head lamps|
 |instantFuelConsumption|Float|The instantaneous fuel consumption of the vehicle in microlitres|
 |odometer|Integer|The odometer value in kilometers|
-|prndl|[Common.PRNDL](https://smartdevicelink.com/en/docs/hmi/master/common/enums/#prndl)|The current status of the gear shifter|
+|prndl|[Common.PRNDL](https://smartdevicelink.com/en/docs/hmi/master/common/enums/#prndl)|The current status of the gear shifter. This parameter is deprecated and it is now covered in `gearStatus`.|
 |rpm|Integer|The number of revolutions per minute of the engine|
+|seatOccupancy|[Common.SeatOccupancy](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#seatoccupancy)|Describes the occupancy, belted status, and location for each seat in the vehicle.|
 |speed|Float|The vehicle speed in kilometers per hour|
+|stabilityControlsStatus|[Common.StabilityControlsStatus](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#stabilitycontrolsstatus)|Describes the ignition switch stability.|
 |steeringWheelAngle|Float|The current angle of the steering wheel (in degrees)|
 |tirePressure|[Common.TireStatus](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#tirestatus)|Status information for each of the vehicle's tires|
 |turnSignal|[Common.TurnSignal](https://smartdevicelink.com/en/docs/hmi/master/common/enums/#turnsignal)|The current state of the turn signal indicator|
 |vin|String|Vehicle identification number|
+|windowStatus|[Common.WindowStatus](https://smartdevicelink.com/en/docs/hmi/master/common/structs/#windowstatus) Array|Describes the status of each window for each door/liftgate etc.|
 |wiperStatus|[Common.WiperStatus](https://smartdevicelink.com/en/docs/hmi/master/common/enums/#wiperstatus)|The current status of the wipers|
 
 ## Custom Vehicle Data Items

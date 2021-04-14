@@ -1,5 +1,5 @@
 # Installation
-A quick guide to installing, configuring, and running an instance of SDL Core on a Linux OS (default environment is Ubuntu 18.04 LTS).
+A quick guide to installing, configuring, and running an instance of SDL Core on a Linux OS (default environment is Ubuntu 20.04 LTS).
 
 ## Dependencies
 The dependencies for SDL Core vary based on the configuration. You can change SDL Core's build configuration in the top level CMakeLists.txt. We have defaulted this file to a configuration which we believe is common for people who are interested in getting up and running quickly, generally on a Linux VM.
@@ -7,7 +7,7 @@ The dependencies for SDL Core vary based on the configuration. You can change SD
 The default dependencies for SDL Core can be installed with the following command:
 
 ```bash
-sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl1.0-dev libssl1.0.0 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools
+sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl-dev libssl1.1 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools python
 ```
 
 ### Clone SDL Core and Submodules
