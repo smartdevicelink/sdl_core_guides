@@ -120,6 +120,6 @@ When an app is moved to HMI level `LIMITED`:
 Livio provides an [example video streaming android application](https://github.com/livio/sdl_video_streaming_android_sample).
 !!!
 
-[iOS Video Streaming Guide](https://smartdevicelink.com/en/guides/iOS/video-streaming-for-navigation-apps/video-streaming/)
+[iOS Video Streaming Guide](https://smartdevicelink.com/en/guides/iOS/video-streaming-for-navigation-apps/introduction/)
 
-[Android Video Streaming Guide](https://smartdevicelink.com/en/guides/android/video-streaming-for-navigation-apps/video-streaming/)
+[Android Video Streaming Guide](https://smartdevicelink.com/en/guides/android/video-streaming-for-navigation-apps/introduction/)
