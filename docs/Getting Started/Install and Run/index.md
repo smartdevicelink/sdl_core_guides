@@ -49,7 +49,9 @@ CMake is used to configure your SDL Core build before you compile the project, t
 #### Development/Debug Options
 |Option|Value(s)|Dependencies|Description|
 |:-----|:-------|:-----------|:----------|
-|ENABLE_LOG|**ON**/OFF|log4cxx (included in project)|Enable/Disable logging tool. Logs are stored in `<sdl_build_dir>/bin/SmartDeviceLinkCore.log` and can be configured by `log4cxx.properties` in the same folder.|
+|ENABLE_LOG|**ON**/OFF|log4cxx (included in project)/boost logger|Enable/Disable logging tool. Logs are stored in `<sdl_build_dir>/bin/SmartDeviceLinkCore.log`.|
+|LOGGER_NAME|**LOG4CXX**|log4cxx (included in project)|Build with the apache log4cxx logger. Log properties can be configured in `<sdl_build_dir>/bin/log4cxx.properties`|
+|LOGGER_NAME|BOOST|boost logger|Build with the boost logger library. Log properties can be configured in `<sdl_build_dir>/bin/boostlogconfig.ini`|
 |BUILD_TESTS|ON/**OFF**|GTest (packages: libgtest-dev)|Build unit tests (run with `make test`)|
 |USE_COTIRE|**ON**/OFF|N/A|Option to use [cotire](https://github.com/sakra/cotire) to speed up the build process when BUILD_TESTS is ON.|
 |USE_GOLD_LD|**ON**/OFF|N/A|Option to use gold linker in place of gnu ld to speed up the build process.|
