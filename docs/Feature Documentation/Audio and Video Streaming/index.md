@@ -11,7 +11,7 @@ The [Generic HMI](https://github.com/smartdevicelink/generic_hmi) and [SDL HMI](
 - [SDL HMI Dependencies](https://github.com/smartdevicelink/sdl_hmi/tree/master#dependencies)
 - [Generic HMI Dependencies](https://github.com/smartdevicelink/generic_hmi/tree/master#dependencies)
 
-In the HMI directory, you will need to run the backend server component (`./deploy_server.sh`) which handles the transcoding. 
+Prior to starting the HMI, you will need to run the backend server component (`./deploy_server.sh` in the HMI directory) which handles the transcoding process.
 
 !!! NOTE
 Once you start a video stream it will take a few seconds for the transcoding session to begin. Your video stream should appear in the browser within about 10 seconds.
