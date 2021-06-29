@@ -44,7 +44,6 @@ CMake is used to configure your SDL Core build before you compile the project, t
 |EXTENDED_POLICY|HTTP|N/A|HTTP (simplified) Policy flow. `OnSystemRequest` is sent with HTTP RequestType to initiate a policy table update. The HMI is not involved in the PTU process in this mode, meaning that policy table encryption is not supported.|
 |EXTENDED_POLICY|**PROPRIETARY**|N/A|Default Policy flow, PROPRIETARY RequestType. Simplified policy feature set (no user consent, encryption/decryption only available via HMI)|
 |EXTENDED_POLICY|EXTERNAL_PROPRIETARY|packages: python-pip, python-dev (If using the included sample policy manager, which is automatically started by `core.sh` by default)|Full Policy flow, PROPRIETARY RequestType. Full-featured policies, along with support for handling encryption/decryption via external application|
-|ENABLE_HMI_PTU_DECRYPTION|**ON**/OFF|N/A|Only applies to PROPRIETARY mode. When enabled, the HMI is expected to decrypt the policy table before sending `SDL.OnReceivedPolicyUpdate`.|
 
 #### Development/Debug Options
 |Option|Value(s)|Dependencies|Description|
@@ -71,7 +70,7 @@ cd ../sdl_build
 From the build folder you created, run `cmake {path_to_sdl_core_source_folder}`  with any flags that you want to change in the format of `-D<option-name>=<value>`, for example:
 
 ```bash
-cmake -DENABLE_HMI_PTU_DECRYPTION=OFF ../sdl_core
+cmake ../sdl_core
 ```
 
 From there, you can build and install the project, run the following commands in your build folder:
