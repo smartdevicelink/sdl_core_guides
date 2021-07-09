@@ -40,7 +40,7 @@ CMake is used to configure your SDL Core build before you compile the project, t
 |Option|Value(s)|Dependencies|Description|
 |:-----|:-------|:-----------|:----------|
 |EXTENDED_MEDIA_MODE|ON/**OFF**|GStreamer, PulseAudio (packages: libpulse-dev)|Enable/Disable audio pass thru via PulseAudio mic recording. When this option is disabled, Core will emulate audio pass thru by sending a looped audio file.|
-|ENABLE_SECURITY|**ON**/OFF|OpenSSL (packages: libssl1.0-dev)|Enable/Disable support for secured SDL protocol services|
+|ENABLE_SECURITY|**ON**/OFF|OpenSSL (packages: libssl-dev)|Enable/Disable support for secured SDL protocol services|
 |EXTENDED_POLICY|HTTP|N/A|HTTP (simplified) Policy flow. `OnSystemRequest` is sent with HTTP RequestType to initiate a policy table update. The HMI is not involved in the PTU process in this mode, meaning that policy table encryption is not supported.|
 |EXTENDED_POLICY|**PROPRIETARY**|N/A|Default Policy flow, PROPRIETARY RequestType. Simplified policy feature set (no user consent, encryption/decryption only available via HMI)|
 |EXTENDED_POLICY|EXTERNAL_PROPRIETARY|packages: python-pip, python-dev (If using the included sample policy manager, which is automatically started by `core.sh` by default)|Full Policy flow, PROPRIETARY RequestType. Full-featured policies, along with support for handling encryption/decryption via external application|
