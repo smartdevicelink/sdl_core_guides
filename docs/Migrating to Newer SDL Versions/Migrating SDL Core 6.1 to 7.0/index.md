@@ -217,7 +217,7 @@ Setting these limits does not change the behavior of SDL Core. It is up to the H
 
 ### Webengine Projection Support
 
-A new `WEB_VIEW` `appHMIType` and template layout was added which will allow apps to render a template-independent view in a browser environment with JavaScript and HTML.
+A new `WEB_VIEW` `AppHMIType` and template layout was added which will allow apps to render a template-independent view in a browser environment with JavaScript and HTML.
 
 ```
 <enum name="AppHMIType">
@@ -227,7 +227,7 @@ A new `WEB_VIEW` `appHMIType` and template layout was added which will allow app
 </enum>
 ```
 
-This `appHMIType` must be explicitly specified in an app's policy table entry for SDL Core to allow it to be used.
+This `AppHMIType` must be explicitly specified in an app's policy table entry for SDL Core to allow it to be used.
 
 Policy Table Entry:
 
@@ -235,7 +235,7 @@ Policy Table Entry:
 ...
 "app_policies": {
     "webengine_appID": {
-+       "appHMIType: ["WEB_VIEW"],
++       "AppHMIType": ["WEB_VIEW"],
         "keep_context": false,
         "steal_focus": false,
         "priority": "NONE",
