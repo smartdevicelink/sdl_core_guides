@@ -59,11 +59,12 @@ CMake is used to configure your SDL Core build before you compile the project, t
 
 After installing the appropriate dependencies for your build configuration, you can run `cmake` with your chosen options. 
 
-Begin by creating a build folder outside of SDL Core source folder, for example:
+Begin by creating a build folder **outside** of SDL Core source folder, for example:
 
 ```bash
-mkdir ../sdl_build
-cd ../sdl_build
+cd ..
+mkdir build
+cd build
 ```
 
 From the build folder you created, run `cmake {path_to_sdl_core_source_folder}`  with any flags that you want to change in the format of `-D<option-name>=<value>`, for example:
@@ -75,7 +76,7 @@ cmake -DENABLE_HMI_PTU_DECRYPTION=OFF ../sdl_core
 From there, you can build and install the project, run the following commands in your build folder:
 
 ```bash
-make install-3rd_party
+make install -j3
 make install
 ```
 
@@ -126,4 +127,68 @@ If Core was built with `EXTENDED_POLICY=EXTERNAL_PROPRIETARY`, the `core.sh` scr
 ```bash
 ./core.sh <command> false
 ``` 
-!!!
+## A cMake Exercise
+
+To Build Core using the HTTP Feature Support Option, do the following:
+
+### **NOTE:** If you have already built Core , be sure to remove the existing build by executing the following steps:
+
+```
+rm -rf sdl_core
+rm -rf build
+```
+## From the command line run:
+
+```
+sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl-dev libssl1.1 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools python
+```
+Execute This Line:
+
+```
+git clone https://github.com/smartdevicelink/sdl_core
+```
+Now, Execute This Line:
+
+```
+cd sdl_core
+```
+
+Execute This Line:
+
+```
+git checkout develop
+```
+Execut This Line:
+
+```
+git submodule init
+```
+
+Execute This Line:
+
+```
+git submodule update
+```
+
+Next Step is to Create BUILD folder **outside** of core build:
+cd..
+mkdir build
+cd build
+
+Execute This Line - This will build core using the HTTP option:
+
+```
+cmake ../sdl_core -DEXTENDED_POLICY=HTTP
+```
+
+Now, Execute This Line:
+
+```
+make -j3
+```
+And finally Execute this Line:
+
+```
+make install
+```
+You have successfully built Core using the HTTP Feature Support Option!
