@@ -9,6 +9,8 @@ interface Logger {
   + void Flush() = 0;
   + void PushLog(LogMessage) = 0;
   + Logger& instance(Logger* initializer = nullptr) = 0;
+  + void InitLoggerSettings(LoggerSettings) = 0;
+  + void InitFlushLogsTimePoint(TimePoint) = 0;
 }
 
 class AutoTrace {
