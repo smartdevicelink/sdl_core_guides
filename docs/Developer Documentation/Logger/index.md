@@ -48,8 +48,8 @@ If `ThirdPartyLoggerInterface` supports non blocking threaded logging, minor cha
 
 To prevent missing logs after SDL shutdown, after receiving IGNITION_OFF signal SDL dumps all logs into the file system before shutdown. To control logs flushing process SDL logger has additional ini file options:
 
- * Write all logs to file system before shutdown(using `LoggerImpl::Flush` function)
- * Configure maximum time to wait for SDL to shut down
+ * Option to flush log messages before shutdown.(using `LoggerImpl::Flush` function)
+ * Option that specifies maximum time before shutdown.
 
 Logger recieves shutdown settings via `LoggerImpl::InitLoggerSettings(LoggerSettings)`
 
