@@ -63,8 +63,8 @@ Begin by creating a build folder **outside** of SDL Core source folder, for exam
 
 ```bash
 cd ..
-mkdir build
-cd build
+mkdir sdl_build
+cd sdl_build
 ```
 
 From the build folder you created, run `cmake {path_to_sdl_core_source_folder}`  with any flags that you want to change in the format of `-D<option-name>=<value>`, for example:
@@ -76,8 +76,8 @@ cmake -DENABLE_HMI_PTU_DECRYPTION=OFF ../sdl_core
 From there, you can build and install the project, run the following commands in your build folder:
 
 ```bash
+make install-3rd_party
 make install -j3
-make install
 ```
 
 For a faster build, you can run the last command with the `-j` flag, which will enable multithreaded building:
@@ -127,68 +127,43 @@ If Core was built with `EXTENDED_POLICY=EXTERNAL_PROPRIETARY`, the `core.sh` scr
 ```bash
 ./core.sh <command> false
 ``` 
-## A cMake Exercise
+## Example - EXTERNAL_PROPRIETARY build
 
-To Build Core using the HTTP Feature Support Option, do the following:
-
-### **NOTE:** If you have already built Core , be sure to remove the existing build by executing the following steps:
-
+!!! Note
+To perform a completely clean build after previously building SDL Core, delete the existing build folder before running these steps:
 ```
-rm -rf sdl_core
-rm -rf build
+rm -rf sdl_build
 ```
-## From the command line run:
+!!!
+
+The following steps can be used to build the develop branch of SDL Core from scratch with the `EXTERNAL_PROPRIETARY` policy mode enabled:
+
+### First Time Setup
+
+The following commands only need to be run on the first installation of the project
 
 ```
 sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl-dev libssl1.1 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools python
-```
-Execute This Line:
-
-```
 git clone https://github.com/smartdevicelink/sdl_core
 ```
-Now, Execute This Line:
+
+### Configuration
 
 ```
 cd sdl_core
-```
-
-Execute This Line:
-
-```
 git checkout develop
-```
-Execut This Line:
-
-```
+git pull
 git submodule init
-```
-
-Execute This Line:
-
-```
 git submodule update
 ```
 
-Next Step is to Create BUILD folder **outside** of core build:
-cd..
-mkdir build
-cd build
-
-Execute This Line - This will build core using the HTTP option:
+### Installation
 
 ```
-cmake ../sdl_core -DEXTENDED_POLICY=HTTP
+cd ..
+mkdir sdl_build
+cd sdl_build
+cmake ../sdl_core -DEXTENDED_POLICY=EXTERNAL_PROPRIETARY
+make install-3rd_party
+make -j3 install
 ```
-
-Now, Execute This Line:
-
-```
-make -j3
-```
-And finally Execute this Line:
-
-```
-make install
-```
-You have successfully built Core using the HTTP Feature Support Option!
