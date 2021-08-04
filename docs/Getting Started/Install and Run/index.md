@@ -127,6 +127,8 @@ If Core was built with `EXTENDED_POLICY=EXTERNAL_PROPRIETARY`, the `core.sh` scr
 ```bash
 ./core.sh <command> false
 ``` 
+!!!
+
 ## Example - EXTERNAL_PROPRIETARY build
 
 !!! Note
