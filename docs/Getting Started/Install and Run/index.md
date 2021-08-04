@@ -77,7 +77,7 @@ From there, you can build and install the project, run the following commands in
 
 ```bash
 make install-3rd_party
-make install -j3
+make install
 ```
 
 For a faster build, you can run the last command with the `-j` flag, which will enable multithreaded building:
