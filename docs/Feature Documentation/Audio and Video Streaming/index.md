@@ -11,7 +11,7 @@ The [Generic HMI](https://github.com/smartdevicelink/generic_hmi) and [SDL HMI](
 - [SDL HMI Dependencies](https://github.com/smartdevicelink/sdl_hmi/tree/master#dependencies)
 - [Generic HMI Dependencies](https://github.com/smartdevicelink/generic_hmi/tree/master#dependencies)
 
-In the HMI directory, you will need to run the backend server component (`./deploy_server.sh`) which handles the transcoding. 
+Prior to starting the HMI, you will need to run the backend server component (`./deploy_server.sh` in the HMI directory) which handles the transcoding process.
 
 !!! NOTE
 Once you start a video stream it will take a few seconds for the transcoding session to begin. Your video stream should appear in the browser within about 10 seconds.
@@ -120,6 +120,6 @@ When an app is moved to HMI level `LIMITED`:
 Livio provides an [example video streaming android application](https://github.com/livio/sdl_video_streaming_android_sample).
 !!!
 
-[iOS Video Streaming Guide](https://smartdevicelink.com/en/guides/iOS/video-streaming-for-navigation-apps/video-streaming/)
+[iOS Video Streaming Guide](https://smartdevicelink.com/en/guides/iOS/video-streaming-for-navigation-apps/introduction/)
 
-[Android Video Streaming Guide](https://smartdevicelink.com/en/guides/android/video-streaming-for-navigation-apps/video-streaming/)
+[Android Video Streaming Guide](https://smartdevicelink.com/en/guides/android/video-streaming-for-navigation-apps/introduction/)
