@@ -60,11 +60,12 @@ CMake is used to configure your SDL Core build before you compile the project, t
 
 After installing the appropriate dependencies for your build configuration, you can run `cmake` with your chosen options. 
 
-Begin by creating a build folder outside of SDL Core source folder, for example:
+Begin by creating a build folder **outside** of SDL Core source folder, for example:
 
 ```bash
-mkdir ../sdl_build
-cd ../sdl_build
+cd ..
+mkdir sdl_build
+cd sdl_build
 ```
 
 From the build folder you created, run `cmake {path_to_sdl_core_source_folder}`  with any flags that you want to change in the format of `-D<option-name>=<value>`, for example:
@@ -128,3 +129,44 @@ If Core was built with `EXTENDED_POLICY=EXTERNAL_PROPRIETARY`, the `core.sh` scr
 ./core.sh <command> false
 ``` 
 !!!
+
+## Example - EXTERNAL_PROPRIETARY build
+
+!!! Note
+To perform a completely clean build after previously building SDL Core, delete the existing build folder before running these steps:
+```
+rm -rf sdl_build
+```
+!!!
+
+The following steps can be used to build the develop branch of SDL Core from scratch with the `EXTERNAL_PROPRIETARY` policy mode enabled:
+
+### First Time Setup
+
+The following commands only need to be run on the first installation of the project
+
+```
+sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl-dev libssl1.1 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools python
+git clone https://github.com/smartdevicelink/sdl_core
+```
+
+### Configuration
+
+```
+cd sdl_core
+git checkout develop
+git pull
+git submodule init
+git submodule update
+```
+
+### Installation
+
+```
+cd ..
+mkdir sdl_build
+cd sdl_build
+cmake ../sdl_core -DEXTENDED_POLICY=EXTERNAL_PROPRIETARY
+make install-3rd_party
+make -j3 install
+```
