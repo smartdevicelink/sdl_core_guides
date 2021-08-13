@@ -121,7 +121,7 @@ The following graphic shows what should happen when the HMI receives a `UI.SetMe
 ## Implementing Soft Buttons
 
 !!! NOTE
-As of Core 8.0, `OnButtonEvent` and `OnButtonPress` notifications will only be forwarded to mobile if the HMI includes an element with button name `CUSTOM_BUTTON` in it's response to `Buttons.GetCapabilities`.
+As of Core 8.0.0 it is important to include `CUSTOM_BUTTON` in the response to `Buttons.GetCapabilities` so that an app may subscribe to soft buttons.
 !!!
 
 A `Softbutton` received from a `UI.Show` request should be displayed when the app is displaying a template. A template can have a max of 8 `Softbuttons`. These buttons can be of type `TEXT`, `IMAGE`, or `BOTH`.
