@@ -7,7 +7,7 @@ The dependencies for SDL Core vary based on the configuration. You can change SD
 The default dependencies for SDL Core can be installed with the following command:
 
 ```bash
-sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl-dev libssl1.1 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools python
+sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl-dev libssl1.1 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools python3-wheel python
 ```
 
 ### Clone SDL Core and Submodules
@@ -76,6 +76,7 @@ From there, you can build and install the project, run the following commands in
 
 ```bash
 make install-3rd_party
+make install_python_dependencies
 make install
 ```
 
