@@ -28,7 +28,7 @@ set(LOGGER_NAME "LOG4CXX" CACHE STRING "Logging library to use (BOOST, LOG4CXX)"
 
 ### DefaultTimeoutCompensation
 
-This parameter was added to the smartDeviceLink.ini configuration to help compensate for timing issues that could occur during `BasicCommunication.OnResetTimeout`. This value is added to the DefaultTimeout parameter when calculating the RPC request timeout.
+This parameter was added to the smartDeviceLink.ini configuration to compensate for transfer and processing time of requests. This value is added to the DefaultTimeout parameter when calculating the RPC request timeout. Previously, specific requests such as Alert were hardcoded to extend their default timeout, now timeout compensation is configurable and applied to all requests.
 
 ```
 ; Extra time to compensate default timeout due to external delays
