@@ -44,6 +44,18 @@ The default parameter `AppIconsFolder` was updated to use a directory named “i
 AppIconsFolder = icons
 ```
 
+## HMI Behavior Changes
+
+### Avoid Custom button subscription in case HMI incompatibility
+
+SDL Core 8.0.0 no longer automatically subscribes to `CUSTOM_BUTTON`. If an HMI supports soft buttons, it must include an entry for `CUSTOM_BUTTON` in its' button capabilities in order for mobile to receive OnButtonPress and OnButtonEvent notifications.
+
+### OnEventChanged (PHONE_CALL)
+
+The behavior of the `PHONE_CALL` event was changed to only affect the `audioStreamingState` of an app. Rather than automatically deactivating the active app, SDL Core will now only change the `audioStreamingState` of all apps to `NOT_AUDIBLE` when `BC.OnEventChanged(PHONE_CALL, active=true)` is sent, leaving each app's `hmiLevel` unchanged. This allows the HMI to start a phone call in the background without leaving the app screen, if desired.
+
+The HMI can still control the `hmiLevel` of the app during a phone call event by sending `BC.OnAppDeactivated(appID)` and `BC.OnAppActivated(appID)` where appropriate.
+
 ## HMI API Updates
 
 ## Buttons.SubscribeButton
