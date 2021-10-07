@@ -6,9 +6,9 @@
 
 SDL Core 8.0.0 no longer supports Ubuntu 16. Supported versions of SDL Core are Ubuntu 18.04 and Ubuntu 20.04.
 
-### SSL versions
+### SSL Versions
 
-SDL Core 8.0.0 dropped support for libssl1.0. Developers should install libssl-dev instead of libssl1.0-dev
+SDL Core 8.0.0 dropped support for libssl1.0. Developers should install `libssl-dev` instead of `libssl1.0-dev`.
 
 ## Updates to CMAKE Build Configuration
 
@@ -18,7 +18,7 @@ SDL Core 8.0.0 dropped support for libssl1.0. Developers should install libssl-d
 
 ### Boost Logger
 
-The default logger is still using LOG4CXX but the option is now available to use Boost for the logger. When porting SDL Core to different linux environments, the LOG4CXX logger was known to cause dependency issues. Boost is offered as an alternative logger in hopes to make porting SDL Core to different environments easier.
+The default logger is still using LOG4CXX but the option is now available to use Boost for the logger. When porting SDL Core to different Linux environments, the LOG4CXX logger was known to cause dependency issues. Boost is offered as an alternative logger in hopes of making porting SDL Core to different environments easier.
 
 ```
 set(LOGGER_NAME "LOG4CXX" CACHE STRING "Logging library to use (BOOST, LOG4CXX)")
@@ -28,7 +28,7 @@ set(LOGGER_NAME "LOG4CXX" CACHE STRING "Logging library to use (BOOST, LOG4CXX)"
 
 ### DefaultTimeoutCompensation
 
-This parameter was added to the smartDeviceLink.ini configuration to compensate for transfer and processing time of requests. This value is added to the DefaultTimeout parameter when calculating the RPC request timeout. Previously, specific requests such as Alert were hardcoded to extend their default timeout, now timeout compensation is configurable and applied to all requests.
+This parameter was added to the smartDeviceLink.ini configuration to compensate for transfer and processing time of requests. This value is added to the `DefaultTimeout` parameter when calculating the RPC request timeout. Previously, specific requests such as Alert were hardcoded to extend their default timeout, now timeout compensation is configurable and applied to all requests.
 
 ```
 ; Extra time to compensate default timeout due to external delays
@@ -46,9 +46,9 @@ AppIconsFolder = icons
 
 ## HMI Behavior Changes
 
-### Avoid Custom button subscription in case HMI incompatibility
+### Avoid Custom Button Subscription in Case HMI Incompatibility
 
-SDL Core 8.0.0 no longer automatically subscribes to `CUSTOM_BUTTON`. If an HMI supports soft buttons, it must include an entry for `CUSTOM_BUTTON` in its' button capabilities in order for mobile to receive OnButtonPress and OnButtonEvent notifications.
+SDL Core 8.0.0 no longer automatically subscribes to `CUSTOM_BUTTON`. If an HMI supports soft buttons, it must include an entry for `CUSTOM_BUTTON` in its button capabilities in order for mobile to receive `OnButtonPress` and `OnButtonEvent` notifications.
 
 ### OnEventChanged (PHONE_CALL)
 
@@ -58,9 +58,9 @@ The HMI can still control the `hmiLevel` of the app during a phone call event by
 
 ## HMI API Updates
 
-## Buttons.SubscribeButton
+### Buttons.SubscribeButton
 
-`Buttons.OnButtonSubscription` notification was replaced by `Buttons.SubscribeButton` Request and Response.
+`Buttons.OnButtonSubscription` notification was replaced by `Buttons.SubscribeButton` request and response.
 
 ```xml
 <function name="SubscribeButton" messagetype="request">
@@ -69,7 +69,7 @@ The HMI can still control the `hmiLevel` of the app during a phone call event by
         </description>
 		
 	    <param name="appID" type="Integer" mandatory="true">
-			<description>The ID of the application requesting this button usubscription. </description>
+			<description>The ID of the application requesting this button subscription. </description>
         </param>
 		
         <param name="buttonName" type="ButtonName" mandatory="true">
@@ -80,10 +80,10 @@ The HMI can still control the `hmiLevel` of the app during a phone call event by
 <function name="SubscribeButton" messagetype="response"> </function>
 ```
 
-## Buttons.UnsubscribeButton
+### Buttons.UnsubscribeButton
 
 
-`Buttons.UnsubscribeButton` request and response were added to allow SDL Core to request the HMI unsubscribes an application from a specific button.
+`Buttons.UnsubscribeButton` request and response were added to allow SDL Core to request that the HMI unsubscribes an application from a specific button.
 
 ```
 <function name="UnsubscribeButton" messagetype="request">
@@ -104,17 +104,17 @@ The HMI can still control the `hmiLevel` of the app during a phone call event by
 
 ```
 
-## Restructuring OnResetTimeout 
+### Restructuring OnResetTimeout 
 
-`UI.OnResetTimeout` and `TTS.OnResetTimeout` were removed in place of using a broader rpc, `BasicCommunication.OnResetTimeout`.
+`UI.OnResetTimeout` and `TTS.OnResetTimeout` were removed in place of using a broader RPC, `BasicCommunication.OnResetTimeout`.
 
 This updated `OnResetTimeout` RPC can be used across all interfaces for all request functions.
 
 The parameters in the notification have also changed.
 
-The parameter `requestID` is used instead of appID to identify which specific request should have its timeout extended.
+The parameter `requestID` is used instead of `appID` to identify which specific request should have its timeout extended.
 
-The parameter `methodName` should include the interface name and the rpc. For example: `”TTS.Speak”`.
+The parameter `methodName` should include the interface name and the RPC. For example: `”TTS.Speak”`.
 
 The parameter `resetPeriod` allows the HMI to specify how long Core should delay the application request’s timeout.
 
