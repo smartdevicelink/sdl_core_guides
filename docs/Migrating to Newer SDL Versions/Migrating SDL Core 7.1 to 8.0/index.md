@@ -110,13 +110,10 @@ The HMI can still control the `hmiLevel` of the app during a phone call event by
 
 This updated `OnResetTimeout` RPC can be used across all interfaces for all request functions.
 
-The parameters in the notification have also changed.
-
-The parameter `requestID` is used instead of `appID` to identify which specific request should have its timeout extended.
-
-The parameter `methodName` should include the interface name and the RPC. For example: `”TTS.Speak”`.
-
-The parameter `resetPeriod` allows the HMI to specify how long Core should delay the application request’s timeout.
+The parameters in the notification have also changed:
+- The parameter `requestID` is used instead of `appID` to identify which specific request should have its timeout extended.
+- The parameter `methodName` should include the interface name and the RPC. For example: `”TTS.Speak”`.
+- The parameter `resetPeriod` allows the HMI to specify how long Core should delay the application request’s timeout.
 
 
 ```
