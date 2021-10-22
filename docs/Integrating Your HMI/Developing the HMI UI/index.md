@@ -93,7 +93,7 @@ If an app wants to clear a text field that it sent in a previous `UI.Show` reque
 
 Apps which use the `MEDIA` template have access to a few specific UI elements that are not available to non-media apps. 
 
-The following buttons can only be subscribed to by media apps and and are generally only available in the `MEDIA` template layout:
+The following buttons can only be subscribed to by media apps and are generally only available in the `MEDIA` template layout:
 
   - `PLAY_PAUSE`
   - `SEEKLEFT`
