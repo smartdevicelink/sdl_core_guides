@@ -147,7 +147,7 @@ The following steps can be used to build the develop branch of SDL Core from scr
 The following commands only need to be run on the first installation of the project
 
 ```
-sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl-dev libssl1.1 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools python
+sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl-dev libssl1.1 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools python3-wheel python
 git clone https://github.com/smartdevicelink/sdl_core
 ```
 
@@ -169,5 +169,6 @@ mkdir sdl_build
 cd sdl_build
 cmake ../sdl_core -DEXTENDED_POLICY=EXTERNAL_PROPRIETARY
 make install-3rd_party
+make install_python_dependencies
 make -j3 install
 ```
