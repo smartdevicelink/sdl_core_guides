@@ -68,8 +68,8 @@ The HMI can still control the `hmiLevel` of the app during a phone call event by
             Subscribes to buttons.            
         </description>
 		
-	    <param name="appID" type="Integer" mandatory="true">
-			<description>The ID of the application requesting this button subscription. </description>
+        <param name="appID" type="Integer" mandatory="true">
+            <description>The ID of the application requesting this button subscription. </description>
         </param>
 		
         <param name="buttonName" type="ButtonName" mandatory="true">
