@@ -288,7 +288,7 @@ An RPC must be sent in result format for its parameters to be passed to mobile.
 | :------------- | :------------- |
 | id      | Required property which must be the same as the value of the associated request object. If there was an error in detecting the id in the request object, this value must be null.  |
 | jsonrpc | Must be exactly **"2.0"**|
-| result | The result property must contain a `method` field which is the same as the corresponding request and a corresponding [result code](https://smartdevicelink.com/en/guides/hmi/common/enums/#result) should be sent in the result property. The result property may also include additional properties as defined in the [HMI API](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/HMI_API.xml).|
+| result | The result property must contain a `method` field which is the same as the corresponding request and a corresponding [result code](https://smartdevicelink.com/en/docs/hmi/master/common/enums/#result) should be sent in the result property. The result property may also include additional properties as defined in the [HMI API](https://github.com/smartdevicelink/sdl_core/blob/master/src/components/interfaces/HMI_API.xml).|
 
 ### Example Responses
 #### Response with no Parameters

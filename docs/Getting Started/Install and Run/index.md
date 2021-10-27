@@ -7,7 +7,7 @@ The dependencies for SDL Core vary based on the configuration. You can change SD
 The default dependencies for SDL Core can be installed with the following command:
 
 ```bash
-sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl-dev libssl1.1 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools python
+sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl-dev libssl1.1 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools python3-wheel python
 ```
 
 ### Clone SDL Core and Submodules
@@ -40,16 +40,17 @@ CMake is used to configure your SDL Core build before you compile the project, t
 |Option|Value(s)|Dependencies|Description|
 |:-----|:-------|:-----------|:----------|
 |EXTENDED_MEDIA_MODE|ON/**OFF**|GStreamer, PulseAudio (packages: libpulse-dev)|Enable/Disable audio pass thru via PulseAudio mic recording. When this option is disabled, Core will emulate audio pass thru by sending a looped audio file.|
-|ENABLE_SECURITY|**ON**/OFF|OpenSSL (packages: libssl1.0-dev)|Enable/Disable support for secured SDL protocol services|
+|ENABLE_SECURITY|**ON**/OFF|OpenSSL (packages: libssl-dev)|Enable/Disable support for secured SDL protocol services|
 |EXTENDED_POLICY|HTTP|N/A|HTTP (simplified) Policy flow. `OnSystemRequest` is sent with HTTP RequestType to initiate a policy table update. The HMI is not involved in the PTU process in this mode, meaning that policy table encryption is not supported.|
 |EXTENDED_POLICY|**PROPRIETARY**|N/A|Default Policy flow, PROPRIETARY RequestType. Simplified policy feature set (no user consent, encryption/decryption only available via HMI)|
 |EXTENDED_POLICY|EXTERNAL_PROPRIETARY|packages: python-pip, python-dev (If using the included sample policy manager, which is automatically started by `core.sh` by default)|Full Policy flow, PROPRIETARY RequestType. Full-featured policies, along with support for handling encryption/decryption via external application|
-|ENABLE_HMI_PTU_DECRYPTION|**ON**/OFF|N/A|Only applies to PROPRIETARY mode. When enabled, the HMI is expected to decrypt the policy table before sending `SDL.OnReceivedPolicyUpdate`.|
 
 #### Development/Debug Options
 |Option|Value(s)|Dependencies|Description|
 |:-----|:-------|:-----------|:----------|
-|ENABLE_LOG|**ON**/OFF|log4cxx (included in project)|Enable/Disable logging tool. Logs are stored in `<sdl_build_dir>/bin/SmartDeviceLinkCore.log` and can be configured by `log4cxx.properties` in the same folder.|
+|ENABLE_LOG|**ON**/OFF|log4cxx (included in project)/boost logger|Enable/Disable logging tool. Logs are stored in `<sdl_build_dir>/bin/SmartDeviceLinkCore.log`.|
+|LOGGER_NAME|**LOG4CXX**|log4cxx (included in project)|Build with the apache log4cxx logger. Log properties can be configured in `<sdl_build_dir>/bin/log4cxx.properties`|
+|LOGGER_NAME|BOOST|boost logger|Build with the boost logger library. Log properties can be configured in `<sdl_build_dir>/bin/boostlogconfig.ini`|
 |BUILD_TESTS|ON/**OFF**|GTest (packages: libgtest-dev)|Build unit tests (run with `make test`)|
 |USE_COTIRE|**ON**/OFF|N/A|Option to use [cotire](https://github.com/sakra/cotire) to speed up the build process when BUILD_TESTS is ON.|
 |USE_GOLD_LD|**ON**/OFF|N/A|Option to use gold linker in place of gnu ld to speed up the build process.|
@@ -59,23 +60,25 @@ CMake is used to configure your SDL Core build before you compile the project, t
 
 After installing the appropriate dependencies for your build configuration, you can run `cmake` with your chosen options. 
 
-Begin by creating a build folder outside of SDL Core source folder, for example:
+Begin by creating a build folder **outside** of SDL Core source folder, for example:
 
 ```bash
-mkdir ../sdl_build
-cd ../sdl_build
+cd ..
+mkdir sdl_build
+cd sdl_build
 ```
 
 From the build folder you created, run `cmake {path_to_sdl_core_source_folder}`  with any flags that you want to change in the format of `-D<option-name>=<value>`, for example:
 
 ```bash
-cmake -DENABLE_HMI_PTU_DECRYPTION=OFF ../sdl_core
+cmake ../sdl_core
 ```
 
 From there, you can build and install the project, run the following commands in your build folder:
 
 ```bash
 make install-3rd_party
+make install_python_dependencies
 make install
 ```
 
@@ -127,3 +130,45 @@ If Core was built with `EXTENDED_POLICY=EXTERNAL_PROPRIETARY`, the `core.sh` scr
 ./core.sh <command> false
 ``` 
 !!!
+
+## Example - EXTERNAL_PROPRIETARY build
+
+!!! Note
+To perform a completely clean build after previously building SDL Core, delete the existing build folder before running these steps:
+```
+rm -rf sdl_build
+```
+!!!
+
+The following steps can be used to build the develop branch of SDL Core from scratch with the `EXTERNAL_PROPRIETARY` policy mode enabled:
+
+### First Time Setup
+
+The following commands only need to be run on the first installation of the project
+
+```
+sudo apt-get install git cmake build-essential sqlite3 libsqlite3-dev libssl-dev libssl1.1 libusb-1.0-0-dev libudev-dev libgtest-dev libbluetooth3 libbluetooth-dev bluez-tools libpulse-dev python3-pip python3-setuptools python3-wheel python
+git clone https://github.com/smartdevicelink/sdl_core
+```
+
+### Configuration
+
+```
+cd sdl_core
+git checkout develop
+git pull
+git submodule init
+git submodule update
+```
+
+### Installation
+
+```
+cd ..
+mkdir sdl_build
+cd sdl_build
+cmake ../sdl_core -DEXTENDED_POLICY=EXTERNAL_PROPRIETARY
+make install-3rd_party
+make install_python_dependencies
+make -j3 install
+```

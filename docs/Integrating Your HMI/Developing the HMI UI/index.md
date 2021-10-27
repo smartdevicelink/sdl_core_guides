@@ -93,7 +93,7 @@ If an app wants to clear a text field that it sent in a previous `UI.Show` reque
 
 Apps which use the `MEDIA` template have access to a few specific UI elements that are not available to non-media apps. 
 
-The following buttons can only be subscribed to by media apps and and are generally only available in the `MEDIA` template layout:
+The following buttons can only be subscribed to by media apps and are generally only available in the `MEDIA` template layout:
 
   - `PLAY_PAUSE`
   - `SEEKLEFT`
@@ -119,6 +119,10 @@ The following graphic shows what should happen when the HMI receives a `UI.SetMe
 ![Update from SetMediaClockTimer Request](./assets/set_media_clock_timer.gif)
 
 ## Implementing Soft Buttons
+
+!!! NOTE
+As of Core 8.0.0 it is important to include `CUSTOM_BUTTON` in the response to `Buttons.GetCapabilities` so that an app may subscribe to soft buttons.
+!!!
 
 A `Softbutton` received from a `UI.Show` request should be displayed when the app is displaying a template. A template can have a max of 8 `Softbuttons`. These buttons can be of type `TEXT`, `IMAGE`, or `BOTH`.
 
