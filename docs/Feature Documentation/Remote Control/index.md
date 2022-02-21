@@ -84,7 +84,7 @@ GetInteriorVehicleData is used to request information about a specific module. T
 If an application sends GetInteriorVehicleData (subscribe=true, moduleType=MODULE1), but the application is already subscribed on MODULE1 module type, SDL will respond with a `WARNINGS` resultCode because of the double subscription.
 !!!
 
-View **GetInteriorVehicleData** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#getinteriorvehicledata) or the [HMI Documentation](https://smartdevicelink.com/en/guides/hmi/rc/getinteriorvehicledata)
+View **GetInteriorVehicleData** in the [RPC Spec](https://github.com/smartdevicelink/rpc_spec#getinteriorvehicledata) or the [HMI Documentation](https://smartdevicelink.com/en/docs/hmi/master/rc/getinteriorvehicledata/)
 
 ### OnInteriorVehicleData
 

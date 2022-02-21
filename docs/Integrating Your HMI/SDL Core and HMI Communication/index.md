@@ -345,7 +345,7 @@ The error object has the following members:
 | :------------- | :------------- |
 | id       | Required to be the same as the value of "id" in the corresponding Request object. If there was an error in detecting the id of the request object, then this property must be null.   |
 | jsonrpc| Must be exactly "2.0"|
-| error | The error field must contain a `code` field with the [result code](https://smartdevicelink.com/en/guides/hmi/common/enums/#result) value that indicates the error type that occurred, a `data` field with the `method` from the original request, and optionally a `message` field containing the string that provides a short description of the error.|
+| error | The error field must contain a `code` field with the [result code](https://smartdevicelink.com/en/docs/hmi/master/common/enums/#result) value that indicates the error type that occurred, a `data` field with the `method` from the original request, and optionally a `message` field containing the string that provides a short description of the error.|
 
 ### Examples
 #### Response with Error
