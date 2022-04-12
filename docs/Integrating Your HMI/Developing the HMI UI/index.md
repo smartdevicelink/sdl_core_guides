@@ -33,7 +33,7 @@ When the user selects an application from the app list, a request should be made
 ![App Selection](./assets/activate_deactivate.gif)
 
 !!! NOTE
-The default template for an app should be used if the app has not requested to use a specific template via the `UI.Show.templateConfiguration` parameter or `UI.SetDisplayLayout` RPC (deprecated).
+The default template for an app should be used if the app has not requested to use a specific template via the `UI.Show.templateConfiguration` parameter.
 
 The default template for media apps is `MEDIA`, and the default template for all other apps is `NON-MEDIA`.
 
@@ -146,15 +146,13 @@ Not all HMIs support the ability to detect a button press duration, or different
 
 ## Switching Templates
 
-SDL Core can request the HMI to change an app's template using a `UI.Show` request, or the deprecated RPC `UI.SetDisplayLayout`.
+SDL Core can request the HMI to change an app's template using a `UI.Show` request.
 
 The following graphic demonstrates switching templates while maintaining the same text, buttons, and graphic:
 
 ![Cycle template layouts](./assets/cycling_templates.gif)
 
 In order to specify the template to be displayed, the `UI.Show` request uses the `templateConfiguration` parameter, which includes a string for the requested layout.
-
-For `UI.SetDisplayLayout`, the `displayLayout` string parameter is used for the same purpose.
 
 Using `UI.Show` is the preferred method because the request can be used to change the layout of the screen and the screen contents in a single request. This helps prevent lag and screen flashing when an app wants to change an app template.
 
@@ -283,10 +281,6 @@ OnEventChanged Sequence Diagram
 There are several ways that the HMI should communicate its UI capabilities to SDL Core. When first connecting the HMI to SDL Core, SDL Core will send a `UI.GetCapabilities` request (a similar GetCapabilities request is sent for every interface). The HMI's response should include accurate information relating to its supported display capabilities, audio pass through capabilities, soft button capabilities, and various other system capabilities (See [UI.GetCapabilities](https://smartdevicelink.com/en/docs/hmi/master/ui/getcapabilities/#parameters_1)).
 
 It is likely that the UI capabilities will be different for each template view, therefore it is important for the HMI to send updates about its capabilities to SDL Core. For example, if an app requests a new template configuration, after switching to that view the HMI must send an `OnSystemCapabilityUpdated` notification for `"systemCapabilityType": "DISPLAYS"`.
-
-!!! NOTE
-Even though `UI.SetDisplayLayout` is deprecated, the HMI can still receive requests to change layouts from this RPC from older applications. It is important that the response for `UI.SetDisplayLayout` includes accurate display capabilities for the new layout as well.
-!!!
 
 As an example, if SDL Core requests to change the layout to the `MEDIA` template, the `OnSystemCapabilitiesUpdated` notification parameters may look something like this (taken from the [Generic HMI](https://github.com/smartdevicelink/generic_hmi)):
 ```JSON

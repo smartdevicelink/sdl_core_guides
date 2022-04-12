@@ -90,6 +90,9 @@
                 },
                 {
                     "name": "Migrating SDL Core 7.1 to 8.0"
+                },
+                {
+                    "name": "Migrating SDL Core 8.0 to 8.1"
                 }
             ]
         },
