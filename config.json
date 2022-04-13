@@ -101,6 +101,65 @@
         },
         {
             "name": "FAQ"
+        },
+        {
+            "name": "Best Practice Documents",
+            "navigation": [
+                {
+                    "name": "1.1. Establish Session"
+                },
+                {
+                    "name": "1.2. SDL App Icon Display"
+                },
+                {
+                    "name": "1.3. SDL App Icon Caching"
+                },
+                {
+                    "name": "1.4. Capabilities Definition with TOYOTA Settings"
+                },
+                {
+                    "name": "1.5. Definitions when the HU returns RPC Error"
+                },
+                {
+                    "name": "1.6. Behavior when Apps terminate unexpectedly"
+                },
+                {
+                    "name": "2.1. Press the App Icon on the SDL menu screen"
+                },
+                {
+                    "name": "2.2. Launch by Voice Recognition"
+                },
+                {
+                    "name": "2.3. Launch by choosing the Audio source on the Audio screen"
+                },
+                {
+                    "name": "2.4. Launch by Hard button"
+                },
+                {
+                    "name": "2.5. Behavior after ACC OFFON(Resume of Last Launched SDL App)"
+                },
+                {
+                    "name": "2.6. Change Screen to SDL App from Other Smartphone Linkage Functions"
+                },
+                {
+                    "name": "3. Switching SDL Apps"
+                },
+                {
+                    "name": "4.1. Switching Communication Paths"
+                },
+                {
+                    "name": "4.2. WiFi Connection"
+                },
+                {
+                    "name": "5. SDL App Interruption"
+                },
+                {
+                    "name": "6. Behavior of each HMI Status"
+                },
+                {
+                    "name": "Appendix. Terminologies and Definitions"
+                }
+            ]
         }
     ]
 }
