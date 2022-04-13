@@ -23,7 +23,9 @@ The `Logger` interface contains only methods required by any SDL component to pe
  * PushLog(LogMessage)
  * IsEnabledFor(LogLevel)
  * DeInit()
- * Flush() 
+ * Flush()
+ * InitLoggerSettings(LoggerSettings)
+ * InitFlushLogsTimePoint(TimePoint) 
 
 
 ## Logger Implementation
@@ -40,7 +42,16 @@ The `Logger` interface contains only methods required by any SDL component to pe
 The message loop thread is needed to avoid significant performance degradation at run time as logging calls are blocking calls and might take a significant amount of time. `LoggerImpl::PushLog` is a non-blocking call. It will put the log message into the queue and returns immediately.
 
 
-If `ThirdPartyLoggerInterface` supports non blocking threaded logging, minor changes in `LoggerImpl` can be made with `use_message_loop_thread = false`. 
+If `ThirdPartyLoggerInterface` supports non blocking threaded logging, minor changes in `LoggerImpl` can be made with `use_message_loop_thread = false`.
+
+### Configurable time before shutdown
+
+To prevent missing logs after SDL shutdown, after receiving IGNITION_OFF signal SDL dumps all logs into the file system before shutdown. To control logs flushing process SDL logger has additional ini file options:
+
+ * Option to flush log messages before shutdown.(using `LoggerImpl::Flush` function)
+ * Option that specifies maximum time before shutdown.
+
+Logger recieves shutdown settings via `LoggerImpl::InitLoggerSettings(LoggerSettings)`
 
 ## Logger singleton 
 
